@@ -1,0 +1,23 @@
+# .gitignore - Portal WebGIS Defesa Civil Passo Fundo
+
+# Arquivos de configuração QGIS (não relevantes para o WebGIS)
+*.qmd
+
+# Logs e temporários do sistema
+*.log
+*.tmp
+Thumbs.db
+.DS_Store
+
+# Arquivos de ambiente e segredos
+.env
+.env.local
+
+# Pasta de artefatos do agente (não faz parte do projeto)
+.gemini/
+
+# Arquivos GeoTIFF de alta resolução (mantidos intactos localmente para o WebGIS)
+Ortofotos/*.tif
+
+# Pasta local de segurança para arquivos legados / órfãos arquivados
+_backup_arquivos_legados/

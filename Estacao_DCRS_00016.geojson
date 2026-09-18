@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "name": "Estacao_DCRS_00016",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::31982"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "estacao_cod": "DCRS-00016",
+        "nome_estacao": "DCRS-00016 — Passo Fundo",
+        "rede": "Rede Hidrometeorológica da Defesa Civil RS",
+        "bacia": "RS - Rio Passo Fundo",
+        "municipio": "Passo Fundo / RS",
+        "provedor": "DCRS",
+        "lat": -28.247,
+        "lon": -52.3713,
+        "utm_x": 365471.87,
+        "utm_y": 6874673.67
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          365471.87177042715,
+          6874673.674885493
+        ]
+      }
+    }
+  ]
+}

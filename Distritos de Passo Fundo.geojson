@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "Distritos de Passo Fundo",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+"features": [
+{ "type": "Feature", "properties": { "nome": "Bela Vista", "nomeAbrev": null, "d_geometri": null, "Pop 2022": 581 }, "geometry": { "type": "Point", "coordinates": [ 348583.653732707374729, 6881936.818560818210244, 0.0 ] } },
+{ "type": "Feature", "properties": { "nome": "Sede Independência", "nomeAbrev": null, "d_geometri": null, "Pop 2022": 392 }, "geometry": { "type": "Point", "coordinates": [ 377131.673356998711824, 6860209.638761587440968, 0.0 ] } },
+{ "type": "Feature", "properties": { "nome": "Bom Recreio", "nomeAbrev": null, "d_geometri": null, "Pop 2022": 1105 }, "geometry": { "type": "Point", "coordinates": [ 354449.04742212354904, 6866616.069065000861883, 0.0 ] } },
+{ "type": "Feature", "properties": { "nome": "Passo Fundo", "nomeAbrev": null, "d_geometri": null, "Pop 2022": 201847 }, "geometry": { "type": "Point", "coordinates": [ 361842.318461034039501, 6871980.828017072752118, 0.0 ] } },
+{ "type": "Feature", "properties": { "nome": "Pulador", "nomeAbrev": null, "d_geometri": null, "Pop 2022": 383 }, "geometry": { "type": "Point", "coordinates": [ 346386.17287051002495, 6869506.69775500241667, 0.0 ] } },
+{ "type": "Feature", "properties": { "nome": "São Roque", "nomeAbrev": null, "d_geometri": null, "Pop 2022": 1377 }, "geometry": { "type": "Point", "coordinates": [ 363762.248612749390304, 6866667.617932464927435, 0.0 ] } },
+{ "type": "Feature", "properties": { "nome": "Sto Antônio do Capinzal", "nomeAbrev": null, "d_geometri": null, "Pop 2022": 433 }, "geometry": { "type": "Point", "coordinates": [ 360698.55909721669741, 6864735.598957415670156, 0.0 ] } }
+]
+}

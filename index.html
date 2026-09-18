@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>WebGIS SEPLAN - Diagnósticos e Dados Territoriais | Passo Fundo/RS</title>
+  <meta name="description" content="WebGIS Institucional da Secretaria Municipal de Planejamento (SEPLAN) - Diagnósticos Territoriais, Demográficos e Urbanísticos de Passo Fundo/RS">
+
+  <!-- Favicon Oficial Prefeitura de Passo Fundo -->
+  <link rel="icon" type="image/png" href="assets/brasao.png">
+  <link rel="shortcut icon" type="image/png" href="assets/brasao.png">
+  <link rel="apple-touch-icon" href="assets/brasao.png">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- OpenLayers 10 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.3.1/ol.css">
+
+  <!-- Lucide Static Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.468.0/font/lucide.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/map-controls.css">
+  <link rel="stylesheet" href="css/popup.css">
+</head>
+<body>
+  <div id="app">
+    <!-- ================= HEADER INSTITUCIONAL ================= -->
+    <header class="app-header">
+      <div class="header-brand" id="header-brand" title="Prefeitura de Passo Fundo - Secretaria Municipal de Planejamento">
+        <img src="assets/brasao.png" alt="Prefeitura de Passo Fundo" class="header-logo">
+        <div class="header-brand-text">
+          <span class="header-inst-title">PREFEITURA DE PASSO FUNDO</span>
+          <span class="header-main-title">SECRETARIA DE PLANEJAMENTO (SEPLAN)</span>
+          <span class="header-sub-title">WEBGIS DIAGNÓSTICOS &amp; DADOS TERRITORIAIS</span>
+        </div>
+      </div>
+
+      <div class="header-tools">
+        <button class="header-btn" id="btn-import-layer" title="Adicionar arquivo GeoJSON ou KML local">
+          <i class="lucide-upload"></i>
+          <span>Importar Camada</span>
+        </button>
+        <input type="file" id="input-import-geojson" accept=".geojson,.json,.kml" style="display: none;" />
+
+        <button class="header-btn" id="btn-export-map-png" title="Exportar imagem do mapa em alta resolução">
+          <i class="lucide-camera"></i>
+          <span>Exportar Mapa</span>
+        </button>
+
+        <button class="header-btn" id="btn-open-about" title="Informações sobre o WebGIS SEPLAN">
+          <i class="lucide-info"></i>
+          <span>Sobre o Portal</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= MAIN CONTAINER ================= -->
+    <main class="main-container">
+      <!-- SIDEBAR RETRÁTIL -->
+      <aside class="app-sidebar" id="sidebar">
+        <!-- Floating Sidebar Toggle Button -->
+        <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" title="Recolher / Expandir Painel (Atalho: Esc)">
+          <i class="lucide-chevron-left"></i>
+        </button>
+
+        <!-- Search Box with Autocomplete -->
+        <div class="sidebar-search-container">
+          <div class="search-input-wrapper">
+            <i class="lucide-search search-icon"></i>
+            <input 
+              type="text" 
+              id="search-input" 
+              class="search-input" 
+              placeholder="Buscar bairro, rua, rodovia ou coordenadas..." 
+              autocomplete="off"
+            />
+            <button class="search-clear-btn" id="search-clear-btn" title="Limpar busca">&times;</button>
+          </div>
+          <div class="search-results-dropdown" id="search-results"></div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="sidebar-tabs">
+          <button class="sidebar-tab-btn active" data-tab="camadas" title="Gerenciador de Camadas Temáticas">
+            <i class="lucide-layers"></i>
+            <span>Camadas</span>
+          </button>
+          <button class="sidebar-tab-btn" data-tab="legenda" title="Legenda Cartográfica Dinâmica">
+            <i class="lucide-list"></i>
+            <span>Legenda</span>
+          </button>
+          <button class="sidebar-tab-btn" data-tab="mapas-base" title="Provedores de Mapas-Base">
+            <i class="lucide-map"></i>
+            <span>Mapas Base</span>
+          </button>
+          <button class="sidebar-tab-btn" data-tab="downloads" title="Download de Dados Geográficos">
+            <i class="lucide-download"></i>
+            <span>Downloads</span>
+          </button>
+          <button class="sidebar-tab-btn" data-tab="sobre" title="Informações e Metadados SEPLAN">
+            <i class="lucide-info"></i>
+            <span>Sobre</span>
+          </button>
+        </nav>
+
+        <!-- Tab Content Panels -->
+        <div class="sidebar-content">
+          <!-- TAB 1: CAMADAS -->
+          <div class="tab-panel active" id="tab-camadas">
+            <!-- Operational Presets -->
+            <div class="presets-section">
+              <div class="presets-title">Cenários Rápidos de Planejamento</div>
+              <div class="presets-grid" id="preset-container"></div>
+            </div>
+
+            <!-- Layer Filter Search -->
+            <div class="layer-filter-box">
+              <i class="lucide-filter"></i>
+              <input type="text" id="layer-filter-input" placeholder="Filtrar camadas por nome..." />
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="layer-quick-actions">
+              <button id="btn-toggle-all-layers" class="quick-action-btn" title="Alternar visibilidade de todas as camadas">
+                <i class="lucide-eye"></i> Desativar Todas
+              </button>
+              <button id="btn-collapse-all-groups" class="quick-action-btn" title="Recolher todos os grupos">
+                <i class="lucide-chevrons-down-up"></i> Recolher
+              </button>
+            </div>
+
+            <!-- Dynamic Layer Tree Accordion -->
+            <div class="layer-tree" id="layer-tree-container"></div>
+          </div>
+
+          <!-- TAB 2: LEGENDA CARTOGRÁFICA -->
+          <div class="tab-panel" id="tab-legenda">
+            <div class="panel-header">
+              <h3>Legenda Cartográfica</h3>
+              <span class="panel-subtitle">Convenções das camadas ativas</span>
+            </div>
+            <div id="legend-container" class="legend-content"></div>
+          </div>
+
+          <!-- TAB 3: MAPAS BASE -->
+          <div class="tab-panel" id="tab-mapas-base">
+            <div class="panel-header">
+              <h3>Mapas de Fundo</h3>
+              <span class="panel-subtitle">Selecione o provedor cartográfico</span>
+            </div>
+            <div class="basemap-grid" id="basemap-grid"></div>
+          </div>
+
+          <!-- TAB 4: DOWNLOADS -->
+          <div class="tab-panel" id="tab-downloads">
+            <div class="panel-header">
+              <h3>Catálogo de Dados Espaciais</h3>
+              <span class="panel-subtitle">Camadas disponíveis para download</span>
+            </div>
+            <div class="downloads-search-box">
+              <input type="text" id="download-search-input" placeholder="Buscar camada para download..." />
+              <button id="download-search-clear">&times;</button>
+            </div>
+            <div class="downloads-stats">
+              <span>Camadas: <strong id="download-layers-count">0</strong></span>
+              <span class="badge-crs">SIRGAS 2000</span>
+            </div>
+            <div id="downloads-list-container" class="downloads-list"></div>
+          </div>
+
+          <!-- TAB 5: SOBRE -->
+          <div class="tab-panel" id="tab-sobre">
+            <div class="about-content">
+              <div class="about-header">
+                <img src="assets/brasao.png" alt="Prefeitura de Passo Fundo" style="height: 60px; margin-bottom: 12px;">
+                <h3>WebGIS SEPLAN</h3>
+                <span class="about-tag">Secretaria Municipal de Planejamento</span>
+                <p class="about-desc">
+                  Ambiente Geoespacial Integrado para diagnóstico territorial, análise urbana, planejamento setorial e visualização de indicadores sociodemográficos do Município de Passo Fundo/RS.
+                </p>
+              </div>
+
+              <div class="about-section">
+                <h4>Sistema de Referência Espacial</h4>
+                <ul class="about-list">
+                  <li><strong>Datum Geodésico:</strong> SIRGAS 2000 (EPSG:4674)</li>
+                  <li><strong>Projeção Cartográfica:</strong> Universal Transversa de Mercator - Fuso 22 Sul (UTM 22S - EPSG:31982)</li>
+                  <li><strong>Visualização Web:</strong> Pseudo-Mercator (EPSG:3857)</li>
+                </ul>
+              </div>
+
+              <div class="about-section">
+                <h4>Fontes de Dados Institucionais</h4>
+                <ul class="about-list">
+                  <li><strong>Divisões Territoriais e População:</strong> Instituto Brasileiro de Geografia e Estatística (Censo IBGE 2022)</li>
+                  <li><strong>Recursos Hídricos:</strong> Malha Hidrográfica Municipal e Secretaria de Meio Ambiente</li>
+                  <li><strong>Sistema Viário:</strong> SEPLAN, DAER/RS, DNIT e ANTT / Rumo Logística</li>
+                </ul>
+              </div>
+
+              <div class="about-section">
+                <h4>Contato Institucional</h4>
+                <p>Secretaria Municipal de Planejamento (SEPLAN)</p>
+                <p>Prefeitura Municipal de Passo Fundo / RS</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ÁREA DO MAPA -->
+      <section class="map-section" id="map-section">
+        <div id="map" class="map-container" tabindex="0"></div>
+
+        <!-- Floating Map Controls -->
+        <div class="map-controls-floating">
+          <!-- North Indicator -->
+          <div class="map-btn-group" role="group" aria-label="Orientação Cartográfica">
+            <button class="map-control-btn north-btn" id="btn-north-indicator" data-tooltip="Norte Cartográfico (Clique para alinhar)" title="Alinhar ao Norte" aria-label="Alinhar Mapa ao Norte">
+              <svg id="north-arrow-svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <polygon points="12,2 18,19 12,15 6,19" fill="#ef4444" stroke="#ffffff" stroke-width="1.2"/>
+                <polygon points="12,15 18,19 12,22 6,19" fill="#94a3b8" stroke="#ffffff" stroke-width="1.2"/>
+                <text x="12" y="8" font-size="7" font-weight="bold" fill="#ffffff" text-anchor="middle">N</text>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Zoom & Navigation Controls -->
+          <div class="map-btn-group" role="group" aria-label="Controles de Navegação">
+            <button class="map-control-btn" id="btn-zoom-in" data-tooltip="Aproximar Zoom (+)" title="Aproximar Zoom" aria-label="Aumentar Zoom do Mapa">
+              <i class="lucide-plus"></i>
+            </button>
+            <button class="map-control-btn" id="btn-zoom-out" data-tooltip="Afastar Zoom (-)" title="Afastar Zoom" aria-label="Diminuir Zoom do Mapa">
+              <i class="lucide-minus"></i>
+            </button>
+            <button class="map-control-btn" id="btn-home-view" data-tooltip="Extensão Total Municipal (Passo Fundo)" title="Extensão Total Municipal" aria-label="Restaurar Extensão Total de Passo Fundo">
+              <i class="lucide-home"></i>
+            </button>
+            <button class="map-control-btn" id="btn-my-location" data-tooltip="Minha Localização GPS" title="Minha Localização GPS" aria-label="Obter Localização Atual por GPS">
+              <i class="lucide-crosshair"></i>
+            </button>
+          </div>
+
+          <!-- Measurement Controls -->
+          <div class="map-btn-group" role="group" aria-label="Ferramentas de Medição Cartográfica">
+            <button class="map-control-btn" id="btn-measure-dist" data-tooltip="Medir Distância Linear" title="Medir Distância Linear" aria-label="Ferramenta de Medição de Distância Linear em Metros">
+              <i class="lucide-ruler"></i>
+            </button>
+            <button class="map-control-btn" id="btn-measure-area" data-tooltip="Medir Área Poligonal" title="Medir Área Poligonal" aria-label="Ferramenta de Medição de Área Superficial em m² ou Hectares">
+              <i class="lucide-hexagon"></i>
+            </button>
+            <button class="map-control-btn" id="btn-measure-clear" data-tooltip="Limpar Medições" title="Limpar Medições" aria-label="Limpar Todas as Medições Desenhadas no Mapa">
+              <i class="lucide-trash-2"></i>
+            </button>
+          </div>
+
+          <!-- Fullscreen Control -->
+          <div class="map-btn-group" role="group" aria-label="Controle de Visualização">
+            <button class="map-control-btn" id="btn-fullscreen" data-tooltip="Alternar Tela Cheia (F11)" title="Alternar Tela Cheia" aria-label="Alternar Modo de Tela Cheia">
+              <i class="lucide-maximize-2"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- OpenLayers Popup Overlay -->
+        <div id="popup" class="ol-popup">
+          <a href="#" id="popup-closer" class="ol-popup-closer">&times;</a>
+          <div id="popup-content"></div>
+        </div>
+
+        <!-- Legenda Cartográfica Temática Dinâmica - Item 6 (População & Indicadores Econômicos) -->
+        <div id="item6-floating-legend" class="item6-floating-legend" style="display: none;" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER / STATUS BAR ================= -->
+    <footer class="app-footer">
+      <div class="footer-info">
+        <span><strong>WebGIS SEPLAN</strong> &bull; Município de Passo Fundo/RS</span>
+        <span>Datum: <strong>SIRGAS 2000</strong></span>
+        <span>Projeção: <strong>UTM 22S (EPSG:31982)</strong></span>
+      </div>
+
+      <div class="footer-coords">
+        <span class="coord-tag">UTM:</span>
+        <span id="status-coords-utm">E: 363.254 m | N: 6.873.812 m</span>
+        <span class="coord-tag" style="margin-left:8px;">GEO:</span>
+        <span id="status-coords-geo">-28.26120° S, -52.40830° O</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal Sobre / Informações -->
+  <div class="modal-overlay" id="about-modal">
+    <div class="modal-card" style="max-width: 540px;">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="lucide-info"></i>
+          <span>Sobre o WebGIS SEPLAN</span>
+        </div>
+        <button class="modal-close-btn" id="btn-close-about-modal" title="Fechar">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 20px; line-height: 1.6;">
+        <div style="text-align: center; margin-bottom: 16px;">
+          <img src="assets/brasao.png" alt="Prefeitura de Passo Fundo" style="height: 64px;">
+          <h3 style="margin-top: 10px; color: var(--text-main);">Prefeitura Municipal de Passo Fundo</h3>
+          <p style="color: var(--text-muted); font-size: 13px;">Secretaria Municipal de Planejamento (SEPLAN)</p>
+        </div>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 12px;">
+          O <strong>WebGIS SEPLAN</strong> é uma plataforma de inteligência territorial para consulta, visualização e diagnóstico das camadas geoespaciais do município de Passo Fundo.
+        </p>
+        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; font-size: 12.5px;">
+          <div><strong>Projeção:</strong> SIRGAS 2000 / UTM Fuso 22S (EPSG:31982)</div>
+          <div style="margin-top: 4px;"><strong>Visualização Web:</strong> EPSG:3857 (WGS 84 / Pseudo-Mercator)</div>
+          <div style="margin-top: 4px;"><strong>Versão:</strong> 1.0.0 (SEPLAN Passo Fundo)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-card">
+      <div class="loading-spinner"></div>
+      <div class="loading-title">Inicializando WebGIS SEPLAN...</div>
+      <div class="loading-subtitle">Carregando camadas cartográficas e serviços espaciais</div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.11.0/proj4.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ol@v10.3.1/dist/ol.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

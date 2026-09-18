@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
+  <defs>
+    <linearGradient id="gradOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7800" />
+      <stop offset="100%" stop-color="#e05300" />
+    </linearGradient>
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Simbolo Defesa Civil -->
+  <g transform="translate(10, 8)" filter="url(#shadow)">
+    <!-- Circulo Laranja Externo -->
+    <circle cx="42" cy="42" r="40" fill="url(#gradOrange)" stroke="#ffffff" stroke-width="2.5"/>
+    <!-- Triangulo Azul da Defesa Civil -->
+    <polygon points="42,16 72,66 12,66" fill="#1e3a8a" stroke="#ffffff" stroke-width="2"/>
+    <!-- Elemento Central -->
+    <circle cx="42" cy="48" r="7" fill="#ffffff"/>
+    <circle cx="42" cy="48" r="4" fill="#ff7800"/>
+  </g>
+
+  <!-- Tipografia Institucional -->
+  <g transform="translate(105, 26)">
+    <text x="0" y="0" font-family="'Segoe UI', 'Inter', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ff7800" letter-spacing="2">
+      PREFEITURA DE PASSO FUNDO
+    </text>
+    <text x="0" y="24" font-family="'Segoe UI', 'Inter', -apple-system, sans-serif" font-size="21" font-weight="900" fill="#ffffff" letter-spacing="0.5">
+      DEFESA CIVIL
+    </text>
+    <text x="0" y="44" font-family="'Segoe UI', 'Inter', -apple-system, sans-serif" font-size="12" font-weight="600" fill="#94a3b8" letter-spacing="1">
+      PORTAL GEOESPACIAL / WEBGIS
+    </text>
+  </g>
+</svg>
