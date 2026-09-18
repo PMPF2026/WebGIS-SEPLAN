@@ -1,60 +1,44 @@
 /**
- * Portal Defesa Civil Passo Fundo - WebGIS
- * Basemaps Configuration
+ * WebGIS SEPLAN Passo Fundo - Basemaps Configuration
+ * Provedores Cartográficos Públicos, Estáveis e sem Exigência de Chave de API
  */
 
 export const BASEMAPS_CONFIG = [
   {
-    id: 'google_hybrid',
-    name: 'Google Híbrido / Relevo',
-    type: 'xyz',
-    url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
-    thumbnail: 'https://mt1.google.com/vt/lyrs=y&x=366&y=593&z=10',
-    maxZoom: 20,
-    attribution: '&copy; Google Maps',
-    isDefault: true
-  },
-  {
-    id: 'google_sat',
-    name: 'Google Satélite',
-    type: 'xyz',
-    url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-    thumbnail: 'https://mt1.google.com/vt/lyrs=s&x=366&y=593&z=10',
-    maxZoom: 20,
-    attribution: '&copy; Google Earth / Maxar'
-  },
-  {
-    id: 'google_roads',
-    name: 'Google Maps (Ruas)',
-    type: 'xyz',
-    url: 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
-    thumbnail: 'https://mt1.google.com/vt/lyrs=m&x=366&y=593&z=10',
-    maxZoom: 20,
-    attribution: '&copy; Google Maps'
-  },
-  {
     id: 'esri_imagery',
-    name: 'Esri World Imagery',
+    name: 'Esri Satélite',
     type: 'xyz',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     thumbnail: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/10/593/366',
     maxZoom: 19,
-    attribution: 'Tiles &copy; Esri, Maxar, Earthstar Geographics'
+    attribution: 'Tiles &copy; Esri, Maxar, Earthstar Geographics',
+    isDefault: true
   },
   {
     id: 'osm_standard',
     name: 'OpenStreetMap',
     type: 'osm',
     url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    thumbnail: 'https://tile.openstreetmap.org/10/366/593.png',
     maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+  },
+  {
+    id: 'carto_positron',
+    name: 'CartoDB Positron (Claro)',
+    type: 'xyz',
+    url: 'https://{a-d}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png',
+    thumbnail: 'https://a.basemaps.cartocdn.com/rastertiles/light_all/10/366/593.png',
+    maxZoom: 20,
+    attribution: '&copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>, &copy; OpenStreetMap contributors'
   },
   {
     id: 'carto_dark',
-    name: 'CartoDB Dark Matter',
+    name: 'CartoDB Dark Matter (Escuro)',
     type: 'xyz',
-    url: 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
-    maxZoom: 19,
-    attribution: '&copy; CartoDB, OpenStreetMap'
+    url: 'https://{a-d}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png',
+    thumbnail: 'https://a.basemaps.cartocdn.com/rastertiles/dark_all/10/366/593.png',
+    maxZoom: 20,
+    attribution: '&copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>, &copy; OpenStreetMap contributors'
   }
 ];
