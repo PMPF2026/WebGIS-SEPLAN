@@ -104,7 +104,7 @@ export class PopupUI {
     }
 
     // 4. Se for estação Plugfield, injeta telemetria em tempo real
-    if (layerConfig.id === 'estacoes_plugfield' || props['deviceId']) {
+    if (props['deviceId']) {
       const devId = parseInt(props['deviceId'], 10);
       const cachedStations = (typeof PlugfieldService !== 'undefined' && PlugfieldService.getCachedStations)
         ? PlugfieldService.getCachedStations()
@@ -131,7 +131,7 @@ export class PopupUI {
     }
 
     // 4.1. Se for estação oficial DCRS-00016, injeta telemetria da Defesa Civil RS
-    if (layerConfig.id === 'estacao_dcrs00016' || props['estacao_cod'] === 'DCRS-00016') {
+    if (props['estacao_cod'] === 'DCRS-00016') {
       let drsTelemetry = null;
       try {
         if (typeof WeatherService !== 'undefined' && WeatherService.getCachedTelemetry) {
@@ -245,7 +245,7 @@ export class PopupUI {
 
     // 4.9. Contexto Climático Mensal: Se a camada de superfície climática mensal estiver ativa e for estação Plugfield
     let climateMonthlyCardHtml = '';
-    if (layerConfig.id === 'estacoes_plugfield' || props['deviceId']) {
+    if (props['deviceId']) {
       const devId = parseInt(props['deviceId'], 10);
       const climateEngine = window.webGis?.climateMapsUI?.climateEngine;
       const climateResult = climateEngine?.currentResult;
@@ -363,7 +363,7 @@ export class PopupUI {
       </div>
 
       <div class="popup-actions">
-        ${(layerConfig.id === 'estacao_dcrs00016' || layerConfig.id === 'estacoes_plugfield' || props['estacao_cod'] === 'DCRS-00016' || props['deviceId']) ? `
+        ${(props['estacao_cod'] === 'DCRS-00016' || props['deviceId']) ? `
           <button class="popup-action-btn" id="btn-popup-view-weather" style="background: rgba(2, 132, 199, 0.22); color: #38bdf8; border-color: #0284c7; font-weight:700;" title="Ver monitoramento na Central Meteorológica">
             <i class="lucide-activity"></i> Ver Central
           </button>

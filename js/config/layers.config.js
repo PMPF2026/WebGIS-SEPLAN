@@ -1,4 +1,4 @@
-﻿/**
+/**
  * WebGIS SEPLAN Passo Fundo - Diagnósticos Territoriais
  * Central Layer Registry & Symbology Configuration
  */
@@ -36,99 +36,6 @@ export const LAYER_GROUPS = [
 
 export const LAYERS_CONFIG = [
   // ================= 3. HIDROGRAFIA =================
-  {
-    id: 'estacao_dcrs00016',
-    name: 'Estação Hidrometeorológica DCRS-00016',
-    fileName: 'Estacao_DCRS_00016.geojson',
-    source: 'Rede Hidrometeorológica Defesa Civil RS',
-    refDate: 'Tempo Real',
-    group: 'hidrografia',
-    geometryType: 'Point',
-    defaultVisible: true,
-    defaultOpacity: 1.0,
-    zIndex: 96,
-    isCore: true,
-    isLazy: false,
-    style: {
-      isCustomIcon: true,
-      iconType: 'estacao_hidro',
-      pointColor: '#0284c7',
-      pointRadius: 10.0,
-      strokeColor: '#ffffff',
-      strokeWidth: 2.5,
-      previewColor: '#0284c7'
-    },
-    popupConfig: {
-      titleField: 'nome_estacao',
-      defaultTitle: 'ESTAÇÃO HIDROMETEOROLÓGICA DCRS-00016',
-      titlePrefix: '',
-      fields: [
-        { key: 'estacao_cod', label: 'Código da Estação', defaultValue: 'DCRS-00016' },
-        { key: 'nome_estacao', label: 'Nome da Estação', defaultValue: 'DCRS-00016 — Passo Fundo' },
-        { key: 'status_comunicacao', label: 'Status Operacional', defaultValue: 'Consultando...' },
-        { key: 'nivel_rio', label: 'Nível do Rio Passo Fundo', defaultValue: 'Consultando...' },
-        { key: 'tendencia_rio', label: 'Tendência do Nível', defaultValue: 'Estável' },
-        { key: 'chuva_hoje', label: 'Chuva Recente (1h / 24h)', defaultValue: '--' },
-        { key: 'temperatura_atual', label: 'Temperatura Atual', defaultValue: '--' },
-        { key: 'rede', label: 'Rede Oficial', defaultValue: 'Rede Hidrometeorológica da Defesa Civil RS' },
-        { key: 'bacia', label: 'Bacia Hidrográfica', defaultValue: 'RS - Rio Passo Fundo' },
-        { key: 'municipio', label: 'Município', defaultValue: 'Passo Fundo / RS' },
-        { key: 'provedor', label: 'Provedor dos Dados', defaultValue: 'DCRS' },
-        { key: 'ultima_atualizacao', label: 'Última Leitura', defaultValue: 'Sem comunicação recente' }
-      ]
-    },
-    searchable: true,
-    searchFields: ['estacao_cod', 'nome_estacao']
-  },
-  {
-    id: 'estacoes_plugfield',
-    name: 'Rede Meteorológica Plugfield (16 Estações)',
-    fileName: 'Estacoes_Plugfield.geojson',
-    source: 'Rede Oficial Plugfield / Passo Fundo',
-    refDate: 'Tempo Real',
-    group: 'hidrografia',
-    geometryType: 'Point',
-    defaultVisible: true,
-    defaultOpacity: 1.0,
-    zIndex: 94,
-    isCore: true,
-    isLazy: false,
-    style: {
-      isCustomIcon: true,
-      iconType: 'estacao_plugfield',
-      pointColor: '#10b981',
-      pointRadius: 9.0,
-      strokeColor: '#ffffff',
-      strokeWidth: 2.2,
-      previewColor: '#10b981'
-    },
-    popupConfig: {
-      titleField: 'nome_estacao',
-      defaultTitle: 'ESTAÇÃO METEOROLÓGICA PLUGFIELD',
-      titlePrefix: '',
-      fields: [
-        { key: 'nome_estacao', label: 'Nome da Estação' },
-        { key: 'deviceId', label: 'ID do Dispositivo (Plugfield)' },
-        { key: 'tipo', label: 'Classificação Territorial' },
-        { key: 'status_comunicacao', label: 'Status Operacional', defaultValue: 'Consultando...' },
-        { key: 'temperatura_atual', label: 'Temperatura Atual', defaultValue: '--' },
-        { key: 'temperatura_min_max', label: 'Mínima / Máxima', defaultValue: '--' },
-        { key: 'umidade_atual', label: 'Umidade Relativa', defaultValue: '--' },
-        { key: 'chuva_hoje', label: 'Chuva Hoje (Acumulado)', defaultValue: '--' },
-        { key: 'chuva_mes', label: 'Chuva no Mês', defaultValue: '--' },
-        { key: 'vento_atual', label: 'Velocidade do Vento', defaultValue: '--' },
-        { key: 'rajada_maxima', label: 'Rajada Máxima', defaultValue: '--' },
-        { key: 'direcao_vento', label: 'Direção do Vento', defaultValue: '--' },
-        { key: 'pressao_atual', label: 'Pressão Atmosférica', defaultValue: '--' },
-        { key: 'nivel_rio', label: 'Nível do Rio (Sensor Sônico)', defaultValue: 'Não monitorado nesta estação' },
-        { key: 'ultima_atualizacao', label: 'Última Atualização', defaultValue: 'Sem comunicação recente' },
-        { key: 'provedor', label: 'Rede / Provedor', defaultValue: 'Rede Plugfield' },
-        { key: 'municipio', label: 'Município', defaultValue: 'Passo Fundo / RS' }
-      ]
-    },
-    searchable: true,
-    searchFields: ['nome_estacao', 'deviceId']
-  },
   {
     id: 'rio_passo_fundo',
     name: 'Rio Passo Fundo (Curso Principal)',
