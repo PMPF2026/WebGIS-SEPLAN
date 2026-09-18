@@ -17,6 +17,7 @@ import { ExportReportTool } from './tools/export-report.js';
 import { LayerImporter } from './tools/layer-importer.js';
 import { DownloadsUI } from './ui/downloads.js';
 import { Item6ThematicLegendUI } from './ui/thematic-legend-item6.js';
+import { MetricsUI } from './metrics/metrics-ui.js';
 
 class WebGisApp {
   constructor() {
@@ -33,6 +34,7 @@ class WebGisApp {
     this.layerImporter = null;
     this.downloadsUI = null;
     this.item6ThematicLegendUI = null;
+    this.metricsUI = null;
   }
 
   async start() {
@@ -73,7 +75,10 @@ class WebGisApp {
       // 11. Initialize Downloads UI Catalog
       this.downloadsUI = new DownloadsUI(this.layerManager);
 
-      // 12. Initialize Dynamic Layer Importer (Drag & Drop)
+      // 12. Initialize Territorial Metrics UI Panel
+      this.metricsUI = new MetricsUI(this.layerManager, this.mapEngine, this.sidebarUI);
+
+      // 13. Initialize Dynamic Layer Importer (Drag & Drop)
       this.layerImporter = new LayerImporter(this.mapEngine, this.layerManager, this.sidebarUI);
 
       // 13. Bind Floating Controls and Keyboard Shortcuts
@@ -236,6 +241,7 @@ class WebGisApp {
         this.measureTool.stopMeasurement();
         const aboutModal = document.getElementById('about-modal');
         if (aboutModal) aboutModal.classList.remove('active');
+        if (this.metricsUI) this.metricsUI.closeModal();
       } else if (e.key === '+' || e.key === '=') {
         this.mapEngine.zoomIn();
       } else if (e.key === '-' || e.key === '_') {

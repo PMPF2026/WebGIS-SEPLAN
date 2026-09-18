@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="css/sidebar.css">
   <link rel="stylesheet" href="css/map-controls.css">
   <link rel="stylesheet" href="css/popup.css">
+  <link rel="stylesheet" href="css/metrics.css">
 </head>
 <body>
   <div id="app">
@@ -42,6 +43,11 @@
       </div>
 
       <div class="header-tools">
+        <button class="header-btn" id="btn-open-metrics" title="Painel de Métricas Territoriais">
+          <i class="lucide-bar-chart-3"></i>
+          <span>Métricas</span>
+        </button>
+
         <button class="header-btn" id="btn-import-layer" title="Adicionar arquivo GeoJSON ou KML local">
           <i class="lucide-upload"></i>
           <span>Importar Camada</span>
@@ -98,6 +104,10 @@
           <button class="sidebar-tab-btn" data-tab="mapas-base" title="Provedores de Mapas-Base">
             <i class="lucide-map"></i>
             <span>Mapas Base</span>
+          </button>
+          <button class="sidebar-tab-btn" data-tab="metricas" title="Painel de Métricas Territoriais">
+            <i class="lucide-bar-chart-3"></i>
+            <span>Métricas</span>
           </button>
           <button class="sidebar-tab-btn" data-tab="downloads" title="Download de Dados Geográficos">
             <i class="lucide-download"></i>
@@ -157,7 +167,16 @@
             <div class="basemap-grid" id="basemap-grid"></div>
           </div>
 
-          <!-- TAB 4: DOWNLOADS -->
+          <!-- TAB 4: MÉTRICAS TERRITORIAIS -->
+          <div class="tab-panel" id="tab-metricas">
+            <div class="panel-header">
+              <h3>Métricas Territoriais</h3>
+              <span class="panel-subtitle">Indicadores oficiais do município</span>
+            </div>
+            <div id="sidebar-metrics-container"></div>
+          </div>
+
+          <!-- TAB 5: DOWNLOADS -->
           <div class="tab-panel" id="tab-downloads">
             <div class="panel-header">
               <h3>Catálogo de Dados Espaciais</h3>
@@ -318,6 +337,55 @@
         <span id="status-coords-geo">-28.26120° S, -52.40830° O</span>
       </div>
     </footer>
+  </div>
+
+  <!-- Modal Painel de Métricas Territoriais -->
+  <div class="modal-overlay" id="metrics-modal" role="dialog" aria-modal="true" aria-labelledby="metrics-modal-title">
+    <div class="modal-card">
+      <div class="metrics-modal-header">
+        <div class="metrics-modal-title-wrapper">
+          <div class="metrics-modal-icon-badge">
+            <i class="lucide-bar-chart-3" style="font-size: 20px;"></i>
+          </div>
+          <div class="metrics-modal-titles">
+            <span class="metrics-modal-title" id="metrics-modal-title">PAINEL DE MÉTRICAS TERRITORIAIS</span>
+            <span class="metrics-modal-subtitle">WebGIS SEPLAN &bull; Município de Passo Fundo/RS &bull; SIRGAS 2000 (EPSG:31982)</span>
+          </div>
+        </div>
+        <div class="metrics-modal-actions">
+          <button class="modal-close-btn" id="btn-close-metrics-modal" title="Fechar painel (Esc)">&times;</button>
+        </div>
+      </div>
+
+      <!-- Toolbar de Filtros e Busca -->
+      <div class="metrics-toolbar">
+        <div class="metrics-filter-pills" id="metrics-filter-pills">
+          <button class="metrics-pill active" data-filter="all">
+            <i class="lucide-layout-grid" style="font-size:12px;"></i> Todas
+          </button>
+          <button class="metrics-pill" data-filter="divisao_territorial">
+            <i class="lucide-map-pin" style="font-size:12px;"></i> 1. Divisão Territorial
+          </button>
+          <button class="metrics-pill" data-filter="sistema_viario">
+            <i class="lucide-navigation" style="font-size:12px;"></i> 2. Sistema Viário
+          </button>
+          <button class="metrics-pill" data-filter="hidrografia">
+            <i class="lucide-droplet" style="font-size:12px;"></i> 3. Hidrografia
+          </button>
+          <button class="metrics-pill" data-filter="populacao">
+            <i class="lucide-users" style="font-size:12px;"></i> 4. População
+          </button>
+        </div>
+
+        <div class="metrics-search-wrapper">
+          <i class="lucide-search"></i>
+          <input type="text" id="metrics-search-input" class="metrics-search-input" placeholder="Buscar métrica ou indicador..." />
+        </div>
+      </div>
+
+      <!-- Corpo com os cards agrupados -->
+      <div class="metrics-modal-body" id="metrics-modal-body"></div>
+    </div>
   </div>
 
   <!-- Modal Sobre / Informações -->
