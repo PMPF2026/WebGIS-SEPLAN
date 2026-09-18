@@ -5,6 +5,20 @@
 
 export const LAYER_GROUPS = [
   {
+    id: 'divisao_territorial',
+    title: '1. Divisão Territorial & Limites',
+    iconClass: 'territory',
+    iconName: 'map-pin',
+    description: 'Limite municipal, perímetro do plano diretor, distritos, bairros, setores censitários do IBGE e RS'
+  },
+  {
+    id: 'sistema_viario',
+    title: '2. Sistema Viário & Transporte',
+    iconClass: 'roads',
+    iconName: 'navigation',
+    description: 'Malha viária urbana, rodovias federais/estaduais, estradas municipais, pontes e ferrovia'
+  },
+  {
     id: 'hidrografia',
     title: '3. Hidrografia & Recursos Hídricos',
     iconClass: 'hydro',
@@ -12,22 +26,8 @@ export const LAYER_GROUPS = [
     description: 'Cursos d’água, rios, arroios e divisores de bacias hidrográficas municipais'
   },
   {
-    id: 'sistema_viario',
-    title: '4. Sistema Viário & Transporte',
-    iconClass: 'roads',
-    iconName: 'navigation',
-    description: 'Malha viária urbana, rodovias federais/estaduais, estradas municipais, pontes e ferrovia'
-  },
-  {
-    id: 'divisao_territorial',
-    title: '5. Divisão Territorial & Limites',
-    iconClass: 'territory',
-    iconName: 'map-pin',
-    description: 'Limite municipal, perímetro do plano diretor, distritos, bairros, setores censitários do IBGE e RS'
-  },
-  {
     id: 'populacao',
-    title: '6. População & Indicadores Econômicos',
+    title: '4. População & Indicadores Econômicos',
     iconClass: 'population',
     iconName: 'users',
     description: 'Distribuição, densidade demográfica setorial e domicílios (Censo IBGE 2022)'
