@@ -1,0 +1,11 @@
+{
+  "type": "FeatureCollection",
+  "name": "Shoppings",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+  "features": [
+    { "type": "Feature", "properties": { "NOME": "BOURBON SHOPPING" }, "geometry": { "type": "Point", "coordinates": [ 363287.4874218469, 6873910.506267167 ] } },
+    { "type": "Feature", "properties": { "NOME": "PLAZA SHOPPING" }, "geometry": { "type": "Point", "coordinates": [ 361554.294576856, 6873068.488962523 ] } },
+    { "type": "Feature", "properties": { "NOME": "PASSO FUNDO SHOPPING" }, "geometry": { "type": "Point", "coordinates": [ 364101.27524460025, 6872000.635802763 ] } },
+    { "type": "Feature", "properties": { "NOME": "BELLA CITTÁ SHOPPING" }, "geometry": { "type": "Point", "coordinates": [ 361726.1050442194, 6872935.128996356 ] } }
+  ]
+}

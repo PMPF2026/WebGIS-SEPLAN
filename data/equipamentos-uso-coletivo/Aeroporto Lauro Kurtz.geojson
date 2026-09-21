@@ -1,0 +1,9 @@
+{
+  "type": "FeatureCollection",
+  "name": "Aeroporto Lauro Kurtz",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+  "features": [
+    { "type": "Feature", "properties": { "NOME": "AEROPORTO LAURO KORTZ" }, "geometry": { "type": "Point", "coordinates": [ 369671.7307658768, 6875730.334418654 ] } },
+    { "type": "Feature", "properties": { "NOME": "AEROCLUBE" }, "geometry": { "type": "Point", "coordinates": [ 351048.6578629391, 6874084.723517634 ] } }
+  ]
+}

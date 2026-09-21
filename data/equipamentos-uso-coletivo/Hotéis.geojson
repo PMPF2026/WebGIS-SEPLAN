@@ -1,0 +1,22 @@
+{
+  "type": "FeatureCollection",
+  "name": "Hotéis",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+  "features": [
+    { "type": "Feature", "properties": { "nome": "IBIS" }, "geometry": { "type": "Point", "coordinates": [ 361705.2574095578, 6872922.231043395 ] } },
+    { "type": "Feature", "properties": { "nome": "ITATIAIA" }, "geometry": { "type": "Point", "coordinates": [ 362267.25123293686, 6872838.516028126 ] } },
+    { "type": "Feature", "properties": { "nome": "RIO HOTEL" }, "geometry": { "type": "Point", "coordinates": [ 362490.6535120339, 6873326.691378747 ] } },
+    { "type": "Feature", "properties": { "nome": "PRIX" }, "geometry": { "type": "Point", "coordinates": [ 359536.12997925264, 6872404.366065264 ] } },
+    { "type": "Feature", "properties": { "nome": "TURIS" }, "geometry": { "type": "Point", "coordinates": [ 362101.7680632351, 6872939.10383716 ] } },
+    { "type": "Feature", "properties": { "nome": "MAITA" }, "geometry": { "type": "Point", "coordinates": [ 363510.3218665191, 6874285.033617399 ] } },
+    { "type": "Feature", "properties": { "nome": "GERMANIAS" }, "geometry": { "type": "Point", "coordinates": [ 362525.85924519604, 6873969.479926155 ] } },
+    { "type": "Feature", "properties": { "nome": "SERRADOR" }, "geometry": { "type": "Point", "coordinates": [ 361407.7121808979, 6873053.644148737 ] } },
+    { "type": "Feature", "properties": { "nome": "SÃO VICENTE" }, "geometry": { "type": "Point", "coordinates": [ 361396.3554927811, 6873068.732320093 ] } },
+    { "type": "Feature", "properties": { "nome": "SAN SILVESTRE" }, "geometry": { "type": "Point", "coordinates": [ 361808.4410330186, 6872858.958066735 ] } },
+    { "type": "Feature", "properties": { "nome": "VILLA VERGUEIRO" }, "geometry": { "type": "Point", "coordinates": [ 361740.30090431776, 6873445.287650363 ] } },
+    { "type": "Feature", "properties": { "nome": "AGUADERO" }, "geometry": { "type": "Point", "coordinates": [ 360931.3802335998, 6873151.636143344 ] } },
+    { "type": "Feature", "properties": { "nome": "POUSADA MATA NATIVA" }, "geometry": { "type": "Point", "coordinates": [ 365275.96239187545, 6875219.851287805 ] } },
+    { "type": "Feature", "properties": { "nome": "CITY HOTEL" }, "geometry": { "type": "Point", "coordinates": [ 362945.3266327091, 6872503.899324677 ] } },
+    { "type": "Feature", "properties": { "nome": "PLANALTUR" }, "geometry": { "type": "Point", "coordinates": [ 360317.30788328516, 6872110.268402629 ] } }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "FeatureCollection",
+  "name": "Bombeiros",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+  "features": [
+    { "type": "Feature", "properties": { "NOME": "QUARTEL BOMBEIROS" }, "geometry": { "type": "Point", "coordinates": [ 364331.97825176816, 6875084.463341616 ] } },
+    { "type": "Feature", "properties": { "NOME": "QUARTEL BOMBEIROS" }, "geometry": { "type": "Point", "coordinates": [ 361505.37969870237, 6872513.390271179 ] } }
+  ]
+}

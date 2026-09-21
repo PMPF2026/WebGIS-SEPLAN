@@ -1,0 +1,18 @@
+{
+  "type": "FeatureCollection",
+  "name": "Cemitérios Municípais",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+  "features": [
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO MUNICIPAL PETRÓPOLIS", "ENTE": "MUNICIPAL", "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 364957.16393258475, 6875115.126399525 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO MUNICIPAL VERA CRUZ", "ENTE": "MUNICIPAL", "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 360883.35766676767, 6874053.60053743 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO MUNICIPAL ROSELÂNDIA", "ENTE": "MUNICIPAL", "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 363539.3625404311, 6868730.152982786 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO MUNICIPAL DOS RIBEIROS", "ENTE": "MUNICIPAL", "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 358003.5854776072, 6871445.658790261 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO SANTO ANTÔNIO", "ENTE": null, "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 365997.79146056634, 6872292.086951449 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO SANTO ANTÃO", "ENTE": null, "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 356331.26245294104, 6869267.39531 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO NOSSA SENHORA DA PAZ", "ENTE": null, "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 360030.5413685133, 6867523.023225145 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO SÃO ROQUE", "ENTE": null, "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 363669.4523888161, 6866612.166138696 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO SÃO JOÃO", "ENTE": null, "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 369206.87211545685, 6869486.827818206 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO JARDIM DA COLINA", "ENTE": null, "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 361915.9087643162, 6870469.962112595 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO SÃO MIGUEL", "ENTE": null, "ENTE_1": null }, "geometry": { "type": "Point", "coordinates": [ 356939.04806517943, 6873365.978421725 ] } }
+  ]
+}

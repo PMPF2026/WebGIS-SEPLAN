@@ -1,0 +1,15 @@
+{
+  "type": "FeatureCollection",
+  "name": "Polícia",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+  "features": [
+    { "type": "Feature", "properties": { "NOME": "POLÍCIA FEDERAL" }, "geometry": { "type": "Point", "coordinates": [ 360915.2375126962, 6873512.373229478 ] } },
+    { "type": "Feature", "properties": { "NOME": "POLÍCIA RODOVIÁRIA FEDERAL" }, "geometry": { "type": "Point", "coordinates": [ 367195.5671603628, 6869804.576797817 ] } },
+    { "type": "Feature", "properties": { "NOME": "POLÍCIA RODOVIÁRIA FEDERAL" }, "geometry": { "type": "Point", "coordinates": [ 364813.3395895094, 6875882.189562601 ] } },
+    { "type": "Feature", "properties": { "NOME": "2ª DELEGACIA POLÍCIA CIVIL" }, "geometry": { "type": "Point", "coordinates": [ 361885.2609162531, 6873267.920517767 ] } },
+    { "type": "Feature", "properties": { "NOME": "6ª DELEGACIA REGIONAL DE POLÍCIA CIVIL" }, "geometry": { "type": "Point", "coordinates": [ 361825.27326723724, 6873718.618797595 ] } },
+    { "type": "Feature", "properties": { "NOME": "DELEGACIA DE PRONTO ATENDIMENTO" }, "geometry": { "type": "Point", "coordinates": [ 362858.4479686425, 6873594.141383914 ] } },
+    { "type": "Feature", "properties": { "NOME": "DELEGACIA" }, "geometry": { "type": "Point", "coordinates": [ 364835.48513133655, 6875548.059574372 ] } },
+    { "type": "Feature", "properties": { "NOME": "Delegacia de Policia de Homicidios e Desaparecidos" }, "geometry": { "type": "Point", "coordinates": [ 364333.1950397803, 6875003.911975185 ] } }
+  ]
+}

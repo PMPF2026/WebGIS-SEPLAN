@@ -54,6 +54,13 @@ export const LAYER_GROUPS = [
       { id: 'esporte', title: '6.1 Esporte', icon: 'activity' },
       { id: 'cultura', title: '6.2 Cultura', icon: 'landmark' }
     ]
+  },
+  {
+    id: 'equipamentos_uso_coletivo',
+    title: '7. Equipamentos de Uso Coletivo',
+    iconClass: 'facilities',
+    iconName: 'building-2',
+    description: 'Equipamentos e serviços essenciais de uso coletivo: aeroporto, bombeiros, cemitérios, rede hoteleira, segurança pública, rodoviária e shopping centers'
   }
 ];
 
@@ -1602,6 +1609,249 @@ export const LAYERS_CONFIG = [
       ]
     },
     description: 'Museus, teatros, bibliotecas, centros culturais e parques de eventos e tradições de Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME', 'nome', 'Nome']
+  },
+
+  // ================= 7. EQUIPAMENTOS DE USO COLETIVO =================
+  {
+    id: 'aeroporto_aeroclube',
+    name: 'Aeroporto Lauro Kurtz & Aeroclube',
+    fileName: 'data/equipamentos-uso-coletivo/Aeroporto Lauro Kurtz.geojson',
+    source: 'SEPLAN / INFRAERO / DAC',
+    refDate: '2026',
+    group: 'equipamentos_uso_coletivo',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 59,
+    isLazy: true,
+    style: {
+      pointColor: '#0284c7',
+      pointRadius: 7.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#0284c7'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Aeroporto / Aeroclube',
+      fields: [
+        { key: 'NOME', label: 'Nome da Instalação Aeroviária' }
+      ]
+    },
+    description: 'Instalações do Aeroporto Regional Lauro Kortz e Aeroclube de Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME', 'nome', 'Nome']
+  },
+  {
+    id: 'corpo_bombeiros',
+    name: 'Corpo de Bombeiros',
+    fileName: 'data/equipamentos-uso-coletivo/Bombeiros.geojson',
+    source: 'Corpo de Bombeiros Militar RS / SEPLAN',
+    refDate: '2026',
+    group: 'equipamentos_uso_coletivo',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 60,
+    isLazy: true,
+    style: {
+      pointColor: '#dc2626',
+      pointRadius: 7.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#dc2626'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Corpo de Bombeiros',
+      fields: [
+        { key: 'NOME', label: 'Unidade do Corpo de Bombeiros' }
+      ]
+    },
+    description: 'Quartéis operacionais do Corpo de Bombeiros Militar no município de Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME', 'nome', 'Nome']
+  },
+  {
+    id: 'cemiterios_municipais',
+    name: 'Cemitérios Municipais',
+    fileName: 'data/equipamentos-uso-coletivo/Cemitérios Municípais.geojson',
+    source: 'Secretaria de Transportes e Serviços Gerais / SEPLAN',
+    refDate: '2026',
+    group: 'equipamentos_uso_coletivo',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 61,
+    isLazy: true,
+    style: {
+      pointColor: '#475569',
+      pointRadius: 7.0,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#475569'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Cemitério Municipal',
+      fields: [
+        { key: 'NOME', label: 'Nome do Cemitério' },
+        { key: 'ENTE', label: 'Gestão / Ente Administrativo' }
+      ]
+    },
+    description: 'Cemitérios públicos sob administração municipal de Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME', 'nome', 'Nome', 'ENTE']
+  },
+  {
+    id: 'cemiterios_privados',
+    name: 'Cemitérios Privados',
+    fileName: 'data/equipamentos-uso-coletivo/Cemitérios Privados.geojson',
+    source: 'SEPLAN / Cadastro Imobiliário',
+    refDate: '2026',
+    group: 'equipamentos_uso_coletivo',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 62,
+    isLazy: true,
+    style: {
+      pointColor: '#64748b',
+      pointRadius: 7.0,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#64748b'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Cemitério Privado / Confessional',
+      fields: [
+        { key: 'NOME', label: 'Nome do Cemitério' }
+      ]
+    },
+    description: 'Cemitérios particulares e confessionais de Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME', 'nome', 'Nome']
+  },
+  {
+    id: 'hoteis',
+    name: 'Hotéis & Meios de Hospedagem',
+    fileName: 'data/equipamentos-uso-coletivo/Hotéis.geojson',
+    source: 'SEPLAN / Secretaria de Desenvolvimento Econômico',
+    refDate: '2026',
+    group: 'equipamentos_uso_coletivo',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 63,
+    isLazy: true,
+    style: {
+      pointColor: '#d97706',
+      pointRadius: 7.0,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#d97706'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Hotel / Meio de Hospedagem',
+      fields: [
+        { key: 'nome', label: 'Nome do Estabelecimento Hoteleiro' }
+      ]
+    },
+    description: 'Rede hoteleira, pousadas e meios de hospedagem de Passo Fundo.',
+    searchable: true,
+    searchFields: ['nome', 'NOME', 'Nome']
+  },
+  {
+    id: 'seguranca_policia',
+    name: 'Segurança Pública (Polícia & Delegacias)',
+    fileName: 'data/equipamentos-uso-coletivo/Polícia.geojson',
+    source: 'Polícia Civil / Polícia Federal / PRF / SEPLAN',
+    refDate: '2026',
+    group: 'equipamentos_uso_coletivo',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 64,
+    isLazy: true,
+    style: {
+      pointColor: '#2563eb',
+      pointRadius: 7.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#2563eb'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Unidade Policial / Delegacia',
+      fields: [
+        { key: 'NOME', label: 'Unidade Policial / Delegacia' }
+      ]
+    },
+    description: 'Delegacias de Polícia Civil, Polícia Federal e postos da Polícia Rodoviária Federal em Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME', 'nome', 'Nome']
+  },
+  {
+    id: 'terminal_rodoviario',
+    name: 'Terminal Rodoviário',
+    fileName: 'data/equipamentos-uso-coletivo/Rodoviária.geojson',
+    source: 'Secretaria de Transportes / SEPLAN',
+    refDate: '2026',
+    group: 'equipamentos_uso_coletivo',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 65,
+    isLazy: true,
+    style: {
+      pointColor: '#0d9488',
+      pointRadius: 7.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#0d9488'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Terminal Rodoviário',
+      fields: [
+        { key: 'NOME', label: 'Terminal / Estação Rodoviária' }
+      ]
+    },
+    description: 'Terminal Rodoviário Intermunicipal de Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME', 'nome', 'Nome']
+  },
+  {
+    id: 'shopping_centers',
+    name: 'Shopping Centers',
+    fileName: 'data/equipamentos-uso-coletivo/Shoppings.geojson',
+    source: 'SEPLAN / Secretaria de Desenvolvimento Econômico',
+    refDate: '2026',
+    group: 'equipamentos_uso_coletivo',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 66,
+    isLazy: true,
+    style: {
+      pointColor: '#7c3aed',
+      pointRadius: 7.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#7c3aed'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Shopping Center',
+      fields: [
+        { key: 'NOME', label: 'Nome do Shopping Center' }
+      ]
+    },
+    description: 'Shopping centers e grandes complexos comerciais de Passo Fundo.',
     searchable: true,
     searchFields: ['NOME', 'nome', 'Nome']
   }

@@ -1,0 +1,9 @@
+{
+  "type": "FeatureCollection",
+  "name": "Cemitérios Privados",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+  "features": [
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO MEMORIAL DA PAZ" }, "geometry": { "type": "Point", "coordinates": [ 360864.37577377283, 6874186.4737883955 ] } },
+    { "type": "Feature", "properties": { "NOME": "CEMITÉRIO ISRAELITA" }, "geometry": { "type": "Point", "coordinates": [ 360896.7423349051, 6874130.258182219 ] } }
+  ]
+}

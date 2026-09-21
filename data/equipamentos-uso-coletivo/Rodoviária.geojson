@@ -1,0 +1,8 @@
+{
+  "type": "FeatureCollection",
+  "name": "Rodoviária",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+  "features": [
+    { "type": "Feature", "properties": { "NOME": "RODOVIÁRIA" }, "geometry": { "type": "Point", "coordinates": [ 363159.4813229113, 6873748.430103878 ] } }
+  ]
+}
