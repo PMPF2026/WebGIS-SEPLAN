@@ -43,6 +43,17 @@ export const LAYER_GROUPS = [
       { id: 'linhas', title: '5.2 Linhas', icon: 'git-commit' },
       { id: 'poligonos', title: '5.3 Polígonos', icon: 'shapes' }
     ]
+  },
+  {
+    id: 'esporte_cultura',
+    title: '6. Esporte e Cultura',
+    iconClass: 'sport-culture',
+    iconName: 'trophy',
+    description: 'Equipamentos esportivos, estádios, arenas, ginásios, teatros, museus e centros culturais municipais',
+    subgroups: [
+      { id: 'esporte', title: '6.1 Esporte', icon: 'activity' },
+      { id: 'cultura', title: '6.2 Cultura', icon: 'landmark' }
+    ]
   }
 ];
 
@@ -1498,6 +1509,101 @@ export const LAYERS_CONFIG = [
     },
     description: 'Macro-zona de cobertura regional de 1.600m no entorno dos projetos Multigares.',
     searchable: false
+  },
+
+  // ================= 6. ESPORTE E CULTURA =================
+  {
+    id: 'equipamentos_esportivos',
+    name: 'Equipamentos Esportivos',
+    fileName: 'data/esporte-cultura/Equipamentos esportivos.geojson',
+    source: 'Secretaria Municipal de Esportes / SEPLAN',
+    refDate: '2026',
+    group: 'esporte_cultura',
+    subgroup: 'esporte',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 56,
+    isLazy: true,
+    style: {
+      pointColor: '#0284c7',
+      pointRadius: 7,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#0284c7'
+    },
+    popupConfig: {
+      titleField: 'Nome',
+      defaultTitle: 'Equipamento Esportivo',
+      fields: [
+        { key: 'Nome', label: 'Nome do Equipamento' }
+      ]
+    },
+    description: 'Centros e complexos municipais de esporte e lazer comunitários de Passo Fundo.',
+    searchable: true,
+    searchFields: ['Nome', 'nome']
+  },
+  {
+    id: 'estadios_ginasios',
+    name: 'Estádios e Ginásios',
+    fileName: 'data/esporte-cultura/Estádios e Ginásios.geojson',
+    source: 'Secretaria Municipal de Esportes / SEPLAN',
+    refDate: '2026',
+    group: 'esporte_cultura',
+    subgroup: 'esporte',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 57,
+    isLazy: true,
+    style: {
+      pointColor: '#ea580c',
+      pointRadius: 7.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#ea580c'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Estádio / Ginásio',
+      fields: [
+        { key: 'nome', label: 'Nome do Estádio / Ginásio' }
+      ]
+    },
+    description: 'Estádios de futebol, arenas esportivas e grandes ginásios poliesportivos de Passo Fundo.',
+    searchable: true,
+    searchFields: ['nome', 'Nome']
+  },
+  {
+    id: 'equipamentos_culturais',
+    name: 'Equipamentos Culturais',
+    fileName: 'data/esporte-cultura/Equipamentos culturais.geojson',
+    source: 'Secretaria Municipal de Cultura / SEPLAN',
+    refDate: '2026',
+    group: 'esporte_cultura',
+    subgroup: 'cultura',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 58,
+    isLazy: true,
+    style: {
+      pointColor: '#9333ea',
+      pointRadius: 7,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#9333ea'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Equipamento Cultural',
+      fields: [
+        { key: 'NOME', label: 'Denominação do Espaço Cultural' }
+      ]
+    },
+    description: 'Museus, teatros, bibliotecas, centros culturais e parques de eventos e tradições de Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME', 'nome', 'Nome']
   }
 
 ];

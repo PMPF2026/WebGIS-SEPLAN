@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "Equipamentos culturais",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+"features": [
+{ "type": "Feature", "properties": { "NOME": "Museu de Artes Visuais Ruth Schneider" }, "geometry": { "type": "Point", "coordinates": [ 361576.968802119314205, 6872855.612414447590709 ] } },
+{ "type": "Feature", "properties": { "NOME": "Academia Passo-Fundense de Letras" }, "geometry": { "type": "Point", "coordinates": [ 361551.130878317402676, 6872839.231508507393301 ] } },
+{ "type": "Feature", "properties": { "NOME": "Teatro do Sesc" }, "geometry": { "type": "Point", "coordinates": [ 362210.588998884952161, 6873216.83672171831131 ] } },
+{ "type": "Feature", "properties": { "NOME": "Museu do Teixeirinha" }, "geometry": { "type": "Point", "coordinates": [ 363489.312914105947129, 6867341.664374842308462 ] } },
+{ "type": "Feature", "properties": { "NOME": "Parque de Rodeios" }, "geometry": { "type": "Point", "coordinates": [ 363500.458685157704167, 6867366.995672680437565 ] } },
+{ "type": "Feature", "properties": { "NOME": "Parque de exposições Wolmar Salton" }, "geometry": { "type": "Point", "coordinates": [ 371018.787885585799813, 6875740.509488360024989 ] } },
+{ "type": "Feature", "properties": { "NOME": "Espaço Cultural Roseli Doleski Pretto" }, "geometry": { "type": "Point", "coordinates": [ 361571.564791912387591, 6872834.334124255925417 ] } },
+{ "type": "Feature", "properties": { "NOME": "Teatro Municipal Múcio de Castro" }, "geometry": { "type": "Point", "coordinates": [ 361560.250145541562233, 6872846.324271904304624 ] } },
+{ "type": "Feature", "properties": { "NOME": "Biblioteca Arno Viuniski" }, "geometry": { "type": "Point", "coordinates": [ 361613.108120378456078, 6872764.419742205180228 ] } },
+{ "type": "Feature", "properties": { "NOME": "Museu do automobilismo" }, "geometry": { "type": "Point", "coordinates": [ 359558.908740459068213, 6872446.427516589872539 ] } },
+{ "type": "Feature", "properties": { "NOME": "Quiosque Roberto Pirovano Zanatta" }, "geometry": { "type": "Point", "coordinates": [ 362459.511219042760786, 6873669.760327184572816 ] } }
+]
+}

@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "Estádios e Ginásios",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+"features": [
+{ "type": "Feature", "properties": { "nome": "Arena Clube Comercial" }, "geometry": { "type": "Point", "coordinates": [ 367289.851967466878705, 6872227.902853839099407 ] } },
+{ "type": "Feature", "properties": { "nome": "Ginásio Marista" }, "geometry": { "type": "Point", "coordinates": [ 362013.511501649569254, 6873408.679084057919681 ] } },
+{ "type": "Feature", "properties": { "nome": "Estádio Vermelhão da Serra" }, "geometry": { "type": "Point", "coordinates": [ 365004.631151199981105, 6870740.449044375680387 ] } },
+{ "type": "Feature", "properties": { "nome": "Arena Sport Club Gaúcho" }, "geometry": { "type": "Point", "coordinates": [ 358750.164837923832238, 6871405.817801107652485 ] } },
+{ "type": "Feature", "properties": { "nome": "Ginásio Notre Dame" }, "geometry": { "type": "Point", "coordinates": [ 361465.004465643549338, 6872592.335792168974876 ] } },
+{ "type": "Feature", "properties": { "nome": "Ginásio UPF" }, "geometry": { "type": "Point", "coordinates": [ 364546.30353552242741, 6876109.333184981718659 ] } },
+{ "type": "Feature", "properties": { "nome": "Ginásio Teixeirinha" }, "geometry": { "type": "Point", "coordinates": [ 358868.039810563030187, 6871544.971063928678632 ] } }
+]
+}
