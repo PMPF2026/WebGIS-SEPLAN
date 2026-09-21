@@ -9,13 +9,18 @@ export class LegendUI {
   constructor(layerManager, containerId = 'legend-container') {
     this.layerManager = layerManager;
     this.container = document.getElementById(containerId);
+    this.analysisTool = null;
     
     // Refresh legend when layers load or change visibility
     this.layerManager.onLayerLoaded(() => this.render());
   }
 
+  setAnalysisTool(analysisTool) {
+    this.analysisTool = analysisTool;
+  }
+
   /**
-   * Render dynamic legend for all currently visible layers
+   * Render dynamic legend for all currently visible layers and active analysis buffers
    */
   render() {
     if (!this.container) return;
@@ -25,11 +30,15 @@ export class LegendUI {
       return olLayer && olLayer.getVisible();
     });
 
-    if (visibleLayers.length === 0) {
+    const analysisItems = (this.analysisTool && typeof this.analysisTool.getActiveAnalysisLegends === 'function')
+      ? this.analysisTool.getActiveAnalysisLegends()
+      : [];
+
+    if (visibleLayers.length === 0 && analysisItems.length === 0) {
       this.container.innerHTML = `
         <div style="padding: 24px 16px; text-align: center; color: var(--text-muted); font-size: 12.5px;">
           <i class="lucide-layers" style="font-size: 24px; margin-bottom: 8px; display: block; opacity: 0.5;"></i>
-          Nenhuma camada temática está visível no momento.<br>
+          Nenhuma camada temática ou análise está visível no momento.<br>
           Ative uma ou mais camadas no painel para visualizar a legenda.
         </div>
       `;
@@ -60,6 +69,28 @@ export class LegendUI {
         </div>
       `;
     });
+
+    // Seção de Análise Espacial Territorial (Faixas de Proteção)
+    if (analysisItems.length > 0) {
+      html += `
+        <div class="legend-group" style="background: var(--dc-blue-card); border: 1px solid var(--dc-blue-border); border-radius: var(--radius-md); padding: 10px 12px;">
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #38bdf8; margin-bottom: 8px; letter-spacing: 0.5px;">
+            Análise Espacial — Faixas de Proteção
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            ${analysisItems.map(item => `
+              <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-block; width: 18px; height: 14px; border-radius: 3px; background: ${item.fillColor}; border: 1.5px solid ${item.strokeColor}; flex-shrink: 0;"></span>
+                <div>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display: block;">${item.title}</span>
+                  <span style="font-size: 10px; color: var(--text-muted);">${item.areaFormatted}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
 
     html += '</div>';
     this.container.innerHTML = html;

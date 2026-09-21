@@ -1,0 +1,292 @@
+/* ==========================================================================
+   WEBGIS SEPLAN PASSO FUNDO - MÓDULO DE ANÁLISE ESPACIAL TERRITORIAL
+   Estilos da Aba Análise e Geração de Faixas de Proteção Hidrográfica
+   ========================================================================== */
+
+.analysis-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.analysis-card {
+  background: var(--dc-blue-card);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.analysis-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.analysis-card-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.analysis-form-group {
+  margin-bottom: 12px;
+}
+
+.analysis-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.analysis-select {
+  width: 100%;
+  background: var(--dc-blue-surface);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  padding: 8px 10px;
+  font-size: 12.5px;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.analysis-select:focus {
+  border-color: #0284c7;
+}
+
+.analysis-presets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.analysis-preset-btn {
+  padding: 8px 4px;
+  background: var(--dc-blue-surface);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.analysis-preset-btn:hover {
+  background: rgba(2, 132, 199, 0.2);
+  border-color: #0284c7;
+  color: #38bdf8;
+}
+
+.analysis-preset-btn.active {
+  background: rgba(2, 132, 199, 0.25);
+  border-color: #0284c7;
+  color: #38bdf8;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.3);
+}
+
+.analysis-actions-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.btn-analysis-run {
+  flex: 1;
+  padding: 9px 12px;
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.btn-analysis-run:hover {
+  background: linear-gradient(135deg, #0369a1, #1d4ed8);
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+}
+
+.btn-analysis-run:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-analysis-clear {
+  padding: 9px 12px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: var(--radius-sm);
+  color: #f87171;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.btn-analysis-clear:hover {
+  background: rgba(239, 68, 68, 0.22);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+/* Painel de Resultados */
+.analysis-results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.analysis-results-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.analysis-results-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.analysis-empty-placeholder {
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px dashed var(--dc-blue-border);
+  border-radius: var(--radius-md);
+}
+
+.analysis-result-card {
+  background: var(--dc-blue-card);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.analysis-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.analysis-result-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.analysis-result-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.analysis-result-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.analysis-icon-btn {
+  background: var(--dc-blue-surface);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  padding: 3px 6px;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all var(--transition-fast);
+}
+
+.analysis-icon-btn:hover {
+  color: var(--text-main);
+  border-color: #64748b;
+}
+
+.analysis-icon-btn.danger:hover {
+  color: #f87171;
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.analysis-metrics-row {
+  display: flex;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+}
+
+.analysis-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.analysis-metric-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.analysis-metric-lbl {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.analysis-loading-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(2, 132, 199, 0.15);
+  border: 1px solid #0284c7;
+  border-radius: var(--radius-sm);
+  color: #38bdf8;
+  font-size: 12px;
+  font-weight: 500;
+}

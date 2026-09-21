@@ -18,6 +18,7 @@ import { LayerImporter } from './tools/layer-importer.js';
 import { DownloadsUI } from './ui/downloads.js';
 import { Item6ThematicLegendUI } from './ui/thematic-legend-item6.js';
 import { MetricsUI } from './metrics/metrics-ui.js';
+import { TerritorialAnalysisTool } from './tools/territorial-analysis.js';
 
 class WebGisApp {
   constructor() {
@@ -35,6 +36,7 @@ class WebGisApp {
     this.downloadsUI = null;
     this.item6ThematicLegendUI = null;
     this.metricsUI = null;
+    this.territorialAnalysisTool = null;
   }
 
   async start() {
@@ -75,10 +77,13 @@ class WebGisApp {
       // 11. Initialize Downloads UI Catalog
       this.downloadsUI = new DownloadsUI(this.layerManager);
 
-      // 12. Initialize Territorial Metrics UI Panel
+      // 12. Initialize Territorial Spatial Analysis Tool (Buffers)
+      this.territorialAnalysisTool = new TerritorialAnalysisTool(this.mapEngine, this.layerManager, this.legendUI);
+
+      // 13. Initialize Territorial Metrics UI Panel
       this.metricsUI = new MetricsUI(this.layerManager, this.mapEngine, this.sidebarUI);
 
-      // 13. Initialize Dynamic Layer Importer (Drag & Drop)
+      // 14. Initialize Dynamic Layer Importer (Drag & Drop)
       this.layerImporter = new LayerImporter(this.mapEngine, this.layerManager, this.sidebarUI);
 
       // 13. Bind Floating Controls and Keyboard Shortcuts

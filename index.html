@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="css/map-controls.css">
   <link rel="stylesheet" href="css/popup.css">
   <link rel="stylesheet" href="css/metrics.css">
+  <link rel="stylesheet" href="css/analysis.css">
 </head>
 <body>
   <div id="app">
@@ -105,6 +106,10 @@
             <i class="lucide-map"></i>
             <span>Mapas Base</span>
           </button>
+          <button class="sidebar-tab-btn" data-tab="analise" title="Análise Espacial Territorial">
+            <i class="lucide-crosshair"></i>
+            <span>Análise</span>
+          </button>
           <button class="sidebar-tab-btn" data-tab="metricas" title="Painel de Métricas Territoriais">
             <i class="lucide-bar-chart-3"></i>
             <span>Métricas</span>
@@ -165,6 +170,67 @@
               <span class="panel-subtitle">Selecione o provedor cartográfico</span>
             </div>
             <div class="basemap-grid" id="basemap-grid"></div>
+          </div>
+
+          <!-- TAB: ANÁLISE ESPACIAL TERRITORIAL -->
+          <div class="tab-panel" id="tab-analise">
+            <div class="panel-header">
+              <h3>Análise Espacial Territorial</h3>
+              <span class="panel-subtitle">Geração de Faixas de Proteção Hidrográfica</span>
+            </div>
+
+            <div class="analysis-container">
+              <!-- Card de Configuração de Buffer -->
+              <div class="analysis-card">
+                <div class="analysis-card-title">
+                  <i class="lucide-sparkles" style="color: #38bdf8;"></i>
+                  <span>Faixas de Proteção Ambiental</span>
+                </div>
+                <div class="analysis-card-desc">
+                  Gere zonas de influência e áreas de proteção permanente (APP) com dissolução geométrica contínua e cálculo de área métrica em hectares.
+                </div>
+
+                <!-- Camada de Referência -->
+                <div class="analysis-form-group">
+                  <label class="analysis-label" for="analysis-layer-select">Camada de Referência</label>
+                  <select id="analysis-layer-select" class="analysis-select">
+                    <option value="rio_passo_fundo" selected>Rio Passo Fundo (Curso Principal)</option>
+                    <option value="malha_hidrica">Malha Hídrica / Cursos d'Água</option>
+                  </select>
+                </div>
+
+                <!-- Faixas Rápidas -->
+                <div class="analysis-form-group">
+                  <label class="analysis-label">Faixa de Distância (Métrica)</label>
+                  <div class="analysis-presets-grid">
+                    <button type="button" class="analysis-preset-btn active" data-radius="30">30 m</button>
+                    <button type="button" class="analysis-preset-btn" data-radius="50">50 m</button>
+                    <button type="button" class="analysis-preset-btn" data-radius="100">100 m</button>
+                  </div>
+                </div>
+
+                <!-- Ações -->
+                <div class="analysis-actions-row">
+                  <button type="button" id="btn-run-analysis-buffer" class="btn-analysis-run" title="Gerar faixa de proteção com dissolução geométrica">
+                    <i class="lucide-sparkles"></i>
+                    <span>Gerar Buffer</span>
+                  </button>
+                  <button type="button" id="btn-clear-analyses" class="btn-analysis-clear" title="Remover todas as faixas analíticas do mapa">
+                    <i class="lucide-trash-2"></i>
+                    <span>Limpar</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Listagem de Resultados Analíticos Ativos -->
+              <div class="analysis-results-section">
+                <div class="analysis-results-title-row">
+                  <span class="analysis-results-title">Faixas Geradas</span>
+                  <span class="badge-count" id="analysis-count-badge" style="background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid #0284c7; padding: 1px 6px; border-radius: 10px; font-size: 10px; font-weight: 700;">0</span>
+                </div>
+                <div id="analysis-results-container"></div>
+              </div>
+            </div>
           </div>
 
           <!-- TAB 4: MÉTRICAS TERRITORIAIS -->
