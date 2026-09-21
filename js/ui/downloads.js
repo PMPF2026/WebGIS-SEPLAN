@@ -69,10 +69,10 @@ export class DownloadsUI {
   }
 
   getGeometryLabel(geomType) {
-    if (geomType === 'Point' || geomType === 'MultiPoint') return 'ðŸ“ Ponto';
-    if (geomType === 'LineString' || geomType === 'MultiLineString') return 'ã€°ï¸ Linha';
-    if (geomType === 'Polygon' || geomType === 'MultiPolygon') return 'â¬¡ PolÃ­gono';
-    return 'ðŸ—ºï¸ Vetor';
+    if (geomType === 'Point' || geomType === 'MultiPoint') return '📍 Ponto';
+    if (geomType === 'LineString' || geomType === 'MultiLineString') return '〰️ Linha';
+    if (geomType === 'Polygon' || geomType === 'MultiPolygon') return '⬡ Polígono';
+    return '🗺️ Vetor';
   }
 
   render(layersToRender = this.downloadableLayers) {

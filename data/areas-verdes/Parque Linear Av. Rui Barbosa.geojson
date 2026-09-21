@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "Parque Linear Av",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+"features": [
+{ "type": "Feature", "properties": { "FID": 0 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 363337.593928329879418, 6874855.04585178475827 ], [ 363457.925629283650778, 6875017.423839348368347 ], [ 363617.788387056149077, 6875189.53284362051636 ], [ 363717.977121572941542, 6875220.360146548599005 ], [ 364257.454922817298211, 6875338.531474440358579 ], [ 364672.28697681898484, 6875333.288718153722584 ] ] ] } },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } }
+]
+}

@@ -1,0 +1,26 @@
+{
+"type": "FeatureCollection",
+"name": "Áreas Privadas",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+"features": [
+{ "type": "Feature", "properties": { "FID": 0 }, "geometry": { "type": "Point", "coordinates": [ 364547.076866675983183, 6875983.729171499609947 ] } },
+{ "type": "Feature", "properties": { "FID": 1 }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": 2 }, "geometry": { "type": "Point", "coordinates": [ 362758.745354743325152, 6878132.28256644308567 ] } },
+{ "type": "Feature", "properties": { "FID": 3 }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": 4 }, "geometry": { "type": "Point", "coordinates": [ 361088.254886550828815, 6873331.032495828345418 ] } },
+{ "type": "Feature", "properties": { "FID": 5 }, "geometry": { "type": "Point", "coordinates": [ 360635.315644058398902, 6871357.274410010315478 ] } },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": { "type": "Point", "coordinates": [ 364547.076866675983183, 6875983.729171499609947 ] } },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": { "type": "Point", "coordinates": [ 362758.745354743325152, 6878132.28256644308567 ] } },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": { "type": "Point", "coordinates": [ 361088.254886550828815, 6873331.032495828345418 ] } },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": { "type": "Point", "coordinates": [ 360635.315644058398902, 6871357.274410010315478 ] } },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": { "type": "Point", "coordinates": [ 365857.503328589315061, 6876845.733974304050207 ] } },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": { "type": "Point", "coordinates": [ 364744.732746669091284, 6872296.994987344369292 ] } },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": { "type": "Point", "coordinates": [ 358642.608463701908477, 6877149.494554873555899 ] } },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": null }, "geometry": null }
+]
+}

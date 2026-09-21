@@ -496,16 +496,19 @@ export class LayerManager {
       };
     }
 
-    if (config.geometryType === 'Point') {
+    if (config.geometryType === 'Point' || config.geometryType === 'MultiPoint') {
       return (feature, resolution) => {
-        const name = feature.get('nome') || '';
+        const rawName = feature.get('nome') || feature.get('NOME') || '';
+        const name = typeof rawName === 'string' ? rawName.trim() : '';
+        const showLabel = name && (s.showLabels !== false) && (resolution < 40);
+
         return new ol.style.Style({
           image: new ol.style.Circle({
             radius: s.pointRadius || 7,
             fill: new ol.style.Fill({ color: s.pointColor || '#dc2626' }),
-            stroke: new ol.style.Stroke({ color: s.strokeColor || '#ffffff', width: 2.0 })
+            stroke: new ol.style.Stroke({ color: s.strokeColor || '#ffffff', width: s.strokeWidth || 2.0 })
           }),
-          text: new ol.style.Text({
+          text: showLabel ? new ol.style.Text({
             text: name,
             offsetY: -15,
             font: 'bold 11.5px "Inter", sans-serif',
@@ -513,7 +516,7 @@ export class LayerManager {
             stroke: new ol.style.Stroke({ color: '#0f172a', width: 3.0 }),
             backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.85)' }),
             padding: [2, 6, 2, 6]
-          })
+          }) : null
         });
       };
     }

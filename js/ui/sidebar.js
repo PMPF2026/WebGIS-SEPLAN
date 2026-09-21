@@ -129,6 +129,15 @@ export class SidebarUI {
         item.style.display = matches ? 'block' : 'none';
       });
 
+      // Expand subgroups containing matches
+      document.querySelectorAll('.layer-subgroup').forEach(subgroup => {
+        const hasVisible = Array.from(subgroup.querySelectorAll('.layer-item')).some(i => i.style.display !== 'none');
+        subgroup.style.display = hasVisible ? 'block' : 'none';
+        if (term.length > 0 && hasVisible) {
+          subgroup.classList.add('expanded');
+        }
+      });
+
       // Expand groups containing matches
       document.querySelectorAll('.layer-group').forEach(group => {
         const hasVisible = Array.from(group.querySelectorAll('.layer-item')).some(i => i.style.display !== 'none');
@@ -152,6 +161,8 @@ export class SidebarUI {
       groupDiv.className = `layer-group ${index === 0 || index === 1 ? 'expanded' : ''}`;
       groupDiv.setAttribute('data-group-id', group.id);
 
+      const hasSubgroups = group.subgroups && group.subgroups.length > 0;
+
       let groupHeader = `
         <div class="layer-group-header">
           <div class="layer-group-title-wrapper">
@@ -163,28 +174,119 @@ export class SidebarUI {
               <span class="layer-group-count" id="count-group-${group.id}">(${groupLayers.length})</span>
             </div>
           </div>
-          <i class="lucide-chevron-down group-chevron"></i>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button class="mini-btn group-toggle-btn" data-group-id="${group.id}" title="Alternar todas as camadas deste grupo" style="padding:2px 6px; font-size:10px;">
+              <i class="lucide-power"></i>
+            </button>
+            <i class="lucide-chevron-down group-chevron"></i>
+          </div>
         </div>
       `;
 
       let groupBody = '<div class="layer-group-body">';
-      groupLayers.forEach(layer => {
-        groupBody += this.createLayerItemHtml(layer);
-      });
+      if (hasSubgroups) {
+        group.subgroups.forEach(sub => {
+          const subLayers = groupLayers.filter(l => l.subgroup === sub.id);
+          if (subLayers.length === 0) return;
+
+          groupBody += `
+            <div class="layer-subgroup" data-subgroup-id="${sub.id}">
+              <div class="layer-subgroup-header">
+                <div class="layer-subgroup-title-wrapper">
+                  <i class="lucide-${sub.icon || 'folder'}"></i>
+                  <span class="layer-subgroup-title">${sub.title}</span>
+                  <span class="layer-subgroup-count" id="count-subgroup-${sub.id}">(${subLayers.length})</span>
+                </div>
+                <div class="layer-subgroup-actions">
+                  <button class="mini-btn subgroup-toggle-btn" data-subgroup-id="${sub.id}" title="Alternar visibilidade deste subgrupo" style="padding:1px 5px; font-size:9.5px;">
+                    <i class="lucide-power"></i>
+                  </button>
+                  <i class="lucide-chevron-down subgroup-chevron"></i>
+                </div>
+              </div>
+              <div class="layer-subgroup-body">
+                ${subLayers.map(layer => this.createLayerItemHtml(layer)).join('')}
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        groupLayers.forEach(layer => {
+          groupBody += this.createLayerItemHtml(layer);
+        });
+      }
       groupBody += '</div>';
 
       groupDiv.innerHTML = groupHeader + groupBody;
 
       const headerEl = groupDiv.querySelector('.layer-group-header');
-      headerEl.addEventListener('click', () => {
+      headerEl.addEventListener('click', (e) => {
+        if (e.target.closest('.group-toggle-btn')) return;
         groupDiv.classList.toggle('expanded');
       });
+
+      // Subgroup accordion expand/collapse & toggle
+      if (hasSubgroups) {
+        groupDiv.querySelectorAll('.layer-subgroup-header').forEach(subHeader => {
+          subHeader.addEventListener('click', (e) => {
+            if (e.target.closest('.subgroup-toggle-btn')) return;
+            const subDiv = subHeader.closest('.layer-subgroup');
+            if (subDiv) subDiv.classList.toggle('expanded');
+          });
+        });
+
+        groupDiv.querySelectorAll('.subgroup-toggle-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const subId = btn.getAttribute('data-subgroup-id');
+            const subLayers = groupLayers.filter(l => l.subgroup === subId);
+            const anyVisible = subLayers.some(l => {
+              const olL = this.layerManager.getLayer(l.id);
+              return olL && olL.getVisible();
+            });
+            const targetState = !anyVisible;
+            for (const l of subLayers) {
+              const cb = document.querySelector(`.layer-checkbox[data-layer-id="${l.id}"]`);
+              if (cb) cb.checked = targetState;
+              await this.layerManager.setLayerVisibility(l.id, targetState);
+            }
+            this.legendUI.render();
+            this.updateLayerCounters();
+            Notification.info(`Subgrupo ${targetState ? 'ativado' : 'desativado'}.`);
+          });
+        });
+      }
+
+      // Group toggle button
+      const groupToggleBtn = groupDiv.querySelector('.group-toggle-btn');
+      if (groupToggleBtn) {
+        groupToggleBtn.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          const anyVisible = groupLayers.some(l => {
+            const olL = this.layerManager.getLayer(l.id);
+            return olL && olL.getVisible();
+          });
+          const targetState = !anyVisible;
+          for (const l of groupLayers) {
+            const cb = document.querySelector(`.layer-checkbox[data-layer-id="${l.id}"]`);
+            if (cb) cb.checked = targetState;
+            await this.layerManager.setLayerVisibility(l.id, targetState);
+          }
+          this.legendUI.render();
+          this.updateLayerCounters();
+          Notification.info(`Grupo ${group.title} ${targetState ? 'ativado' : 'desativado'}.`);
+        });
+      }
 
       this.layerTreeContainer.appendChild(groupDiv);
     });
 
     this.bindLayerEvents();
     this.updateLayerCounters();
+
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
   }
 
   createLayerItemHtml(layer) {
@@ -322,6 +424,20 @@ export class SidebarUI {
 
       countEl.textContent = `(${activeCount}/${groupLayers.length} ativas)`;
       countEl.style.color = activeCount > 0 ? 'var(--dc-orange-primary)' : 'var(--text-muted)';
+
+      if (group.subgroups) {
+        group.subgroups.forEach(sub => {
+          const subCountEl = document.getElementById(`count-subgroup-${sub.id}`);
+          if (!subCountEl) return;
+          const subLayers = groupLayers.filter(l => l.subgroup === sub.id);
+          const subActiveCount = subLayers.filter(l => {
+            const layer = this.layerManager.getLayer(l.id);
+            return layer && layer.getVisible();
+          }).length;
+          subCountEl.textContent = `(${subActiveCount}/${subLayers.length})`;
+          subCountEl.style.color = subActiveCount > 0 ? '#22c55e' : 'var(--text-muted)';
+        });
+      }
     });
   }
 

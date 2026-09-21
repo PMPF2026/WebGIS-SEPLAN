@@ -166,8 +166,8 @@ export class LegendUI {
       `;
     }
 
-    // 3. Point Symbology (Distritos)
-    if (layerConfig.geometryType === 'Point') {
+    // 3. Point Symbology (Distritos, Praças, Áreas Verdes, etc.)
+    if (layerConfig.geometryType === 'Point' || layerConfig.geometryType === 'MultiPoint') {
       const s = layerConfig.style || {};
       return `
         <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">

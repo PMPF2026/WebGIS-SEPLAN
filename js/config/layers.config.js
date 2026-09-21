@@ -31,6 +31,18 @@ export const LAYER_GROUPS = [
     iconClass: 'population',
     iconName: 'users',
     description: 'Distribuição, densidade demográfica setorial e domicílios (Censo IBGE 2022)'
+  },
+  {
+    id: 'areas_verdes',
+    title: '5. Áreas Verdes',
+    iconClass: 'nature',
+    iconName: 'trees',
+    description: 'Parques urbanos, praças públicas, áreas de preservação ambiental, corredores verdes e zonas de proteção natural',
+    subgroups: [
+      { id: 'pontos', title: '5.1 Pontos', icon: 'map-pin' },
+      { id: 'linhas', title: '5.2 Linhas', icon: 'git-commit' },
+      { id: 'poligonos', title: '5.3 Polígonos', icon: 'shapes' }
+    ]
   }
 ];
 
@@ -843,6 +855,651 @@ export const LAYERS_CONFIG = [
     searchable: true,
     searchFields: ['id']
   },
+  // ================= 5. ÁREAS VERDES =================
+  // --- 5.1 PONTOS ---
+  {
+    id: 'pracas',
+    name: 'Praças',
+    fileName: 'data/areas-verdes/Praças.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'pontos',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1,
+    zIndex: 65,
+    isLazy: true,
+    style: {
+      pointColor: '#10b981',
+      pointRadius: 5.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 1.8,
+      previewColor: '#10b981'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Praça Pública',
+      fields: [
+        { key: 'NOME', label: 'Nome da Praça' }
+      ]
+    },
+    description: 'Mapeamento georreferenciado das 60 praças públicas municipais de Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME']
+  },
+  {
+    id: 'parques_urbanos_pontos',
+    name: 'Parques Urbanos (Localização)',
+    fileName: 'data/areas-verdes/Parques Urbanos.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'pontos',
+    geometryType: 'MultiPoint',
+    defaultVisible: false,
+    defaultOpacity: 1,
+    zIndex: 68,
+    isLazy: true,
+    style: {
+      pointColor: '#047857',
+      pointRadius: 6.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#047857'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Parque Urbano',
+      fields: [
+        { key: 'NOME', label: 'Nome do Parque' },
+        { key: 'FID', label: 'Identificador' }
+      ]
+    },
+    description: 'Pontos de localização dos principais parques urbanos e áreas de recreação pública.',
+    searchable: true,
+    searchFields: ['NOME']
+  },
+  {
+    id: 'areas_verdes_pontos',
+    name: 'Áreas Verdes Cadastradas',
+    fileName: 'data/areas-verdes/Áreas Verdes.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'pontos',
+    geometryType: 'MultiPoint',
+    defaultVisible: false,
+    defaultOpacity: 1,
+    zIndex: 64,
+    isLazy: true,
+    style: {
+      pointColor: '#22c55e',
+      pointRadius: 4.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 1.5,
+      previewColor: '#22c55e'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Área Verde',
+      fields: [
+        { key: 'NOME', label: 'Denominação' },
+        { key: 'NOME_2', label: 'Denominação Complementar' },
+        { key: 'FID', label: 'Identificador' }
+      ]
+    },
+    description: '118 registros de áreas verdes municipais cadastradas no planejamento urbano.',
+    searchable: true,
+    searchFields: ['NOME', 'NOME_2']
+  },
+  {
+    id: 'areas_privadas',
+    name: 'Áreas Privadas',
+    fileName: 'data/areas-verdes/Áreas Privadas.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'pontos',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1,
+    zIndex: 63,
+    isLazy: true,
+    style: {
+      pointColor: '#b45309',
+      pointRadius: 5.0,
+      strokeColor: '#ffffff',
+      strokeWidth: 1.6,
+      previewColor: '#b45309'
+    },
+    popupConfig: {
+      titleField: 'FID',
+      titlePrefix: 'Área Privada #',
+      defaultTitle: 'Área Privada',
+      fields: [
+        { key: 'FID', label: 'Código da Área Privada' }
+      ]
+    },
+    description: 'Pontos de identificação de áreas verdes em regime de propriedade privada.',
+    searchable: false
+  },
+  {
+    id: 'projetos_multigares',
+    name: 'Projetos Multigares',
+    fileName: 'data/areas-verdes/Projetos Multigares.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'pontos',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1,
+    zIndex: 66,
+    isLazy: true,
+    style: {
+      pointColor: '#0d9488',
+      pointRadius: 5.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 1.8,
+      previewColor: '#0d9488'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Projeto Multigar',
+      fields: [
+        { key: 'NOME', label: 'Nome do Projeto' },
+        { key: 'FID', label: 'Identificador' }
+      ]
+    },
+    description: 'Pontos de intervenção do programa de projetos multigares da SEPLAN.',
+    searchable: true,
+    searchFields: ['NOME']
+  },
+
+  // --- 5.2 LINHAS ---
+  {
+    id: 'corredores_verdes',
+    name: 'Corredores Verdes',
+    fileName: 'data/areas-verdes/Corredoes verdes.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'linhas',
+    geometryType: 'MultiLineString',
+    defaultVisible: false,
+    defaultOpacity: 0.95,
+    zIndex: 48,
+    isLazy: true,
+    style: {
+      strokeColor: '#16a34a',
+      strokeWidth: 2.4,
+      previewColor: '#16a34a'
+    },
+    popupConfig: {
+      titleField: 'layer',
+      defaultTitle: 'Corredor Verde',
+      fields: [
+        { key: 'layer', label: 'Camada Cartográfica' },
+        { key: 'cost', label: 'Extensão / Custo (m)', format: 'number' },
+        { key: 'fid', label: 'Identificador do Segmento' }
+      ]
+    },
+    description: '47 segmentos viários e faixas conectoras ecológicas de corredores verdes urbanos.',
+    searchable: false
+  },
+  {
+    id: 'parque_linear_pres_vargas',
+    name: 'Parque Linear — Av. Presidente Vargas',
+    fileName: 'data/areas-verdes/Parque Linear Av. Presidente Vargas.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'linhas',
+    geometryType: 'MultiLineString',
+    defaultVisible: false,
+    defaultOpacity: 1,
+    zIndex: 49,
+    isLazy: true,
+    style: {
+      strokeColor: '#15803d',
+      strokeWidth: 3.2,
+      previewColor: '#15803d'
+    },
+    popupConfig: {
+      defaultTitle: 'Parque Linear — Av. Presidente Vargas',
+      fields: [
+        { key: 'FID', label: 'Identificador' }
+      ]
+    },
+    description: 'Eixo linear de intervenção urbanística e parque da Av. Presidente Vargas.',
+    searchable: false
+  },
+  {
+    id: 'parque_linear_rui_barbosa',
+    name: 'Parque Linear — Av. Rui Barbosa',
+    fileName: 'data/areas-verdes/Parque Linear Av. Rui Barbosa.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'linhas',
+    geometryType: 'MultiLineString',
+    defaultVisible: false,
+    defaultOpacity: 1,
+    zIndex: 49,
+    isLazy: true,
+    style: {
+      strokeColor: '#15803d',
+      strokeWidth: 3.2,
+      strokeDash: [8, 4],
+      previewColor: '#15803d'
+    },
+    popupConfig: {
+      defaultTitle: 'Parque Linear — Av. Rui Barbosa',
+      fields: [
+        { key: 'FID', label: 'Identificador' }
+      ]
+    },
+    description: 'Eixo linear de intervenção urbanística e parque da Av. Rui Barbosa.',
+    searchable: false
+  },
+
+  // --- 5.3 POLÍGONOS ---
+  {
+    id: 'areas_publicas',
+    name: 'Áreas Públicas',
+    fileName: 'data/areas-verdes/Áreas Públicas.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 32,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(34, 197, 94, 0.22)',
+      strokeColor: '#16a34a',
+      strokeWidth: 1.2,
+      previewColor: '#16a34a'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Área Pública',
+      fields: [
+        { key: 'NOME', label: 'Denominação' },
+        { key: 'ÁREA m²', label: 'Área Superficial (m²)', format: 'area' }
+      ]
+    },
+    description: '123 polígonos de áreas públicas municipais destinadas a lazer, recreação e conservação.',
+    searchable: true,
+    searchFields: ['NOME']
+  },
+  {
+    id: 'parques_poligonos',
+    name: 'Parques Urbanos (Polígonos)',
+    fileName: 'data/areas-verdes/Parques.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.88,
+    zIndex: 34,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(5, 150, 105, 0.28)',
+      strokeColor: '#047857',
+      strokeWidth: 1.8,
+      previewColor: '#047857'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Parque Urbano',
+      fields: [
+        { key: 'NOME', label: 'Nome do Parque' },
+        { key: 'ÁREA', label: 'Área Total (m²)', format: 'area' }
+      ]
+    },
+    description: 'Delimitação perimetral e poligonal oficial dos parques urbanos de Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME']
+  },
+  {
+    id: 'multigares_poligonos',
+    name: 'Multigares (Polígonos)',
+    fileName: 'data/areas-verdes/Multigares.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 33,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(13, 148, 136, 0.24)',
+      strokeColor: '#0f766e',
+      strokeWidth: 1.4,
+      previewColor: '#0f766e'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Multigar',
+      fields: [
+        { key: 'nome', label: 'Identificação' },
+        { key: 'AREA', label: 'Área Total (m²)', format: 'area' }
+      ]
+    },
+    description: '14 polígonos de zonas integradas do projeto Multigares.',
+    searchable: true,
+    searchFields: ['nome']
+  },
+  {
+    id: 'rppn',
+    name: 'RPPN — Reserva Particular do Patrimônio Natural',
+    fileName: 'data/areas-verdes/RPPN.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 35,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(101, 163, 13, 0.25)',
+      strokeColor: '#65a30d',
+      strokeWidth: 2.0,
+      previewColor: '#65a30d'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'RPPN',
+      fields: [
+        { key: 'NOME', label: 'Reserva Particular' },
+        { key: 'ÁREA m²', label: 'Área Preservada (m²)', format: 'area' }
+      ]
+    },
+    description: 'Reserva Particular do Patrimônio Natural (RPPN) oficialmente demarcada em Passo Fundo.',
+    searchable: true,
+    searchFields: ['NOME']
+  },
+  {
+    id: 'zpnm',
+    name: 'ZPNM — Zonas de Preservação Natural Municipal',
+    fileName: 'data/areas-verdes/ZPNM.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.82,
+    zIndex: 31,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(74, 222, 128, 0.20)',
+      strokeColor: '#22c55e',
+      strokeWidth: 1.6,
+      strokeDash: [6, 4],
+      previewColor: '#22c55e'
+    },
+    popupConfig: {
+      titleField: 'FID',
+      titlePrefix: 'Zona ZPNM #',
+      defaultTitle: 'Zona de Preservação Natural Municipal',
+      fields: [
+        { key: 'FID', label: 'Código ZPNM' }
+      ]
+    },
+    description: 'Zonas de Preservação Natural Municipal (ZPNM) estabelecidas pelo Plano Diretor e legislação ambiental.',
+    searchable: false
+  },
+  {
+    id: 'abrangencia_infraestruturas_verdes',
+    name: 'Abrangência das Infraestruturas Verdes',
+    fileName: 'data/areas-verdes/Abrangência das Infraestruturas Verdes.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.8,
+    zIndex: 26,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(16, 185, 129, 0.15)',
+      strokeColor: '#059669',
+      strokeWidth: 1.5,
+      strokeDash: [8, 4],
+      previewColor: '#059669'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Abrangência de Infraestrutura Verde',
+      fields: [
+        { key: 'NOME', label: 'Denominação Principal' },
+        { key: 'NOME_2', label: 'Espaço Associado' },
+        { key: 'FID', label: 'Identificador' }
+      ]
+    },
+    description: 'Polígonos de abrangência estratégica do sistema integrado de infraestruturas verdes.',
+    searchable: true,
+    searchFields: ['NOME', 'NOME_2']
+  },
+  {
+    id: 'raio_400m_pracas',
+    name: 'Raio de Abrangência — 400m Praças Públicas',
+    fileName: 'data/areas-verdes/Raio 400m das Praças Públicas.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.75,
+    zIndex: 21,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(16, 185, 129, 0.10)',
+      strokeColor: '#10b981',
+      strokeWidth: 1.0,
+      strokeDash: [4, 4],
+      previewColor: '#10b981'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Raio 400m — Praças Públicas',
+      fields: [
+        { key: 'NOME', label: 'Praça de Referência' }
+      ]
+    },
+    description: 'Zona de caminhabilidade e influência direta de 400m (5 minutos a pé) ao redor das praças públicas.',
+    searchable: false
+  },
+  {
+    id: 'raio_400m_parque_a_brasil',
+    name: 'Raio de Abrangência — 400m Parque Arthur Brasil',
+    fileName: 'data/areas-verdes/Raio 400m parque A. Brasil.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.75,
+    zIndex: 22,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(34, 197, 94, 0.11)',
+      strokeColor: '#22c55e',
+      strokeWidth: 1.0,
+      strokeDash: [4, 4],
+      previewColor: '#22c55e'
+    },
+    popupConfig: {
+      defaultTitle: 'Raio 400m — Parque Arthur Brasil',
+      fields: [
+        { key: 'FID', label: 'Identificador' }
+      ]
+    },
+    description: 'Área de atendimento e influência pedonal de 400m no entorno do Parque Arthur Brasil.',
+    searchable: false
+  },
+  {
+    id: 'raio_400m_parque_pres_vargas',
+    name: 'Raio de Abrangência — 400m Parque Pres. Vargas',
+    fileName: 'data/areas-verdes/Raio 400m parque Pres. Vargas.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.75,
+    zIndex: 22,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(34, 197, 94, 0.11)',
+      strokeColor: '#22c55e',
+      strokeWidth: 1.0,
+      strokeDash: [4, 4],
+      previewColor: '#22c55e'
+    },
+    popupConfig: {
+      defaultTitle: 'Raio 400m — Parque Presidente Vargas',
+      fields: [
+        { key: 'FID', label: 'Identificador' }
+      ]
+    },
+    description: 'Área de atendimento e influência pedonal de 400m no entorno do Parque Presidente Vargas.',
+    searchable: false
+  },
+  {
+    id: 'raio_400m_parque_setimo_ceu',
+    name: 'Raio de Abrangência — 400m Parque Sétimo Céu',
+    fileName: 'data/areas-verdes/Raio 400m parque sétimo céu.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.75,
+    zIndex: 22,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(34, 197, 94, 0.11)',
+      strokeColor: '#22c55e',
+      strokeWidth: 1.0,
+      strokeDash: [4, 4],
+      previewColor: '#22c55e'
+    },
+    popupConfig: {
+      defaultTitle: 'Raio 400m — Parque Sétimo Céu',
+      fields: [
+        { key: 'FID', label: 'Identificador' }
+      ]
+    },
+    description: 'Área de atendimento e influência pedonal de 400m no entorno do Parque Sétimo Céu.',
+    searchable: false
+  },
+  {
+    id: 'raio_800m_parques_lineares',
+    name: 'Raio de Abrangência — 800m Parques Lineares',
+    fileName: 'data/areas-verdes/Raio 800m dos Parques Lineares.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.75,
+    zIndex: 19,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(21, 128, 61, 0.10)',
+      strokeColor: '#15803d',
+      strokeWidth: 1.0,
+      strokeDash: [5, 5],
+      previewColor: '#15803d'
+    },
+    popupConfig: {
+      defaultTitle: 'Raio 800m — Parques Lineares',
+      fields: [
+        { key: 'FID_2', label: 'Zona de Influência' },
+        { key: 'FID_3', label: 'Segmento' }
+      ]
+    },
+    description: 'Área de influência intermediária de 800m (10 minutos a pé) ao longo dos parques lineares municipais.',
+    searchable: false
+  },
+  {
+    id: 'raio_1600m_parques',
+    name: 'Raio de Abrangência — 1600m Parques Urbanos',
+    fileName: 'data/areas-verdes/Raio 1600m dos Parques.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.7,
+    zIndex: 17,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(4, 120, 87, 0.08)',
+      strokeColor: '#047857',
+      strokeWidth: 1.0,
+      strokeDash: [6, 4],
+      previewColor: '#047857'
+    },
+    popupConfig: {
+      titleField: 'NOME',
+      defaultTitle: 'Raio 1600m — Parques Urbanos',
+      fields: [
+        { key: 'NOME', label: 'Parque de Referência' }
+      ]
+    },
+    description: 'Macro-zona de cobertura regional de 1.600m (20 minutos) no entorno dos grandes parques urbanos.',
+    searchable: false
+  },
+  {
+    id: 'raio_1600m_multigares',
+    name: 'Raio de Abrangência — 1600m Multigares',
+    fileName: 'data/areas-verdes/Raio 1600m dos Multigares.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'areas_verdes',
+    subgroup: 'poligonos',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.7,
+    zIndex: 16,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(13, 148, 136, 0.08)',
+      strokeColor: '#0f766e',
+      strokeWidth: 1.0,
+      strokeDash: [6, 4],
+      previewColor: '#0f766e'
+    },
+    popupConfig: {
+      defaultTitle: 'Raio 1600m — Multigares',
+      fields: [
+        { key: 'FID', label: 'Identificador da Zona' }
+      ]
+    },
+    description: 'Macro-zona de cobertura regional de 1.600m no entorno dos projetos Multigares.',
+    searchable: false
+  }
+
 ];
 
 export const OPERATIONAL_PRESETS = [

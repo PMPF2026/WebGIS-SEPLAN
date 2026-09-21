@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "Parques Urbanos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+"features": [
+{ "type": "Feature", "properties": { "FID": 0, "NOME": null }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 362402.678863300883677, 6872404.157576957717538 ] ] } },
+{ "type": "Feature", "properties": { "FID": 1, "NOME": "PARQUE BANHADO DA VERGUEIRO" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 361180.509662296448369, 6873810.123228886164725 ] ] } },
+{ "type": "Feature", "properties": { "FID": null, "NOME": "PARQUE DA GARE" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 362402.678863300883677, 6872404.157576957717538 ] ] } },
+{ "type": "Feature", "properties": { "FID": null, "NOME": null }, "geometry": { "type": "MultiPoint", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "FID": null, "NOME": null }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 363354.471841210790444, 6867350.406603155657649 ] ] } },
+{ "type": "Feature", "properties": { "FID": null, "NOME": "PARQUE ARLINDO HAAS" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 363344.196073567843996, 6876023.154493639245629 ] ] } },
+{ "type": "Feature", "properties": { "FID": null, "NOME": null }, "geometry": { "type": "MultiPoint", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "FID": null, "NOME": "PARQUE PINHEIRO TORTO" }, "geometry": { "type": "MultiPoint", "coordinates": [ [ 357416.576378078665584, 6875604.214069440960884 ] ] } }
+]
+}

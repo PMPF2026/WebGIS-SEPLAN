@@ -88,6 +88,7 @@ export class PopupUI {
     if (layerConfig.group === 'divisao_territorial') tagClass = 'tag-territorial';
     if (layerConfig.group === 'planejamento_urbano') tagClass = 'tag-planejamento';
     if (layerConfig.group === 'populacao') tagClass = 'tag-populacao';
+    if (layerConfig.group === 'areas_verdes') tagClass = 'tag-areas-verdes';
 
     // 3. Multi-feature pagination header if > 1 feature
     let paginationHtml = '';

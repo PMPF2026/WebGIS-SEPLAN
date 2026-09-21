@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "Projetos Multigares",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::31982" } },
+"features": [
+{ "type": "Feature", "properties": { "FID": 0, "NOME": null }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": 1, "NOME": null }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": 2, "NOME": null }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": 3, "NOME": null }, "geometry": null },
+{ "type": "Feature", "properties": { "FID": null, "NOME": "MULTIGARE XANGRI-LÁ" }, "geometry": { "type": "Point", "coordinates": [ 358106.315148463414516, 6872892.527678783982992 ] } },
+{ "type": "Feature", "properties": { "FID": null, "NOME": "MULTIGARE PETRÓPOLIS" }, "geometry": { "type": "Point", "coordinates": [ 363578.676009624032304, 6874875.398705752566457 ] } },
+{ "type": "Feature", "properties": { "FID": null, "NOME": "MULTIGARE ZACCHIA" }, "geometry": { "type": "Point", "coordinates": [ 358641.995721448911354, 6877144.956510866060853 ] } },
+{ "type": "Feature", "properties": { "FID": null, "NOME": "MULTIGARE SÃO CRISTOVÃO" }, "geometry": { "type": "Point", "coordinates": [ 363913.441976331872866, 6871884.377940954640508 ] } }
+]
+}
