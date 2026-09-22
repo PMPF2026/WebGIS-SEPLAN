@@ -263,38 +263,154 @@
 
           <!-- TAB 5: SOBRE -->
           <div class="tab-panel" id="tab-sobre">
-            <div class="about-content">
-              <div class="about-header">
-                <img src="assets/brasao.png" alt="Prefeitura de Passo Fundo" style="height: 60px; margin-bottom: 12px;">
-                <h3>WebGIS SEPLAN</h3>
-                <span class="about-tag">Secretaria Municipal de Planejamento</span>
-                <p class="about-desc">
-                  Ambiente Geoespacial Integrado para diagnóstico territorial, análise urbana, planejamento setorial e visualização de indicadores sociodemográficos do Município de Passo Fundo/RS.
+            <div class="about-container">
+              <!-- Cabeçalho Institucional -->
+              <div class="about-hero-card">
+                <img src="assets/brasao.png" alt="Brasão Oficial da Prefeitura Municipal de Passo Fundo" class="about-logo">
+                <div class="about-hero-text">
+                  <span class="about-hero-pretitle">Prefeitura Municipal de Passo Fundo/RS</span>
+                  <h3 class="about-hero-title">WebGIS SEPLAN</h3>
+                  <span class="about-hero-subtitle">Secretaria de Planejamento — SEPLAN</span>
+                  <span class="about-hero-desc">Diagnósticos &amp; Dados Territoriais</span>
+                </div>
+              </div>
+
+              <!-- Finalidade do Portal -->
+              <div class="about-card">
+                <div class="about-card-header">
+                  <span class="about-card-title">
+                    <i class="lucide-target"></i> Finalidade do Portal
+                  </span>
+                </div>
+                <p class="about-text">
+                  O <strong>WebGIS SEPLAN</strong> é uma plataforma de visualização, consulta e análise de informações territoriais do município de Passo Fundo/RS, desenvolvida para apoiar o planejamento urbano, a gestão territorial e a tomada de decisões no âmbito da Administração Pública Municipal.
+                </p>
+                <p class="about-text-muted">
+                  A plataforma integra dados geográficos, territoriais, demográficos, socioeconômicos, de infraestrutura, mobilidade e recursos naturais em ambiente cartográfico digital.
                 </p>
               </div>
 
-              <div class="about-section">
-                <h4>Sistema de Referência Espacial</h4>
-                <ul class="about-list">
-                  <li><strong>Datum Geodésico:</strong> SIRGAS 2000 (EPSG:4674)</li>
-                  <li><strong>Projeção Cartográfica:</strong> Universal Transversa de Mercator - Fuso 22 Sul (UTM 22S - EPSG:31982)</li>
-                  <li><strong>Visualização Web:</strong> Pseudo-Mercator (EPSG:3857)</li>
-                </ul>
+              <!-- Sistema de Referência Espacial -->
+              <div class="about-card">
+                <div class="about-card-header">
+                  <span class="about-card-title">
+                    <i class="lucide-compass"></i> Referência Espacial
+                  </span>
+                  <span class="about-badge">EPSG:31982</span>
+                </div>
+                <div class="about-spec-grid">
+                  <div class="about-spec-item">
+                    <span class="about-spec-label">Datum Geodésico</span>
+                    <span class="about-spec-value">SIRGAS 2000</span>
+                  </div>
+                  <div class="about-spec-item">
+                    <span class="about-spec-label">Sistema Projetado</span>
+                    <span class="about-spec-value">UTM 22S</span>
+                  </div>
+                  <div class="about-spec-item">
+                    <span class="about-spec-label">Código EPSG Técnico</span>
+                    <span class="about-spec-value">31982</span>
+                  </div>
+                  <div class="about-spec-item">
+                    <span class="about-spec-label">Unidade Métrica</span>
+                    <span class="about-spec-value">Metro (m)</span>
+                  </div>
+                </div>
+                <div class="about-spec-footer">
+                  <span>Visualização Web:</span>
+                  <code>EPSG:3857 — WGS 84 / Pseudo-Mercator</code>
+                </div>
               </div>
 
-              <div class="about-section">
-                <h4>Fontes de Dados Institucionais</h4>
-                <ul class="about-list">
-                  <li><strong>Divisões Territoriais e População:</strong> Instituto Brasileiro de Geografia e Estatística (Censo IBGE 2022)</li>
-                  <li><strong>Recursos Hídricos:</strong> Malha Hidrográfica Municipal e Secretaria de Meio Ambiente</li>
-                  <li><strong>Sistema Viário:</strong> SEPLAN, DAER/RS, DNIT e ANTT / Rumo Logística</li>
-                </ul>
+              <!-- Fontes de Dados -->
+              <div class="about-card">
+                <div class="about-card-header">
+                  <span class="about-card-title">
+                    <i class="lucide-database"></i> Fontes de Dados
+                  </span>
+                </div>
+                <div class="about-data-list">
+                  <div class="about-data-item">
+                    <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> IBGE</span>
+                    <span class="about-data-desc">Dados censitários, demográficos e indicadores territoriais (Censo Demográfico 2022).</span>
+                  </div>
+                  <div class="about-data-item">
+                    <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> Dados Municipais</span>
+                    <span class="about-data-desc">Informações territoriais produzidas, organizadas ou disponibilizadas pela Prefeitura de Passo Fundo.</span>
+                  </div>
+                  <div class="about-data-item">
+                    <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> Sistema Viário e Infraestrutura</span>
+                    <span class="about-data-desc">Bases da malha urbana, estradas rurais, rodovias estaduais/federais e malha ferroviária.</span>
+                  </div>
+                  <div class="about-data-item">
+                    <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> Hidrografia</span>
+                    <span class="about-data-desc">Rede hidrográfica municipal, calha do Rio Passo Fundo, arroios e divisores de bacias.</span>
+                  </div>
+                  <div class="about-data-item">
+                    <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> Indicadores Territoriais</span>
+                    <span class="about-data-desc">Métricas oficiais para diagnósticos urbanos, habitacionais e socioeconômicos.</span>
+                  </div>
+                </div>
               </div>
 
-              <div class="about-section">
-                <h4>Contato Institucional</h4>
-                <p>Secretaria Municipal de Planejamento (SEPLAN)</p>
-                <p>Prefeitura Municipal de Passo Fundo / RS</p>
+              <!-- Natureza das Informações -->
+              <div class="about-disclaimer-box">
+                <span class="about-disclaimer-title">
+                  <i class="lucide-shield-alert" style="font-size:12px;"></i> Natureza das Informações
+                </span>
+                <p class="about-disclaimer-text">
+                  As informações apresentadas no WebGIS possuem finalidade técnica, informativa e de apoio ao planejamento territorial. Os dados podem possuir diferentes escalas, períodos de referência, metodologias de produção e níveis de atualização, conforme sua respectiva fonte.
+                </p>
+                <p class="about-disclaimer-text" style="margin-top: 4px; opacity: 0.9;">
+                  A representação cartográfica não substitui documentos oficiais, levantamentos topográficos específicos, projetos executivos, certidões ou procedimentos administrativos que dependam de análise própria.
+                </p>
+              </div>
+
+              <!-- Contato Institucional Resumido -->
+              <div class="about-card">
+                <div class="about-card-header">
+                  <span class="about-card-title">
+                    <i class="lucide-phone-call"></i> Contato Institucional
+                  </span>
+                  <button type="button" class="about-badge" onclick="document.getElementById('btn-open-about').click();" title="Abrir painel com todos os contatos das coordenadorias" style="cursor: pointer; border: 1px solid var(--about-accent);">
+                    Ver Todas Coordenadorias &rarr;
+                  </button>
+                </div>
+                <div class="about-contact-lead">
+                  <div class="about-contact-lead-header">
+                    <span class="about-contact-lead-role">Secretaria de Planejamento (SEPLAN)</span>
+                  </div>
+                  <div class="about-contact-lead-name">Diego Tessaro &bull; Secretário de Planejamento</div>
+                  <div class="about-contact-details">
+                    <div class="about-contact-line">
+                      <i class="lucide-mail"></i>
+                      <a href="mailto:seplan@pmpf.rs.gov.br" class="about-link">seplan@pmpf.rs.gov.br</a>
+                    </div>
+                    <div class="about-contact-line">
+                      <i class="lucide-phone"></i>
+                      <span>
+                        <a href="tel:+555433167220" class="about-link">(54) 3316-7220</a> &bull; 
+                        <a href="tel:+555433167222" class="about-link">(54) 3316-7222</a>
+                      </span>
+                    </div>
+                    <div class="about-contact-line">
+                      <i class="lucide-map-pin"></i>
+                      <span>Rua Dr. João Freitas, nº 75 — Passo Fundo/RS</span>
+                    </div>
+                    <div class="about-contact-line">
+                      <i class="lucide-clock"></i>
+                      <span>8h às 11h30min — 13h30min às 17h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desenvolvimento e Rodapé -->
+              <div class="about-footer">
+                <span class="about-footer-title">Desenvolvimento e Autoria</span>
+                <span class="about-footer-sub">WebGIS SEPLAN — Diagnósticos e Dados Territoriais</span>
+                <span class="about-footer-sub">Secretaria de Planejamento — Prefeitura Municipal de Passo Fundo/RS</span>
+                <span class="about-version-badge">Versão 1.0.0</span>
               </div>
             </div>
           </div>
