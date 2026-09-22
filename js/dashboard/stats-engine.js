@@ -17,7 +17,7 @@ export class StatsEngine {
       avgDensity: 262.9,
       bairrosCount: 23,
       distritosCount: 7,
-      setoresCount: 312,
+      setoresCount: 321,
       bairrosList: [
         { name: "Centro / Vila Vergueiro", pop: 26084 },
         { name: "São Cristóvão", pop: 20707 },
@@ -39,7 +39,7 @@ export class StatsEngine {
         { name: "Sede Independência", pop: 392 },
         { name: "Pulador", pop: 383 }
       ],
-      densityBuckets: { low: 18, medium: 42, high: 95, veryHigh: 105, extreme: 52 },
+      densityBuckets: { low: 23, medium: 13, high: 42, veryHigh: 110, extreme: 133 },
       censo2022: {
         popTotal: 205627,
         pop0a4: 12482,

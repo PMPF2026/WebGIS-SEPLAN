@@ -30,9 +30,9 @@ export const METRICS_ANALYTICAL_DATA = {
   },
   density: {
     labels: ['<50', '50-500', '500-2k', '2k-5k', '>5k'],
-    data: [18, 42, 95, 105, 52],
+    data: [23, 13, 42, 110, 133],
     colors: ['#fef0d9', '#fdcc8a', '#fc8d59', '#e34a33', '#b30000'],
-    total: 312,
+    total: 321,
     unit: 'setores'
   },
   age: {
@@ -108,7 +108,7 @@ export class MetricsCharts {
               <i class="lucide-bar-chart" style="color: #ea580c;"></i>
               Densidade Setorial (hab/km²)
             </span>
-            <span class="chart-badge">312 setores</span>
+            <span class="chart-badge">321 setores</span>
           </div>
           <div class="chart-wrapper" style="height: 180px;">
             <canvas id="chart-density-sidebar"></canvas>
@@ -187,7 +187,7 @@ export class MetricsCharts {
               <i class="lucide-bar-chart" style="color: #ea580c;"></i>
               Distribuição da Densidade Demográfica Setorial (hab/km²)
             </span>
-            <span class="chart-badge">312 setores censitários</span>
+            <span class="chart-badge">321 setores censitários</span>
           </div>
           <div class="chart-wrapper" style="height: 230px;">
             <canvas id="chart-density-modal"></canvas>

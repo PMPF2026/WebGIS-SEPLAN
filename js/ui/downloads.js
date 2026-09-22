@@ -48,7 +48,7 @@ export class DownloadsUI {
       'limite_territorial': 'PolÃ­gono oficial do limite territorial e administrativo do municÃ­pio de Passo Fundo (IBGE 2022).',
       'bairros': 'DelimitaÃ§Ã£o das regiÃµes urbanas, vilas e bairros municipais com populaÃ§Ã£o residente do Censo 2022.',
       'distritos': 'Pontos sedes dos distritos municipais de Passo Fundo (Sede, SÃ£o Roque, Bom Recreio, Bela Vista, Capinzal, Sede IndependÃªncia e Pulador).',
-      'setores_censitarios': 'Malha de 312 setores censitÃ¡rios do IBGE com dados demogrÃ¡ficos, domicÃ­lios e renda (Censo 2022).',
+      'setores_censitarios': 'Malha oficial consolidada de 321 setores censitários do IBGE com dados demográficos, domicílios e renda (Censo 2022).',
       'municipios_rs': 'Malha territorial dos 7 municÃ­pios limÃ­trofes que fazem fronteira com Passo Fundo (IBGE).',
       'limite_plano_diretor': 'Perímetro e zoneamento urbano oficial do Plano Diretor Municipal de Passo Fundo.',
       'mapeamento_sgb_2025': '25 polígonos de setores de risco geológico e hidrológico (R3 e R4) mapeados pelo Serviço Geológico do Brasil (SGB, 2025).',

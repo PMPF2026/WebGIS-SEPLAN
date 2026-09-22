@@ -463,7 +463,7 @@ export const LAYERS_CONFIG = [
     source: 'IBGE - Censo Demografico 2022',
     refDate: '2022',
     group: 'divisao_territorial',
-    geometryType: 'MultiPolygon',
+    geometryType: 'Polygon',
     defaultVisible: false,
     defaultOpacity: 0.75,
     zIndex: 25,

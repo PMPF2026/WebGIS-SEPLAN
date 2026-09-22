@@ -131,8 +131,8 @@ export const TERRITORIAL_METRICS = [
     id: 'total_setores_censitarios',
     groupId: 'divisao_territorial',
     title: 'Setores Censitários',
-    value: 312,
-    formattedValue: '312',
+    value: 321,
+    formattedValue: '321',
     unit: 'setores',
     subtitle: 'Unidades territoriais de coleta estatística do Censo 2022',
     source: 'IBGE — Censo Demográfico 2022',
@@ -140,7 +140,7 @@ export const TERRITORIAL_METRICS = [
     referenceYear: '2022',
     dataType: 'Malha Censitária',
     calculationStatus: 'oficial',
-    methodology: 'Contagem de feições poligonais da malha oficial de setores censitários de Passo Fundo (código do município 4314100).',
+    methodology: 'Contagem de feições poligonais da malha oficial de setores censitários de Passo Fundo (código do município 4314100). Malha oficial consolidada do Censo Demográfico 2022 (321 setores).',
     iconName: 'grid',
     associatedLayerId: 'setores_censitarios'
   },
@@ -373,7 +373,7 @@ export const TERRITORIAL_METRICS = [
     referenceYear: '2022',
     dataType: 'Demografia Oficial',
     calculationStatus: 'oficial',
-    methodology: 'População apurada no Censo Demográfico 2022, confirmada pela soma da variável V0001 nos 312 setores censitários municipais.',
+    methodology: 'População apurada no Censo Demográfico 2022, confirmada pela soma da variável V0001 nos 321 setores censitários municipais.',
     iconName: 'users',
     associatedLayerId: 'setores_censitarios'
   },
@@ -390,7 +390,7 @@ export const TERRITORIAL_METRICS = [
     referenceYear: '2022',
     dataType: 'Habitação e Domicílios',
     calculationStatus: 'oficial',
-    methodology: 'Soma da variável V0002 (domicílios particulares permanentes ocupados) nos 312 setores censitários municipais.',
+    methodology: 'Soma da variável V0002 (domicílios particulares permanentes ocupados) nos 321 setores censitários municipais.',
     iconName: 'building',
     associatedLayerId: 'setores_censitarios'
   },
