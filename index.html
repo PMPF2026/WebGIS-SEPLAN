@@ -583,27 +583,255 @@
 
   <!-- Modal Sobre / Informações -->
   <div class="modal-overlay" id="about-modal">
-    <div class="modal-card" style="max-width: 540px;">
+    <div class="modal-card about-modal-card">
       <div class="modal-header">
         <div class="modal-title">
           <i class="lucide-info"></i>
           <span>Sobre o WebGIS SEPLAN</span>
         </div>
-        <button class="modal-close-btn" id="btn-close-about-modal" title="Fechar">&times;</button>
+        <button class="modal-close-btn" id="btn-close-about-modal" title="Fechar (Esc)">&times;</button>
       </div>
-      <div class="modal-body" style="padding: 20px; line-height: 1.6;">
-        <div style="text-align: center; margin-bottom: 16px;">
-          <img src="assets/brasao.png" alt="Prefeitura de Passo Fundo" style="height: 64px;">
-          <h3 style="margin-top: 10px; color: var(--text-main);">Prefeitura Municipal de Passo Fundo</h3>
-          <p style="color: var(--text-muted); font-size: 13px;">Secretaria Municipal de Planejamento (SEPLAN)</p>
-        </div>
-        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 12px;">
-          O <strong>WebGIS SEPLAN</strong> é uma plataforma de inteligência territorial para consulta, visualização e diagnóstico das camadas geoespaciais do município de Passo Fundo.
-        </p>
-        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; font-size: 12.5px;">
-          <div><strong>Projeção:</strong> SIRGAS 2000 / UTM Fuso 22S (EPSG:31982)</div>
-          <div style="margin-top: 4px;"><strong>Visualização Web:</strong> EPSG:3857 (WGS 84 / Pseudo-Mercator)</div>
-          <div style="margin-top: 4px;"><strong>Versão:</strong> 1.0.0 (SEPLAN Passo Fundo)</div>
+      <div class="about-modal-body">
+        <div class="about-container">
+          <!-- Cabeçalho Institucional -->
+          <div class="about-hero-card">
+            <img src="assets/brasao.png" alt="Brasão Oficial da Prefeitura Municipal de Passo Fundo" class="about-logo">
+            <div class="about-hero-text">
+              <span class="about-hero-pretitle">Prefeitura Municipal de Passo Fundo/RS</span>
+              <h3 class="about-hero-title">WebGIS SEPLAN</h3>
+              <span class="about-hero-subtitle">Secretaria de Planejamento — SEPLAN</span>
+              <span class="about-hero-desc">Diagnósticos &amp; Dados Territoriais | Passo Fundo/RS</span>
+            </div>
+          </div>
+
+          <!-- Finalidade do Portal -->
+          <div class="about-card">
+            <div class="about-card-header">
+              <span class="about-card-title">
+                <i class="lucide-target"></i> Finalidade do Portal
+              </span>
+            </div>
+            <p class="about-text">
+              O <strong>WebGIS SEPLAN</strong> é uma plataforma de visualização, consulta e análise de informações territoriais do município de Passo Fundo/RS, desenvolvida para apoiar o planejamento urbano, a gestão territorial e a tomada de decisões no âmbito da Administração Pública Municipal.
+            </p>
+            <p class="about-text-muted">
+              A plataforma integra dados geográficos, territoriais, demográficos, socioeconômicos, de infraestrutura, mobilidade e recursos naturais em ambiente cartográfico digital.
+            </p>
+          </div>
+
+          <!-- Sistema de Referência Espacial -->
+          <div class="about-card">
+            <div class="about-card-header">
+              <span class="about-card-title">
+                <i class="lucide-compass"></i> Referência Espacial
+              </span>
+              <span class="about-badge">EPSG:31982</span>
+            </div>
+            <div class="about-spec-grid">
+              <div class="about-spec-item">
+                <span class="about-spec-label">Datum Geodésico</span>
+                <span class="about-spec-value">SIRGAS 2000</span>
+              </div>
+              <div class="about-spec-item">
+                <span class="about-spec-label">Sistema Projetado</span>
+                <span class="about-spec-value">SIRGAS 2000 / UTM 22S</span>
+              </div>
+              <div class="about-spec-item">
+                <span class="about-spec-label">Código EPSG Técnico</span>
+                <span class="about-spec-value">31982</span>
+              </div>
+              <div class="about-spec-item">
+                <span class="about-spec-label">Unidade Métrica</span>
+                <span class="about-spec-value">Metro (m)</span>
+              </div>
+            </div>
+            <div class="about-spec-footer">
+              <span>Visualização Cartográfica Web:</span>
+              <code>EPSG:3857 — WGS 84 / Pseudo-Mercator</code>
+            </div>
+          </div>
+
+          <!-- Fontes de Dados -->
+          <div class="about-card">
+            <div class="about-card-header">
+              <span class="about-card-title">
+                <i class="lucide-database"></i> Fontes de Dados
+              </span>
+            </div>
+            <div class="about-data-list">
+              <div class="about-data-item">
+                <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> IBGE</span>
+                <span class="about-data-desc">Dados censitários, demográficos e indicadores territoriais (Censo Demográfico 2022).</span>
+              </div>
+              <div class="about-data-item">
+                <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> Dados Municipais</span>
+                <span class="about-data-desc">Informações territoriais produzidas, organizadas ou disponibilizadas pela Prefeitura Municipal de Passo Fundo.</span>
+              </div>
+              <div class="about-data-item">
+                <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> Sistema Viário e Infraestrutura</span>
+                <span class="about-data-desc">Dados relacionados à malha urbana, estradas, rodovias estaduais/federais, ferrovia e demais elementos territoriais disponíveis no portal.</span>
+              </div>
+              <div class="about-data-item">
+                <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> Hidrografia</span>
+                <span class="about-data-desc">Informações referentes aos cursos d'água, calha do Rio Passo Fundo, arroios e demais elementos hidrográficos disponíveis.</span>
+              </div>
+              <div class="about-data-item">
+                <span class="about-data-header"><i class="lucide-check-circle-2" style="font-size:11px;"></i> Indicadores Territoriais</span>
+                <span class="about-data-desc">Informações oficiais utilizadas para análises demográficas, socioeconômicas e territoriais.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Natureza das Informações -->
+          <div class="about-disclaimer-box">
+            <span class="about-disclaimer-title">
+              <i class="lucide-shield-alert" style="font-size:12px;"></i> Natureza das Informações
+            </span>
+            <p class="about-disclaimer-text">
+              As informações apresentadas no WebGIS possuem finalidade técnica, informativa e de apoio ao planejamento territorial. Os dados podem possuir diferentes escalas, períodos de referência, metodologias de produção e níveis de atualização, conforme sua respectiva fonte.
+            </p>
+            <p class="about-disclaimer-text" style="margin-top: 4px; opacity: 0.9;">
+              A representação cartográfica não substitui documentos oficiais, levantamentos técnicos específicos, projetos executivos, certidões ou procedimentos administrativos que dependam de análise própria.
+            </p>
+          </div>
+
+          <!-- Dados e Camadas -->
+          <div class="about-card">
+            <div class="about-card-header">
+              <span class="about-card-title">
+                <i class="lucide-layers"></i> Dados e Camadas
+              </span>
+            </div>
+            <div class="about-layer-groups">
+              <div class="about-layer-group-item">
+                <span class="about-layer-group-title"><i class="lucide-map-pin"></i> Divisão Territorial &amp; Limites</span>
+                <span class="about-layer-group-desc">Informações relacionadas à organização territorial e aos limites municipais oficiais.</span>
+              </div>
+              <div class="about-layer-group-item">
+                <span class="about-layer-group-title"><i class="lucide-navigation"></i> Sistema Viário &amp; Transporte</span>
+                <span class="about-layer-group-desc">Malha urbana, estradas municipais, rodovias estaduais/federais e malha ferroviária.</span>
+              </div>
+              <div class="about-layer-group-item">
+                <span class="about-layer-group-title"><i class="lucide-droplet"></i> Hidrografia &amp; Recursos Hídricos</span>
+                <span class="about-layer-group-desc">Rio Passo Fundo, arroios, cursos d'água tributários e bacias hidrográficas.</span>
+              </div>
+              <div class="about-layer-group-item">
+                <span class="about-layer-group-title"><i class="lucide-users"></i> População &amp; Indicadores Econômicos</span>
+                <span class="about-layer-group-desc">Informações demográficas, estrutura etária, densidade e rendimento do Censo 2022.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contato Institucional Completo -->
+          <div class="about-card">
+            <div class="about-card-header">
+              <span class="about-card-title">
+                <i class="lucide-phone-call"></i> Contato Institucional
+              </span>
+              <span class="about-badge">SEPLAN</span>
+            </div>
+
+            <!-- Card Destaque: Secretário -->
+            <div class="about-contact-lead">
+              <div class="about-contact-lead-header">
+                <span class="about-contact-lead-role">Secretaria de Planejamento — SEPLAN</span>
+              </div>
+              <div class="about-contact-lead-name">Diego Tessaro &bull; Secretário de Planejamento</div>
+              <div class="about-contact-details">
+                <div class="about-contact-line">
+                  <i class="lucide-mail"></i>
+                  <span>E-mail: <a href="mailto:seplan@pmpf.rs.gov.br" class="about-link">seplan@pmpf.rs.gov.br</a></span>
+                </div>
+                <div class="about-contact-line">
+                  <i class="lucide-phone"></i>
+                  <span>Telefones: <a href="tel:+555433167220" class="about-link">(54) 3316-7220</a> &bull; <a href="tel:+555433167222" class="about-link">(54) 3316-7222</a></span>
+                </div>
+                <div class="about-contact-line">
+                  <i class="lucide-map-pin"></i>
+                  <span>Endereço: Rua Dr. João Freitas, nº 75 — Passo Fundo/RS</span>
+                </div>
+                <div class="about-contact-line">
+                  <i class="lucide-clock"></i>
+                  <span>Horário de Atendimento: 8h às 11h30min — 13h30min às 17h</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grade de Coordenadorias -->
+            <div class="about-coord-grid">
+              <!-- 1. Administração -->
+              <div class="about-coord-card">
+                <div class="about-coord-title"><i class="lucide-building"></i> Coordenadoria de Administração e Planejamento</div>
+                <div class="about-coord-body">
+                  <div>E-mail: <a href="mailto:seplan@pmpf.rs.gov.br" class="about-link">seplan@pmpf.rs.gov.br</a></div>
+                  <div>Telefone: <a href="tel:+555433167222" class="about-link">(54) 3316-7222</a></div>
+                </div>
+              </div>
+
+              <!-- 2. Cadastro Multifinalitário -->
+              <div class="about-coord-card">
+                <div class="about-coord-title"><i class="lucide-file-text"></i> Coordenadoria de Cadastro Multifinalitário</div>
+                <div class="about-coord-body">
+                  <div>E-mails: <a href="mailto:cadastro@pmpf.rs.gov.br" class="about-link">cadastro@pmpf.rs.gov.br</a> &bull; <a href="mailto:seplan@pmpf.rs.gov.br" class="about-link">seplan@pmpf.rs.gov.br</a></div>
+                  <div>Certidões: <a href="tel:+555433167230" class="about-link">(54) 3316-7230</a></div>
+                  <div>Revisões: <a href="tel:+555433167234" class="about-link">(54) 3316-7234</a></div>
+                </div>
+              </div>
+
+              <!-- 3. Gestão Pública e Planejamento Estratégico -->
+              <div class="about-coord-card">
+                <div class="about-coord-title"><i class="lucide-line-chart"></i> Coordenadoria de Gestão Pública e Planejamento Estratégico</div>
+                <div class="about-coord-body">
+                  <div>E-mail: <a href="mailto:seplan@pmpf.rs.gov.br" class="about-link">seplan@pmpf.rs.gov.br</a></div>
+                  <div>Telefone: <a href="tel:+555433167131" class="about-link">(54) 3316-7131</a></div>
+                </div>
+              </div>
+
+              <!-- 4. Planejamento e Programação Orçamentária -->
+              <div class="about-coord-card">
+                <div class="about-coord-title"><i class="lucide-wallet"></i> Coordenadoria de Planejamento e Programação Orçamentária</div>
+                <div class="about-coord-body">
+                  <div>E-mail: <a href="mailto:seplan@pmpf.rs.gov.br" class="about-link">seplan@pmpf.rs.gov.br</a></div>
+                  <div>Telefone: <a href="tel:+555433167234" class="about-link">(54) 3316-7234</a></div>
+                </div>
+              </div>
+
+              <!-- 5. Projetos Setoriais -->
+              <div class="about-coord-card">
+                <div class="about-coord-title"><i class="lucide-layout-grid"></i> Coordenadoria de Projetos Setoriais</div>
+                <div class="about-coord-body">
+                  <div>E-mail: <a href="mailto:seplan@pmpf.rs.gov.br" class="about-link">seplan@pmpf.rs.gov.br</a></div>
+                  <div>Telefone: <a href="tel:+555433167234" class="about-link">(54) 3316-7234</a></div>
+                </div>
+              </div>
+
+              <!-- 6. Equipe Técnica do Plano Diretor -->
+              <div class="about-coord-card">
+                <div class="about-coord-title"><i class="lucide-map"></i> Equipe Técnica do Plano Diretor</div>
+                <div class="about-coord-body">
+                  <div>E-mail: <a href="mailto:seplan@pmpf.rs.gov.br" class="about-link">seplan@pmpf.rs.gov.br</a></div>
+                  <div>Telefone: <a href="tel:+555433167220" class="about-link">(54) 3316-7220</a></div>
+                </div>
+              </div>
+
+              <!-- 7. Revisão do Plano Diretor -->
+              <div class="about-coord-card" style="grid-column: 1 / -1;">
+                <div class="about-coord-title"><i class="lucide-compass"></i> Revisão do Plano Diretor</div>
+                <div class="about-coord-body">
+                  <div>E-mail: <a href="mailto:planodiretor@pmpf.rs.gov.br" class="about-link">planodiretor@pmpf.rs.gov.br</a></div>
+                  <div>Telefone: <a href="tel:+555433167220" class="about-link">(54) 3316-7220</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desenvolvimento e Autoria Técnica -->
+          <div class="about-footer">
+            <span class="about-footer-title">Desenvolvimento e Autoria Técnica</span>
+            <span class="about-footer-sub">WebGIS SEPLAN — Diagnósticos e Dados Territoriais | Passo Fundo/RS</span>
+            <span class="about-footer-sub">Desenvolvido no âmbito da Secretaria de Planejamento — Prefeitura Municipal de Passo Fundo/RS</span>
+            <span class="about-version-badge">Versão 1.0.0</span>
+          </div>
         </div>
       </div>
     </div>
