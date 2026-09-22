@@ -201,16 +201,16 @@ export class MetricsCharts {
           </div>
         </div>
 
-        <!-- 4. Estrutura Etária -->
+        <!-- 4. Pirâmide Etária -->
         <div class="chart-card">
           <div class="chart-card-header">
             <span class="chart-card-title">
-              <i class="lucide-users" style="color: #10b981;"></i>
-              Estrutura Etária da População Residente (Censo IBGE 2022)
+              <i class="lucide-users" style="color: #38bdf8;"></i>
+              Pirâmide Etária Oficial — Censo 2022 (Homens × Mulheres)
             </span>
-            <span class="chart-badge">Total: 206.215 habitantes</span>
+            <span class="chart-badge">Razão: 90,0 H/100 M · Envelhecimento: 92,5%</span>
           </div>
-          <div class="chart-wrapper" style="height: 230px;">
+          <div class="chart-wrapper" style="height: 260px;">
             <canvas id="chart-age-modal"></canvas>
           </div>
         </div>
