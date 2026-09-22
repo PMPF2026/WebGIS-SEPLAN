@@ -46,9 +46,9 @@ export const ITEM6_LAYER_DEFINITIONS = {
     unitNote: 'Habitantes por km² (hab/km²)'
   },
   censo_renda_vulnerabilidade: {
-    title: 'Vulnerabilidade Social',
-    subtitle: 'Rendimento Médio Domiciliar — Censo 2022',
-    unitNote: 'Rendimento nominal médio domiciliar (R$)'
+    title: 'Rendimento Médio Domiciliar',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'Rendimento nominal médio mensal por domicílio (R$)'
   }
 };
 
