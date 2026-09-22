@@ -837,7 +837,7 @@ export const LAYERS_CONFIG = [
   },
   {
     id: 'censo_renda_vulnerabilidade',
-    name: 'Vulnerabilidade Social — Rendimento Médio Domiciliar (Censo 2022)',
+    name: 'Rendimento Médio Domiciliar — Censo 2022 (R$)',
     fileName: 'cn22_pop05_rsp_tot_0_4314100_georedus_censo_2022.geojson',
     source: 'IBGE - Censo Demográfico 2022 (Redus)',
     refDate: '2022',
@@ -850,11 +850,12 @@ export const LAYERS_CONFIG = [
     isChoropleth: true,
     choroplethField: 'cn22_pop05_rsp_tot_0',
     choroplethBreaks: [
-      { max: 2000, color: 'rgba(247, 230, 197, 0.75)', label: 'Até R$ 2.000 (Alta Vulnerabilidade Social)' },
-      { max: 3000, color: 'rgba(232, 195, 158, 0.75)', label: 'R$ 2.000 - R$ 3.000 (Média-Alta Vulnerabilidade)' },
-      { max: 4500, color: 'rgba(201, 130, 91, 0.75)', label: 'R$ 3.000 - R$ 4.500 (Média Vulnerabilidade)' },
-      { max: 7000, color: 'rgba(155, 79, 54, 0.75)', label: 'R$ 4.500 - R$ 7.000 (Média-Baixa Vulnerabilidade)' },
-      { max: Infinity, color: 'rgba(90, 36, 24, 0.75)', label: '> R$ 7.000 (Baixa Vulnerabilidade)' }
+      { max: 2000, color: 'rgba(247, 230, 197, 0.75)', label: 'Até R$ 2.000' },
+      { max: 3000, color: 'rgba(232, 195, 158, 0.75)', label: 'R$ 2.000 - R$ 3.000' },
+      { max: 4500, color: 'rgba(215, 155, 110, 0.75)', label: 'R$ 3.000 - R$ 4.500' },
+      { max: 7000, color: 'rgba(185, 110, 70, 0.75)', label: 'R$ 4.500 - R$ 7.000' },
+      { max: 10000, color: 'rgba(145, 65, 40, 0.75)', label: 'R$ 7.000 - R$ 10.000' },
+      { max: Infinity, color: 'rgba(85, 28, 15, 0.75)', label: '> R$ 10.000' }
     ],
     style: {
       strokeColor: '#5a2418',
@@ -863,13 +864,13 @@ export const LAYERS_CONFIG = [
     },
     popupConfig: {
       titleField: 'id',
-      titlePrefix: 'Vulnerabilidade / Renda — Setor ',
+      titlePrefix: 'Rendimento Médio — Setor ',
       fields: [
-        { key: 'rendimento_reais', label: 'Rendimento Médio Domiciliar' },
-        { key: 'faixa_rendimento', label: 'Faixa de Rendimento (Cor)' }
+        { key: 'id', label: 'Código do Setor Censitário' },
+        { key: 'cn22_pop05_rsp_tot_0', label: 'Rendimento Médio Domiciliar', format: 'currency' }
       ]
     },
-    description: 'Rendimento médio mensal domiciliar por setor censitário pelo Censo IBGE 2022, indicador chave de vulnerabilidade socioeconômica para a Defesa Civil.',
+    description: 'Rendimento nominal médio mensal por domicílio apurado por setor censitário no Censo Demográfico IBGE 2022.',
     searchable: true,
     searchFields: ['id']
   },
