@@ -380,44 +380,88 @@ export class MetricsCharts {
       });
     }
 
-    // 4. Age Structure (Bar)
+    // 4. Pirâmide Etária (Horizontal Divergent Bar)
     const ageCtx = document.getElementById('chart-age-sidebar');
     if (ageCtx) {
       this.charts.sidebar.age = new Chart(ageCtx, {
         type: 'bar',
         data: {
           labels: METRICS_ANALYTICAL_DATA.age.labels,
-          datasets: [{
-            label: 'Habitantes',
-            data: METRICS_ANALYTICAL_DATA.age.data,
-            backgroundColor: METRICS_ANALYTICAL_DATA.age.colors,
-            borderRadius: 4
-          }]
+          datasets: [
+            {
+              label: 'Homens',
+              data: METRICS_ANALYTICAL_DATA.age.homens.map(v => -v),
+              backgroundColor: '#38bdf8',
+              hoverBackgroundColor: '#0284c7',
+              borderRadius: 3,
+              borderSkipped: false
+            },
+            {
+              label: 'Mulheres',
+              data: METRICS_ANALYTICAL_DATA.age.mulheres,
+              backgroundColor: '#f472b6',
+              hoverBackgroundColor: '#db2777',
+              borderRadius: 3,
+              borderSkipped: false
+            }
+          ]
         },
         options: {
+          indexAxis: 'y',
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false },
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                color: '#cbd5e1',
+                font: { size: 9.5, weight: '500' },
+                boxWidth: 8,
+                padding: 6
+              }
+            },
             tooltip: {
               callbacks: {
                 label: (ctx) => {
-                  const val = ctx.raw;
-                  const total = METRICS_ANALYTICAL_DATA.age.total;
-                  const pct = ((val / total) * 100).toFixed(1);
-                  return ` ${formatNumber(val, 0)} habitantes (${pct}%)`;
+                  const raw = Math.abs(ctx.raw);
+                  const totalPop = METRICS_ANALYTICAL_DATA.age.total;
+                  const pct = ((raw / totalPop) * 100).toFixed(2);
+                  return ` ${ctx.dataset.label}: ${formatNumber(raw, 0)} hab (${pct}%)`;
+                },
+                footer: (items) => {
+                  if (!items.length) return '';
+                  const idx = items[0].dataIndex;
+                  const tot = METRICS_ANALYTICAL_DATA.age.totalPorFaixa[idx];
+                  const pct = ((tot / METRICS_ANALYTICAL_DATA.age.total) * 100).toFixed(2);
+                  return `Total da faixa: ${formatNumber(tot, 0)} hab (${pct}%)`;
                 }
               }
             }
           },
           scales: {
             x: {
-              ticks: { color: '#94a3b8', font: { size: 9 } },
-              grid: { display: false }
+              stacked: false,
+              ticks: {
+                color: '#94a3b8',
+                font: { size: 8.5 },
+                callback: (val) => {
+                  const abs = Math.abs(val);
+                  return abs >= 1000 ? `${(abs / 1000).toFixed(0)}k` : abs;
+                }
+              },
+              grid: {
+                color: (ctx) => ctx.tick && ctx.tick.value === 0 ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.05)',
+                lineWidth: (ctx) => ctx.tick && ctx.tick.value === 0 ? 1.5 : 1
+              }
             },
             y: {
-              ticks: { color: '#94a3b8', font: { size: 9 } },
-              grid: { color: 'rgba(255, 255, 255, 0.05)' }
+              stacked: true,
+              ticks: {
+                color: '#cbd5e1',
+                font: { size: 8.5 }
+              },
+              grid: { display: false }
             }
           }
         }
@@ -595,44 +639,90 @@ export class MetricsCharts {
       });
     }
 
-    // 4. Age (Modal)
+    // 4. Pirâmide Etária (Modal)
     const ageCtx = document.getElementById('chart-age-modal');
     if (ageCtx) {
       this.charts.modal.age = new Chart(ageCtx, {
         type: 'bar',
         data: {
           labels: METRICS_ANALYTICAL_DATA.age.labels,
-          datasets: [{
-            label: 'Habitantes',
-            data: METRICS_ANALYTICAL_DATA.age.data,
-            backgroundColor: METRICS_ANALYTICAL_DATA.age.colors,
-            borderRadius: 6
-          }]
+          datasets: [
+            {
+              label: 'Homens (47,38% • 97.467 hab)',
+              data: METRICS_ANALYTICAL_DATA.age.homens.map(v => -v),
+              backgroundColor: '#38bdf8',
+              hoverBackgroundColor: '#0284c7',
+              borderRadius: 4,
+              borderSkipped: false
+            },
+            {
+              label: 'Mulheres (52,62% • 108.243 hab)',
+              data: METRICS_ANALYTICAL_DATA.age.mulheres,
+              backgroundColor: '#f472b6',
+              hoverBackgroundColor: '#db2777',
+              borderRadius: 4,
+              borderSkipped: false
+            }
+          ]
         },
         options: {
+          indexAxis: 'y',
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false },
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                color: '#cbd5e1',
+                font: { size: 11, weight: '500' },
+                boxWidth: 12,
+                padding: 10
+              }
+            },
             tooltip: {
               callbacks: {
                 label: (ctx) => {
-                  const val = ctx.raw;
-                  const total = METRICS_ANALYTICAL_DATA.age.total;
-                  const pct = ((val / total) * 100).toFixed(1);
-                  return ` ${formatNumber(val, 0)} habitantes (${pct}%)`;
+                  const raw = Math.abs(ctx.raw);
+                  const isM = ctx.datasetIndex === 0;
+                  const totalPop = METRICS_ANALYTICAL_DATA.age.total;
+                  const pct = ((raw / totalPop) * 100).toFixed(2);
+                  const nome = isM ? 'Homens' : 'Mulheres';
+                  return ` ${nome}: ${formatNumber(raw, 0)} habitantes (${pct}% da população)`;
+                },
+                footer: (items) => {
+                  if (!items.length) return '';
+                  const idx = items[0].dataIndex;
+                  const tot = METRICS_ANALYTICAL_DATA.age.totalPorFaixa[idx];
+                  const pct = ((tot / METRICS_ANALYTICAL_DATA.age.total) * 100).toFixed(2);
+                  return `Total da faixa etária: ${formatNumber(tot, 0)} hab (${pct}% do município)`;
                 }
               }
             }
           },
           scales: {
             x: {
-              ticks: { color: '#94a3b8', font: { size: 10.5 } },
-              grid: { display: false }
+              stacked: false,
+              ticks: {
+                color: '#94a3b8',
+                font: { size: 10 },
+                callback: (val) => {
+                  const abs = Math.abs(val);
+                  return abs >= 1000 ? `${(abs / 1000).toFixed(0)}k` : abs;
+                }
+              },
+              grid: {
+                color: (ctx) => ctx.tick && ctx.tick.value === 0 ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.05)',
+                lineWidth: (ctx) => ctx.tick && ctx.tick.value === 0 ? 1.5 : 1
+              }
             },
             y: {
-              ticks: { color: '#94a3b8', font: { size: 10 } },
-              grid: { color: 'rgba(255, 255, 255, 0.05)' }
+              stacked: true,
+              ticks: {
+                color: '#cbd5e1',
+                font: { size: 9.5 }
+              },
+              grid: { display: false }
             }
           }
         }
