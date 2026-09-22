@@ -467,15 +467,23 @@
 /* ==========================================================================
    Estilização Específica do Modal Expandido
    ========================================================================== */
+#about-modal.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 .about-modal-card {
   max-width: 860px !important;
   width: 92vw;
   max-height: 88vh;
   display: flex;
   flex-direction: column;
-  background: var(--about-bg-card);
+  background: #182234 !important;
+  background-color: #182234 !important;
+  opacity: 1 !important;
+  animation: none !important;
   border: 1px solid var(--about-border);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
 }
 
 .about-modal-body {
@@ -485,6 +493,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  background-color: #182234;
 }
 
 /* ==========================================================================
