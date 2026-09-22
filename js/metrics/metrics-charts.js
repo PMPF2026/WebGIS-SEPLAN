@@ -36,10 +36,17 @@ export const METRICS_ANALYTICAL_DATA = {
     unit: 'setores'
   },
   age: {
-    labels: ['0-4 anos', '5-9 anos', '10-14', '15-19', '20-59', '60+ anos'],
-    data: [12482, 13200, 12560, 12533, 119496, 35944],
-    colors: ['#ea580c', '#f97316', '#d97706', '#65a30d', '#10b981', '#7c3aed'],
-    total: 206215,
+    labels: ['0 a 4', '5 a 9', '10 a 14', '15 a 19', '20 a 24', '25 a 29', '30 a 39', '40 a 49', '50 a 59', '60 a 69', '70+'],
+    homens: [6392, 6762, 6330, 6275, 7910, 8206, 16125, 13677, 11028, 8494, 6067],
+    mulheres: [6064, 6407, 6191, 6212, 8390, 8600, 17185, 15082, 13188, 11238, 9508],
+    totalPorFaixa: [12482, 13200, 12560, 12533, 16337, 16830, 33328, 28767, 24234, 19750, 15606],
+    total: 205710,
+    totalHomens: 97467,
+    totalMulheres: 108243,
+    pctHomens: 47.38,
+    pctMulheres: 52.62,
+    razaoSexo: 90.04,
+    indiceEnvelhecimento: 92.45,
     unit: 'habitantes'
   },
   income: {
@@ -115,16 +122,16 @@ export class MetricsCharts {
           </div>
         </div>
 
-        <!-- 4. Estrutura Etária -->
+        <!-- 4. Estrutura Etária / Pirâmide -->
         <div class="chart-card" style="margin-bottom: 12px;">
           <div class="chart-card-header">
             <span class="chart-card-title">
-              <i class="lucide-users" style="color: #10b981;"></i>
-              Estrutura Etária (Censo 2022)
+              <i class="lucide-users" style="color: #38bdf8;"></i>
+              Pirâmide Etária — Censo 2022
             </span>
-            <span class="chart-badge">206.215 hab</span>
+            <span class="chart-badge">♂ 47,4% · ♀ 52,6%</span>
           </div>
-          <div class="chart-wrapper" style="height: 180px;">
+          <div class="chart-wrapper" style="height: 230px;">
             <canvas id="chart-age-sidebar"></canvas>
           </div>
         </div>
