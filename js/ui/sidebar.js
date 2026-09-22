@@ -89,6 +89,8 @@ export class SidebarUI {
       this.legendUI.render();
     } else if (tabId === 'dashboard' && window.webGis && window.webGis.dashboardUI) {
       window.webGis.dashboardUI.render();
+    } else if (tabId === 'metricas' && window.webGis && window.webGis.metricsUI) {
+      window.webGis.metricsUI.onTabActivated();
     }
   }
 

@@ -6,6 +6,7 @@
 import { TERRITORIAL_METRICS, TERRITORIAL_METRICS_GROUPS } from './metrics-data.js';
 import { LAYERS_CONFIG } from '../config/layers.config.js';
 import { Notification } from '../ui/notification.js';
+import { MetricsCharts } from './metrics-charts.js';
 
 export class MetricsUI {
   constructor(layerManager, mapEngine, sidebarUI) {
@@ -16,15 +17,19 @@ export class MetricsUI {
     this.activeFilter = 'all';
     this.searchQuery = '';
     this.isModalOpen = false;
+    this.modalViewMode = 'cards';
 
     // DOM Elements
     this.modal = document.getElementById('metrics-modal');
     this.modalBody = document.getElementById('metrics-modal-body');
     this.searchInput = document.getElementById('metrics-search-input');
     this.filterContainer = document.getElementById('metrics-filter-pills');
+    this.viewToggle = document.getElementById('metrics-view-toggle');
     this.openBtnHeader = document.getElementById('btn-open-metrics');
     this.closeBtnModal = document.getElementById('btn-close-metrics-modal');
     this.sidebarContainer = document.getElementById('sidebar-metrics-container');
+
+    this.metricsCharts = new MetricsCharts(layerManager, mapEngine);
 
     this.init();
   }
@@ -76,6 +81,16 @@ export class MetricsUI {
       });
     }
 
+    // Toggle Cards vs Gráficos no Modal
+    if (this.viewToggle) {
+      this.viewToggle.addEventListener('click', (e) => {
+        const btn = e.target.closest('.metrics-view-btn');
+        if (!btn) return;
+        const view = btn.getAttribute('data-view') || 'cards';
+        this.setModalViewMode(view);
+      });
+    }
+
     // Keyboard ESC shortcut
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isModalOpen) {
@@ -108,9 +123,51 @@ export class MetricsUI {
     if (this.searchInput) this.searchInput.value = '';
 
     this.updateFilterPillsUI();
-    this.renderModalMetrics();
+    this.updateViewToggleUI();
+
+    if (this.modalViewMode === 'charts') {
+      if (this.filterContainer) this.filterContainer.style.display = 'none';
+      const searchWrapper = this.modal ? this.modal.querySelector('.metrics-search-wrapper') : null;
+      if (searchWrapper) searchWrapper.style.display = 'none';
+      this.modalBody.innerHTML = this.metricsCharts.getModalChartsHtml();
+      this.refreshIcons();
+      this.metricsCharts.initModalCharts();
+    } else {
+      if (this.filterContainer) this.filterContainer.style.display = 'flex';
+      const searchWrapper = this.modal ? this.modal.querySelector('.metrics-search-wrapper') : null;
+      if (searchWrapper) searchWrapper.style.display = 'flex';
+      this.renderModalMetrics();
+    }
+
     this.modal.classList.add('active');
     this.refreshIcons();
+  }
+
+  setModalViewMode(mode) {
+    this.modalViewMode = mode;
+    this.updateViewToggleUI();
+
+    if (mode === 'charts') {
+      if (this.filterContainer) this.filterContainer.style.display = 'none';
+      const searchWrapper = this.modal ? this.modal.querySelector('.metrics-search-wrapper') : null;
+      if (searchWrapper) searchWrapper.style.display = 'none';
+      this.modalBody.innerHTML = this.metricsCharts.getModalChartsHtml();
+      this.refreshIcons();
+      this.metricsCharts.initModalCharts();
+    } else {
+      if (this.filterContainer) this.filterContainer.style.display = 'flex';
+      const searchWrapper = this.modal ? this.modal.querySelector('.metrics-search-wrapper') : null;
+      if (searchWrapper) searchWrapper.style.display = 'flex';
+      this.renderModalMetrics();
+    }
+  }
+
+  updateViewToggleUI() {
+    if (!this.viewToggle) return;
+    this.viewToggle.querySelectorAll('.metrics-view-btn').forEach(btn => {
+      const isTarget = btn.getAttribute('data-view') === this.modalViewMode;
+      btn.classList.toggle('active', isTarget);
+    });
   }
 
   closeModal() {
@@ -303,8 +360,23 @@ export class MetricsUI {
     });
 
     html += `</div>`;
+
+    // Gráficos Analíticos Territoriais (compatível com padrão institucional Defesa Civil)
+    html += this.metricsCharts.getSidebarChartsHtml();
+
     this.sidebarContainer.innerHTML = html;
     this.refreshIcons();
+
+    // Inicializar instâncias interativas do Chart.js
+    this.metricsCharts.initSidebarCharts();
+  }
+
+  onTabActivated() {
+    if (this.metricsCharts) {
+      setTimeout(() => {
+        this.metricsCharts.resizeCharts();
+      }, 80);
+    }
   }
 
   handleViewOnMap(layerId) {

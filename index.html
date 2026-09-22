@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="css/map-controls.css">
   <link rel="stylesheet" href="css/popup.css">
   <link rel="stylesheet" href="css/metrics.css">
+  <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/analysis.css">
 </head>
 <body>
@@ -447,6 +448,15 @@
           <i class="lucide-search"></i>
           <input type="text" id="metrics-search-input" class="metrics-search-input" placeholder="Buscar métrica ou indicador..." />
         </div>
+
+        <div class="metrics-view-toggle" id="metrics-view-toggle">
+          <button class="metrics-view-btn active" data-view="cards" title="Visualizar Cards de Indicadores">
+            <i class="lucide-layout-grid" style="font-size:12px;"></i> Indicadores
+          </button>
+          <button class="metrics-view-btn" data-view="charts" title="Visualizar Gráficos Analíticos">
+            <i class="lucide-bar-chart-2" style="font-size:12px;"></i> Gráficos
+          </button>
+        </div>
       </div>
 
       <!-- Corpo com os cards agrupados -->
@@ -496,6 +506,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ol@v10.3.1/dist/ol.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
