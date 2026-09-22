@@ -312,6 +312,8 @@ export class MetricsUI {
       'extensao_total_malha_viaria',
       'extensao_rio_passo_fundo',
       'populacao_total_censo_2022',
+      'razao_sexo_censo_2022',
+      'indice_envelhecimento_censo_2022',
       'total_domicilios_censo_2022',
       'densidade_demografica_media',
       'rendimento_medio_domiciliar'
