@@ -316,7 +316,8 @@ export class MetricsUI {
       'indice_envelhecimento_censo_2022',
       'total_domicilios_censo_2022',
       'densidade_demografica_media',
-      'rendimento_medio_domiciliar'
+      'rendimento_medio_domiciliar',
+      'bairro_maior_envelhecimento'
     ];
 
     const featuredMetrics = featuredIds

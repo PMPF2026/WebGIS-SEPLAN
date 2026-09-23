@@ -513,3 +513,64 @@
   letter-spacing: 0.2px;
 }
 
+/* Toggle de Métricas nos Gráficos (Envelhecimento vs Razão de Sexo) */
+.chart-toggle-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.btn-chart-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-chart-toggle:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-chart-toggle.active {
+  background: #7c3aed;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(124, 58, 237, 0.35);
+}
+
+.bairros-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 6px;
+}
+
+.bairros-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bairros-legend-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+

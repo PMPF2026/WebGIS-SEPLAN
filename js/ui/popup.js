@@ -8,6 +8,7 @@ import { toUTM22S } from '../utils/projection.js';
 import { Notification } from './notification.js';
 import { PlugfieldService } from '../weather/plugfield-service.js';
 import { WeatherService } from '../weather/weather-service.js';
+import { BAIRROS_LOOKUP } from '../metrics/demographics-bairros.js';
 
 export class PopupUI {
   constructor(mapEngine, layerManager) {
@@ -169,6 +170,18 @@ export class PopupUI {
             this.renderCurrentFeature();
           }
         }).catch(() => {});
+      }
+    }
+
+    // 4.2. Se for bairro/região SEPLAN, injeta indicadores demográficos oficiais do Censo 2022
+    if (layerConfig.id === 'bairros' || (props['Name'] && String(props['Name']).startsWith('Setor '))) {
+      const bKey = props['Name'] || (props['Descri____'] && props['Descri____'].toLowerCase());
+      const bData = BAIRROS_LOOKUP[bKey] || (props['Descri____'] && BAIRROS_LOOKUP[props['Descri____'].toLowerCase()]);
+      if (bData) {
+        props['pop_censo_2022'] = `${formatNumber(bData.pop, 0)} habitantes`;
+        props['indice_envelhecimento_censo'] = `${bData.indice_envelhecimento.toFixed(1).replace('.', ',')}% (${bData.perfil})`;
+        props['razao_sexo_censo'] = `${bData.razao_sexo.toFixed(1).replace('.', ',')} H / 100 M (♂ ${bData.pct_homens.toFixed(1).replace('.', ',')}% · ♀ ${bData.pct_mulheres.toFixed(1).replace('.', ',')}%)`;
+        props['faixa_etaria_censo'] = `Idosos 60+: ${formatNumber(bData.idosos_60m, 0)} (${bData.pct_idosos.toFixed(1).replace('.', ',')}%) • Jovens 0-14: ${formatNumber(bData.jovens_0a14, 0)} (${bData.pct_jovens.toFixed(1).replace('.', ',')}%)`;
       }
     }
 

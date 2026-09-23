@@ -416,8 +416,10 @@ export const LAYERS_CONFIG = [
       fields: [
         { key: 'Name', label: 'Identificador' },
         { key: 'Descri____', label: 'Região / Bairro' },
-        { key: 'Pop_2022', label: 'População Estimada (2022)', format: 'number' },
-        { key: 'Variaca(%)', label: 'Variação Populacional (%)', format: 'number' },
+        { key: 'pop_censo_2022', label: 'População Oficial (Censo 2022)' },
+        { key: 'indice_envelhecimento_censo', label: 'Índice de Envelhecimento' },
+        { key: 'razao_sexo_censo', label: 'Razão de Sexo (Censo 2022)' },
+        { key: 'faixa_etaria_censo', label: 'Estrutura Etária (Censo 2022)' },
         { key: 'Dados', label: 'Vilas e Loteamentos Integrantes' }
       ]
     },

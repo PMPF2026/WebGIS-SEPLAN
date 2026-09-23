@@ -11,6 +11,7 @@
  */
 
 import { formatNumber } from '../utils/formatters.js';
+import { BAIRROS_DEMOGRAFIA } from './demographics-bairros.js';
 
 export const METRICS_ANALYTICAL_DATA = {
   roads: {
@@ -56,6 +57,12 @@ export const METRICS_ANALYTICAL_DATA = {
     total: 307,
     media: 3895.50,
     unit: 'setores'
+  },
+  bairros: {
+    data: BAIRROS_DEMOGRAFIA,
+    total: 24,
+    maiorEnvelhecimento: { nome: 'Centro e Vila Vergueiro', valor: 205.49 },
+    menorEnvelhecimento: { nome: 'José Alexandre Zachia', valor: 40.97 }
   }
 };
 
@@ -63,6 +70,10 @@ export class MetricsCharts {
   constructor(layerManager, mapEngine) {
     this.layerManager = layerManager;
     this.mapEngine = mapEngine;
+    this.activeBairrosMetric = {
+      sidebar: 'envelhecimento',
+      modal: 'envelhecimento'
+    };
     this.charts = {
       sidebar: {},
       modal: {}
@@ -149,6 +160,33 @@ export class MetricsCharts {
             <canvas id="chart-income-sidebar"></canvas>
           </div>
         </div>
+
+        <!-- 6. Demografia por Bairro (Envelhecimento & Razão de Sexo) -->
+        <div class="chart-card" style="margin-bottom: 12px;">
+          <div class="chart-card-header" style="flex-wrap: wrap; gap: 6px;">
+            <span class="chart-card-title">
+              <i class="lucide-activity" style="color: #a855f7;"></i>
+              Envelhecimento & Sexo por Bairro
+            </span>
+            <div class="chart-toggle-group">
+              <button type="button" class="btn-chart-toggle ${this.activeBairrosMetric.sidebar === 'envelhecimento' ? 'active' : ''}" data-metric="envelhecimento" data-scope="sidebar" title="Visualizar Índice de Envelhecimento (%)">
+                Envelh. (%)
+              </button>
+              <button type="button" class="btn-chart-toggle ${this.activeBairrosMetric.sidebar === 'razao' ? 'active' : ''}" data-metric="razao" data-scope="sidebar" title="Visualizar Razão de Sexo (Homens / 100 Mulheres)">
+                Razão H/M
+              </button>
+            </div>
+          </div>
+          <div class="chart-wrapper" style="height: 440px;">
+            <canvas id="chart-demografia-bairros-sidebar"></canvas>
+          </div>
+          <div class="bairros-chart-legend" id="bairros-sidebar-legend" style="font-size: 9px; justify-content: center;">
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #7c3aed;"></span>&gt;130%</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #3b82f6;"></span>90-130%</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #10b981;"></span>60-90%</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #06b6d4;"></span>&lt;60%</span>
+          </div>
+        </div>
       </div>
     `;
   }
@@ -226,6 +264,34 @@ export class MetricsCharts {
           </div>
           <div class="chart-wrapper" style="height: 240px;">
             <canvas id="chart-income-modal"></canvas>
+          </div>
+        </div>
+
+        <!-- 6. Demografia por Bairro (Envelhecimento & Razão de Sexo) -->
+        <div class="chart-card" style="grid-column: 1 / -1;">
+          <div class="chart-card-header" style="flex-wrap: wrap; gap: 8px;">
+            <span class="chart-card-title">
+              <i class="lucide-activity" style="color: #a855f7;"></i>
+              Índice de Envelhecimento e Razão de Sexo por Bairro / Região (Censo IBGE 2022)
+            </span>
+            <div class="chart-toggle-group">
+              <button type="button" class="btn-chart-toggle ${this.activeBairrosMetric.modal === 'envelhecimento' ? 'active' : ''}" data-metric="envelhecimento" data-scope="modal" title="Visualizar Índice de Envelhecimento (%)">
+                Índice de Envelhecimento (%)
+              </button>
+              <button type="button" class="btn-chart-toggle ${this.activeBairrosMetric.modal === 'razao' ? 'active' : ''}" data-metric="razao" data-scope="modal" title="Visualizar Razão de Sexo (Homens / 100 Mulheres)">
+                Razão de Sexo (Homens / 100 Mulheres)
+              </button>
+            </div>
+          </div>
+          <div class="chart-wrapper" style="height: 520px;">
+            <canvas id="chart-demografia-bairros-modal"></canvas>
+          </div>
+          <div class="bairros-chart-legend" id="bairros-modal-legend">
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #7c3aed;"></span>Altamente Envelhecido (&gt;130%)</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #3b82f6;"></span>Envelhecimento Moderado (90-130%)</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #10b981;"></span>Equilibrado (60-90%)</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #06b6d4;"></span>População Jovem (&lt;60%)</span>
+            <span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);"><i class="lucide-mouse-pointer" style="font-size: 11px;"></i> Clique em qualquer barra para aproximar no mapa</span>
           </div>
         </div>
       </div>
@@ -511,6 +577,10 @@ export class MetricsCharts {
         }
       });
     }
+
+    // 6. Demografia por Bairro (Envelhecimento & Razão de Sexo)
+    this.initBairrosChart('sidebar');
+    this.setupBairrosToggleButtons('sidebar');
   }
 
   /**
@@ -771,6 +841,242 @@ export class MetricsCharts {
           }
         }
       });
+    }
+
+    // 6. Demografia por Bairro (Envelhecimento & Razão de Sexo)
+    this.initBairrosChart('modal');
+    this.setupBairrosToggleButtons('modal');
+  }
+
+  /**
+   * Configura os botões de alternância entre Envelhecimento e Razão de Sexo
+   */
+  setupBairrosToggleButtons(scope) {
+    const container = scope === 'sidebar' 
+      ? document.getElementById('sidebar-metrics-container')
+      : document.getElementById('metrics-modal-body');
+    if (!container) return;
+
+    const buttons = container.querySelectorAll(`.btn-chart-toggle[data-scope="${scope}"]`);
+    buttons.forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        const metric = btn.getAttribute('data-metric');
+        if (metric && this.activeBairrosMetric[scope] !== metric) {
+          this.activeBairrosMetric[scope] = metric;
+          this.initBairrosChart(scope);
+        }
+      };
+    });
+  }
+
+  /**
+   * Inicializa o gráfico comparativo dos 23 bairros + Área Rural (Censo 2022)
+   */
+  initBairrosChart(scope = 'sidebar') {
+    if (typeof Chart === 'undefined') return;
+
+    const canvasId = `chart-demografia-bairros-${scope}`;
+    const ctx = document.getElementById(canvasId);
+    if (!ctx) return;
+
+    if (this.charts[scope] && this.charts[scope].bairros) {
+      this.charts[scope].bairros.destroy();
+      delete this.charts[scope].bairros;
+    }
+
+    const metric = this.activeBairrosMetric[scope] || 'envelhecimento';
+    const isEnvelhecimento = metric === 'envelhecimento';
+
+    // Sincroniza classes visuais ativas dos botões de alternância
+    const container = scope === 'sidebar' 
+      ? document.getElementById('sidebar-metrics-container')
+      : document.getElementById('metrics-modal-body');
+    if (container) {
+      const toggleBtns = container.querySelectorAll(`.btn-chart-toggle[data-scope="${scope}"]`);
+      toggleBtns.forEach(btn => {
+        const m = btn.getAttribute('data-metric');
+        btn.classList.toggle('active', m === metric);
+      });
+    }
+
+    // Clona e ordena os dados conforme a métrica selecionada
+    const sortedData = BAIRROS_DEMOGRAFIA.slice().sort((a, b) => {
+      return isEnvelhecimento 
+        ? b.indice_envelhecimento - a.indice_envelhecimento
+        : b.razao_sexo - a.razao_sexo;
+    });
+
+    const labels = sortedData.map(b => b.nome);
+    const dataValues = sortedData.map(b => isEnvelhecimento ? b.indice_envelhecimento : b.razao_sexo);
+
+    // Cores temáticas auditadas
+    let bgColors = [];
+    let hoverColors = [];
+
+    if (isEnvelhecimento) {
+      bgColors = sortedData.map(b => {
+        const val = b.indice_envelhecimento;
+        if (val >= 130) return '#7c3aed'; // Roxo vibrante - Altamente Envelhecido
+        if (val >= 90) return '#3b82f6';  // Azul institucional - Envelhecimento Moderado
+        if (val >= 60) return '#10b981';  // Esmeralda - Equilibrado
+        return '#06b6d4';                 // Ciano - População Jovem
+      });
+      hoverColors = sortedData.map(b => {
+        const val = b.indice_envelhecimento;
+        if (val >= 130) return '#6d28d9';
+        if (val >= 90) return '#2563eb';
+        if (val >= 60) return '#059669';
+        return '#0891b2';
+      });
+    } else {
+      bgColors = sortedData.map(b => {
+        const r = b.razao_sexo;
+        if (r >= 100) return '#0284c7'; // Azul céu - Predomínio Masculino
+        if (r >= 88) return '#8b5cf6';  // Violeta - Equilíbrio / Predomínio Feminino Leve
+        return '#ec4899';               // Rosa fúcsia - Forte Predomínio Feminino
+      });
+      hoverColors = sortedData.map(b => {
+        const r = b.razao_sexo;
+        if (r >= 100) return '#0369a1';
+        if (r >= 88) return '#7c3aed';
+        return '#db2777';
+      });
+    }
+
+    // Atualiza legenda dinâmica se existir
+    const legendEl = document.getElementById(`bairros-${scope}-legend`);
+    if (legendEl) {
+      if (isEnvelhecimento) {
+        legendEl.innerHTML = `
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #7c3aed;"></span>${scope === 'sidebar' ? '>130%' : 'Altamente Envelhecido (>130%)'}</span>
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #3b82f6;"></span>${scope === 'sidebar' ? '90-130%' : 'Envelhecimento Moderado (90-130%)'}</span>
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #10b981;"></span>${scope === 'sidebar' ? '60-90%' : 'Equilibrado (60-90%)'}</span>
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #06b6d4;"></span>${scope === 'sidebar' ? '<60%' : 'População Jovem (<60%)'}</span>
+          ${scope === 'modal' ? '<span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);"><i class="lucide-mouse-pointer" style="font-size: 11px;"></i> Clique em qualquer barra para aproximar no mapa</span>' : ''}
+        `;
+      } else {
+        legendEl.innerHTML = `
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #0284c7;"></span>${scope === 'sidebar' ? '≥100 H/M' : 'Predomínio Masculino (≥100 H/M)'}</span>
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #8b5cf6;"></span>${scope === 'sidebar' ? '88-99 H/M' : 'Predomínio Feminino Leve (88-99 H/M)'}</span>
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #ec4899;"></span>${scope === 'sidebar' ? '<88 H/M' : 'Forte Predomínio Feminino (<88 H/M)'}</span>
+          ${scope === 'modal' ? '<span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);"><i class="lucide-mouse-pointer" style="font-size: 11px;"></i> Clique em qualquer barra para aproximar no mapa</span>' : ''}
+        `;
+      }
+    }
+
+    this.charts[scope].bairros = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: isEnvelhecimento ? 'Índice de Envelhecimento (%)' : 'Razão de Sexo (Homens / 100 Mulheres)',
+          data: dataValues,
+          backgroundColor: bgColors,
+          hoverBackgroundColor: hoverColors,
+          borderRadius: scope === 'modal' ? 4 : 3,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        onClick: (evt, elements) => {
+          if (elements && elements.length > 0) {
+            const idx = elements[0].index;
+            const b = sortedData[idx];
+            if (b) {
+              this.zoomToBairro(b.id || b.nome);
+            }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const b = sortedData[ctx.dataIndex];
+                if (isEnvelhecimento) {
+                  return ` Índice de Envelhecimento: ${b.indice_envelhecimento.toFixed(1).replace('.', ',')}% (${b.perfil})`;
+                } else {
+                  return ` Razão de Sexo: ${b.razao_sexo.toFixed(1).replace('.', ',')} homens / 100 mulheres`;
+                }
+              },
+              afterLabel: (ctx) => {
+                const b = sortedData[ctx.dataIndex];
+                if (isEnvelhecimento) {
+                  return [
+                    ` População: ${formatNumber(b.pop, 0)} habitantes`,
+                    ` Idosos (60+): ${formatNumber(b.idosos_60m, 0)} hab (${b.pct_idosos.toFixed(1).replace('.', ',')}%)`,
+                    ` Jovens (0-14): ${formatNumber(b.jovens_0a14, 0)} hab (${b.pct_jovens.toFixed(1).replace('.', ',')}%)`
+                  ];
+                } else {
+                  const status = b.razao_sexo > 100 ? 'Predomínio Masculino' : (b.razao_sexo === 100 ? 'Equilíbrio Exato' : 'Predomínio Feminino');
+                  return [
+                    ` Situação: ${status}`,
+                    ` População: ${formatNumber(b.pop, 0)} habitantes`,
+                    ` Mulheres: ${formatNumber(b.mulheres, 0)} hab (${b.pct_mulheres.toFixed(1).replace('.', ',')}%)`,
+                    ` Homens: ${formatNumber(b.homens, 0)} hab (${b.pct_homens.toFixed(1).replace('.', ',')}%)`
+                  ];
+                }
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: '#94a3b8',
+              font: { size: scope === 'modal' ? 10 : 8.5 },
+              callback: (v) => isEnvelhecimento ? `${v}%` : v
+            },
+            grid: {
+              color: 'rgba(255, 255, 255, 0.05)'
+            }
+          },
+          y: {
+            ticks: {
+              color: '#cbd5e1',
+              font: { size: scope === 'modal' ? 9.5 : 8 }
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+  }
+
+  /**
+   * Aproxima o mapa e destaca o bairro selecionado
+   */
+  zoomToBairro(identifier) {
+    if (!this.layerManager || !this.mapEngine) return;
+    const olLayer = this.layerManager.getLayer('bairros');
+    if (!olLayer) return;
+    const source = olLayer.getSource();
+    if (!source) return;
+
+    // Ativa visibilidade da camada de bairros caso esteja desligada
+    this.layerManager.setLayerVisibility('bairros', true);
+
+    const features = source.getFeatures();
+    const idLower = String(identifier).toLowerCase().trim();
+    const feat = features.find(f => {
+      const p = f.getProperties();
+      return (p['Name'] && p['Name'].toLowerCase().trim() === idLower) ||
+             (p['Descri____'] && p['Descri____'].toLowerCase().trim() === idLower);
+    });
+
+    if (feat) {
+      const geom = feat.getGeometry();
+      if (geom) {
+        this.mapEngine.getOlMap().getView().fit(geom.getExtent(), {
+          padding: [80, 80, 80, 80],
+          duration: 900,
+          maxZoom: 15
+        });
+      }
     }
   }
 
