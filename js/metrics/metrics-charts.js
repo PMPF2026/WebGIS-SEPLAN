@@ -12,6 +12,7 @@
 
 import { formatNumber } from '../utils/formatters.js';
 import { BAIRROS_DEMOGRAFIA } from './demographics-bairros.js';
+import { EDUCACAO_BAIRROS, EDUCACAO_GENERO, EDUCACAO_RACA, EDUCACAO_IDADE, EDUCACAO_MUNICIPAL } from './demographics-education.js';
 
 export const METRICS_ANALYTICAL_DATA = {
   roads: {
@@ -63,6 +64,13 @@ export const METRICS_ANALYTICAL_DATA = {
     total: 24,
     maiorEnvelhecimento: { nome: 'Centro e Vila Vergueiro', valor: 205.49 },
     menorEnvelhecimento: { nome: 'José Alexandre Zachia', valor: 40.97 }
+  },
+  educacao: {
+    bairros: EDUCACAO_BAIRROS,
+    genero: EDUCACAO_GENERO,
+    raca: EDUCACAO_RACA,
+    idade: EDUCACAO_IDADE,
+    municipal: EDUCACAO_MUNICIPAL
   }
 };
 
@@ -73,6 +81,10 @@ export class MetricsCharts {
     this.activeBairrosMetric = {
       sidebar: 'envelhecimento',
       modal: 'envelhecimento'
+    };
+    this.activeEducacaoDimension = {
+      sidebar: 'bairros',
+      modal: 'bairros'
     };
     this.charts = {
       sidebar: {},
@@ -187,6 +199,39 @@ export class MetricsCharts {
             <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #06b6d4;"></span>&lt;60%</span>
           </div>
         </div>
+
+        <!-- 7. Alfabetização e Educação (Censo 2022) -->
+        <div class="chart-card" style="margin-bottom: 12px;">
+          <div class="chart-card-header" style="flex-wrap: wrap; gap: 6px;">
+            <span class="chart-card-title">
+              <i class="lucide-book-open" style="color: #10b981;"></i>
+              Alfabetização & Educação
+            </span>
+            <div class="chart-toggle-group">
+              <button type="button" class="btn-chart-toggle ${this.activeEducacaoDimension.sidebar === 'bairros' ? 'active' : ''}" data-educacao-dim="bairros" data-scope="sidebar" title="Visualizar por Bairros/Regiões SEPLAN">
+                Bairros
+              </button>
+              <button type="button" class="btn-chart-toggle ${this.activeEducacaoDimension.sidebar === 'idade' ? 'active' : ''}" data-educacao-dim="idade" data-scope="sidebar" title="Visualizar por Faixas Etárias Oficiais">
+                Idades
+              </button>
+              <button type="button" class="btn-chart-toggle ${this.activeEducacaoDimension.sidebar === 'raca' ? 'active' : ''}" data-educacao-dim="raca" data-scope="sidebar" title="Visualizar por Cor ou Raça">
+                Cor/Raça
+              </button>
+              <button type="button" class="btn-chart-toggle ${this.activeEducacaoDimension.sidebar === 'genero' ? 'active' : ''}" data-educacao-dim="genero" data-scope="sidebar" title="Visualizar por Gênero">
+                Gênero
+              </button>
+            </div>
+          </div>
+          <div class="chart-wrapper" style="height: 400px;">
+            <canvas id="chart-educacao-sidebar"></canvas>
+          </div>
+          <div class="bairros-chart-legend" id="educacao-sidebar-legend" style="font-size: 9px; justify-content: center;">
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #15803d;"></span>&gt;99%</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #22c55e;"></span>97,5-99%</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #eab308;"></span>95-97,5%</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #ef4444;"></span>&lt;95%</span>
+          </div>
+        </div>
       </div>
     `;
   }
@@ -292,6 +337,40 @@ export class MetricsCharts {
             <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #10b981;"></span>Equilibrado (60-90%)</span>
             <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #06b6d4;"></span>População Jovem (&lt;60%)</span>
             <span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);"><i class="lucide-mouse-pointer" style="font-size: 11px;"></i> Clique em qualquer barra para aproximar no mapa</span>
+          </div>
+        </div>
+
+        <!-- 7. Alfabetização e Educação (Censo 2022) -->
+        <div class="chart-card" style="grid-column: 1 / -1;">
+          <div class="chart-card-header" style="flex-wrap: wrap; gap: 8px;">
+            <span class="chart-card-title">
+              <i class="lucide-book-open" style="color: #10b981;"></i>
+              Alfabetização e Educação Oficial — Censo IBGE 2022 (Passo Fundo/RS)
+            </span>
+            <div class="chart-toggle-group">
+              <button type="button" class="btn-chart-toggle ${this.activeEducacaoDimension.modal === 'bairros' ? 'active' : ''}" data-educacao-dim="bairros" data-scope="modal" title="Taxa de Alfabetização por Regiões SEPLAN (15+ anos)">
+                Bairros / Regiões
+              </button>
+              <button type="button" class="btn-chart-toggle ${this.activeEducacaoDimension.modal === 'idade' ? 'active' : ''}" data-educacao-dim="idade" data-scope="modal" title="Alfabetização por Grupos de Idade Oficiais">
+                Faixas de Idade
+              </button>
+              <button type="button" class="btn-chart-toggle ${this.activeEducacaoDimension.modal === 'raca' ? 'active' : ''}" data-educacao-dim="raca" data-scope="modal" title="Alfabetização por Cor ou Raça">
+                Cor ou Raça
+              </button>
+              <button type="button" class="btn-chart-toggle ${this.activeEducacaoDimension.modal === 'genero' ? 'active' : ''}" data-educacao-dim="genero" data-scope="modal" title="Alfabetização por Gênero / Sexo">
+                Gênero
+              </button>
+            </div>
+          </div>
+          <div class="chart-wrapper" style="height: 520px;">
+            <canvas id="chart-educacao-modal"></canvas>
+          </div>
+          <div class="bairros-chart-legend" id="educacao-modal-legend">
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #15803d;"></span>Maior ou igual a 99,0%</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #22c55e;"></span>97,5% a 98,9%</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #eab308;"></span>95,0% a 97,4%</span>
+            <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #ef4444;"></span>Menor que 95,0%</span>
+            <span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);"><i class="lucide-mouse-pointer" style="font-size: 11px;"></i> Clique em qualquer barra de bairro para aproximar no mapa</span>
           </div>
         </div>
       </div>
@@ -581,6 +660,10 @@ export class MetricsCharts {
     // 6. Demografia por Bairro (Envelhecimento & Razão de Sexo)
     this.initBairrosChart('sidebar');
     this.setupBairrosToggleButtons('sidebar');
+
+    // 7. Alfabetização e Educação (Censo 2022)
+    this.initEducationChart('sidebar');
+    this.setupEducationToggleButtons('sidebar');
   }
 
   /**
@@ -846,6 +929,10 @@ export class MetricsCharts {
     // 6. Demografia por Bairro (Envelhecimento & Razão de Sexo)
     this.initBairrosChart('modal');
     this.setupBairrosToggleButtons('modal');
+
+    // 7. Alfabetização e Educação (Censo 2022)
+    this.initEducationChart('modal');
+    this.setupEducationToggleButtons('modal');
   }
 
   /**
@@ -857,7 +944,7 @@ export class MetricsCharts {
       : document.getElementById('metrics-modal-body');
     if (!container) return;
 
-    const buttons = container.querySelectorAll(`.btn-chart-toggle[data-scope="${scope}"]`);
+    const buttons = container.querySelectorAll(`.btn-chart-toggle[data-metric][data-scope="${scope}"]`);
     buttons.forEach(btn => {
       btn.onclick = (e) => {
         e.preventDefault();
@@ -1039,6 +1126,218 @@ export class MetricsCharts {
             ticks: {
               color: '#cbd5e1',
               font: { size: scope === 'modal' ? 9.5 : 8 }
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+  }
+
+  /**
+   * Configura os botões de alternância dimensional de Alfabetização e Educação
+   */
+  setupEducationToggleButtons(scope) {
+    const container = scope === 'sidebar' 
+      ? document.getElementById('sidebar-metrics-container')
+      : document.getElementById('metrics-modal-body');
+    if (!container) return;
+
+    const buttons = container.querySelectorAll(`.btn-chart-toggle[data-educacao-dim][data-scope="${scope}"]`);
+    buttons.forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        const dim = btn.getAttribute('data-educacao-dim');
+        if (dim && this.activeEducacaoDimension[scope] !== dim) {
+          this.activeEducacaoDimension[scope] = dim;
+          this.initEducationChart(scope);
+        }
+      };
+    });
+  }
+
+  /**
+   * Inicializa o gráfico analítico multidimensional de Alfabetização e Educação (Censo 2022)
+   */
+  initEducationChart(scope = 'sidebar') {
+    if (typeof Chart === 'undefined') return;
+
+    const canvasId = `chart-educacao-${scope}`;
+    const ctx = document.getElementById(canvasId);
+    if (!ctx) return;
+
+    if (this.charts[scope] && this.charts[scope].education) {
+      this.charts[scope].education.destroy();
+      delete this.charts[scope].education;
+    }
+
+    const dim = this.activeEducacaoDimension[scope] || 'bairros';
+
+    // Sincroniza classes visuais ativas dos botões
+    const container = scope === 'sidebar' 
+      ? document.getElementById('sidebar-metrics-container')
+      : document.getElementById('metrics-modal-body');
+    if (container) {
+      const toggleBtns = container.querySelectorAll(`.btn-chart-toggle[data-educacao-dim][data-scope="${scope}"]`);
+      toggleBtns.forEach(btn => {
+        const d = btn.getAttribute('data-educacao-dim');
+        btn.classList.toggle('active', d === dim);
+      });
+    }
+
+    let labels = [];
+    let dataValues = [];
+    let bgColors = [];
+    let hoverColors = [];
+    let datasetLabel = 'Taxa de Alfabetização (%)';
+    let rawItems = [];
+
+    if (dim === 'bairros') {
+      const sorted = EDUCACAO_BAIRROS.slice().sort((a, b) => b.taxa_alfabetizacao - a.taxa_alfabetizacao);
+      rawItems = sorted;
+      labels = sorted.map(b => b.nome);
+      dataValues = sorted.map(b => b.taxa_alfabetizacao);
+      bgColors = sorted.map(b => {
+        const v = b.taxa_alfabetizacao;
+        if (v >= 99.0) return '#15803d'; // Verde escuro
+        if (v >= 97.5) return '#22c55e'; // Verde claro
+        if (v >= 95.0) return '#eab308'; // Âmbar
+        return '#ef4444';                // Vermelho
+      });
+      hoverColors = sorted.map(b => {
+        const v = b.taxa_alfabetizacao;
+        if (v >= 99.0) return '#166534';
+        if (v >= 97.5) return '#16a34a';
+        if (v >= 95.0) return '#ca8a04';
+        return '#dc2626';
+      });
+    } else if (dim === 'idade') {
+      rawItems = EDUCACAO_IDADE;
+      labels = EDUCACAO_IDADE.map(i => i.faixa);
+      dataValues = EDUCACAO_IDADE.map(i => i.taxa_alfabetizacao);
+      bgColors = ['#0284c7', '#0ea5e9', '#38bdf8', '#6366f1', '#8b5cf6', '#a855f7'];
+      hoverColors = ['#0369a1', '#0284c7', '#0284c7', '#4f46e5', '#7c3aed', '#9333ea'];
+    } else if (dim === 'raca') {
+      const sorted = EDUCACAO_RACA.slice().sort((a, b) => b.taxa_alfabetizacao - a.taxa_alfabetizacao);
+      rawItems = sorted;
+      labels = sorted.map(r => r.cor_raca);
+      dataValues = sorted.map(r => r.taxa_alfabetizacao);
+      bgColors = sorted.map(r => {
+        const v = r.taxa_alfabetizacao;
+        if (v >= 98.0) return '#10b981';
+        if (v >= 96.0) return '#3b82f6';
+        return '#f59e0b';
+      });
+      hoverColors = sorted.map(r => {
+        const v = r.taxa_alfabetizacao;
+        if (v >= 98.0) return '#059669';
+        if (v >= 96.0) return '#2563eb';
+        return '#d97706';
+      });
+    } else if (dim === 'genero') {
+      rawItems = EDUCACAO_GENERO;
+      labels = EDUCACAO_GENERO.map(g => g.genero);
+      dataValues = EDUCACAO_GENERO.map(g => g.taxa_alfabetizacao);
+      bgColors = ['#38bdf8', '#f472b6'];
+      hoverColors = ['#0284c7', '#db2777'];
+    }
+
+    // Atualiza legenda dinâmica
+    const legendEl = document.getElementById(`educacao-${scope}-legend`);
+    if (legendEl) {
+      if (dim === 'bairros') {
+        legendEl.innerHTML = `
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #15803d;"></span>${scope === 'sidebar' ? '≥99%' : 'Maior ou igual a 99,0%'}</span>
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #22c55e;"></span>${scope === 'sidebar' ? '97,5-99%' : '97,5% a 98,9%'}</span>
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #eab308;"></span>${scope === 'sidebar' ? '95-97,5%' : '95,0% a 97,4%'}</span>
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #ef4444;"></span>${scope === 'sidebar' ? '<95%' : 'Menor que 95,0%'}</span>
+          ${scope === 'modal' ? '<span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);"><i class="lucide-mouse-pointer" style="font-size: 11px;"></i> Clique em qualquer barra de bairro para aproximar no mapa</span>' : ''}
+        `;
+      } else if (dim === 'idade') {
+        legendEl.innerHTML = `
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #0284c7;"></span>Faixas de Idade (Censo IBGE 2022)</span>
+          <span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);">População de 15 anos ou mais de idade</span>
+        `;
+      } else if (dim === 'raca') {
+        legendEl.innerHTML = `
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #10b981;"></span>Cor ou Raça Autodeclarada</span>
+          <span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);">Classificação oficial IBGE (15+ anos)</span>
+        `;
+      } else if (dim === 'genero') {
+        legendEl.innerHTML = `
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #38bdf8;"></span>Homens: 97,83%</span>
+          <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #f472b6;"></span>Mulheres: 97,53%</span>
+          <span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);">Diferença: +0,30 p.p. homens</span>
+        `;
+      }
+    }
+
+    this.charts[scope].education = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: datasetLabel,
+          data: dataValues,
+          backgroundColor: bgColors,
+          hoverBackgroundColor: hoverColors,
+          borderRadius: scope === 'modal' ? 4 : 3,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        onClick: (evt, elements) => {
+          if (dim === 'bairros' && elements && elements.length > 0) {
+            const idx = elements[0].index;
+            const b = rawItems[idx];
+            if (b) {
+              this.zoomToBairro(b.id || b.nome);
+            }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const item = rawItems[ctx.dataIndex];
+                const taxa = item.taxa_alfabetizacao.toFixed(2).replace('.', ',');
+                return ` Taxa de Alfabetização: ${taxa}%`;
+              },
+              afterLabel: (ctx) => {
+                const item = rawItems[ctx.dataIndex];
+                const total = item.pop_15m || item.total_pop || item.total;
+                const alf = item.alfabetizados;
+                const naoAlf = item.nao_alfabetizados;
+                return [
+                  ` Universo (15+ anos): ${formatNumber(total, 0)} pessoas`,
+                  ` Alfabetizados: ${formatNumber(alf, 0)} pessoas (${((alf / total) * 100).toFixed(2).replace('.', ',')}%)`,
+                  ` Não alfabetizados: ${formatNumber(naoAlf, 0)} pessoas (${((naoAlf / total) * 100).toFixed(2).replace('.', ',')}%)`
+                ];
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            min: dim === 'bairros' ? 90 : 85,
+            max: 100,
+            ticks: {
+              color: '#94a3b8',
+              font: { size: scope === 'modal' ? 10 : 8.5 },
+              callback: (v) => `${v}%`
+            },
+            grid: {
+              color: 'rgba(255, 255, 255, 0.05)'
+            }
+          },
+          y: {
+            ticks: {
+              color: '#cbd5e1',
+              font: { size: scope === 'modal' ? 9.5 : 8.5 }
             },
             grid: { display: false }
           }

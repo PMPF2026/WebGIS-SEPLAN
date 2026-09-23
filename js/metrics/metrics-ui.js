@@ -317,7 +317,8 @@ export class MetricsUI {
       'total_domicilios_censo_2022',
       'densidade_demografica_media',
       'rendimento_medio_domiciliar',
-      'bairro_maior_envelhecimento'
+      'bairro_maior_envelhecimento',
+      'taxa_alfabetizacao_passo_fundo'
     ];
 
     const featuredMetrics = featuredIds

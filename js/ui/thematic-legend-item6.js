@@ -49,6 +49,11 @@ export const ITEM6_LAYER_DEFINITIONS = {
     title: 'Rendimento Médio Domiciliar',
     subtitle: 'Censo Demográfico 2022 (IBGE)',
     unitNote: 'Rendimento nominal médio mensal por domicílio (R$)'
+  },
+  censo_alfabetizacao_2022: {
+    title: 'Taxa de Alfabetização Setorial',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'Classificação cartográfica descritiva da SEPLAN (15+ anos)'
   }
 };
 

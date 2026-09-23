@@ -9,6 +9,7 @@ import { Notification } from './notification.js';
 import { PlugfieldService } from '../weather/plugfield-service.js';
 import { WeatherService } from '../weather/weather-service.js';
 import { BAIRROS_LOOKUP } from '../metrics/demographics-bairros.js';
+import { EDUCACAO_LOOKUP } from '../metrics/demographics-education.js';
 
 export class PopupUI {
   constructor(mapEngine, layerManager) {
@@ -182,6 +183,13 @@ export class PopupUI {
         props['indice_envelhecimento_censo'] = `${bData.indice_envelhecimento.toFixed(1).replace('.', ',')}% (${bData.perfil})`;
         props['razao_sexo_censo'] = `${bData.razao_sexo.toFixed(1).replace('.', ',')} H / 100 M (♂ ${bData.pct_homens.toFixed(1).replace('.', ',')}% · ♀ ${bData.pct_mulheres.toFixed(1).replace('.', ',')}%)`;
         props['faixa_etaria_censo'] = `Idosos 60+: ${formatNumber(bData.idosos_60m, 0)} (${bData.pct_idosos.toFixed(1).replace('.', ',')}%) • Jovens 0-14: ${formatNumber(bData.jovens_0a14, 0)} (${bData.pct_jovens.toFixed(1).replace('.', ',')}%)`;
+
+        // Indicador de Alfabetização Territorial SEPLAN (Censo 2022)
+        const cleanName = (bData.nome || props['Descri____'] || '').replace('Região do Bairro ', '').replace('Região do bairro ', '').trim().toLowerCase();
+        const eData = EDUCACAO_LOOKUP.get(cleanName);
+        if (eData) {
+          props['taxa_alfabetizacao_censo'] = `${eData.taxa_alfabetizacao.toFixed(1).replace('.', ',')}% (${formatNumber(eData.alfabetizados, 0)} alfabetizados de ${formatNumber(eData.populacao_universo_15m, 0)} hab)`;
+        }
       }
     }
 

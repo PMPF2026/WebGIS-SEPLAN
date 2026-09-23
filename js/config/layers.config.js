@@ -420,6 +420,7 @@ export const LAYERS_CONFIG = [
         { key: 'indice_envelhecimento_censo', label: 'Índice de Envelhecimento' },
         { key: 'razao_sexo_censo', label: 'Razão de Sexo (Censo 2022)' },
         { key: 'faixa_etaria_censo', label: 'Estrutura Etária (Censo 2022)' },
+        { key: 'taxa_alfabetizacao_censo', label: 'Taxa de Alfabetização (Censo 2022)' },
         { key: 'Dados', label: 'Vilas e Loteamentos Integrantes' }
       ]
     },
@@ -875,6 +876,52 @@ export const LAYERS_CONFIG = [
     description: 'Rendimento nominal médio mensal por domicílio apurado por setor censitário no Censo Demográfico IBGE 2022.',
     searchable: true,
     searchFields: ['id']
+  },
+  {
+    id: 'censo_alfabetizacao_2022',
+    name: 'Taxa de Alfabetização Setorial — Censo 2022 (%)',
+    fileName: 'data/Alfabetizacao_Setores_Censitarios_Passo_Fundo_2022.geojson',
+    source: 'IBGE — Censo Demográfico 2022 (Setores Censitários)',
+    refDate: '2022',
+    group: 'populacao',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 28,
+    isLazy: true,
+    isChoropleth: true,
+    choroplethField: 'taxa_alfabetizacao',
+    choroplethBreaks: [
+      { max: 92.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 92,0%' },
+      { max: 95.0, color: 'rgba(249, 115, 22, 0.78)', label: '92,0% a 95,0%' },
+      { max: 97.5, color: 'rgba(234, 179, 8, 0.78)', label: '95,0% a 97,5%' },
+      { max: 99.0, color: 'rgba(34, 197, 94, 0.78)', label: '97,5% a 99,0%' },
+      { max: Infinity, color: 'rgba(21, 128, 61, 0.78)', label: 'Maior que 99,0%' }
+    ],
+    style: {
+      strokeColor: '#14532d',
+      strokeWidth: 0.8,
+      previewColor: '#16a34a'
+    },
+    popupConfig: {
+      titleField: 'id',
+      titlePrefix: 'Setor Censitário ',
+      fields: [
+        { key: 'id', label: 'Código do Setor Censitário' },
+        { key: 'bairro_seplan', label: 'Região / Bairro (SEPLAN)' },
+        { key: 'taxa_alfabetizacao', label: 'Taxa de Alfabetização — Censo 2022', format: 'percent' },
+        { key: 'taxa_analfabetismo', label: 'Taxa de Não Alfabetização', format: 'percent' },
+        { key: 'populacao_universo_15m', label: 'População Universo (15+ anos)', format: 'number' },
+        { key: 'alfabetizados', label: 'Moradores Alfabetizados', format: 'number' },
+        { key: 'nao_alfabetizados', label: 'Moradores Não Alfabetizados', format: 'number' },
+        { key: 'taxa_alfabetizacao_homens', label: 'Taxa Masculina (Homens 15+)', format: 'percent' },
+        { key: 'taxa_alfabetizacao_mulheres', label: 'Taxa Feminina (Mulheres 15+)', format: 'percent' },
+        { key: 'classificacao_seplan', label: 'Classificação Cartográfica SEPLAN' }
+      ]
+    },
+    description: 'Taxa de alfabetização da população com 15 anos ou mais apurada nos 321 setores censitários pelo Censo Demográfico IBGE 2022.',
+    searchable: true,
+    searchFields: ['id', 'bairro_seplan']
   },
   // ================= 5. ÁREAS VERDES =================
   // --- 5.1 PONTOS ---
