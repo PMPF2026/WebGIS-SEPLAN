@@ -254,7 +254,17 @@ html, body {
 .footer-info {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.footer-info strong {
+  color: var(--text-main);
+  font-weight: 600;
 }
 
 .footer-coords {
