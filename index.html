@@ -246,18 +246,34 @@
 
           <!-- TAB 5: DOWNLOADS -->
           <div class="tab-panel" id="tab-downloads">
-            <div class="panel-header">
-              <h3>Catálogo de Dados Espaciais</h3>
+            <div class="panel-header downloads-header-compact">
+              <h3 class="panel-title-downloads">Catálogo de Dados Espaciais</h3>
               <span class="panel-subtitle">Camadas disponíveis para download</span>
+              <div class="downloads-meta-line">
+                <span class="downloads-count-stat"><strong id="download-layers-count">56</strong> camadas &bull; SIRGAS 2000 / UTM 22S</span>
+                <div class="downloads-compact-actions">
+                  <button type="button" id="btn-expand-all-downloads" class="btn-link-action" title="Expandir todos os grupos">Expandir Todos</button>
+                  <span class="sep-dot">&bull;</span>
+                  <button type="button" id="btn-collapse-all-downloads" class="btn-link-action" title="Recolher todos os grupos">Recolher Todos</button>
+                </div>
+              </div>
             </div>
+
             <div class="downloads-search-box">
-              <input type="text" id="download-search-input" placeholder="Buscar camada para download..." />
-              <button id="download-search-clear">&times;</button>
+              <input type="text" id="download-search-input" placeholder="Buscar camada para download..." autocomplete="off" />
+              <button type="button" id="download-search-clear" title="Limpar busca">&times;</button>
             </div>
-            <div class="downloads-stats">
-              <span>Camadas: <strong id="download-layers-count">0</strong></span>
-              <span class="badge-crs">SIRGAS 2000</span>
+
+            <div class="downloads-pills-bar" id="downloads-pills-bar" role="tablist" aria-label="Filtro rápido por tema">
+              <button type="button" class="download-pill active" data-group-filter="all">Todos <span class="pill-count" id="pill-count-all">56</span></button>
+              <button type="button" class="download-pill" data-group-filter="hidrografia">Hidrografia <span class="pill-count" id="pill-count-hidrografia">3</span></button>
+              <button type="button" class="download-pill" data-group-filter="sistema_viario">Sistema Viário <span class="pill-count" id="pill-count-sistema_viario">6</span></button>
+              <button type="button" class="download-pill" data-group-filter="limites_territoriais">Limites <span class="pill-count" id="pill-count-limites_territoriais">5</span></button>
+              <button type="button" class="download-pill" data-group-filter="censo_ibge">Censo IBGE <span class="pill-count" id="pill-count-censo_ibge">10</span></button>
+              <button type="button" class="download-pill" data-group-filter="equipamentos_servicos">Equipamentos <span class="pill-count" id="pill-count-equipamentos_servicos">11</span></button>
+              <button type="button" class="download-pill" data-group-filter="areas_verdes">Áreas Verdes <span class="pill-count" id="pill-count-areas_verdes">21</span></button>
             </div>
+
             <div id="downloads-list-container" class="downloads-list"></div>
           </div>
 
@@ -509,9 +525,7 @@
     <!-- ================= FOOTER / STATUS BAR ================= -->
     <footer class="app-footer">
       <div class="footer-info">
-        <span><strong>WebGIS SEPLAN</strong> &bull; Município de Passo Fundo/RS</span>
-        <span>Datum: <strong>SIRGAS 2000</strong></span>
-        <span>Projeção: <strong>UTM 22S (EPSG:31982)</strong></span>
+        <span><strong>WebGIS SEPLAN</strong> &bull; Passo Fundo/RS &bull; SIRGAS 2000 / UTM 22S</span>
       </div>
 
       <div class="footer-coords">
