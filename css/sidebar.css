@@ -694,28 +694,312 @@
 }
 
 /* ==========================================================================
-   Downloads Catalog Styling
+   Downloads Catalog Styling — Reorganização Temática
    ========================================================================== */
+.downloads-header-compact {
+  padding-bottom: 8px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.panel-title-downloads {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+  letter-spacing: 0.02em;
+}
+
+.downloads-meta-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+
+.downloads-count-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.downloads-count-stat strong {
+  color: var(--dc-orange-primary);
+  font-weight: 700;
+}
+
+.downloads-compact-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-link-action {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+}
+
+.btn-link-action:hover {
+  color: var(--dc-orange-primary);
+}
+
+.sep-dot {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 8px;
+}
+
+/* Downloads Search Box */
+.downloads-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.downloads-search-box input {
+  width: 100%;
+  padding: 6px 28px 6px 10px;
+  background: var(--dc-blue-card);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-size: 11.5px;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.downloads-search-box input:focus {
+  border-color: var(--dc-orange-primary);
+  box-shadow: 0 0 0 2px var(--dc-orange-subtle);
+  background: var(--dc-blue-surface);
+}
+
+.downloads-search-box button#download-search-clear {
+  position: absolute;
+  right: 6px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 4px;
+}
+
+.downloads-search-box button#download-search-clear:hover {
+  color: var(--text-main);
+}
+
+/* Downloads Pill Bar */
+.downloads-pills-bar {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  padding: 1px 0 6px 0;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.downloads-pills-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.download-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.download-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.download-pill.active {
+  background: var(--dc-blue-surface);
+  color: #ffffff;
+  border-color: var(--dc-orange-primary);
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(255, 120, 0, 0.2);
+}
+
+.pill-count {
+  font-size: 9.5px;
+  opacity: 0.75;
+  font-weight: 600;
+}
+
+/* Downloads List Container */
 .downloads-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
+/* Accordion Thematic Group */
+.download-group-item {
+  border: 1px solid var(--dc-blue-border);
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.4);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.download-group-item:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.download-group-item.expanded {
+  border-color: rgba(255, 120, 0, 0.35);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.download-group-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 11px;
+  background: var(--dc-blue-card);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  user-select: none;
+  transition: background var(--transition-fast);
+  gap: 8px;
+}
+
+.download-group-header:hover {
+  background: var(--dc-blue-hover);
+}
+
+.download-group-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.download-group-icon {
+  font-size: 13px;
+  color: var(--dc-orange-primary);
+  flex-shrink: 0;
+  width: 14px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-group-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.download-group-header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.download-group-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.download-group-chevron {
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.download-group-item.expanded .download-group-chevron {
+  transform: rotate(180deg);
+  color: var(--dc-orange-primary);
+}
+
+.download-group-body {
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(11, 17, 32, 0.45);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.download-group-item.expanded .download-group-body {
+  display: flex;
+}
+
+/* Subsections inside group */
+.download-subsection-header {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 6px 4px 3px 4px;
+  margin-top: 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Download Card */
 .download-card {
   background: var(--dc-blue-card);
   border: 1px solid var(--dc-blue-border);
-  border-radius: var(--radius-md);
-  padding: 11px 12px;
+  border-radius: var(--radius-sm);
+  padding: 9px 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   transition: all var(--transition-fast);
 }
 
 .download-card:hover {
   border-color: rgba(255, 120, 0, 0.4);
   transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .download-card-header {
@@ -726,47 +1010,65 @@
 }
 
 .download-card-title {
-  font-size: 12.5px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--text-main);
   line-height: 1.3;
 }
 
 .download-card-desc {
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--text-muted);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .download-card-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
-  font-size: 10.5px;
+  gap: 5px;
+  font-size: 10px;
   color: var(--text-subtle);
   margin-top: 2px;
+}
+
+.download-badge-geom {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.download-badge-geom i {
+  font-size: 10px;
+  display: inline-flex;
 }
 
 .download-btn-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   margin-top: 4px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .btn-download-format {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 9px;
+  padding: 3px 8px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--dc-blue-border);
   border-radius: var(--radius-sm);
   color: var(--text-main);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
