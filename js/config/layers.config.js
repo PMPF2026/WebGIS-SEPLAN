@@ -881,6 +881,7 @@ export const LAYERS_CONFIG = [
     id: 'censo_alfabetizacao_2022',
     name: 'Taxa de Alfabetização Setorial — Censo 2022 (%)',
     fileName: 'data/Alfabetizacao_Setores_Censitarios_Passo_Fundo_2022.geojson',
+    crs: 'EPSG:31982',
     source: 'IBGE — Censo Demográfico 2022 (Setores Censitários)',
     refDate: '2022',
     group: 'populacao',

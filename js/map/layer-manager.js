@@ -191,8 +191,22 @@ export class LayerManager {
       console.log(`[LayerManager] Carregando '${config.name}' (${config.fileName})...`);
       
       const geoJsonData = await loadGeoJson(config.fileName, onProgress);
+      
+      // Auto-detecção resiliente de CRS: verifica config, cabeçalho GeoJSON ou magnitude das coordenadas (> 180 graus)
+      let hasUtmCoords = false;
+      if (geoJsonData.features && geoJsonData.features.length > 0 && geoJsonData.features[0].geometry && geoJsonData.features[0].geometry.coordinates) {
+        let sample = geoJsonData.features[0].geometry.coordinates;
+        while (Array.isArray(sample) && sample.length > 0 && Array.isArray(sample[0])) {
+          sample = sample[0];
+        }
+        if (Array.isArray(sample) && sample.length >= 2 && (Math.abs(sample[0]) > 180 || Math.abs(sample[1]) > 180)) {
+          hasUtmCoords = true;
+        }
+      }
+
       const isUtm22s = (config.crs && config.crs.includes('31982')) || 
-                       (geoJsonData.crs && geoJsonData.crs.properties && geoJsonData.crs.properties.name && geoJsonData.crs.properties.name.includes('31982'));
+                       (geoJsonData.crs && geoJsonData.crs.properties && geoJsonData.crs.properties.name && geoJsonData.crs.properties.name.includes('31982')) ||
+                       hasUtmCoords;
       const features = isUtm22s
         ? this.geoJsonFormat.readFeatures(geoJsonData)
         : new ol.format.GeoJSON().readFeatures(geoJsonData, {

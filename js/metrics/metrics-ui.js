@@ -383,37 +383,25 @@ export class MetricsUI {
     }
   }
 
-  handleViewOnMap(layerId) {
+  async handleViewOnMap(layerId) {
     const config = LAYERS_CONFIG.find(c => c.id === layerId);
     if (!config) {
       Notification.warning('Camada não encontrada no registro de camadas.');
       return;
     }
 
-    // Activate layer visibility in OpenLayers
-    this.layerManager.setLayerVisibility(layerId, true);
-
     // Close the metrics modal so user sees the map
     this.closeModal();
 
-    // Center on layer if it has extent
-    const olLayer = this.layerManager.getLayer(layerId);
-    if (olLayer && typeof olLayer.getSource === 'function') {
-      const source = olLayer.getSource();
-      if (source && typeof source.getFeatures === 'function') {
-        const features = source.getFeatures();
-        if (features.length > 0) {
-          const extent = source.getExtent();
-          if (extent && isFinite(extent[0])) {
-            this.mapEngine.getOlMap().getView().fit(extent, {
-              padding: [60, 60, 60, 60],
-              duration: 800,
-              maxZoom: 16
-            });
-          }
-        }
-      }
-    }
+    // Sincronizar checkbox na árvore de camadas da barra lateral se existir
+    const cb = document.querySelector(`.layer-checkbox[data-layer-id="${layerId}"]`);
+    if (cb) cb.checked = true;
+
+    // Ativar visibilidade da camada e aguardar carregamento assíncrono dos dados
+    await this.layerManager.setLayerVisibility(layerId, true);
+
+    // Ajustar enquadramento do mapa para a extensão da camada
+    await this.layerManager.zoomToLayer(layerId);
 
     Notification.success(`Camada '${config.name}' ativada no mapa.`);
   }
