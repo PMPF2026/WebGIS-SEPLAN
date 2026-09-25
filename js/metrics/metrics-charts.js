@@ -71,6 +71,26 @@ export const METRICS_ANALYTICAL_DATA = {
     raca: EDUCACAO_RACA,
     idade: EDUCACAO_IDADE,
     municipal: EDUCACAO_MUNICIPAL
+  },
+  pib: {
+    anos: ['2018', '2019', '2020', '2021', '2022', '2023'],
+    pibTotalBilhoes: [9.15, 9.84, 10.05, 12.55, 13.62, 14.07],
+    pibTotalExato: [9150642000, 9841605000, 10045734000, 12552867000, 13619806000, 14069540000],
+    pibPerCapita: [44374.28, 47724.97, 48714.85, 60872.71, 66046.63, 68227.53],
+    rankingRS: [
+      { rank: 1, nome: 'Porto Alegre', pibBi: 104.74, perCapita: 78564.00, id: '4314902' },
+      { rank: 2, nome: 'Caxias do Sul', pibBi: 37.86, perCapita: 81682.00, id: '4305108' },
+      { rank: 3, nome: 'Canoas', pibBi: 29.17, perCapita: 83788.00, id: '4304606' },
+      { rank: 4, nome: 'Gravataí', pibBi: 15.55, perCapita: 58661.00, id: '4309209' },
+      { rank: 5, nome: 'Rio Grande', pibBi: 14.11, perCapita: 73491.00, id: '4315602' },
+      { rank: 6, nome: 'Passo Fundo', pibBi: 14.07, perCapita: 68227.53, id: '4314100', isCurrent: true },
+      { rank: 7, nome: 'Santa Cruz do Sul', pibBi: 13.40, perCapita: 100344.00, id: '4316808' },
+      { rank: 8, nome: 'Pelotas', pibBi: 12.48, perCapita: 38407.00, id: '4314407' },
+      { rank: 9, nome: 'Novo Hamburgo', pibBi: 11.94, perCapita: 52427.00, id: '4313409' },
+      { rank: 10, nome: 'São Leopoldo', pibBi: 11.74, perCapita: 53965.00, id: '4318705' }
+    ],
+    fonte: 'IBGE — SIDRA Tabela 5938 / DEE-SPGG-RS (Ano 2023)',
+    url: 'https://cidades.ibge.gov.br/brasil/rs/passo-fundo/pesquisa/38/47000'
   }
 };
 
@@ -232,6 +252,24 @@ export class MetricsCharts {
             <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #ef4444;"></span>&lt;95%</span>
           </div>
         </div>
+
+        <!-- 8. Produto Interno Bruto (PIB) & PIB Per Capita -->
+        <div class="chart-card" style="margin-bottom: 12px;">
+          <div class="chart-card-header" style="flex-wrap: wrap; gap: 6px;">
+            <span class="chart-card-title">
+              <i class="lucide-trending-up" style="color: var(--dc-orange-primary);"></i>
+              Evolução do PIB &amp; PIB Per Capita
+            </span>
+            <span class="chart-badge">IBGE 2018–2023</span>
+          </div>
+          <div class="chart-wrapper" style="height: 260px;">
+            <canvas id="chart-pib-sidebar"></canvas>
+          </div>
+          <div style="font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 6px; display: flex; justify-content: space-between; align-items: center;">
+            <span>Fonte: IBGE / SIDRA 5938 &bull; DEE-RS</span>
+            <span style="color: #10b981; font-weight: 600;">6ª Economia do RS</span>
+          </div>
+        </div>
       </div>
     `;
   }
@@ -371,6 +409,49 @@ export class MetricsCharts {
             <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #eab308;"></span>95,0% a 97,4%</span>
             <span class="bairros-legend-item"><span class="bairros-legend-dot" style="background: #ef4444;"></span>Menor que 95,0%</span>
             <span style="margin-left: auto; font-size: 10.5px; color: var(--text-muted);"><i class="lucide-mouse-pointer" style="font-size: 11px;"></i> Clique em qualquer barra de bairro para aproximar no mapa</span>
+          </div>
+        </div>
+
+        <!-- 8. Produto Interno Bruto (PIB) & Indicadores Macroeconômicos -->
+        <div class="chart-card" style="grid-column: 1 / -1;">
+          <div class="chart-card-header" style="flex-wrap: wrap; gap: 8px;">
+            <span class="chart-card-title">
+              <i class="lucide-trending-up" style="color: var(--dc-orange-primary);"></i>
+              Produto Interno Bruto (PIB) e PIB Per Capita — Estatísticas Macroeconômicas Oficiais (IBGE / DEE-RS)
+            </span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="chart-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">
+                6ª Maior Economia do RS
+              </span>
+              <a href="https://cidades.ibge.gov.br/brasil/rs/passo-fundo/pesquisa/38/47000" target="_blank" rel="noopener noreferrer" class="chart-badge" style="background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.3); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                IBGE Cidades <i class="lucide-external-link" style="font-size: 10px;"></i>
+              </a>
+              <a href="https://sidra.ibge.gov.br/tabela/5938" target="_blank" rel="noopener noreferrer" class="chart-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                SIDRA Tab. 5938 <i class="lucide-external-link" style="font-size: 10px;"></i>
+              </a>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 16px; margin-top: 10px;">
+            <div>
+              <div style="font-size: 12px; font-weight: 600; color: #ffffff; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                <i class="lucide-line-chart" style="color: #f97316; font-size: 13px;"></i> Evolução Histórica do PIB e PIB Per Capita (2018–2023)
+              </div>
+              <div class="chart-wrapper" style="height: 380px;">
+                <canvas id="chart-pib-evolucao-modal"></canvas>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; color: #ffffff; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                <i class="lucide-bar-chart-2" style="color: #38bdf8; font-size: 13px;"></i> Top 10 Maiores Economias do Rio Grande do Sul (2023)
+              </div>
+              <div class="chart-wrapper" style="height: 380px;">
+                <canvas id="chart-pib-ranking-modal"></canvas>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; margin-top: 12px; flex-wrap: wrap; gap: 8px;">
+            <span><strong>Fonte Oficial:</strong> IBGE — Pesquisa do Produto Interno Bruto dos Municípios (SIDRA Tabela 5938) &amp; Sistema de Contas Regionais / DEE-SPGG-RS.</span>
+            <span><strong>População Base:</strong> 206.215 habitantes (Censo Demográfico IBGE 2022)</span>
           </div>
         </div>
       </div>
@@ -664,6 +745,9 @@ export class MetricsCharts {
     // 7. Alfabetização e Educação (Censo 2022)
     this.initEducationChart('sidebar');
     this.setupEducationToggleButtons('sidebar');
+
+    // 8. Produto Interno Bruto (PIB) & PIB Per Capita
+    this.initPibChart('sidebar');
   }
 
   /**
@@ -933,6 +1017,9 @@ export class MetricsCharts {
     // 7. Alfabetização e Educação (Censo 2022)
     this.initEducationChart('modal');
     this.setupEducationToggleButtons('modal');
+
+    // 8. Produto Interno Bruto (PIB) & Indicadores Macroeconômicos
+    this.initPibChart('modal');
   }
 
   /**
@@ -1344,6 +1431,326 @@ export class MetricsCharts {
         }
       }
     });
+  }
+
+  /**
+   * Inicializa os gráficos de PIB e PIB Per Capita (Evolução Histórica e Ranking RS)
+   */
+  initPibChart(scope = 'sidebar') {
+    if (typeof Chart === 'undefined') return;
+
+    const pibData = METRICS_ANALYTICAL_DATA.pib;
+    if (!pibData) return;
+
+    if (scope === 'sidebar') {
+      const canvasId = 'chart-pib-sidebar';
+      const ctx = document.getElementById(canvasId);
+      if (!ctx) return;
+
+      if (this.charts.sidebar && this.charts.sidebar.pib) {
+        this.charts.sidebar.pib.destroy();
+        delete this.charts.sidebar.pib;
+      }
+
+      const anos = pibData.anos;
+      const pibBi = pibData.pibTotalBilhoes;
+      const perCapita = pibData.pibPerCapita;
+
+      this.charts.sidebar.pib = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: anos,
+          datasets: [
+            {
+              label: 'PIB Total (R$ Bi)',
+              data: pibBi,
+              borderColor: '#f97316',
+              backgroundColor: 'rgba(249, 115, 22, 0.15)',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#f97316',
+              pointRadius: 3.5,
+              tension: 0.3,
+              fill: true,
+              yAxisID: 'y'
+            },
+            {
+              label: 'Per Capita (R$)',
+              data: perCapita,
+              borderColor: '#38bdf8',
+              backgroundColor: 'transparent',
+              borderWidth: 2,
+              borderDash: [4, 4],
+              pointBackgroundColor: '#38bdf8',
+              pointRadius: 3.5,
+              tension: 0.3,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                color: '#cbd5e1',
+                font: { size: 9 },
+                boxWidth: 8,
+                padding: 6
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => {
+                  if (ctx.datasetIndex === 0) {
+                    return ` PIB Total: R$ ${formatNumber(ctx.raw, 2)} bilhões`;
+                  } else {
+                    return ` PIB Per Capita: R$ ${formatNumber(ctx.raw, 2)}`;
+                  }
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: '#94a3b8', font: { size: 8.5 } },
+              grid: { color: 'rgba(255, 255, 255, 0.05)' }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              ticks: {
+                color: '#f97316',
+                font: { size: 8.5 },
+                callback: (v) => `R$ ${v}B`
+              },
+              grid: { color: 'rgba(255, 255, 255, 0.05)' }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              ticks: {
+                color: '#38bdf8',
+                font: { size: 8.5 },
+                callback: (v) => `${(v / 1000).toFixed(0)}k`
+              },
+              grid: { display: false }
+            }
+          }
+        }
+      });
+    } else if (scope === 'modal') {
+      // 1. Gráfico de Evolução Histórica (Modal)
+      const evolucaoCtx = document.getElementById('chart-pib-evolucao-modal');
+      if (evolucaoCtx) {
+        if (this.charts.modal && this.charts.modal.pibEvolucao) {
+          this.charts.modal.pibEvolucao.destroy();
+          delete this.charts.modal.pibEvolucao;
+        }
+
+        this.charts.modal.pibEvolucao = new Chart(evolucaoCtx, {
+          type: 'line',
+          data: {
+            labels: pibData.anos,
+            datasets: [
+              {
+                label: 'PIB Total (R$ Bilhões)',
+                data: pibData.pibTotalBilhoes,
+                borderColor: '#f97316',
+                backgroundColor: 'rgba(249, 115, 22, 0.12)',
+                borderWidth: 3,
+                pointBackgroundColor: '#f97316',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 1.5,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                tension: 0.35,
+                fill: true,
+                yAxisID: 'y'
+              },
+              {
+                label: 'PIB Per Capita (R$)',
+                data: pibData.pibPerCapita,
+                borderColor: '#38bdf8',
+                backgroundColor: 'transparent',
+                borderWidth: 2.5,
+                borderDash: [5, 5],
+                pointBackgroundColor: '#38bdf8',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 1.5,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                tension: 0.35,
+                yAxisID: 'y1'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+              mode: 'index',
+              intersect: false
+            },
+            plugins: {
+              legend: {
+                position: 'top',
+                labels: {
+                  color: '#e2e8f0',
+                  font: { size: 11, weight: '500' },
+                  boxWidth: 12,
+                  padding: 12
+                }
+              },
+              tooltip: {
+                padding: 10,
+                callbacks: {
+                  label: (ctx) => {
+                    if (ctx.datasetIndex === 0) {
+                      return ` PIB Total: R$ ${formatNumber(ctx.raw, 2)} bilhões`;
+                    } else {
+                      return ` PIB Per Capita: R$ ${formatNumber(ctx.raw, 2)}`;
+                    }
+                  },
+                  footer: (items) => {
+                    if (!items.length) return '';
+                    const yearIdx = items[0].dataIndex;
+                    if (yearIdx === 5) {
+                      return 'Crescimento acumulado (2018-2023): +53,75%';
+                    }
+                    return '';
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: { color: '#94a3b8', font: { size: 10.5 } },
+                grid: { color: 'rgba(255, 255, 255, 0.05)' }
+              },
+              y: {
+                type: 'linear',
+                position: 'left',
+                title: {
+                  display: true,
+                  text: 'PIB Total (R$ Bilhões)',
+                  color: '#f97316',
+                  font: { size: 10.5, weight: 'bold' }
+                },
+                ticks: {
+                  color: '#f97316',
+                  font: { size: 10 },
+                  callback: (v) => `R$ ${v} Bi`
+                },
+                grid: { color: 'rgba(255, 255, 255, 0.05)' }
+              },
+              y1: {
+                type: 'linear',
+                position: 'right',
+                title: {
+                  display: true,
+                  text: 'PIB Per Capita (R$)',
+                  color: '#38bdf8',
+                  font: { size: 10.5, weight: 'bold' }
+                },
+                ticks: {
+                  color: '#38bdf8',
+                  font: { size: 10 },
+                  callback: (v) => `R$ ${(v / 1000).toFixed(0)}k`
+                },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 2. Gráfico de Ranking Top 10 RS (Modal)
+      const rankingCtx = document.getElementById('chart-pib-ranking-modal');
+      if (rankingCtx) {
+        if (this.charts.modal && this.charts.modal.pibRanking) {
+          this.charts.modal.pibRanking.destroy();
+          delete this.charts.modal.pibRanking;
+        }
+
+        const top10 = pibData.rankingRS;
+        const labels = top10.map(m => `${m.rank}º ${m.nome}`);
+        const dataValues = top10.map(m => m.pibBi);
+        const bgColors = top10.map(m => m.nome === 'Passo Fundo' ? '#f97316' : '#38bdf8');
+        const hoverColors = top10.map(m => m.nome === 'Passo Fundo' ? '#ea580c' : '#0284c7');
+
+        this.charts.modal.pibRanking = new Chart(rankingCtx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'PIB 2023 (R$ Bilhões)',
+              data: dataValues,
+              backgroundColor: bgColors,
+              hoverBackgroundColor: hoverColors,
+              borderRadius: 5,
+              borderSkipped: false
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                padding: 10,
+                callbacks: {
+                  title: (items) => {
+                    if (!items.length) return '';
+                    const item = top10[items[0].dataIndex];
+                    return `${item.rank}º Lugar no RS: ${item.nome}`;
+                  },
+                  label: (ctx) => {
+                    const item = top10[ctx.dataIndex];
+                    return [
+                      ` PIB Total: R$ ${formatNumber(item.pibBi, 2)} bilhões`,
+                      ` PIB Per Capita: R$ ${formatNumber(item.perCapita, 2)}`
+                    ];
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: {
+                  color: '#94a3b8',
+                  font: { size: 10 },
+                  callback: (v) => `R$ ${v}B`
+                },
+                grid: { color: 'rgba(255, 255, 255, 0.05)' }
+              },
+              y: {
+                ticks: {
+                  color: (ctx) => {
+                    const label = ctx.tick && ctx.tick.label;
+                    return (label && label.includes('Passo Fundo')) ? '#f97316' : '#cbd5e1';
+                  },
+                  font: (ctx) => {
+                    const label = ctx.tick && ctx.tick.label;
+                    return {
+                      size: 9.5,
+                      weight: (label && label.includes('Passo Fundo')) ? 'bold' : 'normal'
+                    };
+                  }
+                },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+    }
   }
 
   /**

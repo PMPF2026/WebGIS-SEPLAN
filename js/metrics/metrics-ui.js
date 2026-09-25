@@ -288,9 +288,15 @@ export class MetricsUI {
         </div>
 
         <div class="metric-card-footer">
-          <span class="metric-source-text" title="Fonte: ${this.escapeHtml(m.source)} (Ref: ${m.referenceYear || 'Oficial'})">
-            ${this.escapeHtml(m.source)}
-          </span>
+          ${m.sourceUrl ? `
+            <a href="${m.sourceUrl}" target="_blank" rel="noopener noreferrer" class="metric-source-text" title="Acessar base oficial do IBGE: ${this.escapeHtml(m.source)} (Ref: ${m.referenceYear || 'Oficial'})" style="color: var(--dc-orange-primary, #f97316); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 500;">
+              ${this.escapeHtml(m.source)} <i class="lucide-external-link" style="font-size: 10px;"></i>
+            </a>
+          ` : `
+            <span class="metric-source-text" title="Fonte: ${this.escapeHtml(m.source)} (Ref: ${m.referenceYear || 'Oficial'})">
+              ${this.escapeHtml(m.source)}
+            </span>
+          `}
           <div style="display: flex; align-items: center; gap: 6px;">
             <span class="metric-status-badge ${statusClass}" title="Classificação: Dado ${statusLabel}">
               ${statusLabel}
@@ -317,6 +323,8 @@ export class MetricsUI {
       'total_domicilios_censo_2022',
       'densidade_demografica_media',
       'rendimento_medio_domiciliar',
+      'pib_per_capita_passo_fundo',
+      'pib_total_passo_fundo',
       'bairro_maior_envelhecimento',
       'taxa_alfabetizacao_passo_fundo'
     ];
