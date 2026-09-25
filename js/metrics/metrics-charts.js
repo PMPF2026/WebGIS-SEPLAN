@@ -89,8 +89,8 @@ export const METRICS_ANALYTICAL_DATA = {
       { rank: 9, nome: 'Novo Hamburgo', pibBi: 11.94, perCapita: 52427.00, id: '4313409' },
       { rank: 10, nome: 'São Leopoldo', pibBi: 11.74, perCapita: 53965.00, id: '4318705' }
     ],
-    fonte: 'IBGE — SIDRA Tabela 5938 / DEE-SPGG-RS (Ano 2023)',
-    url: 'https://cidades.ibge.gov.br/brasil/rs/passo-fundo/pesquisa/38/47000'
+    fonte: 'IBGE — SIDRA Tabela 5938 / DEE-SPGG-RS (Ano-base 2023, atualizado em 19/12/2025 conforme Nota Técnica 02/2024 SCN)',
+    url: 'https://sidra.ibge.gov.br/tabela/5938'
   }
 };
 
@@ -260,13 +260,13 @@ export class MetricsCharts {
               <i class="lucide-trending-up" style="color: var(--dc-orange-primary);"></i>
               Evolução do PIB &amp; PIB Per Capita
             </span>
-            <span class="chart-badge">IBGE 2018–2023</span>
+            <span class="chart-badge">Ano-Base 2023 (Publ. 19/12/2025)</span>
           </div>
           <div class="chart-wrapper" style="height: 260px;">
             <canvas id="chart-pib-sidebar"></canvas>
           </div>
-          <div style="font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 6px; display: flex; justify-content: space-between; align-items: center;">
-            <span>Fonte: IBGE / SIDRA 5938 &bull; DEE-RS</span>
+          <div style="font-size: 9.5px; color: var(--text-muted); text-align: center; margin-top: 6px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;">
+            <span>Fonte: IBGE / SIDRA 5938 (Publ. 19/12/2025)</span>
             <span style="color: #10b981; font-weight: 600;">6ª Economia do RS</span>
           </div>
         </div>
@@ -419,15 +419,18 @@ export class MetricsCharts {
               <i class="lucide-trending-up" style="color: var(--dc-orange-primary);"></i>
               Produto Interno Bruto (PIB) e PIB Per Capita — Estatísticas Macroeconômicas Oficiais (IBGE / DEE-RS)
             </span>
-            <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
               <span class="chart-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">
+                Ano-Base: 2023 (Publ. IBGE 19/12/2025)
+              </span>
+              <span class="chart-badge" style="background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.3);">
                 6ª Maior Economia do RS
               </span>
-              <a href="https://cidades.ibge.gov.br/brasil/rs/passo-fundo/pesquisa/38/47000" target="_blank" rel="noopener noreferrer" class="chart-badge" style="background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.3); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-                IBGE Cidades <i class="lucide-external-link" style="font-size: 10px;"></i>
-              </a>
               <a href="https://sidra.ibge.gov.br/tabela/5938" target="_blank" rel="noopener noreferrer" class="chart-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
                 SIDRA Tab. 5938 <i class="lucide-external-link" style="font-size: 10px;"></i>
+              </a>
+              <a href="https://cidades.ibge.gov.br/brasil/rs/passo-fundo/pesquisa/38/47000" target="_blank" rel="noopener noreferrer" class="chart-badge" style="background: rgba(255, 255, 255, 0.08); color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.2); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                IBGE Cidades <i class="lucide-external-link" style="font-size: 10px;"></i>
               </a>
             </div>
           </div>
@@ -450,7 +453,7 @@ export class MetricsCharts {
             </div>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; margin-top: 12px; flex-wrap: wrap; gap: 8px;">
-            <span><strong>Fonte Oficial:</strong> IBGE — Pesquisa do Produto Interno Bruto dos Municípios (SIDRA Tabela 5938) &amp; Sistema de Contas Regionais / DEE-SPGG-RS.</span>
+            <span><strong>Fonte Oficial:</strong> IBGE — Tabela SIDRA 5938 (Ano-base 2023, atualizado em 19/12/2025 conforme Nota Técnica 02/2024 SCN) &amp; DEE-SPGG-RS.</span>
             <span><strong>População Base:</strong> 206.215 habitantes (Censo Demográfico IBGE 2022)</span>
           </div>
         </div>
