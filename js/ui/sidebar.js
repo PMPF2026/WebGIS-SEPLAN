@@ -81,7 +81,8 @@ export class SidebarUI {
     });
 
     document.querySelectorAll('.tab-panel').forEach(panel => {
-      const isTarget = panel.getAttribute('id') === `tab-${tabId}`;
+      const panelId = panel.getAttribute('id');
+      const isTarget = panelId === `tab-${tabId}` || panelId === tabId;
       panel.classList.toggle('active', isTarget);
     });
 
@@ -91,6 +92,10 @@ export class SidebarUI {
       window.webGis.dashboardUI.render();
     } else if (tabId === 'metricas' && window.webGis && window.webGis.metricsUI) {
       window.webGis.metricsUI.onTabActivated();
+    } else if (tabId === 'tab-censo-comparativo' || tabId === 'censo-comparativo') {
+      window.dispatchEvent(new CustomEvent('comparativo:tab-opened'));
+    } else {
+      window.dispatchEvent(new CustomEvent('comparativo:tab-closed'));
     }
   }
 

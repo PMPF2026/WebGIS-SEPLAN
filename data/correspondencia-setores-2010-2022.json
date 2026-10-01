@@ -1,0 +1,2917 @@
+{
+  "metadata": {
+    "fonte": "IBGE — Histórico de formação dos Setores Censitários 2010–2022",
+    "municipio": "Passo Fundo",
+    "codigo_ibge": "4314100",
+    "censo_origem": 2010,
+    "censo_destino": 2022,
+    "total_setores_2010": 272,
+    "total_setores_2022": 321,
+    "total_relacoes": 321,
+    "nota_metodologica": "Os setores censitários de 2010 e 2022 possuem relações territoriais de formação definidas pelo IBGE e não devem ser interpretados automaticamente como unidades espaciais equivalentes.",
+    "descricao_frm": {
+      "111": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "112": "Setor de 2022 com correspondência integral a 2010 com renomeação ou reordenação interna",
+      "161": "Setor de 2022 correspondente a 2010 com pequenos ajustes cartográficos de limite",
+      "241": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "242": "Subdivisão complementar de setor de 2010 formando múltiplos setores em 2022"
+    },
+    "setores_especiais": {
+      "431410005160005": "Sem coleta domiciliar / Área sem população enumerada no conjunto estatístico analisado (Bairro Zachia)",
+      "431410005160006": "Sem coleta domiciliar / Área sem população enumerada no conjunto estatístico analisado (Bairro Zachia)"
+    }
+  },
+  "correspondencias": [
+    {
+      "setor_2010": "431410005060006",
+      "setor_2022": "431410005060006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 06",
+      "regiao_nome": "Vila Cruzeiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005080001",
+      "setor_2022": "431410005080008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 08",
+      "regiao_nome": "Santa Marta",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005080003",
+      "setor_2022": "431410005080010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 08",
+      "regiao_nome": "Santa Marta",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090008",
+      "setor_2022": "431410005090008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005100002",
+      "setor_2022": "431410005100002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 10",
+      "regiao_nome": "Victor Issler",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120011",
+      "setor_2022": "431410005120011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120013",
+      "setor_2022": "431410005120013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005130001",
+      "setor_2022": "431410005130001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 13",
+      "regiao_nome": "Roselândia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005160006",
+      "setor_2022": "431410005160006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 16",
+      "regiao_nome": "José Alexandre Zachia",
+      "tipo_area": "Urbano",
+      "nota": "Sem coleta domiciliar / Área sem população enumerada no conjunto estatístico analisado (Bairro Zachia)"
+    },
+    {
+      "setor_2010": "431410005170005",
+      "setor_2022": "431410005170011",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180012",
+      "setor_2022": "431410005180012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005200004",
+      "setor_2022": "431410005200004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 20",
+      "regiao_nome": "Vila Santa Maria",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005210006",
+      "setor_2022": "431410005210006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 21",
+      "regiao_nome": "Planaltina",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010039",
+      "setor_2022": "431410005010039",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410040000005",
+      "setor_2022": "431410040000007",
+      "frm": "242",
+      "frm_descricao": "Subdivisão complementar de setor de 2010 formando múltiplos setores em 2022",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 40",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410045000001",
+      "setor_2022": "431410045000001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 45",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005020002",
+      "setor_2022": "431410005020002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030001",
+      "setor_2022": "431410005030001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030019",
+      "setor_2022": "431410005030019",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040005",
+      "setor_2022": "431410005040005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040008",
+      "setor_2022": "431410005040017",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005080003",
+      "setor_2022": "431410005080012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 08",
+      "regiao_nome": "Santa Marta",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110006",
+      "setor_2022": "431410005110006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005170006",
+      "setor_2022": "431410005170006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010013",
+      "setor_2022": "431410005010013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005200007",
+      "setor_2022": "431410005200007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 20",
+      "regiao_nome": "Vila Santa Maria",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005210003",
+      "setor_2022": "431410005210003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 21",
+      "regiao_nome": "Planaltina",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005210005",
+      "setor_2022": "431410005210005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 21",
+      "regiao_nome": "Planaltina",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010025",
+      "setor_2022": "431410005010025",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010034",
+      "setor_2022": "431410005010034",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010040",
+      "setor_2022": "431410005010040",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010031",
+      "setor_2022": "431410005010056",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020022",
+      "setor_2022": "431410005020022",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030008",
+      "setor_2022": "431410005030008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030025",
+      "setor_2022": "431410005030025",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040002",
+      "setor_2022": "431410005040002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050007",
+      "setor_2022": "431410005050013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050008",
+      "setor_2022": "431410005050022",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090006",
+      "setor_2022": "431410005090006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090009",
+      "setor_2022": "431410005090009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005100004",
+      "setor_2022": "431410005100004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 10",
+      "regiao_nome": "Victor Issler",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005100001",
+      "setor_2022": "431410005100005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 10",
+      "regiao_nome": "Victor Issler",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110004",
+      "setor_2022": "431410005110004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120016",
+      "setor_2022": "431410005120016",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150009",
+      "setor_2022": "431410005150009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005170001",
+      "setor_2022": "431410005170009",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190011",
+      "setor_2022": "431410005190011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010016",
+      "setor_2022": "431410005010016",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005220003",
+      "setor_2022": "431410005220003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 22",
+      "regiao_nome": "Nenê Graeff",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010029",
+      "setor_2022": "431410005010029",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410045000002",
+      "setor_2022": "431410045000002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 45",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005020015",
+      "setor_2022": "431410005020015",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020019",
+      "setor_2022": "431410005020019",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030003",
+      "setor_2022": "431410005030003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030013",
+      "setor_2022": "431410005030013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050003",
+      "setor_2022": "431410005050019",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070016",
+      "setor_2022": "431410005070016",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005080005",
+      "setor_2022": "431410005080005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 08",
+      "regiao_nome": "Santa Marta",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410035000002",
+      "setor_2022": "431410005090012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005000001",
+      "setor_2022": "431410005110011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120007",
+      "setor_2022": "431410005120007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150007",
+      "setor_2022": "431410005150007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005000001",
+      "setor_2022": "431410005160008",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 16",
+      "regiao_nome": "José Alexandre Zachia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005170004",
+      "setor_2022": "431410005170004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010006",
+      "setor_2022": "431410005010006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010008",
+      "setor_2022": "431410005010008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010010",
+      "setor_2022": "431410005010010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005200006",
+      "setor_2022": "431410005200006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 20",
+      "regiao_nome": "Vila Santa Maria",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410017000002",
+      "setor_2022": "431410017000002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 17",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005010017",
+      "setor_2022": "431410005010042",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010018",
+      "setor_2022": "431410005010043",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010004",
+      "setor_2022": "431410005010051",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010014",
+      "setor_2022": "431410005010053",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010031",
+      "setor_2022": "431410005010055",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030002",
+      "setor_2022": "431410005030002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030012",
+      "setor_2022": "431410005030012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030015",
+      "setor_2022": "431410005030015",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040013",
+      "setor_2022": "431410005040024",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050007",
+      "setor_2022": "431410005050014",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005060004",
+      "setor_2022": "431410005060004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 06",
+      "regiao_nome": "Vila Cruzeiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070012",
+      "setor_2022": "431410005070012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005080002",
+      "setor_2022": "431410005080002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 08",
+      "regiao_nome": "Santa Marta",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090003",
+      "setor_2022": "431410005090003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090010",
+      "setor_2022": "431410005090014",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005100001",
+      "setor_2022": "431410005100006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 10",
+      "regiao_nome": "Victor Issler",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110008",
+      "setor_2022": "431410005110008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110010",
+      "setor_2022": "431410005110010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120001",
+      "setor_2022": "431410005120001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120014",
+      "setor_2022": "431410005120014",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005000001",
+      "setor_2022": "431410005140002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 14",
+      "regiao_nome": "Vila Mattos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150004",
+      "setor_2022": "431410005150004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150006",
+      "setor_2022": "431410005150006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005160004",
+      "setor_2022": "431410005160004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 16",
+      "regiao_nome": "José Alexandre Zachia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005170005",
+      "setor_2022": "431410005170012",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005170002",
+      "setor_2022": "431410005170014",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010022",
+      "setor_2022": "431410005010022",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005220001",
+      "setor_2022": "431410005220001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 22",
+      "regiao_nome": "Nenê Graeff",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010026",
+      "setor_2022": "431410005010026",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410040000002",
+      "setor_2022": "431410040000002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 40",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410040000004",
+      "setor_2022": "431410050000001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 50",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005010014",
+      "setor_2022": "431410005010054",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020007",
+      "setor_2022": "431410005020007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020012",
+      "setor_2022": "431410005020012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020014",
+      "setor_2022": "431410005020014",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020017",
+      "setor_2022": "431410005020017",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020002",
+      "setor_2022": "431410005020028",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030016",
+      "setor_2022": "431410005030016",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005000001",
+      "setor_2022": "431410005040014",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050004",
+      "setor_2022": "431410005050004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050009",
+      "setor_2022": "431410005050009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005060005",
+      "setor_2022": "431410005060005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 06",
+      "regiao_nome": "Vila Cruzeiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070003",
+      "setor_2022": "431410005070003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070010",
+      "setor_2022": "431410005070010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005000001",
+      "setor_2022": "431410005110013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410040000005",
+      "setor_2022": "431410005130005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 13",
+      "regiao_nome": "Roselândia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150005",
+      "setor_2022": "431410005150005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005170002",
+      "setor_2022": "431410005170013",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190003",
+      "setor_2022": "431410005190003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190004",
+      "setor_2022": "431410005190004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190006",
+      "setor_2022": "431410005190016",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010002",
+      "setor_2022": "431410005010002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005210001",
+      "setor_2022": "431410005210001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 21",
+      "regiao_nome": "Planaltina",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010030",
+      "setor_2022": "431410005010030",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410040000003",
+      "setor_2022": "431410040000003",
+      "frm": "161",
+      "frm_descricao": "Setor de 2022 correspondente a 2010 com pequenos ajustes cartográficos de limite",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 40",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005020005",
+      "setor_2022": "431410005020005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020010",
+      "setor_2022": "431410005020010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030005",
+      "setor_2022": "431410005030005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030022",
+      "setor_2022": "431410005030026",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040007",
+      "setor_2022": "431410005040020",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070007",
+      "setor_2022": "431410005070007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005080004",
+      "setor_2022": "431410005080004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 08",
+      "regiao_nome": "Santa Marta",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110001",
+      "setor_2022": "431410005110001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110009",
+      "setor_2022": "431410005110015",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120015",
+      "setor_2022": "431410005120015",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150003",
+      "setor_2022": "431410005150003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005160001",
+      "setor_2022": "431410005160001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 16",
+      "regiao_nome": "José Alexandre Zachia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005170001",
+      "setor_2022": "431410005170010",
+      "frm": "242",
+      "frm_descricao": "Subdivisão complementar de setor de 2010 formando múltiplos setores em 2022",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180003",
+      "setor_2022": "431410005180003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180011",
+      "setor_2022": "431410005180011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190007",
+      "setor_2022": "431410005190007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005200008",
+      "setor_2022": "431410005200008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 20",
+      "regiao_nome": "Vila Santa Maria",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005220004",
+      "setor_2022": "431410005220004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 22",
+      "regiao_nome": "Nenê Graeff",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010032",
+      "setor_2022": "431410005010032",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410040000004",
+      "setor_2022": "431410050000002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 50",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005020016",
+      "setor_2022": "431410005020016",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030017",
+      "setor_2022": "431410005030017",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040003",
+      "setor_2022": "431410005040003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040010",
+      "setor_2022": "431410005040010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040012",
+      "setor_2022": "431410005040012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040013",
+      "setor_2022": "431410005040023",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050008",
+      "setor_2022": "431410005050023",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005060001",
+      "setor_2022": "431410005060001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 06",
+      "regiao_nome": "Vila Cruzeiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005060003",
+      "setor_2022": "431410005060003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 06",
+      "regiao_nome": "Vila Cruzeiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070009",
+      "setor_2022": "431410005070009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070014",
+      "setor_2022": "431410005070014",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005080001",
+      "setor_2022": "431410005080009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 08",
+      "regiao_nome": "Santa Marta",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090001",
+      "setor_2022": "431410005090001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110005",
+      "setor_2022": "431410005110005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005130003",
+      "setor_2022": "431410005130003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 13",
+      "regiao_nome": "Roselândia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005140001",
+      "setor_2022": "431410005140001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 14",
+      "regiao_nome": "Vila Mattos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180006",
+      "setor_2022": "431410005180006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190014",
+      "setor_2022": "431410005190014",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005210008",
+      "setor_2022": "431410005210008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 21",
+      "regiao_nome": "Planaltina",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010035",
+      "setor_2022": "431410005010035",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020027",
+      "setor_2022": "431410005020027",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030006",
+      "setor_2022": "431410005030006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030007",
+      "setor_2022": "431410005030007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030021",
+      "setor_2022": "431410005030021",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005080003",
+      "setor_2022": "431410005080011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 08",
+      "regiao_nome": "Santa Marta",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090005",
+      "setor_2022": "431410005090005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120003",
+      "setor_2022": "431410005120003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150008",
+      "setor_2022": "431410005150008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180009",
+      "setor_2022": "431410005180009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180013",
+      "setor_2022": "431410005180013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190002",
+      "setor_2022": "431410005190002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190008",
+      "setor_2022": "431410005190008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010001",
+      "setor_2022": "431410005010001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010012",
+      "setor_2022": "431410005010047",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020006",
+      "setor_2022": "431410005020006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040009",
+      "setor_2022": "431410005040021",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050001",
+      "setor_2022": "431410005050001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070004",
+      "setor_2022": "431410005070004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070005",
+      "setor_2022": "431410005070005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090004",
+      "setor_2022": "431410005090004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110009",
+      "setor_2022": "431410005110014",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120010",
+      "setor_2022": "431410005120010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410040000005",
+      "setor_2022": "431410005130006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 13",
+      "regiao_nome": "Roselândia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005160002",
+      "setor_2022": "431410005160002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 16",
+      "regiao_nome": "José Alexandre Zachia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180001",
+      "setor_2022": "431410005180001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180002",
+      "setor_2022": "431410005180002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180005",
+      "setor_2022": "431410005180005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180010",
+      "setor_2022": "431410005180010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190010",
+      "setor_2022": "431410005190010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005200002",
+      "setor_2022": "431410005200002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 20",
+      "regiao_nome": "Vila Santa Maria",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005200005",
+      "setor_2022": "431410005200005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 20",
+      "regiao_nome": "Vila Santa Maria",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005210002",
+      "setor_2022": "431410005210002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 21",
+      "regiao_nome": "Planaltina",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005210007",
+      "setor_2022": "431410005210007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 21",
+      "regiao_nome": "Planaltina",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005220002",
+      "setor_2022": "431410005220002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 22",
+      "regiao_nome": "Nenê Graeff",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020009",
+      "setor_2022": "431410005020009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030024",
+      "setor_2022": "431410005030024",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040011",
+      "setor_2022": "431410005040011",
+      "frm": "161",
+      "frm_descricao": "Setor de 2022 correspondente a 2010 com pequenos ajustes cartográficos de limite",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050006",
+      "setor_2022": "431410005050011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050003",
+      "setor_2022": "431410005050021",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070001",
+      "setor_2022": "431410005070001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070002",
+      "setor_2022": "431410005070002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070015",
+      "setor_2022": "431410005070015",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005100003",
+      "setor_2022": "431410005100003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 10",
+      "regiao_nome": "Victor Issler",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005000001",
+      "setor_2022": "431410005110012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005130002",
+      "setor_2022": "431410005130002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 13",
+      "regiao_nome": "Roselândia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410040000004",
+      "setor_2022": "431410005130004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 13",
+      "regiao_nome": "Roselândia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005160005",
+      "setor_2022": "431410005160005",
+      "frm": "112",
+      "frm_descricao": "Setor de 2022 com correspondência integral a 2010 com renomeação ou reordenação interna",
+      "regiao_id": "Setor 16",
+      "regiao_nome": "José Alexandre Zachia",
+      "tipo_area": "Urbano",
+      "nota": "Sem coleta domiciliar / Área sem população enumerada no conjunto estatístico analisado (Bairro Zachia)"
+    },
+    {
+      "setor_2010": "431410005180008",
+      "setor_2022": "431410005180008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190009",
+      "setor_2022": "431410005190009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190013",
+      "setor_2022": "431410005190013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010007",
+      "setor_2022": "431410005010007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010019",
+      "setor_2022": "431410005010019",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010021",
+      "setor_2022": "431410005010021",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005210009",
+      "setor_2022": "431410005210009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 21",
+      "regiao_nome": "Planaltina",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010038",
+      "setor_2022": "431410005010038",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020004",
+      "setor_2022": "431410005020004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030014",
+      "setor_2022": "431410005030014",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030023",
+      "setor_2022": "431410005030023",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040006",
+      "setor_2022": "431410005040015",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040006",
+      "setor_2022": "431410005040016",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005080003",
+      "setor_2022": "431410005080007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 08",
+      "regiao_nome": "Santa Marta",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120002",
+      "setor_2022": "431410005120002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120008",
+      "setor_2022": "431410005120008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005160003",
+      "setor_2022": "431410005160003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 16",
+      "regiao_nome": "José Alexandre Zachia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410010000003",
+      "setor_2022": "431410005170008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180007",
+      "setor_2022": "431410005180007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190012",
+      "setor_2022": "431410005190012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010028",
+      "setor_2022": "431410005010028",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410010000001",
+      "setor_2022": "431410010000001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 10",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410040000001",
+      "setor_2022": "431410040000001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 40",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005020001",
+      "setor_2022": "431410005020001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020008",
+      "setor_2022": "431410005020008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020013",
+      "setor_2022": "431410005020013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020023",
+      "setor_2022": "431410005020023",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020026",
+      "setor_2022": "431410005020026",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030009",
+      "setor_2022": "431410005030009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030010",
+      "setor_2022": "431410005030010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030020",
+      "setor_2022": "431410005030020",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030022",
+      "setor_2022": "431410005030027",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050006",
+      "setor_2022": "431410005050012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090011",
+      "setor_2022": "431410005090011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110007",
+      "setor_2022": "431410005110007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120005",
+      "setor_2022": "431410005120005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120006",
+      "setor_2022": "431410005120006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150002",
+      "setor_2022": "431410005150002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150010",
+      "setor_2022": "431410005150010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005000001",
+      "setor_2022": "431410005160009",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 16",
+      "regiao_nome": "José Alexandre Zachia",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010003",
+      "setor_2022": "431410005010003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010027",
+      "setor_2022": "431410005010027",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010017",
+      "setor_2022": "431410005010041",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410010000002",
+      "setor_2022": "431410010000002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 10",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410010000003",
+      "setor_2022": "431410010000003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 10",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005010012",
+      "setor_2022": "431410005010048",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010009",
+      "setor_2022": "431410005010049",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010009",
+      "setor_2022": "431410005010050",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010004",
+      "setor_2022": "431410005010052",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020011",
+      "setor_2022": "431410005020011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040001",
+      "setor_2022": "431410005040001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050003",
+      "setor_2022": "431410005050020",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070006",
+      "setor_2022": "431410005070006",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090007",
+      "setor_2022": "431410005090007",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090010",
+      "setor_2022": "431410005090013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110002",
+      "setor_2022": "431410005110002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190001",
+      "setor_2022": "431410005190001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005200003",
+      "setor_2022": "431410005200003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 20",
+      "regiao_nome": "Vila Santa Maria",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010005",
+      "setor_2022": "431410005010005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010023",
+      "setor_2022": "431410005010023",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010033",
+      "setor_2022": "431410005010033",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410017000001",
+      "setor_2022": "431410017000001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 17",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005010011",
+      "setor_2022": "431410005010046",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020018",
+      "setor_2022": "431410005020018",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030004",
+      "setor_2022": "431410005030004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040008",
+      "setor_2022": "431410005040018",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040007",
+      "setor_2022": "431410005040019",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040009",
+      "setor_2022": "431410005040022",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050002",
+      "setor_2022": "431410005050002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050005",
+      "setor_2022": "431410005050005",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050010",
+      "setor_2022": "431410005050010",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050003",
+      "setor_2022": "431410005050016",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005060002",
+      "setor_2022": "431410005060002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 06",
+      "regiao_nome": "Vila Cruzeiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070008",
+      "setor_2022": "431410005070008",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005090002",
+      "setor_2022": "431410005090002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 09",
+      "regiao_nome": "Integração",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120009",
+      "setor_2022": "431410005120009",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120012",
+      "setor_2022": "431410005120012",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005150001",
+      "setor_2022": "431410005150001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 15",
+      "regiao_nome": "Annes",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005170003",
+      "setor_2022": "431410005170003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005180004",
+      "setor_2022": "431410005180004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 18",
+      "regiao_nome": "Vila Luiza",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190005",
+      "setor_2022": "431410005190005",
+      "frm": "161",
+      "frm_descricao": "Setor de 2022 correspondente a 2010 com pequenos ajustes cartográficos de limite",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005190006",
+      "setor_2022": "431410005190015",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Setor 19",
+      "regiao_nome": "Vila Rodrigues",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005000001",
+      "setor_2022": "431410005000179",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 05",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005010015",
+      "setor_2022": "431410005010015",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005210004",
+      "setor_2022": "431410005210004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 21",
+      "regiao_nome": "Planaltina",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010024",
+      "setor_2022": "431410005010024",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010036",
+      "setor_2022": "431410005010036",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005010037",
+      "setor_2022": "431410005010037",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410035000001",
+      "setor_2022": "431410035000001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 35",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410040000005",
+      "setor_2022": "431410040000006",
+      "frm": "241",
+      "frm_descricao": "Subdivisão direta de 1 setor de 2010 em novos setores em 2022 (adensamento demográfico)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 40",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005010011",
+      "setor_2022": "431410005010045",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020020",
+      "setor_2022": "431410005020020",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020025",
+      "setor_2022": "431410005020025",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030011",
+      "setor_2022": "431410005030011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005030018",
+      "setor_2022": "431410005030018",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 03",
+      "regiao_nome": "Vera Cruz",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005040004",
+      "setor_2022": "431410005040004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 04",
+      "regiao_nome": "Petrópolis",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005050003",
+      "setor_2022": "431410005050018",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 05",
+      "regiao_nome": "São Luiz Gonzaga",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070011",
+      "setor_2022": "431410005070011",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005070013",
+      "setor_2022": "431410005070013",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 07",
+      "regiao_nome": "Lucas Araújo",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005110003",
+      "setor_2022": "431410005110003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 11",
+      "regiao_nome": "São José",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005120004",
+      "setor_2022": "431410005120004",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 12",
+      "regiao_nome": "São Cristóvão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410035000002",
+      "setor_2022": "431410005170007",
+      "frm": "112",
+      "frm_descricao": "Setor de 2022 com correspondência integral a 2010 com renomeação ou reordenação interna",
+      "regiao_id": "Setor 17",
+      "regiao_nome": "Valinhos",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005200001",
+      "setor_2022": "431410005200001",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 20",
+      "regiao_nome": "Vila Santa Maria",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005000001",
+      "setor_2022": "431410005000180",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 05",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005010020",
+      "setor_2022": "431410005010020",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410035000002",
+      "setor_2022": "431410035000002",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Rural",
+      "regiao_nome": "Área Rural / Distrito 35",
+      "tipo_area": "Rural"
+    },
+    {
+      "setor_2010": "431410005010018",
+      "setor_2022": "431410005010044",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 01",
+      "regiao_nome": "Centro e Vila Vergueiro",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020003",
+      "setor_2022": "431410005020003",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020021",
+      "setor_2022": "431410005020021",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    },
+    {
+      "setor_2010": "431410005020024",
+      "setor_2022": "431410005020024",
+      "frm": "111",
+      "frm_descricao": "Setor de 2022 formado integralmente a partir de um único setor de 2010 (relação 1:1 territorial direta)",
+      "regiao_id": "Setor 02",
+      "regiao_nome": "Boqueirão",
+      "tipo_area": "Urbano"
+    }
+  ]
+}

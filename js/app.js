@@ -19,6 +19,7 @@ import { DownloadsUI } from './ui/downloads.js';
 import { Item6ThematicLegendUI } from './ui/thematic-legend-item6.js';
 import { MetricsUI } from './metrics/metrics-ui.js';
 import { TerritorialAnalysisTool } from './tools/territorial-analysis.js';
+import { ComparativoCensoUI } from './comparativo/comparativo-ui.js';
 
 class WebGisApp {
   constructor() {
@@ -37,6 +38,7 @@ class WebGisApp {
     this.item6ThematicLegendUI = null;
     this.metricsUI = null;
     this.territorialAnalysisTool = null;
+    this.comparativoUI = null;
   }
 
   async start() {
@@ -85,6 +87,12 @@ class WebGisApp {
 
       // 14. Initialize Dynamic Layer Importer (Drag & Drop)
       this.layerImporter = new LayerImporter(this.mapEngine, this.layerManager, this.sidebarUI);
+
+      // 15. Initialize Comparativo Censo 2010 × 2022 UI (isolated module)
+      this.comparativoUI = new ComparativoCensoUI(this.mapEngine, this.layerManager);
+      this.comparativoUI.init().catch(err => {
+        console.warn('[WebGisApp] Inicialização assíncrona do comparativo:', err);
+      });
 
       // 13. Bind Floating Controls and Keyboard Shortcuts
       this.bindFloatingControls();

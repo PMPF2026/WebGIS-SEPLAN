@@ -31,6 +31,10 @@
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/about.css">
   <link rel="stylesheet" href="css/analysis.css">
+  <!-- FontAwesome 6 para ícones do módulo comparativo -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Módulo Comparativo Censo 2010 × 2022 -->
+  <link rel="stylesheet" href="css/comparativo.css">
 </head>
 <body>
   <div id="app">
@@ -123,6 +127,10 @@
           <button class="sidebar-tab-btn" data-tab="sobre" title="Informações e Metadados SEPLAN">
             <i class="lucide-info"></i>
             <span>Sobre</span>
+          </button>
+          <button class="sidebar-tab-btn" data-tab="tab-censo-comparativo" title="Censo 2010 × 2022">
+            <i class="fas fa-chart-line"></i>
+            <span>Censo 10×22</span>
           </button>
         </nav>
 
@@ -847,6 +855,11 @@
             <span class="about-version-badge">Versão 1.0.0</span>
           </div>
         </div>
+      </div>
+
+      <!-- TAB 8: CENSO DEMOGRÁFICO 2010 × 2022 -->
+      <div class="tab-panel" id="tab-censo-comparativo">
+        <div id="comparativo-censo-container"></div>
       </div>
     </div>
   </div>
