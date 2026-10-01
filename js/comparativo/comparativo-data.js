@@ -1,4 +1,4 @@
-﻿/**
+/**
  * WebGIS SEPLAN Passo Fundo - Diagnósticos Territoriais
  * Módulo Censo Demográfico 2010 × 2022 — Camada de Dados e Modelagem
  * 
@@ -72,6 +72,8 @@ export const MUNICIPAL_AGE_TRANSITION = {
   var_jov_pct: -2.57,
   pct_jov_2010: 21.24,
   pct_jov_2022: 18.59,
+  pct_jovens_2010: 21.24,
+  pct_jovens_2022: 18.59,
 
   adultos_2010: 123192,
   adultos_2022: 132029,
@@ -79,6 +81,8 @@ export const MUNICIPAL_AGE_TRANSITION = {
   var_adu_pct: 7.17,
   pct_adu_2010: 66.65,
   pct_adu_2022: 64.18,
+  pct_adultos_2010: 66.65,
+  pct_adultos_2022: 64.18,
 
   idosos_2010: 21897,
   idosos_2022: 35356,
@@ -86,9 +90,13 @@ export const MUNICIPAL_AGE_TRANSITION = {
   var_ido_pct: 61.46,
   pct_ido_2010: 11.85,
   pct_ido_2022: 17.19,
+  pct_idosos_2010: 11.85,
+  pct_idosos_2022: 17.19,
 
   indice_env_2010: 55.79,
   indice_env_2022: 92.45,
+  indice_envelhecimento_2010: 55.79,
+  indice_envelhecimento_2022: 92.45,
   var_indice_env: 36.66,
 
   razao_dep_2010: 49.64,

@@ -276,11 +276,11 @@ export class ComparativoCensoUI {
               <span class="comparativo-kpi-label"><i class="fas fa-child"></i> Jovens (0 a 14 anos)</span>
               <div class="comparativo-kpi-row">
                 <span>Censo 2010:</span>
-                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.jovens_2010)} <small>(${munAge.pct_jovens_2010.toFixed(1)}%)</small></span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.jovens_2010)} <small>(${((munAge.pct_jovens_2010 ?? munAge.pct_jov_2010) || 0).toFixed(1)}%)</small></span>
               </div>
               <div class="comparativo-kpi-row">
                 <span>Censo 2022:</span>
-                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.jovens_2022)} <small>(${munAge.pct_jovens_2022.toFixed(1)}%)</small></span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.jovens_2022)} <small>(${((munAge.pct_jovens_2022 ?? munAge.pct_jov_2022) || 0).toFixed(1)}%)</small></span>
               </div>
               <div class="comparativo-kpi-delta-box">
                 <span class="comparativo-delta ${munAge.var_jov_abs >= 0 ? 'positive' : 'negative'}">
@@ -297,11 +297,11 @@ export class ComparativoCensoUI {
               <span class="comparativo-kpi-label"><i class="fas fa-user-tie"></i> Adultos (15 a 59 anos)</span>
               <div class="comparativo-kpi-row">
                 <span>Censo 2010:</span>
-                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.adultos_2010)} <small>(${munAge.pct_adultos_2010.toFixed(1)}%)</small></span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.adultos_2010)} <small>(${((munAge.pct_adultos_2010 ?? munAge.pct_adu_2010) || 0).toFixed(1)}%)</small></span>
               </div>
               <div class="comparativo-kpi-row">
                 <span>Censo 2022:</span>
-                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.adultos_2022)} <small>(${munAge.pct_adultos_2022.toFixed(1)}%)</small></span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.adultos_2022)} <small>(${((munAge.pct_adultos_2022 ?? munAge.pct_adu_2022) || 0).toFixed(1)}%)</small></span>
               </div>
               <div class="comparativo-kpi-delta-box">
                 <span class="comparativo-delta ${munAge.var_adu_abs >= 0 ? 'positive' : 'negative'}">
@@ -318,11 +318,11 @@ export class ComparativoCensoUI {
               <span class="comparativo-kpi-label"><i class="fas fa-blind"></i> Idosos (60 anos ou mais)</span>
               <div class="comparativo-kpi-row">
                 <span>Censo 2010:</span>
-                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.idosos_2010)} <small>(${munAge.pct_idosos_2010.toFixed(1)}%)</small></span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.idosos_2010)} <small>(${((munAge.pct_idosos_2010 ?? munAge.pct_ido_2010) || 0).toFixed(1)}%)</small></span>
               </div>
               <div class="comparativo-kpi-row">
                 <span>Censo 2022:</span>
-                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.idosos_2022)} <small>(${munAge.pct_idosos_2022.toFixed(1)}%)</small></span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.idosos_2022)} <small>(${((munAge.pct_idosos_2022 ?? munAge.pct_ido_2022) || 0).toFixed(1)}%)</small></span>
               </div>
               <div class="comparativo-kpi-delta-box">
                 <span class="comparativo-delta ${munAge.var_ido_abs >= 0 ? 'positive' : 'negative'}">
@@ -339,11 +339,11 @@ export class ComparativoCensoUI {
               <span class="comparativo-kpi-label" style="color: #c084fc;"><i class="fas fa-chart-line"></i> Índice de Envelhecimento</span>
               <div class="comparativo-kpi-row">
                 <span>Censo 2010:</span>
-                <span class="comparativo-kpi-val" style="color: #c084fc;">${munAge.indice_envelhecimento_2010.toFixed(2)}</span>
+                <span class="comparativo-kpi-val" style="color: #c084fc;">${((munAge.indice_envelhecimento_2010 ?? munAge.indice_env_2010) || 0).toFixed(2)}</span>
               </div>
               <div class="comparativo-kpi-row">
                 <span>Censo 2022:</span>
-                <span class="comparativo-kpi-val" style="color: #c084fc;">${munAge.indice_envelhecimento_2022.toFixed(2)}</span>
+                <span class="comparativo-kpi-val" style="color: #c084fc;">${((munAge.indice_envelhecimento_2022 ?? munAge.indice_env_2022) || 0).toFixed(2)}</span>
               </div>
               <div class="comparativo-kpi-delta-box">
                 <span class="comparativo-delta positive" style="background: rgba(168, 85, 247, 0.2); color: #e9d5ff; border: 1px solid #a855f7;">
