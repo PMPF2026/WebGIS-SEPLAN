@@ -50,6 +50,11 @@
       </div>
 
       <div class="header-tools">
+        <button class="header-btn" id="btn-open-censo-comparativo" title="Censo Demográfico 2010 × 2022 — Comparativo Oficial e Transição Etária">
+          <i class="fas fa-chart-line"></i>
+          <span>Censo 10 × 22</span>
+        </button>
+
         <button class="header-btn" id="btn-open-metrics" title="Painel de Métricas Territoriais">
           <i class="lucide-bar-chart-3"></i>
           <span>Métricas</span>
@@ -127,10 +132,6 @@
           <button class="sidebar-tab-btn" data-tab="sobre" title="Informações e Metadados SEPLAN">
             <i class="lucide-info"></i>
             <span>Sobre</span>
-          </button>
-          <button class="sidebar-tab-btn" data-tab="tab-censo-comparativo" title="Censo 2010 × 2022">
-            <i class="fas fa-chart-line"></i>
-            <span>Censo 10×22</span>
           </button>
         </nav>
 
@@ -437,6 +438,11 @@
                 <span class="about-version-badge">Versão 1.0.0</span>
               </div>
             </div>
+          </div>
+
+          <!-- PAINEL COMPARATIVO CENSO 2010 × 2022 -->
+          <div class="tab-panel" id="tab-censo-comparativo">
+            <div id="comparativo-censo-container"></div>
           </div>
         </div>
       </aside>
@@ -855,11 +861,6 @@
             <span class="about-version-badge">Versão 1.0.0</span>
           </div>
         </div>
-      </div>
-
-      <!-- TAB 8: CENSO DEMOGRÁFICO 2010 × 2022 -->
-      <div class="tab-panel" id="tab-censo-comparativo">
-        <div id="comparativo-censo-container"></div>
       </div>
     </div>
   </div>

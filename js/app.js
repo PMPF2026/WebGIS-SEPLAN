@@ -243,6 +243,18 @@ class WebGisApp {
         }
       });
     }
+
+    // Botão Cabeçalho: Censo 2010 × 2022
+    const censoBtn = document.getElementById('btn-open-censo-comparativo');
+    if (censoBtn && this.sidebarUI) {
+      censoBtn.addEventListener('click', () => {
+        if (this.sidebarUI.activeTab === 'tab-censo-comparativo' || this.sidebarUI.activeTab === 'censo-comparativo') {
+          this.sidebarUI.switchTab('camadas');
+        } else {
+          this.sidebarUI.switchTab('censo-comparativo');
+        }
+      });
+    }
   }
 
   bindKeyboardShortcuts() {

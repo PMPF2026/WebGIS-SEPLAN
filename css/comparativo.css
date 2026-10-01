@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    Módulo Comparativo Censo Demográfico 2010 x 2022
    WebGIS SEPLAN Passo Fundo - Namespace isolado (.comparativo-)
    ========================================================================== */
@@ -464,3 +464,29 @@
     flex: 1 1 100%;
   }
 }
+
+/* Botão no Cabeçalho Superior Institucional */
+.header-btn#btn-open-censo-comparativo {
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+}
+
+.header-btn#btn-open-censo-comparativo:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+.header-btn#btn-open-censo-comparativo.active {
+  background: rgba(56, 189, 248, 0.25);
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+}
+
+.comparativo-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2) !important;
+  border-color: #ef4444 !important;
+  color: #f87171 !important;
+}
+

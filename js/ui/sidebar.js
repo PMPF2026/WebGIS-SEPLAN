@@ -97,6 +97,11 @@ export class SidebarUI {
     } else {
       window.dispatchEvent(new CustomEvent('comparativo:tab-closed'));
     }
+
+    const censoHeaderBtn = document.getElementById('btn-open-censo-comparativo');
+    if (censoHeaderBtn) {
+      censoHeaderBtn.classList.toggle('active', tabId === 'tab-censo-comparativo' || tabId === 'censo-comparativo');
+    }
   }
 
   setupPresets() {

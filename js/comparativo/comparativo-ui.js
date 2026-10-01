@@ -197,10 +197,17 @@ export class ComparativoCensoUI {
 
     this.container.innerHTML = `
       <div class="comparativo-header">
-        <h3 class="comparativo-title">
-          <i class="fas fa-chart-line"></i> Censo Demográfico 2010 × 2022
-        </h3>
-        <p class="comparativo-subtitle">Passo Fundo/RS — Comparativo Oficial e Evolução Territorial</p>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+          <div>
+            <h3 class="comparativo-title">
+              <i class="fas fa-chart-line"></i> Censo Demográfico 2010 × 2022
+            </h3>
+            <p class="comparativo-subtitle">Passo Fundo/RS — Comparativo Oficial e Evolução Territorial</p>
+          </div>
+          <button id="btn-close-comparativo" title="Voltar para Camadas" class="comparativo-close-btn" style="background: rgba(148, 163, 184, 0.1); border: 1px solid rgba(148, 163, 184, 0.25); color: #cbd5e1; font-size: 0.85rem; cursor: pointer; padding: 4px 8px; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
       </div>
 
       <!-- NÍVEL 1: VISÃO MUNICIPAL -->
@@ -915,14 +922,31 @@ export class ComparativoCensoUI {
       });
     }
 
-    // Escuta evento de abertura da aba para ativar mapa
+    // Escuta evento de abertura da aba para ativar mapa e redimensionar gráfico
     window.addEventListener('comparativo:tab-opened', () => {
       this.toggleMapLayer(true);
+      setTimeout(() => {
+        if (this.ageChart) {
+          this.ageChart.resize();
+        } else {
+          this.renderAgeChart();
+        }
+      }, 150);
     });
 
     // Escuta quando outras abas forem abertas para ocultar camada
     window.addEventListener('comparativo:tab-closed', () => {
       this.toggleMapLayer(false);
     });
+
+    // Botão de fechar painel comparativo e retornar para Camadas
+    const closeBtn = this.container.querySelector('#btn-close-comparativo');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        if (window.webGis && window.webGis.sidebarUI) {
+          window.webGis.sidebarUI.switchTab('camadas');
+        }
+      });
+    }
   }
 }
