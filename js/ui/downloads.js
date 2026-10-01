@@ -60,7 +60,8 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
       'censo_pop_m60',
       'censo_densidade_2022',
       'censo_renda_vulnerabilidade',
-      'censo_alfabetizacao_2022'
+      'censo_alfabetizacao_2022',
+      'transicao_etaria_censo_2010_2022'
     ]
   },
   {
@@ -269,6 +270,23 @@ export class DownloadsUI {
           geomLabel: geom.label
         };
       });
+
+    // Camada especial adicional: Transição Etária e Envelhecimento Censo 2010 × 2022
+    this.downloadableLayers.push({
+      id: 'transicao_etaria_censo_2010_2022',
+      name: 'Censo 2010 × 2022 — Transição Etária e Envelhecimento',
+      fileName: 'data/transicao-etaria-bairros-2010-2022.geojson',
+      csvFileName: 'data/transicao-etaria-bairros-2010-2022.csv',
+      geometryType: 'Polygon',
+      source: 'IBGE (Censos 2010 e 2022) / SEPLAN Passo Fundo',
+      refDate: '2010 / 2022',
+      thematicGroupId: 'censo_ibge',
+      thematicGroupTitle: 'Censo Demográfico IBGE',
+      thematicSubsection: null,
+      description: 'Evolução etária por região de bairro: Jovens (0 a 14), Adultos (15 a 59) e Idosos (60+), Variações Absolutas/Percentuais e Índice de Envelhecimento (2010 × 2022).',
+      geomIcon: 'hexagon',
+      geomLabel: 'Polígono'
+    });
   }
 
   getGeometryInfo(geomType) {
@@ -569,6 +587,17 @@ export class DownloadsUI {
    * Exports layer properties + coordinates as a CSV file with UTF-8 BOM
    */
   async downloadAsCsv(layer) {
+    if (layer.csvFileName) {
+      const response = await fetch(encodeURI(layer.csvFileName));
+      if (response.ok) {
+        const blob = await response.blob();
+        const downloadName = this.getStandardFileName(layer.id, 'csv');
+        this.triggerFileDownload(blob, downloadName);
+        Notification.success(`Tabela CSV "${downloadName}" baixada com sucesso!`);
+        return;
+      }
+    }
+
     await this.layerManager.loadLayerData(layer.id);
     const olLayer = this.layerManager.getLayer(layer.id);
     if (!olLayer) throw new Error('Camada não encontrada');
@@ -624,12 +653,23 @@ export class DownloadsUI {
    * Converts OpenLayers features to KML format (WGS84 EPSG:4326)
    */
   async downloadAsKml(layer) {
-    await this.layerManager.loadLayerData(layer.id);
-    const olLayer = this.layerManager.getLayer(layer.id);
-    if (!olLayer) throw new Error('Camada não encontrada');
-
-    const features = olLayer.getSource().getFeatures();
-    if (features.length === 0) throw new Error('Nenhuma feição encontrada');
+    let features;
+    if (layer.fileName && layer.id === 'transicao_etaria_censo_2010_2022') {
+      const response = await fetch(encodeURI(layer.fileName));
+      if (!response.ok) throw new Error('Falha ao obter dados espaciais');
+      const geoJson = await response.json();
+      const format = new ol.format.GeoJSON();
+      features = format.readFeatures(geoJson, {
+        dataProjection: 'EPSG:31982',
+        featureProjection: 'EPSG:3857'
+      });
+    } else {
+      await this.layerManager.loadLayerData(layer.id);
+      const olLayer = this.layerManager.getLayer(layer.id);
+      if (!olLayer) throw new Error('Camada não encontrada');
+      features = olLayer.getSource().getFeatures();
+    }
+    if (!features || features.length === 0) throw new Error('Nenhuma feição encontrada');
 
     const kmlFormat = new ol.format.KML({
       extractStyles: false,

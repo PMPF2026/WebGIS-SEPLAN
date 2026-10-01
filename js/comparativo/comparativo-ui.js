@@ -1,4 +1,4 @@
-﻿import { ComparativoData, MUNICIPAL_DATA } from './comparativo-data.js';
+import { ComparativoData, MUNICIPAL_DATA, MUNICIPAL_AGE_TRANSITION } from './comparativo-data.js';
 import { EPSG_UTM22S, EPSG_WEBMERCATOR } from '../utils/projection.js';
 
 export class ComparativoCensoUI {
@@ -10,12 +10,13 @@ export class ComparativoCensoUI {
     this.data = new ComparativoData();
     this.container = null;
     this.comparativoLayer = null;
-    this.currentTheme = 'var_pct'; // 'var_pct' | 'pop2022' | 'pop2010'
+    this.currentTheme = 'var_pct'; // 'var_pct' | 'pop2022' | 'pop2010' | 'indice_env_2022' | 'indice_env_2010' | 'var_indice_env' | 'var_idosos_pct'
     this.layerVisible = false;
     this.selectedBairroId = null;
     this.sortColumn = 'VAR_POP_PCT';
     this.sortAsc = false;
     this.sectorSearchMode = '2010'; // '2010' | '2022'
+    this.ageChart = null;
     this.isInitialized = false;
   }
 
@@ -33,6 +34,7 @@ export class ComparativoCensoUI {
       this.initMapLayer();
       this.render();
       this.bindEvents();
+      this.renderAgeChart();
       this.isInitialized = true;
       console.log('[ComparativoCensoUI] Módulo Censo 2010 × 2022 inicializado com sucesso.');
     } catch (err) {
@@ -69,8 +71,9 @@ export class ComparativoCensoUI {
       featureProjection: EPSG_WEBMERCATOR
     });
 
+    const geoData = this.data.getTransicaoEtariaGeoJson() || this.data.getBairrosGeoJson();
     const vectorSource = new ol.source.Vector({
-      features: geoJsonFormat.readFeatures(this.data.getBairrosGeoJson())
+      features: geoJsonFormat.readFeatures(geoData)
     });
 
     this.comparativoLayer = new ol.layer.Vector({
@@ -128,6 +131,32 @@ export class ComparativoCensoUI {
       else if (p < 12000) fillColor = 'rgba(59, 130, 246, 0.75)';
       else if (p < 18000) fillColor = 'rgba(29, 78, 216, 0.8)';
       else fillColor = 'rgba(30, 58, 138, 0.85)';
+    } else if (this.currentTheme === 'indice_env_2022') {
+      const ie = feature.get('INDICE_ENV_2022') || 0;
+      if (ie < 50) fillColor = 'rgba(52, 211, 153, 0.75)'; // Jovem (<50)
+      else if (ie < 75) fillColor = 'rgba(250, 204, 21, 0.75)'; // Transição (50-75)
+      else if (ie < 100) fillColor = 'rgba(251, 146, 60, 0.75)'; // Maduro (75-100)
+      else if (ie < 150) fillColor = 'rgba(239, 68, 68, 0.8)'; // Envelhecido (100-150)
+      else fillColor = 'rgba(168, 85, 247, 0.85)'; // Superenvelhecido (>150)
+    } else if (this.currentTheme === 'indice_env_2010') {
+      const ie = feature.get('INDICE_ENV_2010') || 0;
+      if (ie < 50) fillColor = 'rgba(52, 211, 153, 0.75)';
+      else if (ie < 75) fillColor = 'rgba(250, 204, 21, 0.75)';
+      else if (ie < 100) fillColor = 'rgba(251, 146, 60, 0.75)';
+      else if (ie < 150) fillColor = 'rgba(239, 68, 68, 0.8)';
+      else fillColor = 'rgba(168, 85, 247, 0.85)';
+    } else if (this.currentTheme === 'var_indice_env') {
+      const diff = feature.get('VAR_INDICE_ENV') || 0;
+      if (diff < 0) fillColor = 'rgba(52, 211, 153, 0.75)'; // Rejuvenescimento
+      else if (diff <= 25) fillColor = 'rgba(250, 204, 21, 0.75)'; // Baixa aceleração
+      else if (diff <= 50) fillColor = 'rgba(251, 146, 60, 0.75)'; // Média aceleração
+      else fillColor = 'rgba(239, 68, 68, 0.85)'; // Alta aceleração (>50 pp)
+    } else if (this.currentTheme === 'var_idosos_pct') {
+      const v = feature.get('VAR_IDO_PCT') || 0;
+      if (v < 30) fillColor = 'rgba(148, 163, 184, 0.65)';
+      else if (v <= 60) fillColor = 'rgba(251, 146, 60, 0.75)';
+      else if (v <= 100) fillColor = 'rgba(239, 68, 68, 0.8)';
+      else fillColor = 'rgba(168, 85, 247, 0.85)'; // Dobrou idosos (>100%)
     }
 
     return new ol.style.Style({
@@ -224,9 +253,128 @@ export class ComparativoCensoUI {
           </div>
         </div>
 
-        <div class="comparativo-note">
-          <strong>Fonte Oficial:</strong> ${ind.fonte_pop}.<br>
-          <em>*Nota Técnica:</em> Em 2010, os 270 setores censitários agregaram 183.386 moradores em domicílios particulares. O total municipal oficial de 184.826 inclui a população de domicílios coletivos (1.440 hab). Em 2022, a soma dos 321 setores da malha vetorial totaliza 208.851 hab frente a 206.224 da publicação municipal de apuração preliminar.
+        <!-- TRANSIÇÃO ETÁRIA & ENVELHECIMENTO (2010 × 2022) -->
+        <div style="margin-top: 14px; border-top: 1px dashed rgba(148, 163, 184, 0.2); padding-top: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 0.775rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.5px;">
+              <i class="fas fa-hourglass-half"></i> Transição Etária & Envelhecimento
+            </span>
+            <span style="font-size: 0.7rem; color: #94a3b8;">Oficial IBGE 2010 × 2022</span>
+          </div>
+
+          <div class="comparativo-kpi-grid">
+            <!-- Jovens 0-14 -->
+            <div class="comparativo-kpi-card">
+              <span class="comparativo-kpi-label"><i class="fas fa-child"></i> Jovens (0 a 14 anos)</span>
+              <div class="comparativo-kpi-row">
+                <span>Censo 2010:</span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.jovens_2010)} <small>(${munAge.pct_jovens_2010.toFixed(1)}%)</small></span>
+              </div>
+              <div class="comparativo-kpi-row">
+                <span>Censo 2022:</span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.jovens_2022)} <small>(${munAge.pct_jovens_2022.toFixed(1)}%)</small></span>
+              </div>
+              <div class="comparativo-kpi-delta-box">
+                <span class="comparativo-delta ${munAge.var_jov_abs >= 0 ? 'positive' : 'negative'}">
+                  ${ComparativoData.formatDelta(munAge.var_jov_abs)}
+                </span>
+                <span class="comparativo-delta ${munAge.var_jov_pct >= 0 ? 'positive' : 'negative'}">
+                  ${ComparativoData.formatDelta(munAge.var_jov_pct, true, 2)}
+                </span>
+              </div>
+            </div>
+
+            <!-- Adultos 15-59 -->
+            <div class="comparativo-kpi-card">
+              <span class="comparativo-kpi-label"><i class="fas fa-user-tie"></i> Adultos (15 a 59 anos)</span>
+              <div class="comparativo-kpi-row">
+                <span>Censo 2010:</span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.adultos_2010)} <small>(${munAge.pct_adultos_2010.toFixed(1)}%)</small></span>
+              </div>
+              <div class="comparativo-kpi-row">
+                <span>Censo 2022:</span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.adultos_2022)} <small>(${munAge.pct_adultos_2022.toFixed(1)}%)</small></span>
+              </div>
+              <div class="comparativo-kpi-delta-box">
+                <span class="comparativo-delta ${munAge.var_adu_abs >= 0 ? 'positive' : 'negative'}">
+                  ${ComparativoData.formatDelta(munAge.var_adu_abs)}
+                </span>
+                <span class="comparativo-delta ${munAge.var_adu_pct >= 0 ? 'positive' : 'negative'}">
+                  ${ComparativoData.formatDelta(munAge.var_adu_pct, true, 2)}
+                </span>
+              </div>
+            </div>
+
+            <!-- Idosos 60+ -->
+            <div class="comparativo-kpi-card">
+              <span class="comparativo-kpi-label"><i class="fas fa-blind"></i> Idosos (60 anos ou mais)</span>
+              <div class="comparativo-kpi-row">
+                <span>Censo 2010:</span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.idosos_2010)} <small>(${munAge.pct_idosos_2010.toFixed(1)}%)</small></span>
+              </div>
+              <div class="comparativo-kpi-row">
+                <span>Censo 2022:</span>
+                <span class="comparativo-kpi-val">${ComparativoData.formatNumber(munAge.idosos_2022)} <small>(${munAge.pct_idosos_2022.toFixed(1)}%)</small></span>
+              </div>
+              <div class="comparativo-kpi-delta-box">
+                <span class="comparativo-delta ${munAge.var_ido_abs >= 0 ? 'positive' : 'negative'}">
+                  ${ComparativoData.formatDelta(munAge.var_ido_abs)}
+                </span>
+                <span class="comparativo-delta ${munAge.var_ido_pct >= 0 ? 'positive' : 'negative'}">
+                  ${ComparativoData.formatDelta(munAge.var_ido_pct, true, 2)}
+                </span>
+              </div>
+            </div>
+
+            <!-- Índice de Envelhecimento -->
+            <div class="comparativo-kpi-card" style="border-color: rgba(168, 85, 247, 0.4); background: rgba(168, 85, 247, 0.05);">
+              <span class="comparativo-kpi-label" style="color: #c084fc;"><i class="fas fa-chart-line"></i> Índice de Envelhecimento</span>
+              <div class="comparativo-kpi-row">
+                <span>Censo 2010:</span>
+                <span class="comparativo-kpi-val" style="color: #c084fc;">${munAge.indice_envelhecimento_2010.toFixed(2)}</span>
+              </div>
+              <div class="comparativo-kpi-row">
+                <span>Censo 2022:</span>
+                <span class="comparativo-kpi-val" style="color: #c084fc;">${munAge.indice_envelhecimento_2022.toFixed(2)}</span>
+              </div>
+              <div class="comparativo-kpi-delta-box">
+                <span class="comparativo-delta positive" style="background: rgba(168, 85, 247, 0.2); color: #e9d5ff; border: 1px solid #a855f7;">
+                  ${ComparativoData.formatDelta(munAge.var_indice_env, false, 2)} p.p.
+                </span>
+                <span style="font-size: 0.675rem; color: #cbd5e1; align-self: center;">Idosos p/ 100 Jovens</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- GRÁFICO DINÂMICO DE ESTRUTURA ETÁRIA -->
+          <div style="margin-top: 12px; background: rgba(15, 23, 42, 0.6); padding: 10px; border-radius: 6px; border: 1px solid rgba(56, 189, 248, 0.2);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span id="comparativo-chart-title" style="font-size: 0.75rem; font-weight: 600; color: #38bdf8;">
+                <i class="fas fa-chart-bar" style="margin-right: 4px;"></i> Passo Fundo — Total Municipal
+              </span>
+              <button id="comparativo-chart-reset-btn" type="button" style="display: none; font-size: 0.675rem; padding: 2px 6px; border-radius: 4px; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; cursor: pointer;">
+                <i class="fas fa-undo"></i> Ver Total Municipal
+              </button>
+            </div>
+            <div style="position: relative; height: 190px; width: 100%;">
+              <canvas id="comparativo-age-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- DOWNLOADS DIRETOS DO MÓDULO -->
+          <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <a href="data/transicao-etaria-bairros-2010-2022.geojson" download="transicao_etaria_bairros_passo_fundo_2010_2022.geojson" class="comparativo-download-btn" style="text-align: center; text-decoration: none; padding: 6px 10px; background: rgba(56, 189, 248, 0.12); border: 1px solid #38bdf8; border-radius: 4px; color: #38bdf8; font-size: 0.725rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px;">
+              <i class="fas fa-download"></i> GeoJSON Transição
+            </a>
+            <a href="data/transicao-etaria-bairros-2010-2022.csv" download="transicao_etaria_bairros_passo_fundo_2010_2022.csv" class="comparativo-download-btn" style="text-align: center; text-decoration: none; padding: 6px 10px; background: rgba(168, 85, 247, 0.12); border: 1px solid #a855f7; border-radius: 4px; color: #c084fc; font-size: 0.725rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px;">
+              <i class="fas fa-file-csv"></i> CSV Transição
+            </a>
+          </div>
+        </div>
+
+        <div class="comparativo-note" style="margin-top: 10px;">
+          <strong>Fontes Oficiais:</strong> IBGE Censo 2010 (Pessoa13_RS - Resultados do Universo / 15/06/2026) e IBGE Censo 2022 (Agregados por Setor Censitário).<br>
+          <em>*Índice de Envelhecimento:</em> Razão entre o número de pessoas com 60 anos ou mais e a população de 0 a 14 anos, multiplicada por 100.
         </div>
       </div>
 
@@ -244,13 +392,22 @@ export class ComparativoCensoUI {
 
           <div class="comparativo-theme-buttons">
             <button class="comparativo-theme-btn ${this.currentTheme === 'var_pct' ? 'active' : ''}" data-theme="var_pct">
-              Variação % (10→22)
+              Variação % Pop (10→22)
             </button>
             <button class="comparativo-theme-btn ${this.currentTheme === 'pop2022' ? 'active' : ''}" data-theme="pop2022">
               População 2022
             </button>
             <button class="comparativo-theme-btn ${this.currentTheme === 'pop2010' ? 'active' : ''}" data-theme="pop2010">
               População 2010
+            </button>
+            <button class="comparativo-theme-btn ${this.currentTheme === 'indice_env_2022' ? 'active' : ''}" data-theme="indice_env_2022">
+              Índice Envelhecimento 2022
+            </button>
+            <button class="comparativo-theme-btn ${this.currentTheme === 'var_indice_env' ? 'active' : ''}" data-theme="var_indice_env">
+              Δ Índice Envelhecimento
+            </button>
+            <button class="comparativo-theme-btn ${this.currentTheme === 'var_idosos_pct' ? 'active' : ''}" data-theme="var_idosos_pct">
+              Crescimento Idosos %
             </button>
           </div>
         </div>
@@ -453,8 +610,48 @@ export class ComparativoCensoUI {
             Unidade Territorial Municipal Específica da SEPLAN (sem correspondência artificial a subdistrito IBGE).
           </div>
         ` : ''}
+
+        ${(() => {
+          const trans = this.data.getTransicaoEtariaBairroById(id);
+          if (!trans) return '';
+          return `
+            <div style="margin-top: 10px; padding: 10px; background: rgba(30, 41, 59, 0.7); border-radius: 6px; border: 1px solid rgba(168, 85, 247, 0.3);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-weight: 600; font-size: 0.775rem; color: #c084fc;">
+                  <i class="fas fa-hourglass-half"></i> Transição Etária & Envelhecimento
+                </span>
+                <span style="background: rgba(168, 85, 247, 0.2); color: #e9d5ff; border: 1px solid #a855f7; padding: 2px 6px; border-radius: 4px; font-size: 0.675rem; font-weight: 600;">
+                  ${trans.PERFIL_ETARIO_2022 || 'Em Transição'}
+                </span>
+              </div>
+
+              <div class="comparativo-detail-grid">
+                <div class="comparativo-detail-item">
+                  <span>Jovens (0-14):</span>
+                  <strong style="color: #f1f5f9;">${ComparativoData.formatNumber(trans.JOVENS_2010)} → ${ComparativoData.formatNumber(trans.JOVENS_2022)} <span style="color: ${trans.VAR_JOV_PCT >= 0 ? '#34d399' : '#f87171'}">(${ComparativoData.formatDelta(trans.VAR_JOV_PCT, true, 1)})</span></strong>
+                </div>
+                <div class="comparativo-detail-item">
+                  <span>Adultos (15-59):</span>
+                  <strong style="color: #f1f5f9;">${ComparativoData.formatNumber(trans.ADULTOS_2010)} → ${ComparativoData.formatNumber(trans.ADULTOS_2022)} <span style="color: ${trans.VAR_ADU_PCT >= 0 ? '#34d399' : '#f87171'}">(${ComparativoData.formatDelta(trans.VAR_ADU_PCT, true, 1)})</span></strong>
+                </div>
+                <div class="comparativo-detail-item">
+                  <span>Idosos (60+):</span>
+                  <strong style="color: #f1f5f9;">${ComparativoData.formatNumber(trans.IDOSOS_2010)} → ${ComparativoData.formatNumber(trans.IDOSOS_2022)} <span style="color: ${trans.VAR_IDO_PCT >= 0 ? '#34d399' : '#f87171'}">(${ComparativoData.formatDelta(trans.VAR_IDO_PCT, true, 1)})</span></strong>
+                </div>
+                <div class="comparativo-detail-item">
+                  <span>Índice Envelhecimento:</span>
+                  <strong style="color: #c084fc;">${trans.INDICE_ENV_2010.toFixed(1)} → ${trans.INDICE_ENV_2022.toFixed(1)} <span style="color: #e9d5ff">(${ComparativoData.formatDelta(trans.VAR_INDICE_ENV, false, 1)} p.p.)</span></strong>
+                </div>
+              </div>
+            </div>
+          `;
+        })()}
       </div>
     `;
+
+    // Atualiza gráfico dinâmico
+    const transData = this.data.getTransicaoEtariaBairroById(id);
+    this.renderAgeChart(transData);
 
     // Atualiza estilo no mapa
     if (this.comparativoLayer) {
@@ -472,6 +669,113 @@ export class ComparativoCensoUI {
         }
       }
     }
+  }
+
+  renderAgeChart(bairroTrans = null) {
+    if (!window.Chart) {
+      console.warn('[ComparativoCensoUI] Chart.js não está disponível.');
+      return;
+    }
+
+    const canvas = this.container ? this.container.querySelector('#comparativo-age-chart') : document.getElementById('comparativo-age-chart');
+    if (!canvas) return;
+
+    const titleEl = this.container ? this.container.querySelector('#comparativo-chart-title') : null;
+    const resetBtn = this.container ? this.container.querySelector('#comparativo-chart-reset-btn') : null;
+
+    let chartTitle = 'Passo Fundo — Total Municipal';
+    let data2010 = [];
+    let data2022 = [];
+
+    if (bairroTrans) {
+      chartTitle = `${bairroTrans.ID_REGIAO} — ${bairroTrans.NOME_REGIAO}`;
+      data2010 = [bairroTrans.JOVENS_2010 || 0, bairroTrans.ADULTOS_2010 || 0, bairroTrans.IDOSOS_2010 || 0];
+      data2022 = [bairroTrans.JOVENS_2022 || 0, bairroTrans.ADULTOS_2022 || 0, bairroTrans.IDOSOS_2022 || 0];
+      if (resetBtn) resetBtn.style.display = 'inline-flex';
+    } else {
+      const munAge = this.data.getTransicaoEtariaMunicipal();
+      data2010 = [munAge.jovens_2010, munAge.adultos_2010, munAge.idosos_2010];
+      data2022 = [munAge.jovens_2022, munAge.adultos_2022, munAge.idosos_2022];
+      if (resetBtn) resetBtn.style.display = 'none';
+    }
+
+    if (titleEl) {
+      titleEl.innerHTML = `<i class="fas fa-chart-bar" style="color: #38bdf8; margin-right: 4px;"></i> ${chartTitle}`;
+    }
+
+    if (this.ageChart) {
+      this.ageChart.destroy();
+      this.ageChart = null;
+    }
+
+    const ctx = canvas.getContext('2d');
+    this.ageChart = new window.Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Jovens (0-14)', 'Adultos (15-59)', 'Idosos (60+)'],
+        datasets: [
+          {
+            label: 'Censo 2010',
+            data: data2010,
+            backgroundColor: 'rgba(56, 189, 248, 0.75)',
+            borderColor: '#38bdf8',
+            borderWidth: 1.5,
+            borderRadius: 4
+          },
+          {
+            label: 'Censo 2022',
+            data: data2022,
+            backgroundColor: 'rgba(168, 85, 247, 0.75)',
+            borderColor: '#a855f7',
+            borderWidth: 1.5,
+            borderRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              color: '#cbd5e1',
+              font: { size: 10, weight: '500' },
+              boxWidth: 10,
+              padding: 8
+            }
+          },
+          tooltip: {
+            backgroundColor: '#0f172a',
+            titleColor: '#f8fafc',
+            bodyColor: '#e2e8f0',
+            borderColor: '#334155',
+            borderWidth: 1,
+            padding: 8,
+            callbacks: {
+              label: function(context) {
+                const val = context.parsed.y || 0;
+                return ` ${context.dataset.label}: ${val.toLocaleString('pt-BR')} hab`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: '#94a3b8', font: { size: 10 } }
+          },
+          y: {
+            grid: { color: 'rgba(148, 163, 184, 0.1)' },
+            ticks: {
+              color: '#94a3b8',
+              font: { size: 9 },
+              callback: (val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val
+            }
+          }
+        }
+      }
+    });
   }
 
   renderSectorResults(query = '') {
@@ -552,6 +856,14 @@ export class ComparativoCensoUI {
     if (sel) {
       sel.addEventListener('change', (e) => {
         this.selectBairro(e.target.value, true);
+      });
+    }
+
+    // Reset chart to municipal
+    const resetBtn = this.container.querySelector('#comparativo-chart-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        this.selectBairro('', false);
       });
     }
 

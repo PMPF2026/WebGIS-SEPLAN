@@ -13,18 +13,23 @@
  * 2. População Municipal 2022:
  *    - IBGE Oficial divulgado (Resultados do Universo / Cidades@): 206.224 habitantes.
  *    - Soma agregada dos 321 setores censitários da malha vetorial 2022 (V0001): 208.851 habitantes.
- *      (Divergência decorrente de ajustes preliminares de pós-coleta/imputação versus versão final da base vetorial).
  *    - Soma dos 23 bairros municipais urbanos: 205.963 habitantes.
  * 
  * 3. Domicílios:
  *    - Domicílios 2010 Oficial: 64.341 (total recenseados) / 61.744 (particulares permanentes ocupados nos 270 setores).
  *    - Domicílios 2022 Oficial: 87.771 (total recenseados) / 79.524 (particulares permanentes ocupados nos 321 setores).
  * 
- * 4. Vila Rodrigues (Setor 19):
+ * 4. Transição Etária e Envelhecimento Populacional:
+ *    - Fonte 2010: Microdados do Universo (Pessoa13_RS.csv), variáveis V022+V035:V048 (0-14), V049:V093 (15-59), V094:V134 (60+).
+ *    - Fonte 2022: Censo Demográfico 2022 (Resultados do Universo / demografia_bairros_seplan.json).
+ *    - Salto histórico no Índice de Envelhecimento Municipal: de 55,79 para 92,45 (+36,66 pontos percentuais).
+ *    - Crescimento de Idosos (60+ anos): +61,46% (+13.459 pessoas idosas).
+ * 
+ * 5. Vila Rodrigues (Setor 19):
  *    - População 2010: 6.726 | População 2022: 4.817
  *    - Variação apurada oficial: -1.909 habitantes (-28,38%).
  * 
- * 5. Salvaguarda Setores Zachia 2010:
+ * 6. Salvaguarda Setores Zachia 2010:
  *    - Setores 431410005160005 e 431410005160006: 'Sem coleta domiciliar / Área sem população enumerada no conjunto estatístico analisado'.
  */
 
@@ -60,10 +65,45 @@ export const MUNICIPAL_DATA = {
   }
 };
 
+export const MUNICIPAL_AGE_TRANSITION = {
+  jovens_2010: 39251,
+  jovens_2022: 38242,
+  var_jov_abs: -1009,
+  var_jov_pct: -2.57,
+  pct_jov_2010: 21.24,
+  pct_jov_2022: 18.59,
+
+  adultos_2010: 123192,
+  adultos_2022: 132029,
+  var_adu_abs: 8837,
+  var_adu_pct: 7.17,
+  pct_adu_2010: 66.65,
+  pct_adu_2022: 64.18,
+
+  idosos_2010: 21897,
+  idosos_2022: 35356,
+  var_ido_abs: 13459,
+  var_ido_pct: 61.46,
+  pct_ido_2010: 11.85,
+  pct_ido_2022: 17.19,
+
+  indice_env_2010: 55.79,
+  indice_env_2022: 92.45,
+  var_indice_env: 36.66,
+
+  razao_dep_2010: 49.64,
+  razao_dep_2022: 55.74,
+  var_razao_dep: 6.10,
+
+  fonte: "IBGE — Censos Demográficos 2010 e 2022 (Resultados Oficiais do Universo)"
+};
+
 export class ComparativoData {
   constructor() {
     this.bairrosGeoJson = null;
     this.bairrosList = [];
+    this.transicaoGeoJson = null;
+    this.transicaoList = [];
     this.correspondenciaData = null;
     this.isLoaded = false;
   }
@@ -72,9 +112,10 @@ export class ComparativoData {
     if (this.isLoaded) return true;
 
     try {
-      const [bairrosRes, corrRes] = await Promise.all([
+      const [bairrosRes, corrRes, transRes] = await Promise.all([
         fetch('data/bairros-comparativo-censo.geojson'),
-        fetch('data/correspondencia-setores-2010-2022.json')
+        fetch('data/correspondencia-setores-2010-2022.json'),
+        fetch('data/transicao-etaria-bairros-2010-2022.geojson')
       ]);
 
       if (!bairrosRes.ok) {
@@ -87,6 +128,11 @@ export class ComparativoData {
       this.bairrosGeoJson = await bairrosRes.json();
       this.correspondenciaData = await corrRes.json();
 
+      if (transRes.ok) {
+        this.transicaoGeoJson = await transRes.json();
+        this.transicaoList = (this.transicaoGeoJson.features || []).map(f => f.properties);
+      }
+
       this.bairrosList = (this.bairrosGeoJson.features || []).map(f => f.properties);
       this.isLoaded = true;
       return true;
@@ -98,6 +144,23 @@ export class ComparativoData {
 
   getMunicipal() {
     return MUNICIPAL_DATA;
+  }
+
+  getTransicaoEtariaMunicipal() {
+    return MUNICIPAL_AGE_TRANSITION;
+  }
+
+  getTransicaoEtariaBairros() {
+    return this.transicaoList;
+  }
+
+  getTransicaoEtariaGeoJson() {
+    return this.transicaoGeoJson;
+  }
+
+  getTransicaoEtariaBairroById(id) {
+    if (!id) return null;
+    return this.transicaoList.find(b => b.ID_REGIAO === id || b.ID_REGIAO?.toLowerCase() === id.toLowerCase()) || null;
   }
 
   getBairros() {
