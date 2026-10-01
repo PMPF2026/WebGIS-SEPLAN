@@ -194,6 +194,7 @@ export class ComparativoCensoUI {
   render() {
     const mun = this.data.getMunicipal();
     const ind = mun.indicadores_oficiais;
+    const munAge = this.data.getTransicaoEtariaMunicipal();
 
     this.container.innerHTML = `
       <div class="comparativo-header">
