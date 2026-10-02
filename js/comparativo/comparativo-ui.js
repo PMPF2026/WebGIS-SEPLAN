@@ -1,6 +1,110 @@
 import { ComparativoData, MUNICIPAL_DATA, MUNICIPAL_AGE_TRANSITION } from './comparativo-data.js';
 import { EPSG_UTM22S, EPSG_WEBMERCATOR } from '../utils/projection.js';
 
+/**
+ * Definições oficiais de classificação temática cartográfica das 23 Regiões de Bairro
+ * Fonte única de verdade compartilhada entre a estilização do mapa e a legenda dinâmica.
+ */
+export const COMPARATIVO_THEME_DEFINITIONS = {
+  var_pct: {
+    id: 'var_pct',
+    title: 'Variação % Pop (10→22)',
+    subtitle: 'Crescimento Demográfico Intercensitário',
+    unitNote: 'Variação relativa (%) entre os Censos 2010 e 2022',
+    getValue: (f) => f.get('VAR_POP_PCT'),
+    classes: [
+      { label: '< -20% (Forte retração)', color: 'rgba(185, 28, 28, 0.75)', match: (v) => v < -20 },
+      { label: '-20% a -5% (Retração)', color: 'rgba(239, 68, 68, 0.7)', match: (v) => v >= -20 && v < -5 },
+      { label: '-5% a +5% (Estabilidade)', color: 'rgba(148, 163, 184, 0.6)', match: (v) => v >= -5 && v <= 5 },
+      { label: '+5% a +30% (Crescimento moderado)', color: 'rgba(52, 211, 153, 0.7)', match: (v) => v > 5 && v <= 30 },
+      { label: '+30% a +60% (Crescimento alto)', color: 'rgba(16, 185, 129, 0.75)', match: (v) => v > 30 && v <= 60 },
+      { label: '> +60% (Expansão acelerada)', color: 'rgba(5, 150, 105, 0.85)', match: (v) => v > 60 }
+    ]
+  },
+  pop2022: {
+    id: 'pop2022',
+    title: 'População 2022',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'População residente por Região de Bairro',
+    getValue: (f) => f.get('POP_2022') || 0,
+    classes: [
+      { label: '< 3.000 hab.', color: 'rgba(221, 214, 254, 0.65)', match: (v) => v < 3000 },
+      { label: '3.000 a 7.000 hab.', color: 'rgba(167, 139, 250, 0.7)', match: (v) => v >= 3000 && v < 7000 },
+      { label: '7.000 a 12.000 hab.', color: 'rgba(139, 92, 246, 0.75)', match: (v) => v >= 7000 && v < 12000 },
+      { label: '12.000 a 18.000 hab.', color: 'rgba(109, 40, 217, 0.8)', match: (v) => v >= 12000 && v < 18000 },
+      { label: '> 18.000 hab.', color: 'rgba(76, 29, 149, 0.85)', match: (v) => v >= 18000 }
+    ]
+  },
+  pop2010: {
+    id: 'pop2010',
+    title: 'População 2010',
+    subtitle: 'Censo Demográfico 2010 (IBGE)',
+    unitNote: 'População residente por Região de Bairro',
+    getValue: (f) => f.get('POP_2010') || 0,
+    classes: [
+      { label: '< 3.000 hab.', color: 'rgba(219, 234, 254, 0.65)', match: (v) => v < 3000 },
+      { label: '3.000 a 7.000 hab.', color: 'rgba(147, 197, 253, 0.7)', match: (v) => v >= 3000 && v < 7000 },
+      { label: '7.000 a 12.000 hab.', color: 'rgba(59, 130, 246, 0.75)', match: (v) => v >= 7000 && v < 12000 },
+      { label: '12.000 a 18.000 hab.', color: 'rgba(29, 78, 216, 0.8)', match: (v) => v >= 12000 && v < 18000 },
+      { label: '> 18.000 hab.', color: 'rgba(30, 58, 138, 0.85)', match: (v) => v >= 18000 }
+    ]
+  },
+  indice_env_2022: {
+    id: 'indice_env_2022',
+    title: 'Índice Envelhecimento 2022',
+    subtitle: 'Razão Idosos (60+) / Jovens (0-14) × 100',
+    unitNote: 'Classificação etária oficial no Censo 2022',
+    getValue: (f) => f.get('INDICE_ENV_2022') || 0,
+    classes: [
+      { label: '< 50 (Jovem)', color: 'rgba(52, 211, 153, 0.75)', match: (v) => v < 50 },
+      { label: '50 a 75 (Transição)', color: 'rgba(250, 204, 21, 0.75)', match: (v) => v >= 50 && v < 75 },
+      { label: '75 a 100 (Maduro)', color: 'rgba(251, 146, 60, 0.75)', match: (v) => v >= 75 && v < 100 },
+      { label: '100 a 150 (Envelhecido)', color: 'rgba(239, 68, 68, 0.8)', match: (v) => v >= 100 && v < 150 },
+      { label: '> 150 (Superenvelhecido)', color: 'rgba(168, 85, 247, 0.85)', match: (v) => v >= 150 }
+    ]
+  },
+  indice_env_2010: {
+    id: 'indice_env_2010',
+    title: 'Índice Envelhecimento 2010',
+    subtitle: 'Razão Idosos (60+) / Jovens (0-14) × 100',
+    unitNote: 'Classificação etária oficial no Censo 2010',
+    getValue: (f) => f.get('INDICE_ENV_2010') || 0,
+    classes: [
+      { label: '< 50 (Jovem)', color: 'rgba(52, 211, 153, 0.75)', match: (v) => v < 50 },
+      { label: '50 a 75 (Transição)', color: 'rgba(250, 204, 21, 0.75)', match: (v) => v >= 50 && v < 75 },
+      { label: '75 a 100 (Maduro)', color: 'rgba(251, 146, 60, 0.75)', match: (v) => v >= 75 && v < 100 },
+      { label: '100 a 150 (Envelhecido)', color: 'rgba(239, 68, 68, 0.8)', match: (v) => v >= 100 && v < 150 },
+      { label: '> 150 (Superenvelhecido)', color: 'rgba(168, 85, 247, 0.85)', match: (v) => v >= 150 }
+    ]
+  },
+  var_indice_env: {
+    id: 'var_indice_env',
+    title: 'Δ Índice Envelhecimento',
+    subtitle: 'Variação em Pontos Percentuais (2010→2022)',
+    unitNote: 'Aceleração do envelhecimento populacional',
+    getValue: (f) => f.get('VAR_INDICE_ENV') || 0,
+    classes: [
+      { label: '< 0 p.p. (Rejuvenescimento)', color: 'rgba(52, 211, 153, 0.75)', match: (v) => v < 0 },
+      { label: '0 a 25 p.p. (Baixa aceleração)', color: 'rgba(250, 204, 21, 0.75)', match: (v) => v >= 0 && v <= 25 },
+      { label: '25 a 50 p.p. (Média aceleração)', color: 'rgba(251, 146, 60, 0.75)', match: (v) => v > 25 && v <= 50 },
+      { label: '> 50 p.p. (Alta aceleração)', color: 'rgba(239, 68, 68, 0.85)', match: (v) => v > 50 }
+    ]
+  },
+  var_idosos_pct: {
+    id: 'var_idosos_pct',
+    title: 'Crescimento Idosos %',
+    subtitle: 'Evolução da População Idosa (60+ anos)',
+    unitNote: 'Variação percentual intercensitária (2010→2022)',
+    getValue: (f) => f.get('VAR_IDO_PCT') || 0,
+    classes: [
+      { label: '< +30%', color: 'rgba(148, 163, 184, 0.65)', match: (v) => v < 30 },
+      { label: '+30% a +60%', color: 'rgba(251, 146, 60, 0.75)', match: (v) => v >= 30 && v <= 60 },
+      { label: '+60% a +100%', color: 'rgba(239, 68, 68, 0.8)', match: (v) => v > 60 && v <= 100 },
+      { label: '> +100% (Dobrou idosos)', color: 'rgba(168, 85, 247, 0.85)', match: (v) => v > 100 }
+    ]
+  }
+};
+
 export class ComparativoCensoUI {
   constructor(mapEngine, layerManager) {
     this.mapEngine = mapEngine;
@@ -9,6 +113,7 @@ export class ComparativoCensoUI {
 
     this.data = new ComparativoData();
     this.container = null;
+    this.legendContainer = null;
     this.comparativoLayer = null;
     this.currentTheme = 'var_pct'; // 'var_pct' | 'pop2022' | 'pop2010' | 'indice_env_2022' | 'indice_env_2010' | 'var_indice_env' | 'var_idosos_pct'
     this.layerVisible = false;
@@ -32,10 +137,12 @@ export class ComparativoCensoUI {
     try {
       await this.data.loadAll();
       this.initMapLayer();
+      this.initFloatingLegend();
       this.render();
       this.bindEvents();
       this.renderAgeChart();
       this.isInitialized = true;
+      this.updateFloatingLegend();
       console.log('[ComparativoCensoUI] Módulo Censo 2010 × 2022 inicializado com sucesso.');
     } catch (err) {
       console.error('[ComparativoCensoUI] Falha na inicialização:', err);
@@ -103,60 +210,82 @@ export class ComparativoCensoUI {
     });
   }
 
+  initFloatingLegend() {
+    this.legendContainer = document.getElementById('comparativo-floating-legend');
+    if (!this.legendContainer) {
+      const mapContainer = document.getElementById('map-container') || (this.map ? this.map.getTargetElement()?.parentElement : null);
+      if (mapContainer) {
+        this.legendContainer = document.createElement('div');
+        this.legendContainer.id = 'comparativo-floating-legend';
+        this.legendContainer.className = 'comparativo-floating-legend';
+        this.legendContainer.style.display = 'none';
+        this.legendContainer.setAttribute('aria-live', 'polite');
+        mapContainer.appendChild(this.legendContainer);
+      }
+    }
+  }
+
+  updateFloatingLegend() {
+    if (!this.legendContainer) {
+      this.legendContainer = document.getElementById('comparativo-floating-legend');
+      if (!this.legendContainer) return;
+    }
+
+    if (!this.layerVisible || !this.currentTheme) {
+      this.legendContainer.style.display = 'none';
+      this.legendContainer.innerHTML = '';
+      return;
+    }
+
+    const themeDef = COMPARATIVO_THEME_DEFINITIONS[this.currentTheme];
+    if (!themeDef) {
+      this.legendContainer.style.display = 'none';
+      this.legendContainer.innerHTML = '';
+      return;
+    }
+
+    this.legendContainer.innerHTML = `
+      <div class="comparativo-legend-card">
+        <div class="comparativo-legend-header">
+          <div class="comparativo-legend-badge">
+            <span class="comparativo-legend-bullet"></span>
+            <span>Censo 2010 × 2022</span>
+          </div>
+          <div class="comparativo-legend-title">${themeDef.title}</div>
+          <div class="comparativo-legend-subtitle">${themeDef.subtitle}</div>
+        </div>
+        <div class="comparativo-legend-classes">
+          ${themeDef.classes.map(c => `
+            <div class="comparativo-legend-row">
+              <span class="comparativo-legend-swatch" style="background: ${c.color};"></span>
+              <span class="comparativo-legend-label">${c.label}</span>
+            </div>
+          `).join('')}
+        </div>
+        ${themeDef.unitNote ? `
+          <div class="comparativo-legend-footnote">
+            ${themeDef.unitNote}
+          </div>
+        ` : ''}
+      </div>
+    `;
+
+    this.legendContainer.style.display = 'flex';
+  }
+
   getFeatureStyle(feature) {
     const isSelected = feature.get('ID_REGIAO') === this.selectedBairroId;
     let fillColor = 'rgba(148, 163, 184, 0.4)';
 
-    if (this.currentTheme === 'var_pct') {
-      const v = feature.get('VAR_POP_PCT');
+    const themeDef = COMPARATIVO_THEME_DEFINITIONS[this.currentTheme];
+    if (themeDef) {
+      const v = themeDef.getValue(feature);
       if (v !== null && v !== undefined) {
-        if (v < -20) fillColor = 'rgba(185, 28, 28, 0.75)'; // Vermelho escuro
-        else if (v < -5) fillColor = 'rgba(239, 68, 68, 0.7)'; // Vermelho
-        else if (v <= 5) fillColor = 'rgba(148, 163, 184, 0.6)'; // Estável
-        else if (v <= 30) fillColor = 'rgba(52, 211, 153, 0.7)'; // Verde claro
-        else if (v <= 60) fillColor = 'rgba(16, 185, 129, 0.75)'; // Verde médio
-        else fillColor = 'rgba(5, 150, 105, 0.85)'; // Verde escuro
+        const found = themeDef.classes.find(c => c.match(v));
+        if (found) {
+          fillColor = found.color;
+        }
       }
-    } else if (this.currentTheme === 'pop2022') {
-      const p = feature.get('POP_2022') || 0;
-      if (p < 3000) fillColor = 'rgba(221, 214, 254, 0.65)';
-      else if (p < 7000) fillColor = 'rgba(167, 139, 250, 0.7)';
-      else if (p < 12000) fillColor = 'rgba(139, 92, 246, 0.75)';
-      else if (p < 18000) fillColor = 'rgba(109, 40, 217, 0.8)';
-      else fillColor = 'rgba(76, 29, 149, 0.85)';
-    } else if (this.currentTheme === 'pop2010') {
-      const p = feature.get('POP_2010') || 0;
-      if (p < 3000) fillColor = 'rgba(219, 234, 254, 0.65)';
-      else if (p < 7000) fillColor = 'rgba(147, 197, 253, 0.7)';
-      else if (p < 12000) fillColor = 'rgba(59, 130, 246, 0.75)';
-      else if (p < 18000) fillColor = 'rgba(29, 78, 216, 0.8)';
-      else fillColor = 'rgba(30, 58, 138, 0.85)';
-    } else if (this.currentTheme === 'indice_env_2022') {
-      const ie = feature.get('INDICE_ENV_2022') || 0;
-      if (ie < 50) fillColor = 'rgba(52, 211, 153, 0.75)'; // Jovem (<50)
-      else if (ie < 75) fillColor = 'rgba(250, 204, 21, 0.75)'; // Transição (50-75)
-      else if (ie < 100) fillColor = 'rgba(251, 146, 60, 0.75)'; // Maduro (75-100)
-      else if (ie < 150) fillColor = 'rgba(239, 68, 68, 0.8)'; // Envelhecido (100-150)
-      else fillColor = 'rgba(168, 85, 247, 0.85)'; // Superenvelhecido (>150)
-    } else if (this.currentTheme === 'indice_env_2010') {
-      const ie = feature.get('INDICE_ENV_2010') || 0;
-      if (ie < 50) fillColor = 'rgba(52, 211, 153, 0.75)';
-      else if (ie < 75) fillColor = 'rgba(250, 204, 21, 0.75)';
-      else if (ie < 100) fillColor = 'rgba(251, 146, 60, 0.75)';
-      else if (ie < 150) fillColor = 'rgba(239, 68, 68, 0.8)';
-      else fillColor = 'rgba(168, 85, 247, 0.85)';
-    } else if (this.currentTheme === 'var_indice_env') {
-      const diff = feature.get('VAR_INDICE_ENV') || 0;
-      if (diff < 0) fillColor = 'rgba(52, 211, 153, 0.75)'; // Rejuvenescimento
-      else if (diff <= 25) fillColor = 'rgba(250, 204, 21, 0.75)'; // Baixa aceleração
-      else if (diff <= 50) fillColor = 'rgba(251, 146, 60, 0.75)'; // Média aceleração
-      else fillColor = 'rgba(239, 68, 68, 0.85)'; // Alta aceleração (>50 pp)
-    } else if (this.currentTheme === 'var_idosos_pct') {
-      const v = feature.get('VAR_IDO_PCT') || 0;
-      if (v < 30) fillColor = 'rgba(148, 163, 184, 0.65)';
-      else if (v <= 60) fillColor = 'rgba(251, 146, 60, 0.75)';
-      else if (v <= 100) fillColor = 'rgba(239, 68, 68, 0.8)';
-      else fillColor = 'rgba(168, 85, 247, 0.85)'; // Dobrou idosos (>100%)
     }
 
     return new ol.style.Style({
@@ -175,10 +304,15 @@ export class ComparativoCensoUI {
     }
 
     // Atualiza botões
-    const btns = this.container.querySelectorAll('.comparativo-theme-btn');
-    btns.forEach(b => {
-      b.classList.toggle('active', b.dataset.theme === theme);
-    });
+    if (this.container) {
+      const btns = this.container.querySelectorAll('.comparativo-theme-btn');
+      btns.forEach(b => {
+        b.classList.toggle('active', b.dataset.theme === theme);
+      });
+    }
+
+    // Atualiza legenda dinâmica no mapa
+    this.updateFloatingLegend();
   }
 
   toggleMapLayer(forceState) {
@@ -187,8 +321,11 @@ export class ComparativoCensoUI {
     if (this.comparativoLayer) {
       this.comparativoLayer.setVisible(this.layerVisible);
     }
-    const chk = this.container.querySelector('#comparativo-layer-toggle');
+    const chk = this.container ? this.container.querySelector('#comparativo-layer-toggle') : document.getElementById('comparativo-layer-toggle');
     if (chk) chk.checked = this.layerVisible;
+
+    // Atualiza legenda dinâmica no mapa
+    this.updateFloatingLegend();
   }
 
   render() {
