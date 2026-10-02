@@ -490,3 +490,152 @@
   color: #f87171 !important;
 }
 
+/* ==========================================================================
+   LEGENDA CARTOGRÁFICA TEMÁTICA DINÂMICA — CENSO 2010 × 2022
+   Posicionamento sobre o mapa no canto inferior direito
+   ========================================================================== */
+.comparativo-floating-legend {
+  position: absolute;
+  bottom: 36px;
+  right: 14px;
+  z-index: 86;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 295px;
+  max-height: calc(100% - 90px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  pointer-events: none;
+  font-family: inherit;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.comparativo-floating-legend::-webkit-scrollbar {
+  width: 4px;
+}
+
+.comparativo-floating-legend::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.comparativo-legend-card {
+  pointer-events: auto;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  padding: 10px 12px;
+  user-select: none;
+  transition: transform var(--transition-fast, 0.15s ease), box-shadow var(--transition-fast, 0.15s ease);
+}
+
+.comparativo-legend-card:hover {
+  border-color: rgba(56, 189, 248, 0.55);
+}
+
+.comparativo-legend-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.comparativo-legend-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #38bdf8;
+  margin-bottom: 2px;
+}
+
+.comparativo-legend-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #38bdf8;
+  display: inline-block;
+}
+
+.comparativo-legend-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.25;
+}
+
+.comparativo-legend-subtitle {
+  font-size: 10px;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-top: 1px;
+  line-height: 1.2;
+}
+
+.comparativo-legend-classes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.comparativo-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10.5px;
+  color: #e2e8f0;
+  line-height: 1.3;
+}
+
+.comparativo-legend-swatch {
+  width: 16px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.comparativo-legend-label {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.comparativo-legend-footnote {
+  font-size: 9px;
+  color: #64748b;
+  margin-top: 6px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  line-height: 1.25;
+}
+
+@media (max-width: 640px) {
+  .comparativo-floating-legend {
+    bottom: 32px;
+    right: 6px;
+    max-width: 240px;
+    max-height: calc(100% - 70px);
+  }
+
+  .comparativo-legend-card {
+    padding: 7px 9px;
+  }
+
+  .comparativo-legend-title {
+    font-size: 10.5px;
+  }
+
+  .comparativo-legend-subtitle {
+    font-size: 9px;
+  }
+}
+
+
