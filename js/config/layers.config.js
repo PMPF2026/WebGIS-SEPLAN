@@ -365,7 +365,7 @@ export const LAYERS_CONFIG = [
     geometryType: 'MultiPolygon',
     defaultVisible: true,
     defaultOpacity: 1,
-    zIndex: 20,
+    zIndex: 1,
     isCore: true,
     isLazy: false,
     style: {
