@@ -606,6 +606,74 @@
   background: rgba(255, 120, 0, 0.1);
 }
 
+/* Contour Lines Color Selector (Curvas de Nível — 10 m) */
+.contour-color-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 5px;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contour-color-title {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.contour-color-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.contour-color-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2.5px 6px;
+  background: var(--dc-blue-card);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: 3px;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.contour-color-btn:hover {
+  background: var(--dc-blue-surface);
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.contour-color-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--dc-orange-primary);
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.contour-color-swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.contour-color-name {
+  line-height: 1;
+}
+
 .layer-subcontrols {
   margin-top: 5px;
   padding-top: 5px;

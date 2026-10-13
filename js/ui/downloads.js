@@ -141,6 +141,16 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
         ]
       }
     ]
+  },
+  {
+    id: 'topografia_relevo',
+    title: 'Topografia, Hipsometria & Relevo',
+    shortTitle: 'Topografia',
+    iconName: 'mountain',
+    layerIds: [
+      'curvas_nivel_10m',
+      'hipsometria_relevo'
+    ]
   }
 ];
 
@@ -229,7 +239,9 @@ export class DownloadsUI {
       'raio_400m_parque_setimo_ceu': 'Área de influência e cobertura de 400m ao redor do Parque Sétimo Céu.',
       'raio_800m_parques_lineares': 'Área de influência de 800m ao longo dos parques lineares municipais.',
       'raio_1600m_parques': 'Área de cobertura urbana de 1.600m dos parques municipais.',
-      'raio_1600m_multigares': 'Área de cobertura urbana de 1.600m das intervenções do Multigares.'
+      'raio_1600m_multigares': 'Área de cobertura urbana de 1.600m das intervenções do Multigares.',
+      'curvas_nivel_10m': '2.679 isolinhas altimétricas vetoriais com equidistância vertical de 10 metros geradas a partir do Modelo Digital de Elevação de Passo Fundo/RS (cotas de 470 m a 750 m).',
+      'hipsometria_relevo': 'Modelo Digital de Elevação (MDE) e composição hipsométrica de Passo Fundo com faixas de 474 m a 755 m e resolução espacial nativa de 28,53 metros (SIRGAS 2000 / UTM 22S).'
     };
 
     const layerMetaMap = {};
@@ -256,16 +268,18 @@ export class DownloadsUI {
     });
 
     this.downloadableLayers = LAYERS_CONFIG
-      .filter(l => !l.isRaster && l.fileName && l.fileName.endsWith('.geojson'))
+      .filter(l => (!l.isRaster && l.fileName && l.fileName.endsWith('.geojson')) || l.id === 'hipsometria_relevo')
       .map(l => {
         const meta = layerMetaMap[l.id] || { groupId: 'outros', groupTitle: 'Outros', subsectionTitle: null };
-        const geom = this.getGeometryInfo(l.geometryType);
+        const geom = l.isRaster
+          ? { icon: 'mountain', label: 'Raster / MDE' }
+          : this.getGeometryInfo(l.geometryType);
         return {
           ...l,
           thematicGroupId: meta.groupId,
           thematicGroupTitle: meta.groupTitle,
           thematicSubsection: meta.subsectionTitle,
-          description: descriptions[l.id] || l.description || `Dados geoespaciais vetoriais da camada ${l.name}.`,
+          description: descriptions[l.id] || l.description || `Dados geoespaciais da camada ${l.name}.`,
           geomIcon: geom.icon,
           geomLabel: geom.label
         };
@@ -495,6 +509,43 @@ export class DownloadsUI {
   }
 
   createLayerCardHtml(layer) {
+    if (layer.isRaster && layer.id === 'hipsometria_relevo') {
+      return `
+        <div class="download-card" data-layer-id="${layer.id}">
+          <div class="download-card-header">
+            <div>
+              <div class="download-card-title">${layer.name} — Modelo Digital de Elevação (MDE)</div>
+              <div class="download-card-desc" style="margin-top: 3px;">${layer.description}</div>
+            </div>
+          </div>
+
+          <div class="download-card-meta">
+            <span class="download-badge-geom">
+              <i class="lucide-mountain"></i> Raster / MDE (28,5m)
+            </span>
+            <span>&bull;</span>
+            <span><strong>Fonte:</strong> ${layer.source || 'Prefeitura de Passo Fundo'}</span>
+            <span>&bull;</span>
+            <span><strong>Ref:</strong> ${layer.refDate || '2026'}</span>
+            <span>&bull;</span>
+            <span><strong>CRS:</strong> SIRGAS 2000 / UTM 22S</span>
+          </div>
+
+          <div class="download-btn-group">
+            <button type="button" class="btn-download-format geotiff" data-format="geotiff" data-layer-id="${layer.id}" title="Baixar Raster GeoTIFF oficial com cotas altimétricas contínuas (11,3 MB)">
+              <i class="lucide-image"></i> GeoTIFF (.tif)
+            </button>
+            <button type="button" class="btn-download-format bin" data-format="bin" data-layer-id="${layer.id}" title="Baixar Matriz Altimétrica Web DEM compactada (3,6 MB)">
+              <i class="lucide-binary"></i> Matriz DEM (.bin)
+            </button>
+            <button type="button" class="btn-download-format json" data-format="json" data-layer-id="${layer.id}" title="Baixar Metadados Técnicos do Modelo Digital de Elevação em JSON">
+              <i class="lucide-file-code"></i> Metadados (.json)
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
     return `
       <div class="download-card" data-layer-id="${layer.id}">
         <div class="download-card-header">
@@ -556,11 +607,27 @@ export class DownloadsUI {
         await this.downloadAsCsv(layer);
       } else if (format === 'kml') {
         await this.downloadAsKml(layer);
+      } else if (format === 'geotiff') {
+        await this.downloadDirectFile('PF_Hipsometria.tif', 'PF_Hipsometria_MDE_Passo_Fundo.tif', 'image/tiff');
+      } else if (format === 'bin') {
+        await this.downloadDirectFile('dem_passo_fundo.bin', 'dem_passo_fundo.bin', 'application/octet-stream');
+      } else if (format === 'json') {
+        await this.downloadDirectFile('dem_passo_fundo.json', 'dem_passo_fundo.json', 'application/json');
       }
     } catch (err) {
       console.error(`[DownloadsUI] Erro ao baixar camada ${layerId}:`, err);
       Notification.error('Download temporariamente indisponível para esta camada.');
     }
+  }
+
+  async downloadDirectFile(filePath, downloadName, mimeType) {
+    const response = await fetch(encodeURI(filePath));
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} ao carregar arquivo`);
+    }
+    const blob = await response.blob();
+    this.triggerFileDownload(blob, downloadName);
+    Notification.success(`Download de "${downloadName}" concluído!`);
   }
 
   getStandardFileName(layerId, extension) {

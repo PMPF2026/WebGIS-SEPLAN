@@ -325,6 +325,7 @@ export class SidebarUI {
             </button>
           </div>
         </div>
+        ${this.createColorSelectorHtml(layer)}
 
         <div class="layer-subcontrols" id="subcontrols-${layer.id}" style="display: none;">
           <div class="opacity-slider-row">
@@ -421,6 +422,68 @@ export class SidebarUI {
         }
       });
     });
+
+    // Contour Color Selector buttons (Instant dynamic switch)
+    document.querySelectorAll('.contour-color-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const layerId = btn.getAttribute('data-layer-id');
+        const color = btn.getAttribute('data-color');
+        if (!color) return;
+
+        // Update active class among sibling buttons
+        const parent = btn.closest('.contour-color-buttons');
+        if (parent) {
+          parent.querySelectorAll('.contour-color-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        }
+
+        // Update layer manager styling instantly
+        if (this.layerManager && typeof this.layerManager.setContourColor === 'function') {
+          this.layerManager.setContourColor(color);
+        }
+
+        // Update symbology preview swatch in layer item
+        const itemEl = document.querySelector(`.layer-item[data-layer-id="${layerId}"]`);
+        if (itemEl) {
+          const previewEl = itemEl.querySelector('.layer-symbology-preview');
+          if (previewEl) previewEl.style.backgroundColor = color;
+        }
+
+        // Refresh legend tab if rendered
+        if (this.legendUI) {
+          this.legendUI.render();
+        }
+
+        const colorName = color === '#795548' ? 'Marrom' : (color === '#222222' ? 'Preto' : 'Vermelho');
+        Notification.info(`Cor das curvas de nível alterada para ${colorName} (${color}).`);
+      });
+    });
+  }
+
+  createColorSelectorHtml(layer) {
+    if (!layer.colorOptions || !Array.isArray(layer.colorOptions)) return '';
+    const activeColor = layer.contourColor || layer.style?.strokeColor || '#795548';
+
+    return `
+      <div class="contour-color-container" id="contour-colors-${layer.id}">
+        <span class="contour-color-title">Cor da isolinha:</span>
+        <div class="contour-color-buttons">
+          <button type="button" class="contour-color-btn ${activeColor === '#795548' ? 'active' : ''}" data-layer-id="${layer.id}" data-color="#795548" title="Marrom (#795548) — Topografia tradicional">
+            <span class="contour-color-swatch" style="background-color: #795548;"></span>
+            <span class="contour-color-name">Marrom</span>
+          </button>
+          <button type="button" class="contour-color-btn ${activeColor === '#222222' ? 'active' : ''}" data-layer-id="${layer.id}" data-color="#222222" title="Preto (#222222) — Alto contraste">
+            <span class="contour-color-swatch" style="background-color: #222222;"></span>
+            <span class="contour-color-name">Preto</span>
+          </button>
+          <button type="button" class="contour-color-btn ${activeColor === '#D32F2F' ? 'active' : ''}" data-layer-id="${layer.id}" data-color="#D32F2F" title="Vermelho (#D32F2F) — Destaque visual">
+            <span class="contour-color-swatch" style="background-color: #D32F2F;"></span>
+            <span class="contour-color-name">Vermelho</span>
+          </button>
+        </div>
+      </div>
+    `;
   }
 
   updateLayerCounters() {
