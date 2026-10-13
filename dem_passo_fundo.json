@@ -1,0 +1,17 @@
+{
+  "magic": "PFDM",
+  "version": 1,
+  "crs": "EPSG:31982",
+  "description": "Modelo Digital de Elevação Otimizado para Passo Fundo/RS",
+  "cols": 1599,
+  "rows": 1135,
+  "xOrigin": 335503.04241958354,
+  "yOrigin": 6888601.111492676,
+  "pixelSize": 28.533188499581208,
+  "noData": -9999,
+  "scale": 10.0,
+  "minElevation": 471.32,
+  "maxElevation": 754.5,
+  "headerBytes": 32,
+  "fileSize": 3629762
+}
