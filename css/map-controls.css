@@ -429,5 +429,187 @@
     width: 14px;
     height: 10px;
   }
+/* ==========================================================================
+   LEGENDA CARTOGRÁFICA FLUTUANTE — HIPSOMETRIA E RELEVO
+   Posicionamento no canto inferior direito da área do mapa
+   ========================================================================== */
+.hipsometria-floating-legend {
+  position: absolute;
+  bottom: 36px; /* Integralmente acima da barra inferior e da atribuição OpenLayers */
+  right: 14px;
+  z-index: 84;
+  display: none;
+  flex-direction: column;
+  max-width: 195px;
+  pointer-events: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
+/* Se a legenda do Item 6 ou a do Comparativo estiver aberta simultaneamente, desloca para o lado */
+.item6-floating-legend:not([style*="display: none"]) ~ .hipsometria-floating-legend,
+.comparativo-floating-legend:not([style*="display: none"]) ~ .hipsometria-floating-legend {
+  right: 326px;
+}
+
+.hipsometria-legend-card {
+  pointer-events: auto;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  padding: 8px 11px;
+  user-select: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hipsometria-legend-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.hipsometria-legend-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.hipsometria-legend-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #10b981;
+  margin-bottom: 2px;
+}
+
+.hipsometria-legend-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+}
+
+.hipsometria-legend-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.25;
+}
+
+.hipsometria-legend-subtitle {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 1px;
+  line-height: 1.2;
+}
+
+.hipsometria-legend-classes {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+}
+
+.hipsometria-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  color: #e2e8f0;
+  line-height: 1.2;
+}
+
+.hipsometria-legend-swatch {
+  width: 16px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.hipsometria-legend-label {
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.hipsometria-legend-footnote {
+  font-size: 8.5px;
+  color: var(--text-subtle);
+  margin-top: 5px;
+  padding-top: 3px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  line-height: 1.2;
+}
+
+/* Bolha Altimétrica de Consulta em Tempo Real */
+.elevation-bubble {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  margin-top: -12px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: elevationFadeIn 0.15s ease-out;
+}
+
+.elevation-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 5px 0 5px;
+  border-style: solid;
+  border-color: rgba(15, 23, 42, 0.95) transparent transparent transparent;
+}
+
+@keyframes elevationFadeIn {
+  from { opacity: 0; transform: translate(-50%, -90%); }
+  to { opacity: 1; transform: translate(-50%, -100%); }
+}
+
+@media (max-width: 640px) {
+  .hipsometria-floating-legend {
+    bottom: 32px;
+    right: 6px;
+    max-width: 170px;
+  }
+  .item6-floating-legend:not([style*="display: none"]) ~ .hipsometria-floating-legend,
+  .comparativo-floating-legend:not([style*="display: none"]) ~ .hipsometria-floating-legend {
+    right: 6px;
+    bottom: 235px;
+  }
+  .hipsometria-legend-card {
+    padding: 6px 8px;
+  }
+  .hipsometria-legend-row {
+    font-size: 9px;
+    gap: 5px;
+  }
+  .hipsometria-legend-swatch {
+    width: 13px;
+    height: 8.5px;
+  }
+}

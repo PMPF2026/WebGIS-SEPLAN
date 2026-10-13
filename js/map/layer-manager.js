@@ -80,9 +80,24 @@ export class LayerManager {
           url: config.tileUrl,
           minZoom: config.minZoom || 13,
           maxZoom: config.maxZoom || 19,
+          attributions: config.attribution || config.source,
           crossOrigin: 'anonymous',
           wrapX: false
         });
+
+        if (config.validTiles && config.validTiles instanceof Set) {
+          const originalTileUrlFn = xyzSource.getTileUrlFunction();
+          xyzSource.setTileUrlFunction((tileCoord, pixelRatio, projection) => {
+            const url = originalTileUrlFn(tileCoord, pixelRatio, projection);
+            if (!url) return undefined;
+            const match = url.match(/(\d+)\/(\d+)\/(\d+)\.webp$/);
+            if (match) {
+              const key = `${match[1]}/${match[2]}/${match[3]}`;
+              return config.validTiles.has(key) ? url : undefined;
+            }
+            return url;
+          });
+        }
 
         const rasterLayer = new ol.layer.Tile({
           source: xyzSource,
@@ -584,6 +599,53 @@ export class LayerManager {
       };
     }
 
+    // 7.5. Curvas de nível — 10 m (Topografia & Relevo) com cotas altimétricas e seletor dinâmico de 3 cores
+    if (config.id === 'curvas_nivel_10m') {
+      return (feature, resolution) => {
+        const activeColor = this.contourColor || config.style?.strokeColor || '#795548';
+        const rawZ = feature.get('Z') ?? feature.get('ELEV') ?? 0;
+        const zNum = parseFloat(rawZ);
+        const isMaster = Math.round(zNum) % 50 === 0;
+
+        // Regra de espessura cartográfica: curvas mestras (a cada 50m) com destaque sutil
+        const strokeWidth = isMaster ? 1.4 : 0.85;
+
+        // Controle de densidade e escala para os rótulos de cotas:
+        let textStyle = null;
+        const showMasterLabels = resolution <= 10 && isMaster;
+        const showAllLabels = resolution <= 4.5;
+
+        if (showMasterLabels || showAllLabels) {
+          const zText = Number.isInteger(zNum) ? `${zNum} m` : `${zNum.toFixed(1)} m`;
+
+          textStyle = new ol.style.Text({
+            text: zText,
+            font: isMaster ? 'bold 10.5px "Inter", sans-serif' : '500 9.5px "Inter", sans-serif',
+            placement: 'line',
+            repeat: resolution <= 2.5 ? 350 : 500, // Espaçamento calibrado em pixels ao longo da isolinha
+            maxAngle: Math.PI / 4,
+            overflow: false,
+            keepUpright: true,
+            fill: new ol.style.Fill({
+              color: activeColor
+            }),
+            stroke: new ol.style.Stroke({
+              color: 'rgba(255, 255, 255, 0.95)',
+              width: 3.2
+            })
+          });
+        }
+
+        return new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: activeColor,
+            width: strokeWidth
+          }),
+          text: textStyle
+        });
+      };
+    }
+
     // 8. Padrão genérico
     return new ol.style.Style({
       fill: s.fillColor ? new ol.style.Fill({ color: s.fillColor }) : undefined,
@@ -654,5 +716,27 @@ export class LayerManager {
 
   getConfig(layerId) {
     return this.configs.get(layerId);
+  }
+
+  /**
+   * Atualiza dinamicamente a cor da camada Curvas de nível — 10 m
+   * Troca instantânea na simbologia sem novo download do GeoJSON
+   * @param {string} color Código HEX (#795548, #222222, #D32F2F)
+   */
+  setContourColor(color) {
+    this.contourColor = color;
+    const config = this.configs.get('curvas_nivel_10m');
+    const layer = this.layers.get('curvas_nivel_10m');
+
+    if (config && config.style) {
+      config.style.strokeColor = color;
+      config.style.previewColor = color;
+      config.contourColor = color;
+    }
+
+    if (layer) {
+      layer.setStyle(this.createLayerStyle(config));
+      layer.changed();
+    }
   }
 }

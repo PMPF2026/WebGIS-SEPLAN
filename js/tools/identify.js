@@ -4,14 +4,19 @@
  */
 
 export class IdentifyTool {
-  constructor(mapEngine, layerManager, popupUI) {
+  constructor(mapEngine, layerManager, popupUI, elevationQueryTool = null) {
     this.mapEngine = mapEngine;
     this.map = mapEngine.getOlMap();
     this.layerManager = layerManager;
     this.popupUI = popupUI;
+    this.elevationQueryTool = elevationQueryTool;
     this.isActive = true;
 
     this.init();
+  }
+
+  setElevationQueryTool(tool) {
+    this.elevationQueryTool = tool;
   }
 
   init() {
@@ -33,11 +38,29 @@ export class IdentifyTool {
         hitTolerance: 8
       });
 
-      if (clickedFeatures.length > 0) {
-        // Sort features by importance / z-index descending
+      // Separar feições operacionais das feições puramente topográficas
+      const operationalFeatures = clickedFeatures.filter(item => item.layerConfig?.group !== 'topografia_relevo');
+      const isElevationActive = this.elevationQueryTool && this.elevationQueryTool.isActive();
+
+      if (operationalFeatures.length > 0) {
+        // Usuário clicou em feição vetorial temática específica
+        if (this.elevationQueryTool) {
+          this.elevationQueryTool.hide();
+        }
+        operationalFeatures.sort((a, b) => (b.layerConfig.zIndex || 0) - (a.layerConfig.zIndex || 0));
+        this.popupUI.showMultiFeatures(operationalFeatures, evt.coordinate);
+      } else if (isElevationActive) {
+        // Topografia/Hipsometria ativa: consulta cota altimétrica do terreno ou da curva clicada
+        this.popupUI.close();
+        this.elevationQueryTool.query(evt.coordinate);
+      } else if (clickedFeatures.length > 0) {
+        // Caso normal sem modo de topografia
         clickedFeatures.sort((a, b) => (b.layerConfig.zIndex || 0) - (a.layerConfig.zIndex || 0));
         this.popupUI.showMultiFeatures(clickedFeatures, evt.coordinate);
       } else {
+        if (this.elevationQueryTool) {
+          this.elevationQueryTool.hide();
+        }
         this.popupUI.close();
       }
     });
@@ -49,7 +72,8 @@ export class IdentifyTool {
         layerFilter: (l) => l.get('isThematicLayer') === true,
         hitTolerance: 6
       });
-      this.map.getTargetElement().style.cursor = hit ? 'pointer' : '';
+      const isElevationActive = this.elevationQueryTool && this.elevationQueryTool.isActive();
+      this.map.getTargetElement().style.cursor = hit ? 'pointer' : (isElevationActive ? 'crosshair' : '');
     });
   }
 

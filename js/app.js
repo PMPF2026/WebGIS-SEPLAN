@@ -20,6 +20,8 @@ import { Item6ThematicLegendUI } from './ui/thematic-legend-item6.js';
 import { MetricsUI } from './metrics/metrics-ui.js';
 import { TerritorialAnalysisTool } from './tools/territorial-analysis.js';
 import { ComparativoCensoUI } from './comparativo/comparativo-ui.js';
+import { ElevationQueryTool } from './tools/elevation-query.js';
+import { HipsometriaFloatingLegendUI } from './ui/thematic-legend-hipsometria.js';
 
 class WebGisApp {
   constructor() {
@@ -67,8 +69,11 @@ class WebGisApp {
       // 7. Initialize Search UI
       this.searchUI = new SearchUI(this.mapEngine, this.layerManager, this.popupUI);
 
+      // 7.5. Initialize Elevation Query Tool (Topografia & DEM Passo Fundo)
+      this.elevationQueryTool = new ElevationQueryTool(this.mapEngine, this.layerManager);
+
       // 8. Initialize Identify Tool
-      this.identifyTool = new IdentifyTool(this.mapEngine, this.layerManager, this.popupUI);
+      this.identifyTool = new IdentifyTool(this.mapEngine, this.layerManager, this.popupUI, this.elevationQueryTool);
 
       // 9. Initialize Measurement Tool
       this.measureTool = new MeasureTool(this.mapEngine);
@@ -105,6 +110,10 @@ class WebGisApp {
       // 15. Inicializar Legenda Cartográfica Temática Dinâmica do Item 6 (População & Indicadores Econômicos)
       this.item6ThematicLegendUI = new Item6ThematicLegendUI(this.layerManager, 'item6-floating-legend');
       this.item6ThematicLegendUI.init();
+
+      // 15.1. Inicializar Legenda Cartográfica Flutuante da Camada Hipsométrica
+      this.hipsometriaFloatingLegendUI = new HipsometriaFloatingLegendUI(this.layerManager, 'hipsometria-floating-legend');
+      this.hipsometriaFloatingLegendUI.init();
 
       // 16. Refresh Lucide Icons across all rendered components
       this.refreshIcons();
