@@ -2023,7 +2023,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'entorno_pavimentacao',
     name: 'Pavimentação de Vias — Censo 2022 (%)',
-    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    fileName: 'data/Entorno_Domicilios_Urbano_Passo_Fundo_2022.geojson?v=20261014_urbano_v3',
     crs: 'EPSG:31982',
     source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
     refDate: '2022',
@@ -2072,7 +2072,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'entorno_calcadas',
     name: 'Calçadas e Passeios Públicos — Censo 2022 (%)',
-    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    fileName: 'data/Entorno_Domicilios_Urbano_Passo_Fundo_2022.geojson?v=20261014_urbano_v3',
     crs: 'EPSG:31982',
     source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
     refDate: '2022',
@@ -2117,7 +2117,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'entorno_obstaculos',
     name: 'Obstáculos nas Calçadas — Censo 2022 (%)',
-    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    fileName: 'data/Entorno_Domicilios_Urbano_Passo_Fundo_2022.geojson?v=20261014_urbano_v3',
     crs: 'EPSG:31982',
     source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
     refDate: '2022',
@@ -2162,7 +2162,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'entorno_rampas',
     name: 'Acessibilidade & Rampas para Cadeirantes — Censo 2022 (%)',
-    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    fileName: 'data/Entorno_Domicilios_Urbano_Passo_Fundo_2022.geojson?v=20261014_urbano_v3',
     crs: 'EPSG:31982',
     source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
     refDate: '2022',
@@ -2206,7 +2206,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'entorno_bueiros',
     name: 'Drenagem Pluvial (Bueiros e Bocas de Lobo) — Censo 2022 (%)',
-    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    fileName: 'data/Entorno_Domicilios_Urbano_Passo_Fundo_2022.geojson?v=20261014_urbano_v3',
     crs: 'EPSG:31982',
     source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
     refDate: '2022',
@@ -2250,7 +2250,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'entorno_iluminacao',
     name: 'Iluminação Pública — Censo 2022 (%)',
-    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    fileName: 'data/Entorno_Domicilios_Urbano_Passo_Fundo_2022.geojson?v=20261014_urbano_v3',
     crs: 'EPSG:31982',
     source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
     refDate: '2022',
@@ -2293,7 +2293,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'entorno_arborizacao',
     name: 'Arborização Urbana no Entorno — Censo 2022 (%)',
-    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    fileName: 'data/Entorno_Domicilios_Urbano_Passo_Fundo_2022.geojson?v=20261014_urbano_v3',
     crs: 'EPSG:31982',
     source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
     refDate: '2022',

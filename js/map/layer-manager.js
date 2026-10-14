@@ -583,9 +583,20 @@ export class LayerManager {
       };
     }
 
-    // 7. Mapa Coroplético (Densidade Populacional)
+    // 7. Mapa Coroplético (Densidade Populacional & Entorno IBGE 2022)
     if (config.isChoropleth && config.choroplethBreaks) {
       return (feature) => {
+        // Se a camada pertencer ao Entorno e o setor tiver 1 ou 0 domicílios, desconsiderar 100% artificial e renderizar transparente
+        if (config.group === 'infraestrutura_entorno') {
+          const totDom = parseInt(feature.get('tot_domicilios'), 10);
+          if (isNaN(totDom) || totDom <= 1) {
+            return new ol.style.Style({
+              fill: new ol.style.Fill({ color: 'rgba(255, 255, 255, 0.04)' }),
+              stroke: new ol.style.Stroke({ color: 'rgba(148, 163, 184, 0.25)', width: 0.5, lineDash: [3, 3] })
+            });
+          }
+        }
+
         const val = parseFloat(feature.get(config.choroplethField)) || 0;
         let fillColor = 'rgba(254, 240, 217, 0.75)';
 
