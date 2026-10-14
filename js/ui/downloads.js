@@ -291,7 +291,7 @@ export class DownloadsUI {
     });
 
     this.downloadableLayers = LAYERS_CONFIG
-      .filter(l => (!l.isRaster && l.fileName && l.fileName.endsWith('.geojson')) || l.id === 'hipsometria_relevo')
+      .filter(l => (!l.isRaster && l.fileName && l.fileName.includes('.geojson')) || l.id === 'hipsometria_relevo')
       .map(l => {
         const meta = layerMetaMap[l.id] || { groupId: 'outros', groupTitle: 'Outros', subsectionTitle: null };
         const geom = l.isRaster
