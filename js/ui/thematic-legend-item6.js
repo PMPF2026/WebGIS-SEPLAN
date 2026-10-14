@@ -54,6 +54,42 @@ export const ITEM6_LAYER_DEFINITIONS = {
     title: 'Taxa de Alfabetização Setorial',
     subtitle: 'Censo Demográfico 2022 (IBGE)',
     unitNote: 'Classificação cartográfica descritiva da SEPLAN (15+ anos)'
+  },
+  // --- 9. Infraestrutura Urbana & Entorno dos Domicílios ---
+  entorno_pavimentacao: {
+    title: 'Pavimentação de Vias',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'Proporção de domicílios em vias pavimentadas (%)'
+  },
+  entorno_calcadas: {
+    title: 'Calçadas e Passeios Públicos',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'Proporção de domicílios em faces com calçada (%)'
+  },
+  entorno_obstaculos: {
+    title: 'Obstáculos nas Calçadas',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'Proporção de domicílios com interferências no passeio (%)'
+  },
+  entorno_rampas: {
+    title: 'Acessibilidade & Rampas',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'Proporção de domicílios com rampas para cadeirantes (%)'
+  },
+  entorno_bueiros: {
+    title: 'Drenagem Pluvial (Bueiros)',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'Proporção de domicílios com bueiro/boca de lobo (%)'
+  },
+  entorno_iluminacao: {
+    title: 'Iluminação Pública',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'Proporção de domicílios com iluminação pública (%)'
+  },
+  entorno_arborizacao: {
+    title: 'Arborização Urbana no Entorno',
+    subtitle: 'Censo Demográfico 2022 (IBGE)',
+    unitNote: 'Proporção de domicílios com árvores na face (%)'
   }
 };
 
@@ -81,11 +117,22 @@ export class Item6ThematicLegendUI {
       return;
     }
 
-    // Vincular ouvintes OpenLayers para cada camada do Item 6
+    // Vincular ouvintes OpenLayers para cada camada temática
     ITEM6_LAYER_IDS.forEach(id => {
       const olLayer = this.layerManager.getLayer(id);
       if (olLayer) {
         olLayer.on('change:visible', () => this.update());
+      }
+    });
+
+    // Ouvinte imediato para evento padronizado de visibilidade
+    window.addEventListener('layer:visibility-changed', (e) => {
+      if (e.detail && ITEM6_LAYER_IDS.includes(e.detail.layerId)) {
+        const layer = this.layerManager.getLayer(e.detail.layerId);
+        if (layer) {
+          layer.on('change:visible', () => this.update());
+        }
+        this.update();
       }
     });
 
@@ -171,12 +218,16 @@ export class Item6ThematicLegendUI {
       `;
     });
 
+    const isEntorno = layerId.startsWith('entorno_');
+    const badgeText = isEntorno ? 'Infraestrutura Urbana &amp; Entorno (Censo 2022)' : 'População &amp; Indicadores Socioeconômicos';
+    const bulletColor = isEntorno ? '#38bdf8' : '#38bdf8';
+
     return `
       <div class="item6-legend-card" data-layer-id="${layerId}">
         <div class="item6-legend-header">
           <div class="item6-legend-badge">
-            <span class="item6-legend-bullet"></span>
-            <span>População &amp; Indicadores Socioeconômicos</span>
+            <span class="item6-legend-bullet" style="background: ${bulletColor};"></span>
+            <span>${badgeText}</span>
           </div>
           <div class="item6-legend-title">${meta.title}</div>
           ${meta.subtitle ? `<div class="item6-legend-subtitle">${meta.subtitle}</div>` : ''}

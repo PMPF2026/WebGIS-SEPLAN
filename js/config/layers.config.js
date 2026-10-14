@@ -71,6 +71,14 @@ export const LAYER_GROUPS = [
     iconName: 'mountain-snow',
     description: 'Modelo Digital de Elevação, hipsometria e relevo sombreado municipal (Prefeitura Municipal / SEPLAN)',
     badge: 'Relevo'
+  },
+  {
+    id: 'infraestrutura_entorno',
+    title: '9. Infraestrutura Urbana & Entorno dos Domicílios',
+    iconClass: 'infrastructure',
+    iconName: 'building-2',
+    description: 'Pesquisa Urbanística do Entorno dos Domicílios — Censo Demográfico IBGE 2022 (Pavimentação de Vias, Calçadas, Acessibilidade, Drenagem Pluvial, Iluminação e Arborização)',
+    badge: 'Censo 2022'
   }
 ];
 
@@ -2008,8 +2016,322 @@ export const LAYERS_CONFIG = [
     },
     description: 'Camada vetorial de curvas de nível com equidistância altimétrica vertical de 10 metros geradas a partir do Modelo Digital de Elevação.',
     searchable: false
-  }
+  },
 
+  // ================= 9. INFRAESTRUTURA URBANA & ENTORNO DOS DOMICÍLIOS (CENSO 2022) =================
+  {
+    id: 'entorno_pavimentacao',
+    name: 'Pavimentação de Vias — Censo 2022 (%)',
+    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    crs: 'EPSG:31982',
+    source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
+    refDate: '2022',
+    group: 'infraestrutura_entorno',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 29,
+    isLazy: true,
+    isChoropleth: true,
+    choroplethField: 'pct_pavimentacao',
+    choroplethBreaks: [
+      { max: 75.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 75,0% (Déficit elevado / Chão batido)' },
+      { max: 90.0, color: 'rgba(249, 115, 22, 0.78)', label: '75,0% a 90,0% (Parcialmente pavimentado)' },
+      { max: 97.0, color: 'rgba(234, 179, 8, 0.78)', label: '90,0% a 97,0% (Média municipal)' },
+      { max: 99.5, color: 'rgba(34, 197, 94, 0.78)', label: '97,0% a 99,5% (Alta consolidação)' },
+      { max: Infinity, color: 'rgba(21, 128, 61, 0.78)', label: 'Maior que 99,5% (Totalmente pavimentado)' }
+    ],
+    style: {
+      strokeColor: '#14532d',
+      strokeWidth: 0.8,
+      previewColor: '#16a34a'
+    },
+    popupConfig: {
+      titleField: 'id',
+      titlePrefix: 'Setor Censitário ',
+      fields: [
+        { key: 'id', label: 'Código do Setor Censitário' },
+        { key: 'bairro_seplan', label: 'Região / Bairro (SEPLAN)' },
+        { key: 'pct_pavimentacao', label: 'Taxa de Vias Pavimentadas', format: 'percent' },
+        { key: 'dom_pavimentada', label: 'Domicílios em Vias Pavimentadas', format: 'number' },
+        { key: 'dom_nao_pavimentada', label: 'Domicílios em Vias NÃO Pavimentadas', format: 'number' },
+        { key: 'tot_domicilios', label: 'Total de Domicílios Pesquisados', format: 'number' },
+        { key: 'tot_faces', label: 'Total de Faces de Quadra no Setor', format: 'number' },
+        { key: 'face_pavimentada', label: 'Faces com Via Pavimentada', format: 'number' },
+        { key: 'face_nao_pavimentada', label: 'Faces com Via NÃO Pavimentada', format: 'number' },
+        { key: 'pct_calcada', label: 'Calçadas no Setor (%)', format: 'percent' },
+        { key: 'pct_bueiro', label: 'Drenagem Pluvial (Bueiros) (%)', format: 'percent' },
+        { key: 'pct_iluminacao', label: 'Iluminação Pública (%)', format: 'percent' }
+      ]
+    },
+    description: 'Proporção de domicílios particulares permanentes em faces com via pavimentada apurada pelo Censo 2022 (IBGE).',
+    searchable: true,
+    searchFields: ['id', 'bairro_seplan']
+  },
+  {
+    id: 'entorno_calcadas',
+    name: 'Calçadas e Passeios Públicos — Censo 2022 (%)',
+    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    crs: 'EPSG:31982',
+    source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
+    refDate: '2022',
+    group: 'infraestrutura_entorno',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 29,
+    isLazy: true,
+    isChoropleth: true,
+    choroplethField: 'pct_calcada',
+    choroplethBreaks: [
+      { max: 70.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 70,0% (Déficit de calçadas)' },
+      { max: 85.0, color: 'rgba(249, 115, 22, 0.78)', label: '70,0% a 85,0% (Cobertura moderada)' },
+      { max: 95.0, color: 'rgba(234, 179, 8, 0.78)', label: '85,0% a 95,0% (Boa cobertura)' },
+      { max: 99.0, color: 'rgba(56, 189, 248, 0.78)', label: '95,0% a 99,0% (Alta consolidação)' },
+      { max: Infinity, color: 'rgba(2, 132, 199, 0.78)', label: 'Maior que 99,0% (Universalizada)' }
+    ],
+    style: {
+      strokeColor: '#0369a1',
+      strokeWidth: 0.8,
+      previewColor: '#0284c7'
+    },
+    popupConfig: {
+      titleField: 'id',
+      titlePrefix: 'Setor Censitário ',
+      fields: [
+        { key: 'id', label: 'Código do Setor Censitário' },
+        { key: 'bairro_seplan', label: 'Região / Bairro (SEPLAN)' },
+        { key: 'pct_calcada', label: 'Taxa de Calçadas no Setor', format: 'percent' },
+        { key: 'dom_calcada_sim', label: 'Domicílios com Calçada na Face', format: 'number' },
+        { key: 'dom_calcada_nao', label: 'Domicílios SEM Calçada', format: 'number' },
+        { key: 'pct_obstaculo', label: 'Calçadas com Obstáculos (%)', format: 'percent' },
+        { key: 'pct_rampa', label: 'Rampas de Acessibilidade (%)', format: 'percent' },
+        { key: 'tot_domicilios', label: 'Total de Domicílios Pesquisados', format: 'number' }
+      ]
+    },
+    description: 'Proporção de domicílios em faces com calçada ou passeio público apurada pelo Censo 2022 (IBGE).',
+    searchable: true,
+    searchFields: ['id', 'bairro_seplan']
+  },
+  {
+    id: 'entorno_obstaculos',
+    name: 'Obstáculos nas Calçadas — Censo 2022 (%)',
+    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    crs: 'EPSG:31982',
+    source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
+    refDate: '2022',
+    group: 'infraestrutura_entorno',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 29,
+    isLazy: true,
+    isChoropleth: true,
+    choroplethField: 'pct_obstaculo',
+    choroplethBreaks: [
+      { max: 15.0, color: 'rgba(34, 197, 94, 0.78)', label: 'Até 15,0% (Poucos obstáculos / Livre circulação)' },
+      { max: 35.0, color: 'rgba(132, 204, 22, 0.78)', label: '15,0% a 35,0% (Baixa interferência)' },
+      { max: 55.0, color: 'rgba(234, 179, 8, 0.78)', label: '35,0% a 55,0% (Média interferência)' },
+      { max: 75.0, color: 'rgba(249, 115, 22, 0.78)', label: '55,0% a 75,0% (Alta interferência)' },
+      { max: Infinity, color: 'rgba(239, 68, 68, 0.78)', label: 'Maior que 75,0% (Crítico / Passeio obstruído)' }
+    ],
+    style: {
+      strokeColor: '#b91c1c',
+      strokeWidth: 0.8,
+      previewColor: '#ef4444'
+    },
+    popupConfig: {
+      titleField: 'id',
+      titlePrefix: 'Setor Censitário ',
+      fields: [
+        { key: 'id', label: 'Código do Setor Censitário' },
+        { key: 'bairro_seplan', label: 'Região / Bairro (SEPLAN)' },
+        { key: 'pct_obstaculo', label: 'Proporção com Obstáculo na Calçada', format: 'percent' },
+        { key: 'dom_obstaculo_sim', label: 'Domicílios com Obstáculo no Passeio', format: 'number' },
+        { key: 'dom_obstaculo_nao', label: 'Domicílios sem Obstáculos', format: 'number' },
+        { key: 'pct_calcada', label: 'Taxa de Calçadas no Setor (%)', format: 'percent' },
+        { key: 'pct_rampa', label: 'Rampas de Acessibilidade (%)', format: 'percent' },
+        { key: 'tot_domicilios', label: 'Total de Domicílios Pesquisados', format: 'number' }
+      ]
+    },
+    description: 'Proporção de domicílios com presença de postes, degraus, desníveis ou obstáculos nas calçadas.',
+    searchable: true,
+    searchFields: ['id', 'bairro_seplan']
+  },
+  {
+    id: 'entorno_rampas',
+    name: 'Acessibilidade & Rampas para Cadeirantes — Censo 2022 (%)',
+    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    crs: 'EPSG:31982',
+    source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
+    refDate: '2022',
+    group: 'infraestrutura_entorno',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 29,
+    isLazy: true,
+    isChoropleth: true,
+    choroplethField: 'pct_rampa',
+    choroplethBreaks: [
+      { max: 10.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 10,0% (Déficit severo / Sem rampas)' },
+      { max: 25.0, color: 'rgba(249, 115, 22, 0.78)', label: '10,0% a 25,0% (Baixa acessibilidade)' },
+      { max: 50.0, color: 'rgba(234, 179, 8, 0.78)', label: '25,0% a 50,0% (Média acessibilidade)' },
+      { max: 75.0, color: 'rgba(168, 85, 247, 0.78)', label: '50,0% a 75,0% (Boa acessibilidade)' },
+      { max: Infinity, color: 'rgba(99, 102, 241, 0.78)', label: 'Maior que 75,0% (Alta acessibilidade / Rotas acessíveis)' }
+    ],
+    style: {
+      strokeColor: '#4f46e5',
+      strokeWidth: 0.8,
+      previewColor: '#6366f1'
+    },
+    popupConfig: {
+      titleField: 'id',
+      titlePrefix: 'Setor Censitário ',
+      fields: [
+        { key: 'id', label: 'Código do Setor Censitário' },
+        { key: 'bairro_seplan', label: 'Região / Bairro (SEPLAN)' },
+        { key: 'pct_rampa', label: 'Taxa de Rampas para Cadeirantes', format: 'percent' },
+        { key: 'dom_rampa_sim', label: 'Domicílios com Rampa de Acessibilidade', format: 'number' },
+        { key: 'dom_rampa_nao', label: 'Domicílios SEM Rampa', format: 'number' },
+        { key: 'pct_calcada', label: 'Taxa de Calçadas no Setor (%)', format: 'percent' },
+        { key: 'tot_domicilios', label: 'Total de Domicílios Pesquisados', format: 'number' }
+      ]
+    },
+    description: 'Proporção de domicílios em faces com rampa para cadeirantes apurada pelo Censo 2022 (IBGE).',
+    searchable: true,
+    searchFields: ['id', 'bairro_seplan']
+  },
+  {
+    id: 'entorno_bueiros',
+    name: 'Drenagem Pluvial (Bueiros e Bocas de Lobo) — Censo 2022 (%)',
+    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    crs: 'EPSG:31982',
+    source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
+    refDate: '2022',
+    group: 'infraestrutura_entorno',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 29,
+    isLazy: true,
+    isChoropleth: true,
+    choroplethField: 'pct_bueiro',
+    choroplethBreaks: [
+      { max: 60.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 60,0% (Déficit severo de microdrenagem)' },
+      { max: 80.0, color: 'rgba(249, 115, 22, 0.78)', label: '60,0% a 80,0% (Déficit moderado)' },
+      { max: 90.0, color: 'rgba(56, 189, 248, 0.78)', label: '80,0% a 90,0% (Cobertura intermediária)' },
+      { max: 98.0, color: 'rgba(2, 132, 199, 0.78)', label: '90,0% a 98,0% (Boa cobertura)' },
+      { max: Infinity, color: 'rgba(30, 64, 175, 0.78)', label: 'Maior que 98,0% (Plenamente drenado)' }
+    ],
+    style: {
+      strokeColor: '#1e3a8a',
+      strokeWidth: 0.8,
+      previewColor: '#2563eb'
+    },
+    popupConfig: {
+      titleField: 'id',
+      titlePrefix: 'Setor Censitário ',
+      fields: [
+        { key: 'id', label: 'Código do Setor Censitário' },
+        { key: 'bairro_seplan', label: 'Região / Bairro (SEPLAN)' },
+        { key: 'pct_bueiro', label: 'Taxa de Drenagem / Bueiros', format: 'percent' },
+        { key: 'dom_bueiro_sim', label: 'Domicílios com Bueiro/Boca de Lobo', format: 'number' },
+        { key: 'dom_bueiro_nao', label: 'Domicílios SEM Bueiro', format: 'number' },
+        { key: 'pct_pavimentacao', label: 'Pavimentação no Setor (%)', format: 'percent' },
+        { key: 'tot_domicilios', label: 'Total de Domicílios Pesquisados', format: 'number' }
+      ]
+    },
+    description: 'Proporção de domicílios em faces com bueiro ou boca de lobo para escoamento de águas pluviais.',
+    searchable: true,
+    searchFields: ['id', 'bairro_seplan']
+  },
+  {
+    id: 'entorno_iluminacao',
+    name: 'Iluminação Pública — Censo 2022 (%)',
+    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    crs: 'EPSG:31982',
+    source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
+    refDate: '2022',
+    group: 'infraestrutura_entorno',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 29,
+    isLazy: true,
+    isChoropleth: true,
+    choroplethField: 'pct_iluminacao',
+    choroplethBreaks: [
+      { max: 85.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 85,0% (Iluminação deficiente)' },
+      { max: 95.0, color: 'rgba(249, 115, 22, 0.78)', label: '85,0% a 95,0% (Cobertura parcial)' },
+      { max: 98.0, color: 'rgba(250, 204, 21, 0.78)', label: '95,0% a 98,0% (Boa cobertura)' },
+      { max: 99.5, color: 'rgba(245, 158, 11, 0.78)', label: '98,0% a 99,5% (Alta cobertura)' },
+      { max: Infinity, color: 'rgba(217, 119, 6, 0.78)', label: 'Maior que 99,5% (Iluminação universal)' }
+    ],
+    style: {
+      strokeColor: '#b45309',
+      strokeWidth: 0.8,
+      previewColor: '#f59e0b'
+    },
+    popupConfig: {
+      titleField: 'id',
+      titlePrefix: 'Setor Censitário ',
+      fields: [
+        { key: 'id', label: 'Código do Setor Censitário' },
+        { key: 'bairro_seplan', label: 'Região / Bairro (SEPLAN)' },
+        { key: 'pct_iluminacao', label: 'Taxa de Iluminação Pública', format: 'percent' },
+        { key: 'dom_ilum_sim', label: 'Domicílios com Iluminação Pública', format: 'number' },
+        { key: 'dom_ilum_nao', label: 'Domicílios SEM Iluminação', format: 'number' },
+        { key: 'tot_domicilios', label: 'Total de Domicílios Pesquisados', format: 'number' }
+      ]
+    },
+    description: 'Proporção de domicílios em faces com iluminação pública apurada pelo Censo Demográfico 2022 (IBGE).',
+    searchable: true,
+    searchFields: ['id', 'bairro_seplan']
+  },
+  {
+    id: 'entorno_arborizacao',
+    name: 'Arborização Urbana no Entorno — Censo 2022 (%)',
+    fileName: 'data/Entorno_Domicilios_Setores_Passo_Fundo_2022.geojson',
+    crs: 'EPSG:31982',
+    source: 'IBGE — Censo Demográfico 2022 (Pesquisa do Entorno)',
+    refDate: '2022',
+    group: 'infraestrutura_entorno',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 29,
+    isLazy: true,
+    isChoropleth: true,
+    choroplethField: 'pct_arborizacao',
+    choroplethBreaks: [
+      { max: 30.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 30,0% (Déficit arbóreo crítico)' },
+      { max: 50.0, color: 'rgba(249, 115, 22, 0.78)', label: '30,0% a 50,0% (Baixa arborização)' },
+      { max: 70.0, color: 'rgba(234, 179, 8, 0.78)', label: '50,0% a 70,0% (Média arborização)' },
+      { max: 85.0, color: 'rgba(34, 197, 94, 0.78)', label: '70,0% a 85,0% (Boa arborização)' },
+      { max: Infinity, color: 'rgba(21, 128, 61, 0.78)', label: 'Maior que 85,0% (Intensamente arborizado)' }
+    ],
+    style: {
+      strokeColor: '#14532d',
+      strokeWidth: 0.8,
+      previewColor: '#16a34a'
+    },
+    popupConfig: {
+      titleField: 'id',
+      titlePrefix: 'Setor Censitário ',
+      fields: [
+        { key: 'id', label: 'Código do Setor Censitário' },
+        { key: 'bairro_seplan', label: 'Região / Bairro (SEPLAN)' },
+        { key: 'pct_arborizacao', label: 'Taxa de Arborização no Entorno', format: 'percent' },
+        { key: 'dom_arborizado', label: 'Domicílios com Árvores na Face', format: 'number' },
+        { key: 'dom_sem_arvore', label: 'Domicílios SEM Árvores na Face', format: 'number' },
+        { key: 'tot_domicilios', label: 'Total de Domicílios Pesquisados', format: 'number' }
+      ]
+    },
+    description: 'Proporção de domicílios em faces com presença de arborização viária apurada pelo Censo 2022 (IBGE).',
+    searchable: true,
+    searchFields: ['id', 'bairro_seplan']
+  }
 ];
 
 export const OPERATIONAL_PRESETS = [

@@ -407,6 +407,8 @@
 .group-icon.nature { background: #16a34a; }
 .group-icon.sport-culture { background: #e11d48; }
 .group-icon.facilities { background: #4f46e5; }
+.group-icon.topography { background: #0d9488; }
+.group-icon.infrastructure { background: #0284c7; }
 
 .layer-group-title {
   font-size: 12px;
