@@ -2035,16 +2035,16 @@ export const LAYERS_CONFIG = [
     isChoropleth: true,
     choroplethField: 'pct_pavimentacao',
     choroplethBreaks: [
-      { max: 75.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 75,0% (Déficit elevado / Chão batido)' },
-      { max: 90.0, color: 'rgba(249, 115, 22, 0.78)', label: '75,0% a 90,0% (Parcialmente pavimentado)' },
-      { max: 97.0, color: 'rgba(234, 179, 8, 0.78)', label: '90,0% a 97,0% (Média municipal)' },
-      { max: 99.5, color: 'rgba(34, 197, 94, 0.78)', label: '97,0% a 99,5% (Alta consolidação)' },
-      { max: Infinity, color: 'rgba(21, 128, 61, 0.78)', label: 'Maior que 99,5% (Totalmente pavimentado)' }
+      { max: 75.0, color: 'rgba(224, 242, 254, 0.78)', label: 'Menor que 75,0% (Déficit elevado / Chão batido)' },
+      { max: 90.0, color: 'rgba(186, 230, 253, 0.80)', label: '75,0% a 90,0% (Parcialmente pavimentado)' },
+      { max: 97.0, color: 'rgba(56, 189, 248, 0.82)', label: '90,0% a 97,0% (Média municipal)' },
+      { max: 99.5, color: 'rgba(2, 132, 199, 0.85)', label: '97,0% a 99,5% (Alta consolidação)' },
+      { max: Infinity, color: 'rgba(3, 105, 161, 0.90)', label: 'Maior que 99,5% (Totalmente pavimentado)' }
     ],
     style: {
-      strokeColor: '#14532d',
+      strokeColor: '#0369a1',
       strokeWidth: 0.8,
-      previewColor: '#16a34a'
+      previewColor: '#0284c7'
     },
     popupConfig: {
       titleField: 'id',
@@ -2084,16 +2084,16 @@ export const LAYERS_CONFIG = [
     isChoropleth: true,
     choroplethField: 'pct_calcada',
     choroplethBreaks: [
-      { max: 70.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 70,0% (Déficit de calçadas)' },
-      { max: 85.0, color: 'rgba(249, 115, 22, 0.78)', label: '70,0% a 85,0% (Cobertura moderada)' },
-      { max: 95.0, color: 'rgba(234, 179, 8, 0.78)', label: '85,0% a 95,0% (Boa cobertura)' },
-      { max: 99.0, color: 'rgba(56, 189, 248, 0.78)', label: '95,0% a 99,0% (Alta consolidação)' },
-      { max: Infinity, color: 'rgba(2, 132, 199, 0.78)', label: 'Maior que 99,0% (Universalizada)' }
+      { max: 70.0, color: 'rgba(238, 242, 255, 0.78)', label: 'Menor que 70,0% (Déficit de calçadas)' },
+      { max: 85.0, color: 'rgba(199, 210, 254, 0.80)', label: '70,0% a 85,0% (Cobertura moderada)' },
+      { max: 95.0, color: 'rgba(129, 140, 248, 0.82)', label: '85,0% a 95,0% (Boa cobertura)' },
+      { max: 99.0, color: 'rgba(79, 70, 229, 0.85)', label: '95,0% a 99,0% (Alta consolidação)' },
+      { max: Infinity, color: 'rgba(49, 46, 129, 0.90)', label: 'Maior que 99,0% (Universalizada)' }
     ],
     style: {
-      strokeColor: '#0369a1',
+      strokeColor: '#3730a3',
       strokeWidth: 0.8,
-      previewColor: '#0284c7'
+      previewColor: '#4f46e5'
     },
     popupConfig: {
       titleField: 'id',
@@ -2129,16 +2129,16 @@ export const LAYERS_CONFIG = [
     isChoropleth: true,
     choroplethField: 'pct_obstaculo',
     choroplethBreaks: [
-      { max: 15.0, color: 'rgba(34, 197, 94, 0.78)', label: 'Até 15,0% (Poucos obstáculos / Livre circulação)' },
-      { max: 35.0, color: 'rgba(132, 204, 22, 0.78)', label: '15,0% a 35,0% (Baixa interferência)' },
-      { max: 55.0, color: 'rgba(234, 179, 8, 0.78)', label: '35,0% a 55,0% (Média interferência)' },
-      { max: 75.0, color: 'rgba(249, 115, 22, 0.78)', label: '55,0% a 75,0% (Alta interferência)' },
-      { max: Infinity, color: 'rgba(239, 68, 68, 0.78)', label: 'Maior que 75,0% (Crítico / Passeio obstruído)' }
+      { max: 15.0, color: 'rgba(254, 243, 199, 0.78)', label: 'Até 15,0% (Poucos obstáculos / Livre circulação)' },
+      { max: 35.0, color: 'rgba(253, 230, 138, 0.80)', label: '15,0% a 35,0% (Baixa interferência)' },
+      { max: 55.0, color: 'rgba(251, 191, 36, 0.82)', label: '35,0% a 55,0% (Média interferência)' },
+      { max: 75.0, color: 'rgba(245, 158, 11, 0.85)', label: '55,0% a 75,0% (Alta interferência)' },
+      { max: Infinity, color: 'rgba(180, 83, 9, 0.90)', label: 'Maior que 75,0% (Crítico / Passeio obstruído)' }
     ],
     style: {
-      strokeColor: '#b91c1c',
+      strokeColor: '#92400e',
       strokeWidth: 0.8,
-      previewColor: '#ef4444'
+      previewColor: '#f59e0b'
     },
     popupConfig: {
       titleField: 'id',
@@ -2174,16 +2174,16 @@ export const LAYERS_CONFIG = [
     isChoropleth: true,
     choroplethField: 'pct_rampa',
     choroplethBreaks: [
-      { max: 10.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 10,0% (Déficit severo / Sem rampas)' },
-      { max: 25.0, color: 'rgba(249, 115, 22, 0.78)', label: '10,0% a 25,0% (Baixa acessibilidade)' },
-      { max: 50.0, color: 'rgba(234, 179, 8, 0.78)', label: '25,0% a 50,0% (Média acessibilidade)' },
-      { max: 75.0, color: 'rgba(168, 85, 247, 0.78)', label: '50,0% a 75,0% (Boa acessibilidade)' },
-      { max: Infinity, color: 'rgba(99, 102, 241, 0.78)', label: 'Maior que 75,0% (Alta acessibilidade / Rotas acessíveis)' }
+      { max: 10.0, color: 'rgba(245, 243, 255, 0.78)', label: 'Menor que 10,0% (Déficit severo / Sem rampas)' },
+      { max: 25.0, color: 'rgba(221, 214, 254, 0.80)', label: '10,0% a 25,0% (Baixa acessibilidade)' },
+      { max: 50.0, color: 'rgba(167, 139, 250, 0.82)', label: '25,0% a 50,0% (Média acessibilidade)' },
+      { max: 75.0, color: 'rgba(124, 58, 237, 0.85)', label: '50,0% a 75,0% (Boa acessibilidade)' },
+      { max: Infinity, color: 'rgba(76, 29, 149, 0.90)', label: 'Maior que 75,0% (Alta acessibilidade / Rotas acessíveis)' }
     ],
     style: {
-      strokeColor: '#4f46e5',
+      strokeColor: '#581c87',
       strokeWidth: 0.8,
-      previewColor: '#6366f1'
+      previewColor: '#7c3aed'
     },
     popupConfig: {
       titleField: 'id',
@@ -2218,16 +2218,16 @@ export const LAYERS_CONFIG = [
     isChoropleth: true,
     choroplethField: 'pct_bueiro',
     choroplethBreaks: [
-      { max: 60.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 60,0% (Déficit severo de microdrenagem)' },
-      { max: 80.0, color: 'rgba(249, 115, 22, 0.78)', label: '60,0% a 80,0% (Déficit moderado)' },
-      { max: 90.0, color: 'rgba(56, 189, 248, 0.78)', label: '80,0% a 90,0% (Cobertura intermediária)' },
-      { max: 98.0, color: 'rgba(2, 132, 199, 0.78)', label: '90,0% a 98,0% (Boa cobertura)' },
-      { max: Infinity, color: 'rgba(30, 64, 175, 0.78)', label: 'Maior que 98,0% (Plenamente drenado)' }
+      { max: 60.0, color: 'rgba(204, 251, 241, 0.78)', label: 'Menor que 60,0% (Déficit severo de microdrenagem)' },
+      { max: 80.0, color: 'rgba(153, 246, 228, 0.80)', label: '60,0% a 80,0% (Déficit moderado)' },
+      { max: 90.0, color: 'rgba(45, 212, 191, 0.82)', label: '80,0% a 90,0% (Cobertura intermediária)' },
+      { max: 98.0, color: 'rgba(13, 148, 136, 0.85)', label: '90,0% a 98,0% (Boa cobertura)' },
+      { max: Infinity, color: 'rgba(17, 94, 89, 0.90)', label: 'Maior que 98,0% (Plenamente drenado)' }
     ],
     style: {
-      strokeColor: '#1e3a8a',
+      strokeColor: '#115e59',
       strokeWidth: 0.8,
-      previewColor: '#2563eb'
+      previewColor: '#0d9488'
     },
     popupConfig: {
       titleField: 'id',
@@ -2262,16 +2262,16 @@ export const LAYERS_CONFIG = [
     isChoropleth: true,
     choroplethField: 'pct_iluminacao',
     choroplethBreaks: [
-      { max: 85.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 85,0% (Iluminação deficiente)' },
-      { max: 95.0, color: 'rgba(249, 115, 22, 0.78)', label: '85,0% a 95,0% (Cobertura parcial)' },
-      { max: 98.0, color: 'rgba(250, 204, 21, 0.78)', label: '95,0% a 98,0% (Boa cobertura)' },
-      { max: 99.5, color: 'rgba(245, 158, 11, 0.78)', label: '98,0% a 99,5% (Alta cobertura)' },
-      { max: Infinity, color: 'rgba(217, 119, 6, 0.78)', label: 'Maior que 99,5% (Iluminação universal)' }
+      { max: 85.0, color: 'rgba(254, 249, 195, 0.78)', label: 'Menor que 85,0% (Iluminação deficiente)' },
+      { max: 95.0, color: 'rgba(254, 240, 138, 0.80)', label: '85,0% a 95,0% (Cobertura parcial)' },
+      { max: 98.0, color: 'rgba(250, 204, 21, 0.82)', label: '95,0% a 98,0% (Boa cobertura)' },
+      { max: 99.5, color: 'rgba(234, 179, 8, 0.85)', label: '98,0% a 99,5% (Alta cobertura)' },
+      { max: Infinity, color: 'rgba(161, 98, 7, 0.90)', label: 'Maior que 99,5% (Iluminação universal)' }
     ],
     style: {
-      strokeColor: '#b45309',
+      strokeColor: '#a16207',
       strokeWidth: 0.8,
-      previewColor: '#f59e0b'
+      previewColor: '#eab308'
     },
     popupConfig: {
       titleField: 'id',
@@ -2305,11 +2305,11 @@ export const LAYERS_CONFIG = [
     isChoropleth: true,
     choroplethField: 'pct_arborizacao',
     choroplethBreaks: [
-      { max: 30.0, color: 'rgba(239, 68, 68, 0.78)', label: 'Menor que 30,0% (Déficit arbóreo crítico)' },
-      { max: 50.0, color: 'rgba(249, 115, 22, 0.78)', label: '30,0% a 50,0% (Baixa arborização)' },
-      { max: 70.0, color: 'rgba(234, 179, 8, 0.78)', label: '50,0% a 70,0% (Média arborização)' },
-      { max: 85.0, color: 'rgba(34, 197, 94, 0.78)', label: '70,0% a 85,0% (Boa arborização)' },
-      { max: Infinity, color: 'rgba(21, 128, 61, 0.78)', label: 'Maior que 85,0% (Intensamente arborizado)' }
+      { max: 30.0, color: 'rgba(220, 252, 231, 0.78)', label: 'Menor que 30,0% (Déficit arbóreo crítico)' },
+      { max: 50.0, color: 'rgba(187, 247, 208, 0.80)', label: '30,0% a 50,0% (Baixa arborização)' },
+      { max: 70.0, color: 'rgba(74, 222, 128, 0.82)', label: '50,0% a 70,0% (Média arborização)' },
+      { max: 85.0, color: 'rgba(22, 163, 74, 0.85)', label: '70,0% a 85,0% (Boa arborização)' },
+      { max: Infinity, color: 'rgba(20, 83, 45, 0.90)', label: 'Maior que 85,0% (Intensamente arborizado)' }
     ],
     style: {
       strokeColor: '#14532d',
