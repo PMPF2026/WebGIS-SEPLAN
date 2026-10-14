@@ -5,6 +5,7 @@
 
 import { LAYER_GROUPS, LAYERS_CONFIG } from '../config/layers.config.js';
 import { Notification } from './notification.js';
+import { toUTM22S } from '../utils/projection.js';
 
 export const DOWNLOAD_THEMATIC_GROUPS = [
   {
@@ -151,6 +152,21 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
       'curvas_nivel_10m',
       'hipsometria_relevo'
     ]
+  },
+  {
+    id: 'infraestrutura_entorno',
+    title: 'Infraestrutura Urbana & Entorno dos Domicílios',
+    shortTitle: 'Entorno Domicílios',
+    iconName: 'building-2',
+    layerIds: [
+      'entorno_pavimentacao',
+      'entorno_calcadas',
+      'entorno_obstaculos',
+      'entorno_rampas',
+      'entorno_bueiros',
+      'entorno_iluminacao',
+      'entorno_arborizacao'
+    ]
   }
 ];
 
@@ -241,7 +257,14 @@ export class DownloadsUI {
       'raio_1600m_parques': 'Área de cobertura urbana de 1.600m dos parques municipais.',
       'raio_1600m_multigares': 'Área de cobertura urbana de 1.600m das intervenções do Multigares.',
       'curvas_nivel_10m': '2.679 isolinhas altimétricas vetoriais com equidistância vertical de 10 metros geradas a partir do Modelo Digital de Elevação de Passo Fundo/RS (cotas de 470 m a 750 m).',
-      'hipsometria_relevo': 'Modelo Digital de Elevação (MDE) e composição hipsométrica de Passo Fundo com faixas de 474 m a 755 m e resolução espacial nativa de 28,53 metros (SIRGAS 2000 / UTM 22S).'
+      'hipsometria_relevo': 'Modelo Digital de Elevação (MDE) e composição hipsométrica de Passo Fundo com faixas de 474 m a 755 m e resolução espacial nativa de 28,53 metros (SIRGAS 2000 / UTM 22S).',
+      'entorno_pavimentacao': 'Proporção de domicílios particulares permanentes em faces de quadra com via pavimentada (asfalto, paralelepípedo ou pavies) apurada pelo Censo 2022 (IBGE).',
+      'entorno_calcadas': 'Proporção de domicílios em faces de quadra com calçada ou passeio público apurada pelo Censo 2022 (IBGE).',
+      'entorno_obstaculos': 'Proporção de domicílios com presença de postes, degraus, desníveis ou obstáculos que dificultam a livre circulação nas calçadas (Censo 2022).',
+      'entorno_rampas': 'Proporção de domicílios em faces de quadra dotadas de rampas de acessibilidade para cadeirantes apurada pelo Censo 2022 (IBGE).',
+      'entorno_bueiros': 'Proporção de domicílios em faces de quadra com bueiro ou boca de lobo para escoamento de águas pluviais (Censo 2022).',
+      'entorno_iluminacao': 'Proporção de domicílios em faces de quadra com iluminação pública apurada pelo Censo Demográfico 2022 (IBGE).',
+      'entorno_arborizacao': 'Proporção de domicílios em faces de quadra com arborização viária (árvores no entorno) apurada pelo Censo 2022 (IBGE).'
     };
 
     const layerMetaMap = {};
@@ -672,12 +695,12 @@ export class DownloadsUI {
     const features = olLayer.getSource().getFeatures();
     if (features.length === 0) throw new Error('Nenhuma feição encontrada');
 
-    // Collect all property keys
+    // Collect all property keys (excluding internal markers starting with _)
     const allKeys = new Set();
     features.forEach(f => {
       const props = f.getProperties();
       Object.keys(props).forEach(k => {
-        if (k !== 'geometry') allKeys.add(k);
+        if (k !== 'geometry' && !k.startsWith('_')) allKeys.add(k);
       });
     });
 
@@ -690,13 +713,18 @@ export class DownloadsUI {
       const geom = f.getGeometry();
       let x = '', y = '';
       if (geom) {
+        let center;
         if (geom.getType() === 'Point') {
-          const coords = geom.getCoordinates();
-          x = coords[0].toFixed(2);
-          y = coords[1].toFixed(2);
+          center = geom.getCoordinates();
         } else {
           const ext = geom.getExtent();
-          const center = ol.extent.getCenter(ext);
+          center = ol.extent.getCenter(ext);
+        }
+        if (typeof toUTM22S === 'function') {
+          const utm = toUTM22S(center, 'EPSG:3857');
+          x = utm[0].toFixed(2);
+          y = utm[1].toFixed(2);
+        } else {
           x = center[0].toFixed(2);
           y = center[1].toFixed(2);
         }
@@ -717,7 +745,7 @@ export class DownloadsUI {
   }
 
   /**
-   * Converts OpenLayers features to KML format (WGS84 EPSG:4326)
+   * Converts OpenLayers features to KML format (WGS84 EPSG:4326) with styled attribute tables
    */
   async downloadAsKml(layer) {
     let features;
@@ -738,12 +766,33 @@ export class DownloadsUI {
     }
     if (!features || features.length === 0) throw new Error('Nenhuma feição encontrada');
 
+    // Clone features with placemark title and complete styled HTML attributes table for Google Earth
+    const kmlFeatures = features.map(f => {
+      const clone = f.clone();
+      const props = f.getProperties();
+      const title = props.name || props.nome || props.bairro || props.bairro_seplan || props.id || props.CD_SETOR || layer.name;
+      clone.set('name', String(title));
+
+      let descHtml = '<div style="font-family:sans-serif;font-size:12px;color:#1e293b;">';
+      descHtml += `<h3 style="margin:0 0 8px;font-size:13px;color:#0f172a;border-bottom:2px solid #0284c7;padding-bottom:4px;">${title}</h3>`;
+      descHtml += '<table border="1" cellpadding="4" cellspacing="0" style="border-collapse:collapse;width:100%;font-size:11px;">';
+      Object.entries(props).forEach(([k, v]) => {
+        if (k !== 'geometry' && !k.startsWith('_') && k !== 'name' && k !== 'description') {
+          const valStr = v !== null && v !== undefined ? String(v) : '';
+          descHtml += `<tr><td style="background:#f8fafc;font-weight:bold;color:#475569;width:40%;">${k}</td><td>${valStr}</td></tr>`;
+        }
+      });
+      descHtml += '</table></div>';
+      clone.set('description', descHtml);
+      return clone;
+    });
+
     const kmlFormat = new ol.format.KML({
       extractStyles: false,
       defaultStyle: null
     });
 
-    const kmlString = kmlFormat.writeFeatures(features, {
+    const kmlString = kmlFormat.writeFeatures(kmlFeatures, {
       featureProjection: 'EPSG:3857',
       dataProjection: 'EPSG:4326'
     });
