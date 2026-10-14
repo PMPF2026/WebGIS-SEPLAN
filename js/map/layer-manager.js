@@ -259,6 +259,10 @@ export class LayerManager {
       await this.loadLayerData(layerId);
     }
     layer.setVisible(visible);
+
+    window.dispatchEvent(new CustomEvent('layer:visibility-changed', {
+      detail: { layerId, visible }
+    }));
   }
 
   /**

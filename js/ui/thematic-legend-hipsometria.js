@@ -45,12 +45,25 @@ export class HipsometriaFloatingLegendUI {
       olLayer.on('change:visible', () => this.update());
     }
 
+    // Ouvinte reativo imediato para alteração de visibilidade via LayerManager / Sidebar
+    window.addEventListener('layer:visibility-changed', (e) => {
+      if (e.detail && e.detail.layerId === 'hipsometria_relevo') {
+        const layer = this.layerManager.getLayer('hipsometria_relevo');
+        if (layer && !this._layerBound) {
+          layer.on('change:visible', () => this.update());
+          this._layerBound = true;
+        }
+        this.update();
+      }
+    });
+
     // Ouvinte para quando camadas forem registradas/inicializadas
     this.layerManager.onLayerLoaded((layerId) => {
       if (layerId === 'hipsometria_relevo') {
         const layer = this.layerManager.getLayer('hipsometria_relevo');
-        if (layer) {
+        if (layer && !this._layerBound) {
           layer.on('change:visible', () => this.update());
+          this._layerBound = true;
         }
         this.update();
       }
