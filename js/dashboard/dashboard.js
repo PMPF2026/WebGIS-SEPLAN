@@ -260,7 +260,7 @@ export class DashboardUI {
       this.charts.roadsModal = new Chart(roadsModalCtx, {
         type: 'doughnut',
         data: {
-          labels: ['Malha Urbana (1.501,6 km)', 'Estradas Rurais (285,3 km)', 'Rod. Estaduais (66,9 km)', 'Rod. Federais (50,3 km)', 'Ferrovia (55,3 km)'],
+          labels: ['Faces de Quadra (1.501,6 km)', 'Estradas Rurais (285,3 km)', 'Rod. Estaduais (66,9 km)', 'Rod. Federais (50,3 km)', 'Ferrovia (55,3 km)'],
           datasets: [{
             data: [stats.viariaKm, stats.estradasMunicipaisKm, stats.rodoviaEstadualKm, stats.rodoviaFederalKm, stats.ferroviaKm],
             backgroundColor: ['#64748b', '#d97706', '#ea580c', '#dc2626', '#1e293b'],

@@ -365,7 +365,8 @@ export const LAYERS_CONFIG = [
         { key: 'TOT_RES', label: 'Residências no Trecho', format: 'number' },
         { key: 'TOT_GERAL', label: 'Total de Edificações', format: 'number' },
         { key: 'CD_SETOR', label: 'Setor Censitário IBGE' },
-        { key: 'CD_QUADRA', label: 'Quadra' }
+        { key: 'CD_QUADRA', label: 'Quadra' },
+        { key: 'CD_FACE', label: 'Face da Quadra' }
       ]
     },
     searchable: true,

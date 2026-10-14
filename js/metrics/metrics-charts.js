@@ -16,7 +16,7 @@ import { EDUCACAO_BAIRROS, EDUCACAO_GENERO, EDUCACAO_RACA, EDUCACAO_IDADE, EDUCA
 
 export const METRICS_ANALYTICAL_DATA = {
   roads: {
-    labels: ['Malha Urbana', 'Estradas Rurais', 'Rod. Estaduais', 'Rod. Federais', 'Ferrovia'],
+    labels: ['Faces de Quadra (Urbano)', 'Estradas Rurais', 'Rod. Estaduais', 'Rod. Federais', 'Ferrovia'],
     data: [1501.61, 285.29, 66.86, 50.29, 55.29],
     colors: ['#64748b', '#d97706', '#ea580c', '#dc2626', '#334155'],
     total: 1959.34,
