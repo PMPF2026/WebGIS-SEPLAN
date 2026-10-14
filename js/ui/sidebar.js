@@ -518,8 +518,8 @@ export class SidebarUI {
 
   setupQuickActions() {
     const expandAllBtn = document.getElementById('btn-expand-all-layers');
-    const collapseAllBtn = document.getElementById('btn-collapse-all-layers');
-    const turnAllOffBtn = document.getElementById('btn-turn-all-off');
+    const collapseAllBtn = document.getElementById('btn-collapse-all-groups') || document.getElementById('btn-collapse-all-layers');
+    const turnAllOffBtn = document.getElementById('btn-toggle-all-layers') || document.getElementById('btn-turn-all-off');
 
     if (expandAllBtn) {
       expandAllBtn.addEventListener('click', () => {
@@ -529,22 +529,39 @@ export class SidebarUI {
 
     if (collapseAllBtn) {
       collapseAllBtn.addEventListener('click', () => {
-        document.querySelectorAll('.layer-group').forEach(g => g.classList.remove('expanded'));
+        const groups = document.querySelectorAll('.layer-group');
+        const anyExpanded = Array.from(groups).some(g => g.classList.contains('expanded'));
+        if (anyExpanded) {
+          groups.forEach(g => g.classList.remove('expanded'));
+          collapseAllBtn.innerHTML = '<i class="lucide-chevrons-down-up"></i> Expandir';
+        } else {
+          groups.forEach(g => g.classList.add('expanded'));
+          collapseAllBtn.innerHTML = '<i class="lucide-chevrons-down-up"></i> Recolher';
+        }
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
       });
     }
 
     if (turnAllOffBtn) {
       turnAllOffBtn.addEventListener('click', async () => {
+        let turnedOffCount = 0;
         for (const cfg of LAYERS_CONFIG) {
           const cb = document.querySelector(`.layer-checkbox[data-layer-id="${cfg.id}"]`);
           if (cb && cb.checked) {
             cb.checked = false;
             await this.layerManager.setLayerVisibility(cfg.id, false);
+            turnedOffCount++;
           }
         }
         this.legendUI.render();
         this.updateLayerCounters();
-        Notification.info('Todas as camadas temáticas foram desativadas.');
+        if (turnedOffCount > 0) {
+          Notification.info(`${turnedOffCount} camada(s) temática(s) desativada(s).`);
+        } else {
+          Notification.info('Nenhuma camada ativa no momento.');
+        }
       });
     }
   }
