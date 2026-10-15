@@ -37,11 +37,16 @@ export class AnalisesTerritoriaisUI {
 
     this.container.innerHTML = `
       <div class="analises-header">
-        <h2 class="analises-title">
-          <i class="fas fa-layer-group"></i>
-          <span>Análises Territoriais</span>
-        </h2>
-        <p class="analises-subtitle">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 class="analises-title" style="margin-bottom:0;">
+            <i class="fas fa-layer-group"></i>
+            <span>Análises Territoriais</span>
+          </h2>
+          <button type="button" id="btn-close-analises-territoriais" title="Fechar e voltar às Camadas" style="background:transparent; border:none; color:#94a3b8; font-size:1.1rem; cursor:pointer; padding:4px 8px; border-radius:4px;">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <p class="analises-subtitle" style="margin-top:6px;">
           Inteligência espacial e cruzamento de indicadores temáticos baseados no <strong>Censo Demográfico IBGE 2022</strong>.
         </p>
       </div>
@@ -402,6 +407,16 @@ export class AnalisesTerritoriaisUI {
     if (btnPavi) {
       btnPavi.addEventListener('click', () => {
         this.activateLayers(['entorno_pavimentacao', 'malha_viaria', 'bairros']);
+      });
+    }
+
+    // 4. Botão fechar painel e voltar para Camadas
+    const btnClose = this.container.querySelector('#btn-close-analises-territoriais');
+    if (btnClose) {
+      btnClose.addEventListener('click', () => {
+        if (this.sidebarUI) {
+          this.sidebarUI.switchTab('camadas');
+        }
       });
     }
   }

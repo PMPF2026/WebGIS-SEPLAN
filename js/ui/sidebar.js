@@ -102,6 +102,11 @@ export class SidebarUI {
     if (censoHeaderBtn) {
       censoHeaderBtn.classList.toggle('active', tabId === 'tab-censo-comparativo' || tabId === 'censo-comparativo');
     }
+
+    const analisesHeaderBtn = document.getElementById('btn-open-analises-territoriais');
+    if (analisesHeaderBtn) {
+      analisesHeaderBtn.classList.toggle('active', tabId === 'tab-analises-territoriais' || tabId === 'analises-territoriais');
+    }
   }
 
   setupPresets() {

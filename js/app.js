@@ -20,6 +20,7 @@ import { Item6ThematicLegendUI } from './ui/thematic-legend-item6.js';
 import { MetricsUI } from './metrics/metrics-ui.js';
 import { TerritorialAnalysisTool } from './tools/territorial-analysis.js';
 import { ComparativoCensoUI } from './comparativo/comparativo-ui.js';
+import { AnalisesTerritoriaisUI } from './analises/analises-territoriais-ui.js';
 import { ElevationQueryTool } from './tools/elevation-query.js';
 import { HipsometriaFloatingLegendUI } from './ui/thematic-legend-hipsometria.js';
 
