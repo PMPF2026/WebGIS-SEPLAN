@@ -1,6 +1,13 @@
-﻿/**
- * WebGIS SEPLAN Passo Fundo - Diagnósticos Territoriais
- * Base de Dados Consolidada das Análises Territoriais (Censo Demográfico 2022)
+/**
+ * WebGIS SEPLAN Passo Fundo - DiagnÃ³sticos Territoriais
+ * Base de Dados Consolidada das AnÃ¡lises Territoriais (Censo DemogrÃ¡fico 2022)
+ * Inclui os 6 Eixos EstratÃ©gicos:
+ * 1. Acessibilidade Ativa & Idosos
+ * 2. ResiliÃªncia ClimÃ¡tica & Drenagem
+ * 3. Cobertura ArbÃ³rea & Ilhas de Calor
+ * 4. PavimentaÃ§Ã£o & Conectividade
+ * 5. Ãndice SintÃ©tico de Qualidade do Entorno Urbano (IQEU-PF)
+ * 6. Topografia & Declividade (Mobilidade Pedonal & ErosÃ£o)
  */
 
 export const ANALISES_TERRITORIAIS_DATA = [
@@ -41,7 +48,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  16.43,
         "ipp":  185.9,
         "categoriaPavi":  "🚨 Prioridade I (Imediata / Alto Impacto)",
-        "notaPavi":  "Líder absoluto de déficit viário de Passo Fundo: 385 domicílios em terra, 83 faces e 9,1 km sem asfalto, com crescimento demográfico de +36,5%."
+        "notaPavi":  "Líder absoluto de déficit viário de Passo Fundo: 385 domicílios em terra, 83 faces e 9,1 km sem asfalto, com crescimento demográfico de +36,5%.",
+        "iqeu":  66.91,
+        "iqeuClasse":  "Classe C (Vulnerabilidade Moderada)",
+        "iqeuGargalo":  "DÃ©ficit CrÃ­tico de Rampas (\u003c 5%)",
+        "elevMin":  638.7,
+        "elevMax":  719.3,
+        "elevMedia":  673.5,
+        "ampAltimetrica":  80.6,
+        "slopeMediaPct":  7.7,
+        "slopeMaxPct":  24.1,
+        "pctDeclivGt8":  41.8,
+        "pctDeclivGt15":  3.9,
+        "topoDiagnostico":  "Relevo Ondulado PadrÃ£o"
     },
     {
         "bairro":  "Petrópolis",
@@ -80,7 +99,10 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  9.7,
         "ipp":  124.1,
         "categoriaPavi":  "🚨 Prioridade I (Imediata / Alto Impacto)",
-        "notaPavi":  "Segundo maior contingente: 250 famílias em vias de terra (~5,4 km), com eixos de conexão para o campus universitário e rodovia."
+        "notaPavi":  "Segundo maior contingente: 250 famílias em vias de terra (~5,4 km), com eixos de conexão para o campus universitário e rodovia.",
+        "iqeu":  68.35,
+        "iqeuClasse":  "Classe C (Vulnerabilidade Moderada)",
+        "iqeuGargalo":  "ExtensÃ£o em Terra (\u003e 5%)"
     },
     {
         "bairro":  "Integração",
@@ -119,7 +141,10 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  12.67,
         "ipp":  123,
         "categoriaPavi":  "🚨 Prioridade I (Imediata / Alto Impacto)",
-        "notaPavi":  "Crescimento populacional acelerado (+53,5%) com 236 domicílios em terra e mais de 7,0 km de vias necessitando de pavimentação."
+        "notaPavi":  "Crescimento populacional acelerado (+53,5%) com 236 domicílios em terra e mais de 7,0 km de vias necessitando de pavimentação.",
+        "iqeu":  73.2,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "ExtensÃ£o em Terra (\u003e 5%)"
     },
     {
         "bairro":  "Santa Marta",
@@ -158,7 +183,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  4.36,
         "ipp":  68.1,
         "categoriaPavi":  "⚠️ Prioridade II (Expansão e Conectividade)",
-        "notaPavi":  "Forte expansão (+77,4% de moradores) com 101 famílias em vias de terra e alta densidade por km (41,7 dom/km)."
+        "notaPavi":  "Forte expansão (+77,4% de moradores) com 101 famílias em vias de terra e alta densidade por km (41,7 dom/km).",
+        "iqeu":  69.33,
+        "iqeuClasse":  "Classe C (Vulnerabilidade Moderada)",
+        "iqeuGargalo":  "Deserto Verde / Falta de Ãrvores (\u003c 50%)",
+        "elevMin":  587.2,
+        "elevMax":  665.2,
+        "elevMedia":  626.5,
+        "ampAltimetrica":  78,
+        "slopeMediaPct":  9.5,
+        "slopeMaxPct":  28.8,
+        "pctDeclivGt8":  54.2,
+        "pctDeclivGt15":  13.7,
+        "topoDiagnostico":  "Barreira Severa de Acessibilidade Pedonal (NBR 9050 \u003e 8%)"
     },
     {
         "bairro":  "Valinhos",
@@ -197,7 +234,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  6.73,
         "ipp":  55.3,
         "categoriaPavi":  "⚠️ Prioridade II (Expansão e Conectividade)",
-        "notaPavi":  "Conexão periférica leste; 95 famílias em terra (~3,7 km de estradas vicinais urbanas)."
+        "notaPavi":  "Conexão periférica leste; 95 famílias em terra (~3,7 km de estradas vicinais urbanas).",
+        "iqeu":  66.57,
+        "iqeuClasse":  "Classe C (Vulnerabilidade Moderada)",
+        "iqeuGargalo":  "DÃ©ficit CrÃ­tico de Rampas (\u003c 5%)",
+        "elevMin":  590.8,
+        "elevMax":  667.7,
+        "elevMedia":  630.7,
+        "ampAltimetrica":  76.9,
+        "slopeMediaPct":  8.4,
+        "slopeMaxPct":  31.5,
+        "pctDeclivGt8":  45.3,
+        "pctDeclivGt15":  6.4,
+        "topoDiagnostico":  "Vertente Ãngreme com Pico \u003e 30% (Alto Risco de ErosÃ£o)"
     },
     {
         "bairro":  "Planaltina",
@@ -236,7 +285,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  1.78,
         "ipp":  44.1,
         "categoriaPavi":  "⚠️ Prioridade II (Expansão e Conectividade)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  78.01,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "DÃ©ficit CrÃ­tico de Rampas (\u003c 5%)",
+        "elevMin":  622.3,
+        "elevMax":  689.6,
+        "elevMedia":  652,
+        "ampAltimetrica":  67.3,
+        "slopeMediaPct":  8.5,
+        "slopeMaxPct":  21.9,
+        "pctDeclivGt8":  50.3,
+        "pctDeclivGt15":  8.2,
+        "topoDiagnostico":  "Barreira Severa de Acessibilidade Pedonal (NBR 9050 \u003e 8%)"
     },
     {
         "bairro":  "Annes",
@@ -275,7 +336,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  0.2,
         "ipp":  44,
         "categoriaPavi":  "⚡ Prioridade III (Fechamento de Malha / Costura)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  78.04,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado",
+        "elevMin":  634.9,
+        "elevMax":  686.2,
+        "elevMedia":  658.4,
+        "ampAltimetrica":  51.3,
+        "slopeMediaPct":  7.8,
+        "slopeMaxPct":  21.1,
+        "pctDeclivGt8":  42.3,
+        "pctDeclivGt15":  6.2,
+        "topoDiagnostico":  "Relevo Ondulado PadrÃ£o"
     },
     {
         "bairro":  "Vila Cruzeiro",
@@ -314,7 +387,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  1.58,
         "ipp":  39.8,
         "categoriaPavi":  "⚠️ Prioridade II (Expansão e Conectividade)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  69.58,
+        "iqeuClasse":  "Classe C (Vulnerabilidade Moderada)",
+        "iqeuGargalo":  "ExtensÃ£o em Terra (\u003e 5%)",
+        "elevMin":  644.4,
+        "elevMax":  680.8,
+        "elevMedia":  660.4,
+        "ampAltimetrica":  36.4,
+        "slopeMediaPct":  7.6,
+        "slopeMaxPct":  22.3,
+        "pctDeclivGt8":  34.1,
+        "pctDeclivGt15":  4.5,
+        "topoDiagnostico":  "Relevo Plano a Suavemente Ondulado"
     },
     {
         "bairro":  "Lucas Araujo",
@@ -353,7 +438,10 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  8.91,
         "ipp":  37.8,
         "categoriaPavi":  "🚨 Prioridade I (Imediata / Alto Impacto)",
-        "notaPavi":  "Áreas de transição com 66 domicílios e 4,95 km de vias de terra com baixa densidade (chácaras urbanas)."
+        "notaPavi":  "Áreas de transição com 66 domicílios e 4,95 km de vias de terra com baixa densidade (chácaras urbanas).",
+        "iqeu":  72.94,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado"
     },
     {
         "bairro":  "José Alexandre Zachia",
@@ -392,7 +480,10 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  3.96,
         "ipp":  37.6,
         "categoriaPavi":  "⚠️ Prioridade II (Expansão e Conectividade)",
-        "notaPavi":  "Bairro vulnerável com 57 domicílios em terra (~2,2 km) e crescimento de +25,3%."
+        "notaPavi":  "Bairro vulnerável com 57 domicílios em terra (~2,2 km) e crescimento de +25,3%.",
+        "iqeu":  65.37,
+        "iqeuClasse":  "Classe C (Vulnerabilidade Moderada)",
+        "iqeuGargalo":  "DÃ©ficit CrÃ­tico de Rampas (\u003c 5%)"
     },
     {
         "bairro":  "São José",
@@ -431,7 +522,10 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  0.99,
         "ipp":  34.2,
         "categoriaPavi":  "⚡ Prioridade III (Fechamento de Malha / Costura)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  70.59,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado"
     },
     {
         "bairro":  "Roselândia",
@@ -470,7 +564,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  4.16,
         "ipp":  33.8,
         "categoriaPavi":  "⚠️ Prioridade II (Expansão e Conectividade)",
-        "notaPavi":  "Bairro que mais cresceu percentualmente (+96,0%), com 2,3 km de vias em terra em loteamentos recentes."
+        "notaPavi":  "Bairro que mais cresceu percentualmente (+96,0%), com 2,3 km de vias em terra em loteamentos recentes.",
+        "iqeu":  68.94,
+        "iqeuClasse":  "Classe C (Vulnerabilidade Moderada)",
+        "iqeuGargalo":  "DÃ©ficit CrÃ­tico de Rampas (\u003c 5%)",
+        "elevMin":  577.7,
+        "elevMax":  730.1,
+        "elevMedia":  631.7,
+        "ampAltimetrica":  152.4,
+        "slopeMediaPct":  9.4,
+        "slopeMaxPct":  29.9,
+        "pctDeclivGt8":  53.3,
+        "pctDeclivGt15":  13.4,
+        "topoDiagnostico":  "Escarpa Estrutural (Maior DesnÃ­vel Municipal: 152m)"
     },
     {
         "bairro":  "Vila Luiza",
@@ -509,7 +615,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  0.59,
         "ipp":  31.9,
         "categoriaPavi":  "⚡ Prioridade III (Fechamento de Malha / Costura)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  71.7,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado",
+        "elevMin":  609.5,
+        "elevMax":  665.3,
+        "elevMedia":  636.2,
+        "ampAltimetrica":  55.8,
+        "slopeMediaPct":  8.9,
+        "slopeMaxPct":  23.1,
+        "pctDeclivGt8":  54.5,
+        "pctDeclivGt15":  7.4,
+        "topoDiagnostico":  "Barreira Severa de Acessibilidade Pedonal (NBR 9050 \u003e 8%)"
     },
     {
         "bairro":  "Vera Cruz",
@@ -548,7 +666,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  3.17,
         "ipp":  31,
         "categoriaPavi":  "⚠️ Prioridade II (Expansão e Conectividade)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  73.77,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado",
+        "elevMin":  603.3,
+        "elevMax":  682.3,
+        "elevMedia":  642.1,
+        "ampAltimetrica":  79,
+        "slopeMediaPct":  7.9,
+        "slopeMaxPct":  25.9,
+        "pctDeclivGt8":  43,
+        "pctDeclivGt15":  5.1,
+        "topoDiagnostico":  "Relevo Ondulado PadrÃ£o"
     },
     {
         "bairro":  "Nenê Graeff",
@@ -587,7 +717,10 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  1.58,
         "ipp":  27.3,
         "categoriaPavi":  "⚡ Prioridade III (Fechamento de Malha / Costura)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  74.98,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado"
     },
     {
         "bairro":  "São Cristóvão",
@@ -626,7 +759,10 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  4.55,
         "ipp":  27.1,
         "categoriaPavi":  "⚠️ Prioridade II (Expansão e Conectividade)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  73.46,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado"
     },
     {
         "bairro":  "Victor Issler",
@@ -665,7 +801,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  0.79,
         "ipp":  24.3,
         "categoriaPavi":  "⚡ Prioridade III (Fechamento de Malha / Costura)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  71.54,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado",
+        "elevMin":  619.4,
+        "elevMax":  669.8,
+        "elevMedia":  641.3,
+        "ampAltimetrica":  50.4,
+        "slopeMediaPct":  7.9,
+        "slopeMaxPct":  19.7,
+        "pctDeclivGt8":  49,
+        "pctDeclivGt15":  2.9,
+        "topoDiagnostico":  "Relevo Ondulado PadrÃ£o"
     },
     {
         "bairro":  "Boqueirão",
@@ -704,7 +852,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  2.57,
         "ipp":  19.8,
         "categoriaPavi":  "⚡ Prioridade III (Fechamento de Malha / Costura)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  78,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado",
+        "elevMin":  611,
+        "elevMax":  682,
+        "elevMedia":  652.2,
+        "ampAltimetrica":  71,
+        "slopeMediaPct":  8.3,
+        "slopeMaxPct":  28.5,
+        "pctDeclivGt8":  43.2,
+        "pctDeclivGt15":  8.1,
+        "topoDiagnostico":  "Relevo Ondulado PadrÃ£o"
     },
     {
         "bairro":  "Vila Mattos",
@@ -743,7 +903,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  0.2,
         "ipp":  9.9,
         "categoriaPavi":  "✅ 100% Pavimentado (Malha Consolidada)",
-        "notaPavi":  "Bairro plenamente asfaltado; intervenções concentram-se em manutenção e recapeamento asfáltico."
+        "notaPavi":  "Bairro plenamente asfaltado; intervenções concentram-se em manutenção e recapeamento asfáltico.",
+        "iqeu":  69.31,
+        "iqeuClasse":  "Classe C (Vulnerabilidade Moderada)",
+        "iqeuGargalo":  "DÃ©ficit CrÃ­tico de Rampas (\u003c 5%)",
+        "elevMin":  663.1,
+        "elevMax":  720.7,
+        "elevMedia":  688.5,
+        "ampAltimetrica":  57.6,
+        "slopeMediaPct":  8.8,
+        "slopeMaxPct":  34.9,
+        "pctDeclivGt8":  45.2,
+        "pctDeclivGt15":  16.1,
+        "topoDiagnostico":  "Vertente Ãngreme com Pico \u003e 30% (Alto Risco de ErosÃ£o)"
     },
     {
         "bairro":  "Vila Santa Maria",
@@ -782,7 +954,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  0.99,
         "ipp":  2.9,
         "categoriaPavi":  "⚡ Prioridade III (Fechamento de Malha / Costura)",
-        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana."
+        "notaPavi":  "Trechos residenciais pontuais para fechamento de malha e costura urbana.",
+        "iqeu":  71.71,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "DÃ©ficit CrÃ­tico de Rampas (\u003c 5%)",
+        "elevMin":  644.7,
+        "elevMax":  678.3,
+        "elevMedia":  656.6,
+        "ampAltimetrica":  33.6,
+        "slopeMediaPct":  7,
+        "slopeMaxPct":  16.6,
+        "pctDeclivGt8":  34.6,
+        "pctDeclivGt15":  1.2,
+        "topoDiagnostico":  "Relevo Plano a Suavemente Ondulado"
     },
     {
         "bairro":  "Centro e Vila Vergueiro",
@@ -821,7 +1005,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  0.59,
         "ipp":  1.4,
         "categoriaPavi":  "✅ 100% Pavimentado (Malha Consolidada)",
-        "notaPavi":  "Bairro plenamente asfaltado; intervenções concentram-se em manutenção e recapeamento asfáltico."
+        "notaPavi":  "Bairro plenamente asfaltado; intervenções concentram-se em manutenção e recapeamento asfáltico.",
+        "iqeu":  87.93,
+        "iqeuClasse":  "Classe A (Consolidado)",
+        "iqeuGargalo":  "Equilibrado",
+        "elevMin":  631.1,
+        "elevMax":  690.4,
+        "elevMedia":  666.1,
+        "ampAltimetrica":  59.3,
+        "slopeMediaPct":  8.3,
+        "slopeMaxPct":  23.3,
+        "pctDeclivGt8":  46.5,
+        "pctDeclivGt15":  9.4,
+        "topoDiagnostico":  "Relevo Ondulado PadrÃ£o"
     },
     {
         "bairro":  "Vila Rodrigues",
@@ -860,7 +1056,19 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  0.79,
         "ipp":  0.7,
         "categoriaPavi":  "✅ 100% Pavimentado (Malha Consolidada)",
-        "notaPavi":  "Bairro plenamente asfaltado; intervenções concentram-se em manutenção e recapeamento asfáltico."
+        "notaPavi":  "Bairro plenamente asfaltado; intervenções concentram-se em manutenção e recapeamento asfáltico.",
+        "iqeu":  74.37,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "DÃ©ficit Severo de Drenagem (\u003c 70%)",
+        "elevMin":  635.8,
+        "elevMax":  694.6,
+        "elevMedia":  668.9,
+        "ampAltimetrica":  58.8,
+        "slopeMediaPct":  6.8,
+        "slopeMaxPct":  19.8,
+        "pctDeclivGt8":  31.4,
+        "pctDeclivGt15":  1.9,
+        "topoDiagnostico":  "Relevo Ondulado PadrÃ£o"
     },
     {
         "bairro":  "Alviverde",
@@ -899,7 +1107,18 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "custoMilhoes":  0,
         "ipp":  0,
         "categoriaPavi":  "✅ 100% Pavimentado (Malha Consolidada)",
-        "notaPavi":  "Bairro plenamente asfaltado; intervenções concentram-se em manutenção e recapeamento asfáltico."
+        "notaPavi":  "Bairro plenamente asfaltado; intervenções concentram-se em manutenção e recapeamento asfáltico.",
+        "iqeu":  78.54,
+        "iqeuClasse":  "Classe B (Alta Infraestrutura)",
+        "iqeuGargalo":  "Equilibrado",
+        "elevMin":  618.4,
+        "elevMax":  672.9,
+        "elevMedia":  648.9,
+        "ampAltimetrica":  54.5,
+        "slopeMediaPct":  9.6,
+        "slopeMaxPct":  26.7,
+        "pctDeclivGt8":  57.6,
+        "pctDeclivGt15":  15.2,
+        "topoDiagnostico":  "Barreira Severa de Acessibilidade Pedonal (NBR 9050 \u003e 8%)"
     }
 ];
-
