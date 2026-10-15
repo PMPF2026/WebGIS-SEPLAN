@@ -100,6 +100,12 @@ class WebGisApp {
         console.warn('[WebGisApp] Inicialização assíncrona do comparativo:', err);
       });
 
+      // 16. Initialize Análises Territoriais Integradas (Censo 2022)
+      this.analisesTerritoriaisUI = new AnalisesTerritoriaisUI(this.mapEngine, this.layerManager, this.sidebarUI);
+      this.analisesTerritoriaisUI.init().catch(err => {
+        console.warn('[WebGisApp] Inicialização assíncrona de análises territoriais:', err);
+      });
+
       // 13. Bind Floating Controls and Keyboard Shortcuts
       this.bindFloatingControls();
       this.bindKeyboardShortcuts();
@@ -262,6 +268,18 @@ class WebGisApp {
           this.sidebarUI.switchTab('camadas');
         } else {
           this.sidebarUI.switchTab('censo-comparativo');
+        }
+      });
+    }
+
+    // Botão Cabeçalho: Análises Territoriais
+    const analisesBtn = document.getElementById('btn-open-analises-territoriais');
+    if (analisesBtn && this.sidebarUI) {
+      analisesBtn.addEventListener('click', () => {
+        if (this.sidebarUI.activeTab === 'tab-analises-territoriais' || this.sidebarUI.activeTab === 'analises-territoriais') {
+          this.sidebarUI.switchTab('camadas');
+        } else {
+          this.sidebarUI.switchTab('analises-territoriais');
         }
       });
     }
