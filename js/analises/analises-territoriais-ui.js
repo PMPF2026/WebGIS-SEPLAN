@@ -76,6 +76,18 @@ export class AnalisesTerritoriaisUI {
           <span>4. Pavimentação</span>
           <small style="font-size:0.65rem; opacity:0.8;">Malha & Conectividade</small>
         </button>
+
+        <button type="button" class="analises-axis-btn ${this.activeAxis === 'iqeu' ? 'active' : ''}" data-axis="iqeu">
+          <span class="axis-icon">📊</span>
+          <span>5. IQEU-PF</span>
+          <small style="font-size:0.65rem; opacity:0.8;">Qualidade do Entorno</small>
+        </button>
+
+        <button type="button" class="analises-axis-btn ${this.activeAxis === 'declividade' ? 'active' : ''}" data-axis="declividade">
+          <span class="axis-icon">⛰️</span>
+          <span>6. Declividade</span>
+          <small style="font-size:0.65rem; opacity:0.8;">Relevo, Mobilidade &amp; Erosão</small>
+        </button>
       </nav>
 
       <!-- Conteúdo Dinâmico do Eixo Selecionado -->
@@ -101,6 +113,10 @@ export class AnalisesTerritoriaisUI {
         return this.getArborizacaoHtml();
       case 'pavimentacao':
         return this.getPavimentacaoHtml();
+      case 'iqeu':
+        return this.getIqeuHtml();
+      case 'declividade':
+        return this.getDeclividadeHtml();
       default:
         return '';
     }
@@ -362,8 +378,166 @@ export class AnalisesTerritoriaisUI {
     `;
   }
 
+  getIqeuHtml() {
+    const sorted = [...this.data].sort((a, b) => (b.iqeu || 0) - (a.iqeu || 0));
+    const mediaGeral = 74.18;
+    const lider = sorted[0];
+    const menor = sorted[sorted.length - 1];
+
+    return `
+      <div class="analises-card">
+        <div class="analises-card-title">
+          <span>📊 5. Índice de Qualidade do Entorno Urbano (IQEU-PF)</span>
+        </div>
+        <p class="analises-card-desc">
+          Indicador sintético composto (escore de 0 a 100) integrando <strong>7 variáveis do Censo IBGE 2022</strong>: Pavimentação (20%), Calçadas (20%), Rampas (15%), Bueiros (15%), Iluminação (10%), Arborização (10%) e Penalidade por Obstáculos (10%).
+        </p>
+
+        <div class="analises-kpi-grid">
+          <div class="analises-kpi-card">
+            <span class="analises-kpi-label">MÉDIA MUNICIPAL</span>
+            <span class="analises-kpi-val" style="color:#38bdf8;">${mediaGeral.toFixed(2)}</span>
+            <span class="analises-kpi-sub">Classe B &bull; 69.176 Dom.</span>
+          </div>
+          <div class="analises-kpi-card">
+            <span class="analises-kpi-label">LÍDER MUNICIPAL</span>
+            <span class="analises-kpi-val" style="color:#34d399;">${lider ? (lider.iqeu ? lider.iqeu.toFixed(2) : '87.93') : '--'}</span>
+            <span class="analises-kpi-sub">${lider ? lider.bairro : 'Centro'} (Classe A)</span>
+          </div>
+          <div class="analises-kpi-card">
+            <span class="analises-kpi-label">MENOR ESCORE</span>
+            <span class="analises-kpi-val" style="color:#fb7185;">${menor ? (menor.iqeu ? menor.iqeu.toFixed(2) : '65.37') : '--'}</span>
+            <span class="analises-kpi-sub">${menor ? menor.bairro : 'Zachia'} (Classe C)</span>
+          </div>
+          <div class="analises-kpi-card">
+            <span class="analises-kpi-label">DISPARIDADE</span>
+            <span class="analises-kpi-val" style="color:#f59e0b;">22.56</span>
+            <span class="analises-kpi-sub">Delta Centro-Periferia</span>
+          </div>
+        </div>
+
+        <button type="button" class="analises-activate-btn" id="btn-activate-iqeu-layers">
+          <i class="fas fa-layer-group"></i>
+          <span>Ativar Camadas do Entorno no Mapa</span>
+        </button>
+      </div>
+
+      <div class="analises-card">
+        <div class="analises-card-title">
+          <span>🏆 Ranking de Qualidade do Entorno por Bairro</span>
+          <span style="font-size:0.7rem; color:#94a3b8;">IQEU [0-100]</span>
+        </div>
+        <div class="analises-bairros-list">
+          ${sorted.map((b, idx) => {
+            const score = b.iqeu || 70.0;
+            let badgeClass = 'badge-moderate';
+            let classeLabel = 'Classe B';
+            if (score >= 80.0) {
+              badgeClass = 'badge-low';
+              classeLabel = 'Classe A';
+            } else if (score < 70.0) {
+              badgeClass = 'badge-critical';
+              classeLabel = 'Classe C';
+            }
+
+            let gargaloDesc = 'Equilibrado';
+            if (b.pctRampa < 5.0) gargaloDesc = `Falta de Rampas (${b.pctRampa.toFixed(1)}%)`;
+            else if (b.pctBueiro < 70.0) gargaloDesc = `Falta de Bueiros (${b.pctBueiro.toFixed(1)}%)`;
+            else if (b.pctArbor < 50.0) gargaloDesc = `Deserto Verde (${b.pctArbor.toFixed(1)}%)`;
+            else if (b.pctCalcada < 80.0) gargaloDesc = `Pouca Calçada (${b.pctCalcada.toFixed(1)}%)`;
+            else if (b.pctNaoPavi > 5.0) gargaloDesc = `Vias de Terra (${b.pctNaoPavi.toFixed(1)}%)`;
+
+            return `
+              <div class="analises-bairro-item" data-bairro="${b.bairro}">
+                <div class="analises-bairro-info">
+                  <span class="analises-bairro-name">${idx + 1}º ${b.bairro} (${b.setorId})</span>
+                  <span class="analises-bairro-sub">${classeLabel} &bull; Gargalo: <strong>${gargaloDesc}</strong></span>
+                </div>
+                <span class="analises-bairro-badge ${badgeClass}">${score.toFixed(2)}</span>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  getDeclividadeHtml() {
+    const sorted = [...this.data].sort((a, b) => (b.slopeMediaPct || 0) - (a.slopeMediaPct || 0));
+    const topDesnível = [...this.data].sort((a, b) => (b.ampAltimetrica || 0) - (a.ampAltimetrica || 0));
+    const roselandia = topDesnível[0];
+    const petropolis = [...this.data].find(b => b.bairro.includes('Petr')) || this.data[1];
+
+    return `
+      <div class="analises-card">
+        <div class="analises-card-title">
+          <span>⛰️ 6. Declividade do Relevo vs. Mobilidade &amp; Erosão</span>
+        </div>
+        <p class="analises-card-desc">
+          Cruzamento da topografia do município (<strong>DEM 28,5m e Curvas de Nível de 10m</strong>) com barreiras de acessibilidade da <strong>NBR 9050 (declividade longitudinal &gt; 8,33%)</strong> e potencial de ravinamento/erosão em vias não pavimentadas (&gt; 15%).
+        </p>
+
+        <div class="analises-kpi-grid">
+          <div class="analises-kpi-card">
+            <span class="analises-kpi-label">MAIOR DESNÍVEL</span>
+            <span class="analises-kpi-val" style="color:#2dd4bf;">${roselandia ? roselandia.ampAltimetrica.toFixed(1) : '152.4'} m</span>
+            <span class="analises-kpi-sub">${roselandia ? roselandia.bairro : 'Roselândia'} (577m a 730m)</span>
+          </div>
+          <div class="analises-kpi-card">
+            <span class="analises-kpi-label">RAMPA MÁXIMA</span>
+            <span class="analises-kpi-val" style="color:#fb7185;">${petropolis ? petropolis.slopeMaxPct.toFixed(1) : '38.0'}%</span>
+            <span class="analises-kpi-sub">${petropolis ? petropolis.bairro : 'Petrópolis'} (Pico de rampa)</span>
+          </div>
+          <div class="analises-kpi-card">
+            <span class="analises-kpi-label">ÁREA > 8%</span>
+            <span class="analises-kpi-val" style="color:#a78bfa;">44,6%</span>
+            <span class="analises-kpi-sub">Barreira NBR 9050</span>
+          </div>
+          <div class="analises-kpi-card">
+            <span class="analises-kpi-label">DECLIVIDADE MÉDIA</span>
+            <span class="analises-kpi-val" style="color:#fbbf24;">8,1%</span>
+            <span class="analises-kpi-sub">Relevo Ondulado</span>
+          </div>
+        </div>
+
+        <button type="button" class="analises-activate-btn" id="btn-activate-declividade-layers">
+          <i class="fas fa-layer-group"></i>
+          <span>Ativar Hipsometria e Curvas no Mapa</span>
+        </button>
+      </div>
+
+      <div class="analises-card">
+        <div class="analises-card-title">
+          <span>⚠️ Bairros com Relevo Crítico</span>
+          <span style="font-size:0.7rem; color:#94a3b8;">Decliv. Máx.</span>
+        </div>
+        <div class="analises-bairros-list">
+          ${sorted.slice(0, 10).map(b => {
+            const slope = b.slopeMediaPct || 8.0;
+            const gt8 = b.pctDeclivGt8 || 40.0;
+            const amp = b.ampAltimetrica || 60.0;
+
+            let badgeClass = 'badge-moderate';
+            if (slope >= 9.0 || gt8 > 50.0) badgeClass = 'badge-critical';
+            else if (slope >= 8.3) badgeClass = 'badge-high';
+
+            return `
+              <div class="analises-bairro-item" data-bairro="${b.bairro}">
+                <div class="analises-bairro-info">
+                  <span class="analises-bairro-name">${b.bairro} (${b.setorId})</span>
+                  <span class="analises-bairro-sub">Decliv. Méd: <strong>${slope.toFixed(1)}%</strong> &bull; Desnível: <strong>${amp.toFixed(1)} m</strong> &bull; ${gt8.toFixed(1)}% &gt; 8%</span>
+                </div>
+                <span class="analises-bairro-badge ${badgeClass}">${b.slopeMaxPct ? b.slopeMaxPct.toFixed(1) + '%' : slope.toFixed(1) + '%'}</span>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
   bindEvents() {
-    // 1. Alternador dos 4 Eixos Temáticos
+    // 1. Alternador dos 6 Eixos Temáticos
     const navButtons = this.container.querySelectorAll('.analises-axis-btn');
     navButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -407,6 +581,20 @@ export class AnalisesTerritoriaisUI {
     if (btnPavi) {
       btnPavi.addEventListener('click', () => {
         this.activateLayers(['entorno_pavimentacao', 'malha_viaria', 'bairros']);
+      });
+    }
+
+    const btnIqeu = document.getElementById('btn-activate-iqeu-layers');
+    if (btnIqeu) {
+      btnIqeu.addEventListener('click', () => {
+        this.activateLayers(['entorno_calcadas', 'entorno_rampas', 'entorno_pavimentacao', 'bairros']);
+      });
+    }
+
+    const btnDecliv = document.getElementById('btn-activate-declividade-layers');
+    if (btnDecliv) {
+      btnDecliv.addEventListener('click', () => {
+        this.activateLayers(['curvas_nivel_10m', 'hipsometria_relevo', 'malha_viaria', 'bairros']);
       });
     }
 
