@@ -1,4 +1,4 @@
-/**
+﻿/**
  * WebGIS SEPLAN Passo Fundo - DiagnÃ³sticos Territoriais
  * Base de Dados Consolidada das AnÃ¡lises Territoriais (Censo DemogrÃ¡fico 2022)
  * Inclui os 6 Eixos EstratÃ©gicos:
@@ -1122,3 +1122,4 @@ export const ANALISES_TERRITORIAIS_DATA = [
         "topoDiagnostico":  "Barreira Severa de Acessibilidade Pedonal (NBR 9050 \u003e 8%)"
     }
 ];
+
