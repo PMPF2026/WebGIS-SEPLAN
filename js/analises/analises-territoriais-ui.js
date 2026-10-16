@@ -243,6 +243,144 @@ export class AnalisesTerritoriaisUI {
           </div>
         </div>
 
+        <!-- PIRÂMIDE ETÁRIA & PERFIL DEMOGRÁFICO INTERATIVO -->
+        <div class="analises-pyramid-container">
+          <div class="analises-pyramid-header">
+            <span class="analises-pyramid-title">
+              <i class="fas fa-chart-bar" style="color:#38bdf8;"></i>
+              <span>Perfil Etário &amp; Gênero</span>
+            </span>
+            <div class="analises-pyramid-tabs">
+              <button type="button" class="analises-pyramid-tab active" data-target="pcd">♿ PcD (13.412)</button>
+              <button type="button" class="analises-pyramid-tab" data-target="tea">🧩 Autismo (2.803)</button>
+            </div>
+          </div>
+
+          <!-- ABA 1: PCD (ENVELHECIMENTO & LONGEVIDADE) -->
+          <div id="pyramid-view-pcd">
+            <!-- Barra de Gênero PcD -->
+            <div class="analises-gender-bar" title="Distribuição por Sexo - PcD">
+              <div class="analises-gender-f" style="width: 58.2%;">♀ Mulheres 58,2% (7.808)</div>
+              <div class="analises-gender-m" style="width: 41.8%;">♂ Homens 41,8% (5.604)</div>
+            </div>
+
+            <!-- Faixas Etárias PcD -->
+            <div class="analises-age-row">
+              <span class="analises-age-label" title="Idosos (60 anos ou mais)">👴 60+ anos</span>
+              <div class="analises-age-track">
+                <div class="analises-age-fill" style="width: 48.1%; background: #f59e0b;" title="48,1% do total de PcDs | 18,2% da população idosa"></div>
+              </div>
+              <span class="analises-age-val" style="color: #f59e0b;">6.451 <span style="font-size:0.6rem; color:#94a3b8;">(18,2%)</span></span>
+            </div>
+
+            <div style="padding-left: 10px; margin-bottom: 4px; border-left: 2px solid rgba(245, 158, 11, 0.4);">
+              <div class="analises-age-row" style="margin-bottom: 3px; font-size: 0.64rem;">
+                <span class="analises-age-label" style="color:#94a3b8;">&bull; 60 a 69 anos</span>
+                <div class="analises-age-track" style="height: 10px;">
+                  <div class="analises-age-fill" style="width: 12.9%; background: #fbbf24;"></div>
+                </div>
+                <span class="analises-age-val" style="font-size:0.63rem;">2.559 <span style="color:#94a3b8;">(12,9%)</span></span>
+              </div>
+              <div class="analises-age-row" style="margin-bottom: 3px; font-size: 0.64rem;">
+                <span class="analises-age-label" style="color:#94a3b8;">&bull; 70 a 79 anos</span>
+                <div class="analises-age-track" style="height: 10px;">
+                  <div class="analises-age-fill" style="width: 20.3%; background: #f59e0b;"></div>
+                </div>
+                <span class="analises-age-val" style="font-size:0.63rem;">2.190 <span style="color:#94a3b8;">(20,3%)</span></span>
+              </div>
+              <div class="analises-age-row" style="margin-bottom: 2px; font-size: 0.64rem;">
+                <span class="analises-age-label" style="color:#94a3b8;">&bull; 80+ anos</span>
+                <div class="analises-age-track" style="height: 10px;">
+                  <div class="analises-age-fill" style="width: 36.0%; background: #ef4444;"></div>
+                </div>
+                <span class="analises-age-val" style="font-size:0.63rem; color:#f87171;">1.702 <span style="color:#fca5a5;">(36,0%)</span></span>
+              </div>
+            </div>
+
+            <div class="analises-age-row">
+              <span class="analises-age-label" title="Adultos (15 a 59 anos)">🧑 15 a 59 anos</span>
+              <div class="analises-age-track">
+                <div class="analises-age-fill" style="width: 46.4%; background: #38bdf8;" title="46,4% do total de PcDs | 4,7% da faixa"></div>
+              </div>
+              <span class="analises-age-val" style="color: #38bdf8;">6.223 <span style="font-size:0.6rem; color:#94a3b8;">(4,7%)</span></span>
+            </div>
+
+            <div class="analises-age-row">
+              <span class="analises-age-label" title="Crianças (2 a 14 anos)">🧒 2 a 14 anos</span>
+              <div class="analises-age-track">
+                <div class="analises-age-fill" style="width: 5.5%; background: #a855f7;" title="5,5% do total de PcDs | 2,2% da faixa"></div>
+              </div>
+              <span class="analises-age-val" style="color: #a855f7;">739 <span style="font-size:0.6rem; color:#94a3b8;">(2,2%)</span></span>
+            </div>
+
+            <div class="analises-insight-box">
+              <strong>💡 Curva de Envelhecimento:</strong> 48,1% de todas as PcDs de Passo Fundo são idosas. Acima dos 80 anos, mais de <strong>36%</strong> da população tem limitação severa, exigindo rotas pedonais seguras e contínuas.
+            </div>
+          </div>
+
+          <!-- ABA 2: AUTISMO (TEA - CONCENTRAÇÃO INFANTIL) -->
+          <div id="pyramid-view-tea" style="display: none;">
+            <!-- Barra de Gênero TEA -->
+            <div class="analises-gender-bar" title="Distribuição por Sexo - TEA">
+              <div class="analises-gender-m" style="width: 56.8%;">♂ Homens 56,8% (1.593)</div>
+              <div class="analises-gender-f" style="width: 43.2%;">♀ Mulheres 43,2% (1.210)</div>
+            </div>
+
+            <!-- Faixas Etárias TEA -->
+            <div class="analises-age-row">
+              <span class="analises-age-label" title="Crianças (0 a 14 anos)">🧒 0 a 14 anos</span>
+              <div class="analises-age-track">
+                <div class="analises-age-fill" style="width: 28.4%; background: #34d399;" title="28,4% de todos os autistas | 2,1% da população infantil"></div>
+              </div>
+              <span class="analises-age-val" style="color: #34d399;">797 <span style="font-size:0.6rem; color:#94a3b8;">(2,1%)</span></span>
+            </div>
+
+            <div style="padding-left: 10px; margin-bottom: 4px; border-left: 2px solid rgba(52, 211, 153, 0.4);">
+              <div class="analises-age-row" style="margin-bottom: 3px; font-size: 0.64rem;">
+                <span class="analises-age-label" style="color:#94a3b8;">&bull; 0 a 4 anos</span>
+                <div class="analises-age-track" style="height: 10px;">
+                  <div class="analises-age-fill" style="width: 21.0%; background: #6ee7b7;"></div>
+                </div>
+                <span class="analises-age-val" style="font-size:0.63rem;">266 <span style="color:#94a3b8;">(2,1%)</span></span>
+              </div>
+              <div class="analises-age-row" style="margin-bottom: 3px; font-size: 0.64rem;">
+                <span class="analises-age-label" style="color:#94a3b8;">&bull; 5 a 9 anos (Pico)</span>
+                <div class="analises-age-track" style="height: 10px;">
+                  <div class="analises-age-fill" style="width: 23.0%; background: #34d399;"></div>
+                </div>
+                <span class="analises-age-val" style="font-size:0.63rem; color:#6ee7b7;">307 <span style="color:#a7f3d0;">(2,3%)</span></span>
+              </div>
+              <div class="analises-age-row" style="margin-bottom: 2px; font-size: 0.64rem;">
+                <span class="analises-age-label" style="color:#94a3b8;">&bull; 10 a 14 anos</span>
+                <div class="analises-age-track" style="height: 10px;">
+                  <div class="analises-age-fill" style="width: 18.0%; background: #059669;"></div>
+                </div>
+                <span class="analises-age-val" style="font-size:0.63rem;">224 <span style="color:#94a3b8;">(1,8%)</span></span>
+              </div>
+            </div>
+
+            <div class="analises-age-row">
+              <span class="analises-age-label" title="Adultos (15 a 59 anos)">🧑 15 a 59 anos</span>
+              <div class="analises-age-track">
+                <div class="analises-age-fill" style="width: 54.5%; background: #38bdf8;" title="54,5% do total de TEA | 1,2% da faixa"></div>
+              </div>
+              <span class="analises-age-val" style="color: #38bdf8;">1.529 <span style="font-size:0.6rem; color:#94a3b8;">(1,2%)</span></span>
+            </div>
+
+            <div class="analises-age-row">
+              <span class="analises-age-label" title="Idosos (60 anos ou mais)">👴 60+ anos</span>
+              <div class="analises-age-track">
+                <div class="analises-age-fill" style="width: 17.0%; background: #a855f7;" title="17,0% do total de TEA | 1,3% da faixa"></div>
+              </div>
+              <span class="analises-age-val" style="color: #a855f7;">477 <span style="font-size:0.6rem; color:#94a3b8;">(1,3%)</span></span>
+            </div>
+
+            <div class="analises-insight-box">
+              <strong>💡 Concentração Escolar &amp; Diagnóstico:</strong> Quase <strong>30% do autismo</strong> está em crianças até 14 anos (prevalência de até 2,3%, o dobro dos adultos). Demanda por praças sensoriais, regulação em parques e salas de acolhimento.
+            </div>
+          </div>
+        </div>
+
         <!-- NOTA METODOLÓGICA E LINKS OFICIAIS DE AUDITORIA -->
         <div class="analises-source-box">
           <div class="analises-source-title">
@@ -696,6 +834,29 @@ export class AnalisesTerritoriaisUI {
         }
       });
     }
+
+    // 5. Abas da Pirâmide Etária (PcD vs Autismo)
+    const pyramidTabs = this.container.querySelectorAll('.analises-pyramid-tab');
+    pyramidTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-target');
+        if (!target) return;
+        pyramidTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const pcdView = this.container.querySelector('#pyramid-view-pcd');
+        const teaView = this.container.querySelector('#pyramid-view-tea');
+        if (pcdView && teaView) {
+          if (target === 'tea') {
+            pcdView.style.display = 'none';
+            teaView.style.display = 'block';
+          } else {
+            pcdView.style.display = 'block';
+            teaView.style.display = 'none';
+          }
+        }
+      });
+    });
   }
 
   async activateLayers(layerIds) {
