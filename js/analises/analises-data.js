@@ -1142,13 +1142,20 @@ export const DADOS_PCD_TEA_PASSO_FUNDO = {
   prevalenciaPcDPct: 6.7,
   porSexo: {
     mulheres: 7808,
-    homens: 5604
+    mulheresPct: 58.2,
+    homens: 5604,
+    homensPct: 41.8
   },
   porFaixaEtaria: {
-    de2a14anos: 739,
-    de15a59anos: 6223,
-    de60anosOuMais: 6451,
-    pctIdososNoTotalPcD: 48.1
+    de2a14anos: { total: 739, pctPcD: 5.5, prevalencia: 2.2, popTotal: 33956 },
+    de15a59anos: { total: 6223, pctPcD: 46.4, prevalencia: 4.7, popTotal: 132320 },
+    de60anosOuMais: { total: 6451, pctPcD: 48.1, prevalencia: 18.2, popTotal: 35350 },
+    pctIdososNoTotalPcD: 48.1,
+    detalheIdosos: [
+      { faixa: '60 a 69 anos', total: 2559, prevalencia: 12.9, popTotal: 19816 },
+      { faixa: '70 a 79 anos', total: 2190, prevalencia: 20.3, popTotal: 10802 },
+      { faixa: '80 anos ou mais', total: 1702, prevalencia: 36.0, popTotal: 4728 }
+    ]
   },
   dificuldadesFuncionais: {
     visao: { total: 7060, descricao: 'Dificuldade permanente para enxergar' },
@@ -1161,7 +1168,23 @@ export const DADOS_PCD_TEA_PASSO_FUNDO = {
     populacaoResidenteTotal: 206215,
     diagnosticadosTEA: 2803,
     prevalenciaTEAPct: 1.4,
-    baseLegal: 'Lei Federal nº 13.861/2019'
+    baseLegal: 'Lei Federal nº 13.861/2019',
+    porSexo: {
+      homens: 1593,
+      homensPct: 56.8,
+      mulheres: 1210,
+      mulheresPct: 43.2
+    },
+    porFaixaEtaria: {
+      de0a14anos: { total: 797, pctTEA: 28.4, prevalencia: 2.1, popTotal: 38545 },
+      de15a59anos: { total: 1529, pctTEA: 54.5, prevalencia: 1.2, popTotal: 132320 },
+      de60anosOuMais: { total: 477, pctTEA: 17.0, prevalencia: 1.3, popTotal: 35350 },
+      detalheCriancas: [
+        { faixa: '0 a 4 anos (Primeira Infância)', total: 266, prevalencia: 2.1, popTotal: 12712 },
+        { faixa: '5 a 9 anos (Idade Escolar Inicial)', total: 307, prevalencia: 2.3, popTotal: 13379 },
+        { faixa: '10 a 14 anos (Ensino Fundamental)', total: 224, prevalencia: 1.8, popTotal: 12454 }
+      ]
+    }
   },
   auditoriaLinks: {
     tabela10127: 'https://sidra.ibge.gov.br/tabela/10127',
