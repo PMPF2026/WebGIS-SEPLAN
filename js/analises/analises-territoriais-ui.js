@@ -183,6 +183,95 @@ export class AnalisesTerritoriaisUI {
           `).join('')}
         </div>
       </div>
+
+      <!-- CARD 3: DEMOGRAFIA PCD & AUTISMO (CENSO IBGE 2022) -->
+      <div class="analises-card">
+        <div class="analises-card-title">
+          <span>👥 População com Deficiência (PcD) &amp; Autismo (TEA)</span>
+          <span class="analises-bairro-badge badge-moderate">Censo 2022</span>
+        </div>
+        <p class="analises-card-desc">
+          Dados oficiais do <strong>Censo Demográfico IBGE 2022</strong> (Amostra / Metodologia Washington Group e Lei Federal nº 13.861/2019) para o município de Passo Fundo:
+        </p>
+
+        <div class="analises-kpi-grid">
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Locomoção / Membros Inf.</div>
+            <div class="analises-kpi-value" style="color: #38bdf8;">4.684</div>
+            <div class="analises-kpi-sub">Cadeirantes / Próteses</div>
+          </div>
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Total PcD (&ge; 2 anos)</div>
+            <div class="analises-kpi-value" style="color: #a855f7;">13.412</div>
+            <div class="analises-kpi-sub">6,7% da população</div>
+          </div>
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Autismo (TEA)</div>
+            <div class="analises-kpi-value" style="color: #34d399;">2.803</div>
+            <div class="analises-kpi-sub">1,4% (Diagnóstico médico)</div>
+          </div>
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">PcDs Idosas (60+ anos)</div>
+            <div class="analises-kpi-value" style="color: #f59e0b;">6.451</div>
+            <div class="analises-kpi-sub">48,1% do total de PcDs</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 8px;">
+          <div style="font-size: 0.72rem; font-weight: 600; color: #cbd5e1; margin-bottom: 6px;">
+            Dificuldades Funcionais Severas (Passo Fundo):
+          </div>
+          <div class="analises-stat-row">
+            <span class="analises-stat-label">👁️ Dificuldade para enxergar (Visual)</span>
+            <span class="analises-stat-val">7.060 pessoas</span>
+          </div>
+          <div class="analises-stat-row">
+            <span class="analises-stat-label">♿ Dificuldade para andar/subir degraus (Motora)</span>
+            <span class="analises-stat-val" style="color:#38bdf8;">4.684 pessoas</span>
+          </div>
+          <div class="analises-stat-row">
+            <span class="analises-stat-label">👂 Dificuldade para ouvir (Auditiva)</span>
+            <span class="analises-stat-val">2.806 pessoas</span>
+          </div>
+          <div class="analises-stat-row">
+            <span class="analises-stat-label">🧠 Cognitiva / Funções mentais / Comunicação</span>
+            <span class="analises-stat-val">2.703 pessoas</span>
+          </div>
+          <div class="analises-stat-row">
+            <span class="analises-stat-label">🖐️ Coordenação motora fina (pegar objetos)</span>
+            <span class="analises-stat-val">2.687 pessoas</span>
+          </div>
+        </div>
+
+        <!-- NOTA METODOLÓGICA E LINKS OFICIAIS DE AUDITORIA -->
+        <div class="analises-source-box">
+          <div class="analises-source-title">
+            <i class="fas fa-certificate"></i>
+            <span>Nota Metodológica &amp; Auditoria Oficial</span>
+          </div>
+          <div>
+            Dados municipais apurados pelo <strong>IBGE — Censo Demográfico 2022</strong> (<em>Resultados preliminares da amostra</em>). Categorias de deficiência segundo as diretrizes internacionais do <em>Washington Group on Disability Statistics</em> e autismo conforme a <strong>Lei Federal nº 13.861/2019</strong>. Dados sujeitos a eventuais refinamentos residuais na publicação final dos microdados.
+          </div>
+          <div class="analises-source-links">
+            <a href="https://sidra.ibge.gov.br/tabela/10127" target="_blank" rel="noopener noreferrer" class="analises-source-link" title="Consultar no portal SIDRA/IBGE">
+              <i class="fas fa-external-link-alt"></i>
+              <span>SIDRA Tabela 10127 — Pessoas com deficiência por tipo de dificuldade</span>
+            </a>
+            <a href="https://sidra.ibge.gov.br/tabela/10125" target="_blank" rel="noopener noreferrer" class="analises-source-link" title="Consultar no portal SIDRA/IBGE">
+              <i class="fas fa-external-link-alt"></i>
+              <span>SIDRA Tabela 10125 — População com deficiência por sexo e grupos de idade</span>
+            </a>
+            <a href="https://sidra.ibge.gov.br/tabela/10145" target="_blank" rel="noopener noreferrer" class="analises-source-link" title="Consultar no portal SIDRA/IBGE">
+              <i class="fas fa-external-link-alt"></i>
+              <span>SIDRA Tabela 10145 — População diagnosticada com Autismo (TEA)</span>
+            </a>
+            <a href="https://servicodados.ibge.gov.br/api/v3/agregados/10127/periodos/2022/variaveis/12785?localidades=N6[4314100]&classificacao=1509[all]" target="_blank" rel="noopener noreferrer" class="analises-source-link" title="Consultar JSON na API do IBGE">
+              <i class="fas fa-code"></i>
+              <span>API Serviço de Dados IBGE (Passo Fundo - 4314100 em JSON)</span>
+            </a>
+          </div>
+        </div>
+      </div>
     `;
   }
 

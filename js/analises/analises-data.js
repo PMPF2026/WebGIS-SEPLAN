@@ -1,4 +1,4 @@
-﻿/**
+/**
  * WebGIS SEPLAN Passo Fundo - DiagnÃ³sticos Territoriais
  * Base de Dados Consolidada das AnÃ¡lises Territoriais (Censo DemogrÃ¡fico 2022)
  * Inclui os 6 Eixos EstratÃ©gicos:
@@ -1123,3 +1123,50 @@ export const ANALISES_TERRITORIAIS_DATA = [
     }
 ];
 
+
+
+/**
+ * Dados Oficiais de Pessoas com Deficiência (PcD) e Transtorno do Espectro Autista (TEA)
+ * Fonte: IBGE - Censo Demográfico 2022 (Resultados preliminares da amostra)
+ * Município: Passo Fundo/RS (Código IBGE: 4314100)
+ */
+export const DADOS_PCD_TEA_PASSO_FUNDO = {
+  municipio: 'Passo Fundo',
+  uf: 'RS',
+  codigoIbge: 4314100,
+  anoCenso: 2022,
+  fonte: 'IBGE - Censo Demográfico 2022 (Amostra)',
+  notaMetodologica: 'Resultados preliminares da amostra. Dificuldades funcionais segundo metodologia do Washington Group on Disability Statistics (graus "muita dificuldade" ou "não consegue de modo algum"). TEA investigado pela primeira vez segundo a Lei Federal nº 13.861/2019.',
+  populacao2AnosOuMais: 201626,
+  totalPcD: 13412,
+  prevalenciaPcDPct: 6.7,
+  porSexo: {
+    mulheres: 7808,
+    homens: 5604
+  },
+  porFaixaEtaria: {
+    de2a14anos: 739,
+    de15a59anos: 6223,
+    de60anosOuMais: 6451,
+    pctIdososNoTotalPcD: 48.1
+  },
+  dificuldadesFuncionais: {
+    visao: { total: 7060, descricao: 'Dificuldade permanente para enxergar' },
+    locomocaoMembrosInferiores: { total: 4684, descricao: 'Dificuldade permanente para andar ou subir degraus (Cadeirantes / Próteses / Aparelhos de auxílio)' },
+    audicao: { total: 2806, descricao: 'Dificuldade permanente para ouvir' },
+    cognicaoComunicacao: { total: 2703, descricao: 'Dificuldade permanente para se comunicar ou cuidados pessoais por limitação mental' },
+    coordenacaoMotoraFina: { total: 2687, descricao: 'Dificuldade permanente para pegar pequenos objetos ou abrir tampas' }
+  },
+  autismoTEA: {
+    populacaoResidenteTotal: 206215,
+    diagnosticadosTEA: 2803,
+    prevalenciaTEAPct: 1.4,
+    baseLegal: 'Lei Federal nº 13.861/2019'
+  },
+  auditoriaLinks: {
+    tabela10127: 'https://sidra.ibge.gov.br/tabela/10127',
+    tabela10125: 'https://sidra.ibge.gov.br/tabela/10125',
+    tabela10145: 'https://sidra.ibge.gov.br/tabela/10145',
+    apiIbge: 'https://servicodados.ibge.gov.br/api/v3/agregados/10127/periodos/2022/variaveis/12785?localidades=N6[4314100]&classificacao=1509[all]'
+  }
+};
