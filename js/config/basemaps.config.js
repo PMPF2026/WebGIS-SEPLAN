@@ -11,8 +11,7 @@ export const BASEMAPS_CONFIG = [
     url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
     thumbnail: 'https://mt1.google.com/vt/lyrs=y&x=366&y=593&z=10',
     maxZoom: 20,
-    attribution: '&copy; Google Maps',
-    isDefault: true
+    attribution: '&copy; Google Maps'
   },
   {
     id: 'google_sat',
@@ -39,7 +38,8 @@ export const BASEMAPS_CONFIG = [
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     thumbnail: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/10/593/366',
     maxZoom: 19,
-    attribution: 'Tiles &copy; Esri, Maxar, Earthstar Geographics'
+    attribution: 'Tiles &copy; Esri, Maxar, Earthstar Geographics',
+    isDefault: true
   },
   {
     id: 'osm_standard',
