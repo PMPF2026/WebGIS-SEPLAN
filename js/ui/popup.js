@@ -10,11 +10,13 @@ import { PlugfieldService } from '../weather/plugfield-service.js';
 import { WeatherService } from '../weather/weather-service.js';
 import { BAIRROS_LOOKUP } from '../metrics/demographics-bairros.js';
 import { EDUCACAO_LOOKUP } from '../metrics/demographics-education.js';
+import { evaluateLotBuildingClearance } from '../tools/pbzpa-calculator.js';
 
 export class PopupUI {
-  constructor(mapEngine, layerManager) {
+  constructor(mapEngine, layerManager, elevationQueryTool = null) {
     this.mapEngine = mapEngine;
     this.layerManager = layerManager;
+    this.elevationQueryTool = elevationQueryTool;
     this.popupOverlay = mapEngine.popupOverlay;
     
     this.popupContainer = document.getElementById('popup');
@@ -26,6 +28,10 @@ export class PopupUI {
     this.lastCoordinate = null;
 
     this.init();
+  }
+
+  setElevationQueryTool(tool) {
+    this.elevationQueryTool = tool;
   }
 
   init() {
@@ -393,6 +399,70 @@ export class PopupUI {
       }
     }
 
+    // 4.10. Avaliação Altimétrica no Lote para Superfícies PBZPA (Interpolação no Ponto Clicado)
+    let pbzpaCardHtml = '';
+    if (layerConfig.id === 'pbzpa_superficies' && this.lastCoordinate) {
+      if (this.elevationQueryTool && !this.elevationQueryTool.demLoaded && !this.elevationQueryTool.demLoading) {
+        this.elevationQueryTool.loadDemData().then(() => {
+          if (this.featureList && this.featureList.length > 0) {
+            this.renderCurrentFeature();
+          }
+        }).catch(() => {});
+      }
+
+      const lotCalc = evaluateLotBuildingClearance(feature, this.lastCoordinate, this.elevationQueryTool);
+      if (lotCalc) {
+        const rampInfo = lotCalc.isRamp
+          ? `<span style="color:#38bdf8; font-weight:700;">${lotCalc.percentAlongRamp}% da rampa</span> (${escapeHtml(lotCalc.intervaloFormat)})`
+          : `<span style="color:#38bdf8; font-weight:700;">Cota fixa de zona</span> (${escapeHtml(lotCalc.intervaloFormat)})`;
+
+        pbzpaCardHtml = `
+          <div class="pbzpa-calc-card">
+            <div class="pbzpa-calc-header">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <i class="lucide-building" style="font-size:13px; color:#38bdf8;"></i>
+                <span>Avaliação de Gabarito no Lote</span>
+              </div>
+              <span class="pbzpa-badge-live">Interpolação Local</span>
+            </div>
+
+            <div class="pbzpa-calc-grid">
+              <div class="pbzpa-calc-item full-width">
+                <span class="pbzpa-calc-label">Gabarito Máximo Edificável no Lote (H_máx)</span>
+                <div style="display:flex; align-items:baseline; justify-content:space-between; margin-top:1px;">
+                  <span class="pbzpa-calc-val highlight">${lotCalc.gabaritoMaxFormat}</span>
+                  <span style="font-size:11px; font-weight:700; color:#4ade80;">${lotCalc.pavimentosFormat}</span>
+                </div>
+                <span class="pbzpa-calc-sub">
+                  ${lotCalc.hasTerrain 
+                    ? `H_máx = Cota Teto PBZPA (${lotCalc.cotaAeroFormat}) − Cota do Solo (${lotCalc.zTerrenoFormat})`
+                    : `Cota Altimétrica Teto no Ponto: <strong>${lotCalc.cotaAeroFormat}</strong>`
+                  }
+                </span>
+              </div>
+
+              <div class="pbzpa-calc-item">
+                <span class="pbzpa-calc-label">Cota Teto no Lote (PBZPA)</span>
+                <span class="pbzpa-calc-val" style="color:#38bdf8;">${lotCalc.cotaAeroFormat}</span>
+                <span class="pbzpa-calc-sub">${rampInfo}</span>
+              </div>
+
+              <div class="pbzpa-calc-item">
+                <span class="pbzpa-calc-label">Cota do Terreno Natural</span>
+                <span class="pbzpa-calc-val" style="color:#fdba74;">${lotCalc.zTerrenoFormat}</span>
+                <span class="pbzpa-calc-sub">Matriz MDE / Topografia SEPLAN</span>
+              </div>
+            </div>
+
+            <div style="font-size:9.5px; color:#94a3b8; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:4px; margin-top:2px;">
+              <span>UTM 22S: E ${lotCalc.utm.easting} | N ${lotCalc.utm.northing}</span>
+              <span style="color:#7dd3fc; font-weight:600;">Portaria DECEA nº 846</span>
+            </div>
+          </div>
+        `;
+      }
+    }
+
     // 5. Build HTML
     this.contentEl.innerHTML = `
       <div class="popup-header">
@@ -405,6 +475,7 @@ export class PopupUI {
       </div>
       
       <div class="popup-body">
+        ${pbzpaCardHtml}
         ${climateMonthlyCardHtml}
         <table class="popup-props-table">
           <tbody>

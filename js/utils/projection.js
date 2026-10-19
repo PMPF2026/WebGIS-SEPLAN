@@ -39,8 +39,17 @@ export function initProjections() {
 export function toUTM22S(coord, fromProj = EPSG_WEBMERCATOR) {
   if (!coord || coord.length < 2) return [0, 0];
   try {
-    if (fromProj === EPSG_WEBMERCATOR && window.ol && window.ol.proj) {
-      const lonLat = window.ol.proj.toLonLat(coord);
+    let lonLat = coord;
+    if (fromProj === EPSG_WEBMERCATOR) {
+      if (typeof window !== 'undefined' && window.ol && window.ol.proj) {
+        lonLat = window.ol.proj.toLonLat(coord);
+      } else {
+        const x = coord[0];
+        const y = coord[1];
+        const lon = (x / 6378137.0) * (180.0 / Math.PI);
+        const lat = (2.0 * Math.atan(Math.exp(y / 6378137.0)) - Math.PI / 2.0) * (180.0 / Math.PI);
+        lonLat = [lon, lat];
+      }
       return proj4(EPSG_WGS84, EPSG_UTM22S, lonLat);
     }
     return proj4(fromProj, EPSG_UTM22S, coord);

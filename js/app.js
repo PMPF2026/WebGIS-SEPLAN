@@ -72,6 +72,7 @@ class WebGisApp {
 
       // 7.5. Initialize Elevation Query Tool (Topografia & DEM Passo Fundo)
       this.elevationQueryTool = new ElevationQueryTool(this.mapEngine, this.layerManager);
+      this.popupUI.setElevationQueryTool(this.elevationQueryTool);
 
       // 8. Initialize Identify Tool
       this.identifyTool = new IdentifyTool(this.mapEngine, this.layerManager, this.popupUI, this.elevationQueryTool);
