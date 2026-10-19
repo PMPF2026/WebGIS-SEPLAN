@@ -252,7 +252,7 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Linha entre cabeceiras",
-                                            "categoria":  "Outro",
+                                            "categoria":  "Linha Operacional",
                                             "cota_min_metros":  0,
                                             "cota_max_metros":  0,
                                             "gabarito_rotulo":  "Operacional",
@@ -462,17 +462,17 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Transição",
-                                            "categoria":  "Outro",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
+                                            "categoria":  "SuperfÃ­cie de TransiÃ§Ã£o",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  770.29,
+                                            "gabarito_rotulo":  "715.06m a 770.29m",
                                             "fechado":  false,
                                             "vertice_count":  40,
                                             "descricao_oficial":  " Superfície de Transição Elevação Máxima na Borda Externa: 770.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "cor_sugerida":  "#8b5cf6"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
@@ -644,17 +644,17 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Transição",
-                                            "categoria":  "Outro",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
+                                            "categoria":  "SuperfÃ­cie de TransiÃ§Ã£o",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  770.29,
+                                            "gabarito_rotulo":  "715.06m a 770.29m",
                                             "fechado":  false,
                                             "vertice_count":  40,
                                             "descricao_oficial":  " Superfície de Transição Elevação Máxima na Borda Externa: 770.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "cor_sugerida":  "#8b5cf6"
                                         },
                          "geometry":  {
                                           "type":  "LineString",

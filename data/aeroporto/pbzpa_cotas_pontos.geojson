@@ -13,6 +13,7 @@
                          "properties":  {
                                             "nome":  "715.06m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "",
                                             "cota_metros":  715.06,
                                             "descricao_oficial":  "",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -33,6 +34,7 @@
                          "properties":  {
                                             "nome":  "725.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "",
                                             "cota_metros":  725.29,
                                             "descricao_oficial":  "",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -53,6 +55,7 @@
                          "properties":  {
                                             "nome":  "Adel: 725.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "",
                                             "cota_metros":  725.29,
                                             "descricao_oficial":  "",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -73,6 +76,7 @@
                          "properties":  {
                                             "nome":  "770.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie Horizontal Interna (SHI)",
                                             "cota_metros":  770.29,
                                             "descricao_oficial":  " Superfície Horizontal Interna Altitude HI: 770.29m Altura HI: 45m Raio HI Cabeceira 1: 4000m Raio HI Cabeceira 2: 4000m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -93,6 +97,7 @@
                          "properties":  {
                                             "nome":  "845.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "",
                                             "cota_metros":  845.29,
                                             "descricao_oficial":  "Superfície Cônica Altitude Inicial CO: 770.29m Gradiente CO: 5% Altitude Final CO: 845.29m Raio CO: 5500m Diferença Raio CO-HI: 1500m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -113,6 +118,7 @@
                          "properties":  {
                                             "nome":  "845.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie Horizontal Externa (SHE)",
                                             "cota_metros":  845.29,
                                             "descricao_oficial":  "Superfície Horizontal Externa Altitude HE: 725.29m Altura HE: 120m Raio HE: 20000m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -133,6 +139,7 @@
                          "properties":  {
                                             "nome":  "778.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de ProteÃ§Ã£o de Voo Visual",
                                             "cota_metros":  778.29,
                                             "descricao_oficial":  "Superfície de Proteção de Voo Visual Área 1 Elevação Aprox/Dep Cab1: 778.29m Elevação Aprox/Dep Cab2: 778.29m Elevação Través: 801.29m Largura Esquerda Cab1: 2350m Largura Direita Cab1: 2350m Comprimento: 2350 m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -153,6 +160,7 @@
                          "properties":  {
                                             "nome":  "832.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de ProteÃ§Ã£o de Voo Visual",
                                             "cota_metros":  832.29,
                                             "descricao_oficial":  "Superfície de Proteção de Voo Visual Área 2 Elevação Aprox/Dep Cab1: 832.29m Elevação Aprox/Dep Cab2: 832.29m Elevação Través: 878.29m Largura Esquerda Cab1: 4170m Largura Direita Cab1: 4170m Comprimento: 4170m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -173,6 +181,7 @@
                          "properties":  {
                                             "nome":  "725.42m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de Decolagem",
                                             "cota_metros":  725.42,
                                             "descricao_oficial":  "Superfície de Decolagem 1 Elevação Borda Interna: 725.42m Elevação Borda Externa: 1025.42m Abertura: 12.5 % Distância Cab Oposta: 60m Largura Borda Interna: 180m Largura Borda Externa: 1200m Comprimento: 15000m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -193,6 +202,7 @@
                          "properties":  {
                                             "nome":  "715m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de Decolagem",
                                             "cota_metros":  715,
                                             "descricao_oficial":  "Superfície de Decolagem 2 Elevação Borda Interna: 715m Elevação Borda Externa: 0m Abertura: 12.5 % Distância Cab Oposta: 60m Largura Borda Interna: 180m Largura Borda Externa: 1200m Comprimento: 15000m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -213,6 +223,7 @@
                          "properties":  {
                                             "nome":  "715.06m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
                                             "cota_metros":  715.06,
                                             "descricao_oficial":  "Superfície de Aproximação 1 Elevação Borda Interna: 715.06m Elevação Borda Externa: 775.06m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -233,6 +244,7 @@
                          "properties":  {
                                             "nome":  "725.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
                                             "cota_metros":  725.29,
                                             "descricao_oficial":  "Superfície de Aproximação 2 Primeira Seção Elevação Borda Interna: 725.29m Elevação Borda Externa: 785.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -253,6 +265,7 @@
                          "properties":  {
                                             "nome":  "770.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de TransiÃ§Ã£o",
                                             "cota_metros":  770.29,
                                             "descricao_oficial":  "Superfície de Transição Altitude Final: 770.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -273,6 +286,7 @@
                          "properties":  {
                                             "nome":  "770.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de TransiÃ§Ã£o",
                                             "cota_metros":  770.29,
                                             "descricao_oficial":  "Superfície de Transição Altitude Final: 770.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -293,6 +307,7 @@
                          "properties":  {
                                             "nome":  "770.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de TransiÃ§Ã£o",
                                             "cota_metros":  770.29,
                                             "descricao_oficial":  "Superfície de Transição Altitude Final: 770.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -313,6 +328,7 @@
                          "properties":  {
                                             "nome":  "770.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de TransiÃ§Ã£o",
                                             "cota_metros":  770.29,
                                             "descricao_oficial":  "Superfície de Transição Altitude Final: 770.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -333,6 +349,7 @@
                          "properties":  {
                                             "nome":  "775.06m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
                                             "cota_metros":  775.06,
                                             "descricao_oficial":  "Segunda Seção da Aproximação Elevação Borda Interna: 775.06m Elevação Borda Externa: 865.06m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -353,6 +370,7 @@
                          "properties":  {
                                             "nome":  "785.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
                                             "cota_metros":  785.29,
                                             "descricao_oficial":  "Segunda Seção da Aproximação Elevação Borda Interna: 785.29m Elevação Borda Externa: 875.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -373,6 +391,7 @@
                          "properties":  {
                                             "nome":  "865.06m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
                                             "cota_metros":  865.06,
                                             "descricao_oficial":  "Seção Horizontalda Aproximação Elevação : 865.06m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
@@ -393,6 +412,7 @@
                          "properties":  {
                                             "nome":  "875.29m",
                                             "tipo":  "Cota_Altimetrica_Rotulo",
+                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
                                             "cota_metros":  875.29,
                                             "descricao_oficial":  "Seção Horizontalda Aproximação Elevação : 875.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",

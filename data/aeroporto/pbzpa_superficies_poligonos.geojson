@@ -22,7 +22,7 @@
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#1e293b"
+                                            "cor_sugerida":  "#0f172a"
                                         },
                          "geometry":  {
                                           "type":  "Polygon",
@@ -64,7 +64,7 @@
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#64748b"
+                                            "cor_sugerida":  "#475569"
                                         },
                          "geometry":  {
                                           "type":  "Polygon",
@@ -1566,17 +1566,17 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Cônica",
-                                            "categoria":  "Outro",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
+                                            "categoria":  "SuperfÃ­cie CÃ´nica (CO)",
+                                            "cota_min_metros":  770.29,
+                                            "cota_max_metros":  845.29,
+                                            "gabarito_rotulo":  "770.29m a 845.29m",
                                             "fechado":  true,
                                             "vertice_count":  362,
                                             "descricao_oficial":  "Superfície Cônica Altitude Inicial CO: 770.29m Gradiente CO: 5% Altitude Final CO: 845.29m Raio CO: 5500m Diferença Raio CO-HI: 1500m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "cor_sugerida":  "#3b82f6"
                                         },
                          "geometry":  {
                                           "type":  "Polygon",
@@ -4610,17 +4610,17 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Aproximação 1 Cab 1",
-                                            "categoria":  "Outro",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
+                                            "categoria":  "SuperfÃ­cie de AproximaÃ§Ã£o - 1Âª SeÃ§Ã£o (Cab 09)",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  775.06,
+                                            "gabarito_rotulo":  "715.06m a 775.06m",
                                             "fechado":  true,
                                             "vertice_count":  5,
                                             "descricao_oficial":  "Elevação Borda Interna: 715.06m Elevação Borda Externa: 775.06m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "cor_sugerida":  "#06b6d4"
                                         },
                          "geometry":  {
                                           "type":  "Polygon",
@@ -4652,17 +4652,17 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Aproximação 2 Cab1",
-                                            "categoria":  "Outro",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
+                                            "categoria":  "SuperfÃ­cie de AproximaÃ§Ã£o - 2Âª SeÃ§Ã£o (Cab 09)",
+                                            "cota_min_metros":  775.06,
+                                            "cota_max_metros":  865.06,
+                                            "gabarito_rotulo":  "775.06m a 865.06m",
                                             "fechado":  true,
                                             "vertice_count":  5,
                                             "descricao_oficial":  "Elevação Borda Interna: 775.06m Elevação Borda Externa: 865.06m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "cor_sugerida":  "#0284c7"
                                         },
                          "geometry":  {
                                           "type":  "Polygon",
@@ -4694,17 +4694,17 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Aproximação 3 Cab 1",
-                                            "categoria":  "Outro",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
+                                            "categoria":  "SuperfÃ­cie de AproximaÃ§Ã£o - SeÃ§Ã£o Horizontal (Cab 09)",
+                                            "cota_min_metros":  865.06,
+                                            "cota_max_metros":  865.06,
+                                            "gabarito_rotulo":  "865.06m",
                                             "fechado":  true,
                                             "vertice_count":  5,
                                             "descricao_oficial":  "Seção Horizontalda Aproximação Elevação : 865.06 ",
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "cor_sugerida":  "#0369a1"
                                         },
                          "geometry":  {
                                           "type":  "Polygon",
@@ -4736,17 +4736,17 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Aproximação 1 Cab 2",
-                                            "categoria":  "Outro",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
+                                            "categoria":  "SuperfÃ­cie de AproximaÃ§Ã£o - 1Âª SeÃ§Ã£o (Cab 27)",
+                                            "cota_min_metros":  725.29,
+                                            "cota_max_metros":  785.29,
+                                            "gabarito_rotulo":  "725.29m a 785.29m",
                                             "fechado":  true,
                                             "vertice_count":  5,
                                             "descricao_oficial":  "Elevação Borda Interna: 725.29m Elevação Borda Externa: 785.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "cor_sugerida":  "#14b8a6"
                                         },
                          "geometry":  {
                                           "type":  "Polygon",
@@ -4778,17 +4778,17 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Aproximação 2 Cab2",
-                                            "categoria":  "Outro",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
+                                            "categoria":  "SuperfÃ­cie de AproximaÃ§Ã£o - 2Âª SeÃ§Ã£o (Cab 27)",
+                                            "cota_min_metros":  785.29,
+                                            "cota_max_metros":  875.29,
+                                            "gabarito_rotulo":  "785.29m a 875.29m",
                                             "fechado":  true,
                                             "vertice_count":  5,
                                             "descricao_oficial":  "Elevação Borda Interna: 785.29m Elevação Borda Externa: 875.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "cor_sugerida":  "#0d9488"
                                         },
                          "geometry":  {
                                           "type":  "Polygon",
@@ -4820,17 +4820,17 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Aproximação 3 Cab 2",
-                                            "categoria":  "Outro",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
+                                            "categoria":  "SuperfÃ­cie de AproximaÃ§Ã£o - SeÃ§Ã£o Horizontal (Cab 27)",
+                                            "cota_min_metros":  875.29,
+                                            "cota_max_metros":  875.29,
+                                            "gabarito_rotulo":  "875.29m",
                                             "fechado":  true,
                                             "vertice_count":  5,
                                             "descricao_oficial":  "Seção Horizontalda Aproximação Elevação : 875.29m ",
                                             "portaria":  "Portaria DECEA nÂº 846",
                                             "processo_saga":  "RS0006",
                                             "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "cor_sugerida":  "#0f766e"
                                         },
                          "geometry":  {
                                           "type":  "Polygon",
