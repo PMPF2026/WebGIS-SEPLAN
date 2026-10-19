@@ -116,6 +116,33 @@ export class LayerManager {
         continue;
       }
 
+      // Tratamento para Imagens Georreferenciadas Estáticas (ex: Densidade de Kernel)
+      if (config.isImageStatic || config.imageUrl) {
+        const imageExtent = config.extent3857 || (config.extent ? ol.proj.transformExtent(config.extent, config.crs || 'EPSG:31982', 'EPSG:3857') : null);
+        const imageSource = new ol.source.ImageStatic({
+          url: config.imageUrl || config.fileName,
+          imageExtent: imageExtent,
+          projection: 'EPSG:3857',
+          attributions: config.attribution || config.source
+        });
+
+        const imageLayer = new ol.layer.Image({
+          source: imageSource,
+          visible: config.defaultVisible,
+          opacity: config.defaultOpacity !== undefined ? config.defaultOpacity : 0.85,
+          zIndex: config.zIndex || 5
+        });
+
+        imageLayer.set('layerId', config.id);
+        imageLayer.set('layerConfig', config);
+        imageLayer.set('isThematicLayer', true);
+        imageLayer.set('isRaster', true);
+
+        this.map.addLayer(imageLayer);
+        this.layers.set(config.id, imageLayer);
+        continue;
+      }
+
       // Tratamento legado para GeoTIFFs individuais diretos
       if (config.isGeoTIFF) {
         let rasterLayer;
@@ -296,8 +323,8 @@ export class LayerManager {
     const config = this.configs.get(layerId);
     if (!layer || !config) return;
 
-    if (config.isRaster && config.extent) {
-      const extent3857 = ol.proj.transformExtent(config.extent, 'EPSG:31982', 'EPSG:3857');
+    if (config.isRaster && (config.extent3857 || config.extent)) {
+      const extent3857 = config.extent3857 || ol.proj.transformExtent(config.extent, config.crs || 'EPSG:31982', 'EPSG:3857');
       this.mapEngine.zoomTo(extent3857);
       return;
     }
