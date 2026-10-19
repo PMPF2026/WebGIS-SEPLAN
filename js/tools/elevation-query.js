@@ -33,6 +33,11 @@ export class ElevationQueryTool {
     this.createDomElements();
     this.createOverlay();
     this.bindEvents();
+    setTimeout(() => {
+      if (this.isDemNeeded() && !this.demLoaded && !this.demLoading) {
+        this.loadDemData().catch(() => {});
+      }
+    }, 400);
   }
 
   createDomElements() {
@@ -96,7 +101,8 @@ export class ElevationQueryTool {
     // Monitorar visibilidade das camadas no LayerManager
     const checkActiveLayers = () => {
       const active = this.isActive();
-      if (active && !this.demLoaded && !this.demLoading) {
+      const demNeeded = this.isDemNeeded();
+      if (demNeeded && !this.demLoaded && !this.demLoading) {
         this.loadDemData().catch(() => {});
       } else if (!active) {
         this.hide();
@@ -107,9 +113,17 @@ export class ElevationQueryTool {
     document.addEventListener('change', (e) => {
       if (e.target && e.target.classList && e.target.classList.contains('layer-checkbox')) {
         const layerId = e.target.dataset.layerId;
-        if (layerId === 'hipsometria_relevo' || layerId === 'curvas_nivel_10m') {
+        if (layerId === 'hipsometria_relevo' || layerId === 'curvas_nivel_10m' || layerId === 'pbzpa_superficies') {
           setTimeout(checkActiveLayers, 100);
         }
+      }
+    });
+
+    // Escutar evento global disparado ao alternar visibilidade (via LayerManager ou Presets)
+    window.addEventListener('layer:visibility-changed', (e) => {
+      const layerId = e.detail?.layerId;
+      if (layerId === 'hipsometria_relevo' || layerId === 'curvas_nivel_10m' || layerId === 'pbzpa_superficies') {
+        checkActiveLayers();
       }
     });
 
@@ -119,6 +133,19 @@ export class ElevationQueryTool {
         this.hide();
       }
     });
+  }
+
+  /**
+   * Verifica se o DEM é necessário em memória (Hipsometria, Curvas de Nível ou PBZPA)
+   */
+  isDemNeeded() {
+    const hipsoLayer = this.layerManager.getLayer('hipsometria_relevo');
+    const curvasLayer = this.layerManager.getLayer('curvas_nivel_10m');
+    const pbzpaLayer = this.layerManager.getLayer('pbzpa_superficies');
+    const hipsoVis = hipsoLayer ? Boolean(hipsoLayer.getVisible()) : false;
+    const curvasVis = curvasLayer ? Boolean(curvasLayer.getVisible()) : false;
+    const pbzpaVis = pbzpaLayer ? Boolean(pbzpaLayer.getVisible()) : false;
+    return hipsoVis || curvasVis || pbzpaVis;
   }
 
   /**

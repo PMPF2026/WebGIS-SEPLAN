@@ -57,20 +57,58 @@ export class MapEngine {
     this.highlightLayer = new ol.layer.Vector({
       source: highlightSource,
       zIndex: 999,
-      style: new ol.style.Style({
-        stroke: new ol.style.Stroke({
-          color: '#ffffff',
-          width: 5
-        }),
-        fill: new ol.style.Fill({
-          color: 'rgba(255, 120, 0, 0.45)'
-        }),
-        image: new ol.style.Circle({
-          radius: 10,
-          fill: new ol.style.Fill({ color: '#ff7800' }),
-          stroke: new ol.style.Stroke({ color: '#ffffff', width: 3 })
-        })
-      })
+      style: (feat) => {
+        // Se for o marcador pontual exato de clique no lote
+        if (feat.get('isClickMarker')) {
+          return [
+            // Halo de mira externa
+            new ol.style.Style({
+              image: new ol.style.Circle({
+                radius: 12,
+                stroke: new ol.style.Stroke({ color: '#38bdf8', width: 2, lineDash: [3, 3] }),
+                fill: new ol.style.Fill({ color: 'rgba(56, 189, 248, 0.25)' })
+              })
+            }),
+            // Ponto central de ancoragem
+            new ol.style.Style({
+              image: new ol.style.Circle({
+                radius: 5,
+                fill: new ol.style.Fill({ color: '#0284c7' }),
+                stroke: new ol.style.Stroke({ color: '#ffffff', width: 2.2 })
+              })
+            })
+          ];
+        }
+
+        // Se for polígono de restrição do aeroporto (PBZPA), manter preenchimento sutil para não cobrir o lote/rua na foto de satélite
+        const nome = String(feat.get('nome') || feat.get('categoria') || '');
+        if (nome.includes('Aproximação') || nome.includes('Decolagem') || nome.includes('Cônica') || nome.includes('Horizontal') || feat.get('_layerId') === 'pbzpa_superficies') {
+          return new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: '#38bdf8',
+              width: 3.5
+            }),
+            fill: new ol.style.Fill({
+              color: 'rgba(2, 132, 199, 0.15)'
+            })
+          });
+        }
+
+        return new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: '#ffffff',
+            width: 5
+          }),
+          fill: new ol.style.Fill({
+            color: 'rgba(255, 120, 0, 0.45)'
+          }),
+          image: new ol.style.Circle({
+            radius: 10,
+            fill: new ol.style.Fill({ color: '#ff7800' }),
+            stroke: new ol.style.Stroke({ color: '#ffffff', width: 3 })
+          })
+        });
+      }
     });
 
     // 5. Initialize OpenLayers Map Instance
@@ -163,14 +201,22 @@ export class MapEngine {
   }
 
   /**
-   * Highlight a feature geometry
+   * Highlight a feature geometry and optional click coordinate marker
    * @param {ol.Feature} feature 
+   * @param {Array<number>} clickCoordinate 
    */
-  setHighlight(feature) {
+  setHighlight(feature, clickCoordinate = null) {
     this.clearHighlight();
     if (feature) {
       const clone = feature.clone();
       this.highlightLayer.getSource().addFeature(clone);
+    }
+    if (clickCoordinate && Array.isArray(clickCoordinate) && clickCoordinate.length >= 2) {
+      const pointMarker = new ol.Feature({
+        geometry: new ol.geom.Point(clickCoordinate),
+        isClickMarker: true
+      });
+      this.highlightLayer.getSource().addFeature(pointMarker);
     }
   }
 

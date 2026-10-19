@@ -403,12 +403,20 @@ export class PopupUI {
     // 4.10. Avaliação Altimétrica no Lote para Superfícies PBZPA (Interpolação no Ponto Clicado)
     let pbzpaCardHtml = '';
     if (layerConfig.id === 'pbzpa_superficies' && this.lastCoordinate) {
-      if (this.elevationQueryTool && !this.elevationQueryTool.demLoaded && !this.elevationQueryTool.demLoading) {
-        this.elevationQueryTool.loadDemData().then(() => {
-          if (this.featureList && this.featureList.length > 0) {
-            this.renderCurrentFeature();
-          }
-        }).catch(() => {});
+      if (this.elevationQueryTool && !this.elevationQueryTool.demLoaded) {
+        if (!this.elevationQueryTool.demLoading) {
+          this.elevationQueryTool.loadDemData().then(() => {
+            if (this.featureList && this.featureList.length > 0) {
+              this.renderCurrentFeature();
+            }
+          }).catch(() => {});
+        } else if (this.elevationQueryTool.loadPromise) {
+          this.elevationQueryTool.loadPromise.then(() => {
+            if (this.featureList && this.featureList.length > 0) {
+              this.renderCurrentFeature();
+            }
+          }).catch(() => {});
+        }
       }
 
       const lotCalc = evaluateLotBuildingClearance(feature, this.lastCoordinate, this.elevationQueryTool);
