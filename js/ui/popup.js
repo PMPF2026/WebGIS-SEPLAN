@@ -511,8 +511,8 @@ export class PopupUI {
       </div>
     `;
 
-    // Highlight current feature
-    this.mapEngine.setHighlight(feature);
+    // Highlight current feature and pinpoint the exact lot location
+    this.mapEngine.setHighlight(feature, this.lastCoordinate);
 
     // Bind Pagination Buttons
     const prevBtn = this.contentEl.querySelector('#btn-popup-prev');
