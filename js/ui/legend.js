@@ -289,6 +289,30 @@ export class LegendUI {
       return classesHtml;
     }
 
+    // 5.0. Densidade Espacial — Kernel (Educação: EMEIs e EMEFs)
+    if (layerConfig.kernelClasses) {
+      let classesHtml = `
+        <div class="legend-item">
+          <div style="font-size: 12px; font-weight: 700; color: var(--text-main); margin-bottom: 3px;">
+            ${layerConfig.name}
+          </div>
+          <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 6px;">
+            Estimador de Densidade de Kernel (QGIS) &bull; Raio 1.000 m
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 6px;">
+      `;
+      layerConfig.kernelClasses.forEach(c => {
+        classesHtml += `
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-muted);">
+            <span style="display: inline-block; width: 18px; height: 12px; border-radius: 2px; background: ${c.color}; border: 1px solid rgba(255,255,255,0.25);"></span>
+            <span style="color: var(--text-main); font-weight: 500;">${c.label}</span>
+          </div>
+        `;
+      });
+      classesHtml += `</div></div>`;
+      return classesHtml;
+    }
+
     // 5.1. Ortofotos e Camadas Raster Genéricas
     if (layerConfig.isRaster || layerConfig.isGeoTIFF) {
       return `

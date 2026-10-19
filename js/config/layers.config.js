@@ -2460,6 +2460,208 @@ export const LAYERS_CONFIG = [
     description: 'Eixos e superfícies operacionais complementares, incluindo distâncias declaradas (ASDA, TORA, TODA, LDA de 1.680m), Superfície de Transição e Superfícies de Proteção de Voo Visual (SPVV).',
     searchable: true,
     searchFields: ['nome', 'categoria']
+  },
+
+  // ================= 11. EDUCAÇÃO E EQUIPAMENTOS EDUCACIONAIS =================
+  // 11.1 UNIDADES EDUCACIONAIS
+  {
+    id: 'escolas_infantil_emei',
+    name: 'Escolas de Educação Infantil (EMEIs)',
+    fileName: 'data/educacao/escolas_infantil_emei.geojson',
+    source: 'Secretaria Municipal de Educação (SME) / SEPLAN Passo Fundo',
+    refDate: '2026',
+    group: 'educacao',
+    subgroup: 'unidades_educacionais',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 65,
+    isCore: false,
+    isLazy: true,
+    style: {
+      pointColor: '#ec4899',
+      strokeColor: '#ffffff',
+      pointRadius: 6.5,
+      strokeWidth: 2.0,
+      previewColor: '#ec4899'
+    },
+    popupConfig: {
+      titleField: 'Escola',
+      defaultTitle: 'Escola Municipal de Educação Infantil',
+      fields: [
+        { key: 'Escola', label: 'Nome da Unidade' },
+        { key: 'id', label: 'Código / Identificador' },
+        { key: 'x long', label: 'Coordenada E (UTM 22S)', format: 'number' },
+        { key: 'y lat', label: 'Coordenada N (UTM 22S)', format: 'number' }
+      ]
+    },
+    description: '40 Escolas Municipais de Educação Infantil (EMEIs) mapeadas no município de Passo Fundo.',
+    searchable: true,
+    searchFields: ['Escola', 'id']
+  },
+  {
+    id: 'escolas_fundamental_emef',
+    name: 'Escolas de Ensino Fundamental (EMEFs)',
+    fileName: 'data/educacao/escolas_fundamental_emef.geojson',
+    source: 'Secretaria Municipal de Educação (SME) / SEPLAN Passo Fundo',
+    refDate: '2026',
+    group: 'educacao',
+    subgroup: 'unidades_educacionais',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 66,
+    isCore: false,
+    isLazy: true,
+    style: {
+      pointColor: '#1d4ed8',
+      strokeColor: '#ffffff',
+      pointRadius: 6.5,
+      strokeWidth: 2.0,
+      previewColor: '#1d4ed8'
+    },
+    popupConfig: {
+      titleField: 'Escola',
+      defaultTitle: 'Escola Municipal de Ensino Fundamental',
+      fields: [
+        { key: 'Escola', label: 'Nome da Unidade' },
+        { key: 'E(x)', label: 'Coordenada E (UTM 22S)', format: 'number' },
+        { key: 'N(y)', label: 'Coordenada N (UTM 22S)', format: 'number' }
+      ]
+    },
+    description: '35 Escolas Municipais de Ensino Fundamental (EMEFs) mapeadas no município de Passo Fundo.',
+    searchable: true,
+    searchFields: ['Escola']
+  },
+
+  // 11.2 ÁREAS DE ABRANGÊNCIA
+  {
+    id: 'abrangencia_emeis_800m',
+    name: 'Área de Abrangência EMEIs — Raio 800 m',
+    fileName: 'data/educacao/abrangencia_emeis_800m.geojson',
+    source: 'SEPLAN Passo Fundo / SME',
+    refDate: '2026',
+    group: 'educacao',
+    subgroup: 'areas_abrangencia',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 18,
+    isCore: false,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(236, 72, 153, 0.16)',
+      strokeColor: '#db2777',
+      strokeWidth: 1.8,
+      strokeDash: [6, 4],
+      previewColor: '#ec4899'
+    },
+    popupConfig: {
+      titleField: null,
+      defaultTitle: 'Área de Abrangência — EMEIs (800 m)',
+      fields: [
+        { key: 'tipo_area', label: 'Classificação Territorial', defaultValue: 'Área de Abrangência Consolidada (Raio de 800 m)' },
+        { key: 'finalidade', label: 'Critério de Planejamento', defaultValue: 'Acesso pedonal seguro à Educação Infantil (40 EMEIs)' }
+      ]
+    },
+    description: 'Área de cobertura consolidada das 40 EMEIs calculada a partir de raios pedonais de 800 metros.',
+    searchable: false
+  },
+  {
+    id: 'abrangencia_emefs_1500m',
+    name: 'Área de Abrangência EMEFs — Raio 1.500 m',
+    fileName: 'data/educacao/abrangencia_emefs_1500m.geojson',
+    source: 'SEPLAN Passo Fundo / SME',
+    refDate: '2026',
+    group: 'educacao',
+    subgroup: 'areas_abrangencia',
+    geometryType: 'MultiPolygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 17,
+    isCore: false,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(37, 99, 235, 0.14)',
+      strokeColor: '#1d4ed8',
+      strokeWidth: 1.8,
+      strokeDash: [6, 4],
+      previewColor: '#1d4ed8'
+    },
+    popupConfig: {
+      titleField: null,
+      defaultTitle: 'Área de Abrangência — EMEFs (1.500 m)',
+      fields: [
+        { key: 'tipo_area', label: 'Classificação Territorial', defaultValue: 'Área de Abrangência Consolidada (Raio de 1.500 m)' },
+        { key: 'finalidade', label: 'Critério de Planejamento', defaultValue: 'Acesso de proximidade ao Ensino Fundamental (35 EMEFs)' }
+      ]
+    },
+    description: 'Área de cobertura consolidada das 35 EMEFs calculada a partir de raios de 1.500 metros.',
+    searchable: false
+  },
+
+  // 11.3 DENSIDADE ESPACIAL — KERNEL
+  {
+    id: 'kernel_densidade_emei',
+    name: 'Densidade de Kernel — EMEIs (Raio 1.000 m)',
+    fileName: 'data/educacao/kernel_emei_passo_fundo.png',
+    imageUrl: 'data/educacao/kernel_emei_passo_fundo.png',
+    source: 'SEPLAN / SME Passo Fundo (Estimador de Densidade de Kernel QGIS)',
+    refDate: '2026',
+    group: 'educacao',
+    subgroup: 'densidade_kernel',
+    isRaster: true,
+    isImageStatic: true,
+    extent3857: [-5841123.352, -3287610.891, -5827363.761, -3276057.383],
+    crs: 'EPSG:3857',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 8,
+    isCore: false,
+    isLazy: true,
+    style: {
+      previewColor: '#74add1'
+    },
+    kernelClasses: [
+      { min: 0.0, max: 0.1905, label: 'Muito Baixa (0 a 0,19)', color: '#313695' },
+      { min: 0.1905, max: 0.4763, label: 'Baixa (0,19 a 0,48)', color: '#74add1' },
+      { min: 0.4763, max: 0.8573, label: 'Média (0,48 a 0,86)', color: '#ffffbf' },
+      { min: 0.8573, max: 1.3336, label: 'Alta (0,86 a 1,33)', color: '#fdae61' },
+      { min: 1.3336, max: 1.9051, label: 'Muito Alta (1,33 a 1,91)', color: '#a50026' }
+    ],
+    description: 'Mapa contínuo de densidade espacial (Kernel) das Escolas de Educação Infantil. Raio de busca: 1.000 m, resolução: 10 m.',
+    searchable: false
+  },
+  {
+    id: 'kernel_densidade_emef',
+    name: 'Densidade de Kernel — EMEFs (Raio 1.000 m)',
+    fileName: 'data/educacao/kernel_emef_passo_fundo.png',
+    imageUrl: 'data/educacao/kernel_emef_passo_fundo.png',
+    source: 'SEPLAN / SME Passo Fundo (Estimador de Densidade de Kernel QGIS)',
+    refDate: '2026',
+    group: 'educacao',
+    subgroup: 'densidade_kernel',
+    isRaster: true,
+    isImageStatic: true,
+    extent3857: [-5844170.450, -3292452.324, -5826685.469, -3276605.493],
+    crs: 'EPSG:3857',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 7,
+    isCore: false,
+    isLazy: true,
+    style: {
+      previewColor: '#fdae61'
+    },
+    kernelClasses: [
+      { min: 0.0, max: 0.2015, label: 'Muito Baixa (0 a 0,20)', color: '#313695' },
+      { min: 0.2015, max: 0.5038, label: 'Baixa (0,20 a 0,50)', color: '#74add1' },
+      { min: 0.5038, max: 0.9069, label: 'Média (0,50 a 0,91)', color: '#ffffbf' },
+      { min: 0.9069, max: 1.4107, label: 'Alta (0,91 a 1,41)', color: '#fdae61' },
+      { min: 1.4107, max: 2.0152, label: 'Muito Alta (1,41 a 2,02)', color: '#a50026' }
+    ],
+    description: 'Mapa contínuo de densidade espacial (Kernel) das Escolas de Ensino Fundamental. Raio de busca: 1.000 m, resolução: 10 m.',
+    searchable: false
   }
 ];
 
@@ -2469,6 +2671,12 @@ export const OPERATIONAL_PRESETS = [
     name: '🏛️ Visão Geral SEPLAN',
     description: 'Configuração padrão para diagnóstico territorial com limites, bairros, distritos e malha viária',
     activeLayers: ['limite_territorial', 'bairros', 'distritos', 'rio_passo_fundo', 'malha_viaria']
+  },
+  {
+    id: 'preset_educacao',
+    name: '🎓 Educação & Equipamentos Escolares',
+    description: 'Rede municipal de ensino: EMEIs, EMEFs, áreas de abrangência e mapas de densidade de Kernel',
+    activeLayers: ['escolas_infantil_emei', 'escolas_fundamental_emef', 'abrangencia_emeis_800m', 'bairros', 'limite_territorial']
   },
   {
     id: 'preset_aeronautico',
