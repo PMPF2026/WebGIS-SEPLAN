@@ -661,7 +661,7 @@ export class LayerManager {
 
     if (config.geometryType === 'Point' || config.geometryType === 'MultiPoint') {
       return (feature, resolution) => {
-        const rawName = feature.get('nome') || feature.get('NOME') || feature.get('Nome') || '';
+        const rawName = feature.get('Escola') || feature.get('nome') || feature.get('NOME') || feature.get('Nome') || '';
         const name = typeof rawName === 'string' ? rawName.trim() : '';
         const showLabel = name && (s.showLabels !== false) && (resolution < 40);
 

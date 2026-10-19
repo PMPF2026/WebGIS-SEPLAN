@@ -87,6 +87,19 @@ export const LAYER_GROUPS = [
     iconName: 'plane',
     description: 'Plano Básico de Zona de Proteção de Aeródromo (PBZPA) - Aeroporto Lauro Kurtz (SBPF). Limites altimétricos máximos e gabarito vertical de edificações (DECEA Portaria nº 846 / Processo SAGA RS0006).',
     badge: 'DECEA / SAGA'
+  },
+  {
+    id: 'educacao',
+    title: '11. Educação e Equipamentos Educacionais',
+    iconClass: 'education',
+    iconName: 'graduation-cap',
+    description: 'Rede municipal de ensino: EMEIs, EMEFs, áreas de abrangência territorial e mapas de densidade de Kernel.',
+    badge: 'SEPLAN / SME',
+    subgroups: [
+      { id: 'unidades_educacionais', title: '11.1 Unidades Educacionais', icon: 'school' },
+      { id: 'areas_abrangencia', title: '11.2 Áreas de Abrangência', icon: 'maximize-2' },
+      { id: 'densidade_kernel', title: '11.3 Densidade Espacial — Kernel', icon: 'flame' }
+    ]
   }
 ];
 
