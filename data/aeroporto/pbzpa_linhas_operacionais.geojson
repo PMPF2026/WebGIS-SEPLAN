@@ -1,4 +1,4 @@
-﻿{
+{
     "type":  "FeatureCollection",
     "name":  "pbzpa_linhas_operacionais_lauro_kurtz",
     "crs":  {
@@ -12,28 +12,29 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "ASDA 1680",
-                                            "categoria":  "DistÃ¢ncia Declarada (ASDA 1680)",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
-                                            "fechado":  false,
+                                            "categoria":  "Distância Declarada de Pista (ASDA 1680)",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  725.29,
+                                            "gabarito_rotulo":  "715,06 m a 725,29 m",
                                             "vertice_count":  2,
                                             "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#f43f5e"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#64748b"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.336433333332991,
-                                                                  -28.246991666667
+                                                                  -28.246991666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320513888889,
-                                                                  -28.241416666667
+                                                                  -28.241416666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -42,28 +43,29 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "LDA 1680",
-                                            "categoria":  "DistÃ¢ncia Declarada (LDA 1680)",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
-                                            "fechado":  false,
+                                            "categoria":  "Distância Declarada de Pista (LDA 1680)",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  725.29,
+                                            "gabarito_rotulo":  "715,06 m a 725,29 m",
                                             "vertice_count":  2,
                                             "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#f43f5e"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#64748b"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.336433333332991,
-                                                                  -28.246991666667
+                                                                  -28.246991666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320513888889,
-                                                                  -28.241416666667
+                                                                  -28.241416666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -72,28 +74,29 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "TORA 1680",
-                                            "categoria":  "DistÃ¢ncia Declarada (TORA 1680)",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
-                                            "fechado":  false,
+                                            "categoria":  "Distância Declarada de Pista (TORA 1680)",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  725.29,
+                                            "gabarito_rotulo":  "715,06 m a 725,29 m",
                                             "vertice_count":  2,
                                             "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#f43f5e"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#64748b"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.336433333332991,
-                                                                  -28.246991666667
+                                                                  -28.246991666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320513888889,
-                                                                  -28.241416666667
+                                                                  -28.241416666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -102,28 +105,29 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "TODA 1680",
-                                            "categoria":  "DistÃ¢ncia Declarada (TODA 1680)",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
-                                            "fechado":  false,
+                                            "categoria":  "Distância Declarada de Pista (TODA 1680)",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  725.29,
+                                            "gabarito_rotulo":  "715,06 m a 725,29 m",
                                             "vertice_count":  2,
                                             "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#f43f5e"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#64748b"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.336433333332991,
-                                                                  -28.246991666667
+                                                                  -28.246991666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320513888889,
-                                                                  -28.241416666667
+                                                                  -28.241416666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -132,28 +136,29 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "ASDA 1680",
-                                            "categoria":  "DistÃ¢ncia Declarada (ASDA 1680)",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
-                                            "fechado":  false,
+                                            "categoria":  "Distância Declarada de Pista (ASDA 1680)",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  725.29,
+                                            "gabarito_rotulo":  "715,06 m a 725,29 m",
                                             "vertice_count":  2,
                                             "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#f43f5e"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#64748b"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.320513888889,
-                                                                  -28.241416666667
+                                                                  -28.241416666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336433333332991,
-                                                                  -28.246991666667
+                                                                  -28.246991666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -162,28 +167,29 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "LDA 1680",
-                                            "categoria":  "DistÃ¢ncia Declarada (LDA 1680)",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
-                                            "fechado":  false,
+                                            "categoria":  "Distância Declarada de Pista (LDA 1680)",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  725.29,
+                                            "gabarito_rotulo":  "715,06 m a 725,29 m",
                                             "vertice_count":  2,
                                             "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#f43f5e"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#64748b"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.320513888889,
-                                                                  -28.241416666667
+                                                                  -28.241416666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336433333332991,
-                                                                  -28.246991666667
+                                                                  -28.246991666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -192,28 +198,29 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "TORA 1680",
-                                            "categoria":  "DistÃ¢ncia Declarada (TORA 1680)",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
-                                            "fechado":  false,
+                                            "categoria":  "Distância Declarada de Pista (TORA 1680)",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  725.29,
+                                            "gabarito_rotulo":  "715,06 m a 725,29 m",
                                             "vertice_count":  2,
                                             "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#f43f5e"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#64748b"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.320513888889,
-                                                                  -28.241416666667
+                                                                  -28.241416666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336433333332991,
-                                                                  -28.246991666667
+                                                                  -28.246991666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -222,28 +229,29 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "TODA 1680",
-                                            "categoria":  "DistÃ¢ncia Declarada (TODA 1680)",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
-                                            "fechado":  false,
+                                            "categoria":  "Distância Declarada de Pista (TODA 1680)",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  725.29,
+                                            "gabarito_rotulo":  "715,06 m a 725,29 m",
                                             "vertice_count":  2,
                                             "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#f43f5e"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#64748b"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.320513888889,
-                                                                  -28.241416666667
+                                                                  -28.241416666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336433333332991,
-                                                                  -28.246991666667
+                                                                  -28.246991666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -252,28 +260,29 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Linha entre cabeceiras",
-                                            "categoria":  "Linha Operacional",
-                                            "cota_min_metros":  0,
-                                            "cota_max_metros":  0,
-                                            "gabarito_rotulo":  "Operacional",
-                                            "fechado":  false,
+                                            "categoria":  "Linha entre cabeceiras",
+                                            "cota_min_metros":  715.06,
+                                            "cota_max_metros":  725.29,
+                                            "gabarito_rotulo":  "715,06 m a 725,29 m",
                                             "vertice_count":  2,
                                             "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#38bdf8"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#94a3b8"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.336433333332991,
-                                                                  -28.246991666667
+                                                                  -28.246991666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320513888889,
-                                                                  -28.241416666667
+                                                                  -28.241416666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -282,16 +291,15 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "SPVV 1",
-                                            "categoria":  "SuperfÃ­cie de ProteÃ§Ã£o de Voo Visual - Ãrea 1",
+                                            "categoria":  "Superfície de Proteção de Voo Visual - Área 1",
                                             "cota_min_metros":  778.29,
                                             "cota_max_metros":  801.29,
-                                            "gabarito_rotulo":  "778.29m a 801.29m",
-                                            "fechado":  false,
+                                            "gabarito_rotulo":  "778,29 m a 801,29 m",
                                             "vertice_count":  17,
-                                            "descricao_oficial":  "Superfície de Proteção de Voo Visual Área 1 Elevação Aprox/Dep Cab1: 778.29m Elevação Aprox/Dep Cab2: 778.29m Elevação Través: 801.29m Largura Esquerda Cab1: 2350m Largura Direita Cab1: 2350m Comprimento: 2350 m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "descricao_oficial":  "Elevação Aprox/Dep Cab1: 778.29m Elevação Aprox/Dep Cab2: 778.29m Elevação Través: 801.29m Largura Esquerda Cab1: 2350m Largura Direita Cab1: 2350m Comprimento: 2350 m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
                                             "cor_sugerida":  "#eab308"
                                         },
                          "geometry":  {
@@ -299,71 +307,88 @@
                                           "coordinates":  [
                                                               [
                                                                   -52.345236111111,
-                                                                  -28.227272222222
+                                                                  -28.227272222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.367502777778,
-                                                                  -28.235066666667
+                                                                  -28.235066666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.349902777778,
-                                                                  -28.274505555556
+                                                                  -28.274505555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.327627777778,
-                                                                  -28.266711111111
+                                                                  -28.266711111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.345236111111,
-                                                                  -28.227272222222
+                                                                  -28.227272222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.345236111111,
-                                                                  -28.227272222222
+                                                                  -28.227272222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.329319444444,
-                                                                  -28.221697222222
+                                                                  -28.221697222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.311705555556,
-                                                                  -28.261136111111
+                                                                  -28.261136111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.327627777778,
-                                                                  -28.266711111111
+                                                                  -28.266711111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.345236111111,
-                                                                  -28.227272222222
+                                                                  -28.227272222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.329319444444,
-                                                                  -28.221697222222
+                                                                  -28.221697222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.329319444444,
-                                                                  -28.221697222222
+                                                                  -28.221697222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.307058333333,
-                                                                  -28.213897222222
+                                                                  -28.213897222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.289436111111,
-                                                                  -28.253336111111
+                                                                  -28.253336111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.311705555556,
-                                                                  -28.261136111111
+                                                                  -28.261136111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.329319444444,
-                                                                  -28.221697222222
+                                                                  -28.221697222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.311705555556,
-                                                                  -28.261136111111
+                                                                  -28.261136111111,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -372,16 +397,15 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "SPVV 2",
-                                            "categoria":  "SuperfÃ­cie de ProteÃ§Ã£o de Voo Visual - Ãrea 2",
+                                            "categoria":  "Superfície de Proteção de Voo Visual - Área 2",
                                             "cota_min_metros":  832.29,
                                             "cota_max_metros":  878.29,
-                                            "gabarito_rotulo":  "832.29m a 878.29m",
-                                            "fechado":  false,
+                                            "gabarito_rotulo":  "832,29 m a 878,29 m",
                                             "vertice_count":  17,
-                                            "descricao_oficial":  "Superfície de Proteção de Voo Visual Área 2 Elevação Aprox/Dep Cab1: 832.29m Elevação Aprox/Dep Cab2: 832.29m Elevação Través: 878.29m Largura Esquerda Cab1: 4170m Largura Direita Cab1: 4170m Comprimento: 4170m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "descricao_oficial":  "Elevação Aprox/Dep Cab1: 832.29m Elevação Aprox/Dep Cab2: 832.29m Elevação Través: 878.29m Largura Esquerda Cab1: 4170m Largura Direita Cab1: 4170m Comprimento: 4170m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
                                             "cor_sugerida":  "#f59e0b"
                                         },
                          "geometry":  {
@@ -389,71 +413,88 @@
                                           "coordinates":  [
                                                               [
                                                                   -52.352052777778,
-                                                                  -28.212
+                                                                  -28.212,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.391561111111,
-                                                                  -28.225830555556
+                                                                  -28.225830555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.360338888889,
-                                                                  -28.295813888889
+                                                                  -28.295813888889,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320805555556007,
-                                                                  -28.281983333333
+                                                                  -28.281983333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.352052777778,
-                                                                  -28.212
+                                                                  -28.212,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.352052777778,
-                                                                  -28.212
+                                                                  -28.212,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336136111111,
-                                                                  -28.206425
+                                                                  -28.206425,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.304880555556,
-                                                                  -28.276405555556
+                                                                  -28.276405555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320805555556007,
-                                                                  -28.281983333333
+                                                                  -28.281983333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.352052777778,
-                                                                  -28.212
+                                                                  -28.212,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336136111111,
-                                                                  -28.206425
+                                                                  -28.206425,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336136111111,
-                                                                  -28.206425
+                                                                  -28.206425,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.296641666667,
-                                                                  -28.192580555556
+                                                                  -28.192580555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.265361111111,
-                                                                  -28.262561111111012
+                                                                  -28.262561111111012,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.304880555556,
-                                                                  -28.276405555556
+                                                                  -28.276405555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336136111111,
-                                                                  -28.206425
+                                                                  -28.206425,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.304880555556,
-                                                                  -28.276405555556
+                                                                  -28.276405555556,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -462,180 +503,219 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Transição",
-                                            "categoria":  "SuperfÃ­cie de TransiÃ§Ã£o",
-                                            "cota_min_metros":  715.06,
+                                            "categoria":  "Superfície de Transição Lateral",
+                                            "cota_min_metros":  725.29,
                                             "cota_max_metros":  770.29,
-                                            "gabarito_rotulo":  "715.06m a 770.29m",
-                                            "fechado":  false,
+                                            "gabarito_rotulo":  "725,29 m a 770,29 m",
                                             "vertice_count":  40,
-                                            "descricao_oficial":  " Superfície de Transição Elevação Máxima na Borda Externa: 770.29m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "descricao_oficial":  "Superfície de Transição Elevação Máxima na Borda Externa: 770.29m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#8b5cf6"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#a855f7"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.36525,
-                                                                  -28.2517
+                                                                  -28.2517,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.338975,
-                                                                  -28.242775
+                                                                  -28.242775,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.338405555556,
-                                                                  -28.242575
+                                                                  -28.242575,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.338405555556,
-                                                                  -28.242575
+                                                                  -28.242575,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.337916666667,
-                                                                  -28.242438888889009
+                                                                  -28.242438888889009,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.337433333333,
-                                                                  -28.2423
+                                                                  -28.2423,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336944444444,
-                                                                  -28.242163888889
+                                                                  -28.242163888889,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.336461111111,
-                                                                  -28.242025
+                                                                  -28.242025,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.335972222222,
-                                                                  -28.241886111111
+                                                                  -28.241886111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.335486111111,
-                                                                  -28.241755555556
+                                                                  -28.241755555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.335,
-                                                                  -28.241616666667
+                                                                  -28.241616666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.334511111111,
-                                                                  -28.241480555556
+                                                                  -28.241480555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.334025,
-                                                                  -28.241341666667
+                                                                  -28.241341666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.333536111111,
-                                                                  -28.241208333333
+                                                                  -28.241208333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.333052777777993,
-                                                                  -28.241069444444
+                                                                  -28.241069444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.332563888888991,
-                                                                  -28.240933333333
+                                                                  -28.240933333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.332077777778,
-                                                                  -28.240797222222
+                                                                  -28.240797222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.331588888889,
-                                                                  -28.240661111111
+                                                                  -28.240661111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.331105555556,
-                                                                  -28.240522222222
+                                                                  -28.240522222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.330622222222,
-                                                                  -28.240377777778
+                                                                  -28.240377777778,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.330141666667,
-                                                                  -28.240225
+                                                                  -28.240225,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.329663888889009,
-                                                                  -28.240066666667
+                                                                  -28.240066666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.329186111110992,
-                                                                  -28.239908333333
+                                                                  -28.239908333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.328711111111012,
-                                                                  -28.23975
+                                                                  -28.23975,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.32823055555599,
-                                                                  -28.239594444444
+                                                                  -28.239594444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.327755555556,
-                                                                  -28.239433333333
+                                                                  -28.239433333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.327277777778,
-                                                                  -28.239277777778
+                                                                  -28.239277777778,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.3268,
-                                                                  -28.239119444444
+                                                                  -28.239119444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.326322222222,
-                                                                  -28.238963888889
+                                                                  -28.238963888889,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.325844444444009,
-                                                                  -28.238802777778009
+                                                                  -28.238802777778009,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.325369444444,
-                                                                  -28.238644444444
+                                                                  -28.238644444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.324888888889006,
-                                                                  -28.238488888889
+                                                                  -28.238488888889,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.324413888889,
-                                                                  -28.238330555556
+                                                                  -28.238330555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.323936111111,
-                                                                  -28.238172222222
+                                                                  -28.238172222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.323458333333,
-                                                                  -28.238013888889
+                                                                  -28.238013888889,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.322980555556,
-                                                                  -28.237855555556
+                                                                  -28.237855555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.322505555555992,
-                                                                  -28.2377
+                                                                  -28.2377,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.322219444444,
-                                                                  -28.2376
+                                                                  -28.2376,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.321649999999991,
-                                                                  -28.2374
+                                                                  -28.2374,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.300416666667012,
-                                                                  -28.229741666667
+                                                                  -28.229741666667,
+                                                                  0
                                                               ]
                                                           ]
                                       }
@@ -644,180 +724,219 @@
                          "type":  "Feature",
                          "properties":  {
                                             "nome":  "Transição",
-                                            "categoria":  "SuperfÃ­cie de TransiÃ§Ã£o",
-                                            "cota_min_metros":  715.06,
+                                            "categoria":  "Superfície de Transição Lateral",
+                                            "cota_min_metros":  725.29,
                                             "cota_max_metros":  770.29,
-                                            "gabarito_rotulo":  "715.06m a 770.29m",
-                                            "fechado":  false,
+                                            "gabarito_rotulo":  "725,29 m a 770,29 m",
                                             "vertice_count":  40,
-                                            "descricao_oficial":  " Superfície de Transição Elevação Máxima na Borda Externa: 770.29m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "descricao_oficial":  "Superfície de Transição Elevação Máxima na Borda Externa: 770.29m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)",
-                                            "cor_sugerida":  "#8b5cf6"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)",
+                                            "cor_sugerida":  "#a855f7"
                                         },
                          "geometry":  {
                                           "type":  "LineString",
                                           "coordinates":  [
                                                               [
                                                                   -52.361094444444,
-                                                                  -28.261
+                                                                  -28.261,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.33503055555601,
-                                                                  -28.251608333333
+                                                                  -28.251608333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.334461111111,
-                                                                  -28.251408333333
+                                                                  -28.251408333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.334461111111,
-                                                                  -28.251408333333
+                                                                  -28.251408333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.334,
-                                                                  -28.251211111111
+                                                                  -28.251211111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.333538888889,
-                                                                  -28.251022222222009
+                                                                  -28.251022222222009,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.333077777777987,
-                                                                  -28.250825
+                                                                  -28.250825,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.332616666667,
-                                                                  -28.250630555556
+                                                                  -28.250630555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.332155555556,
-                                                                  -28.250436111111
+                                                                  -28.250436111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.331697222222,
-                                                                  -28.250238888889
+                                                                  -28.250238888889,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.331233333333,
-                                                                  -28.250044444444
+                                                                  -28.250044444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.330772222222009,
-                                                                  -28.249847222222
+                                                                  -28.249847222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.330313888889,
-                                                                  -28.249652777778
+                                                                  -28.249652777778,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.329852777778008,
-                                                                  -28.249458333333
+                                                                  -28.249458333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.329391666667,
-                                                                  -28.249263888889
+                                                                  -28.249263888889,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.328930555556,
-                                                                  -28.249066666667
+                                                                  -28.249066666667,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.328472222222,
-                                                                  -28.248875
+                                                                  -28.248875,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.32801111111101,
-                                                                  -28.248677777778
+                                                                  -28.248677777778,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.327547222222,
-                                                                  -28.248483333333
+                                                                  -28.248483333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.327083333333,
-                                                                  -28.248294444444
+                                                                  -28.248294444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.326613888888993,
-                                                                  -28.248119444444
+                                                                  -28.248119444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.326147222222,
-                                                                  -28.247944444444
+                                                                  -28.247944444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.325675,
-                                                                  -28.247769444444
+                                                                  -28.247769444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.325205555556,
-                                                                  -28.247594444444
+                                                                  -28.247594444444,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.324736111111008,
-                                                                  -28.247422222222
+                                                                  -28.247422222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.324266666667,
-                                                                  -28.24725
+                                                                  -28.24725,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.32379444444399,
-                                                                  -28.247072222222
+                                                                  -28.247072222222,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.323322222222,
-                                                                  -28.246902777778
+                                                                  -28.246902777778,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.322855555556,
-                                                                  -28.246725
+                                                                  -28.246725,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.322383333333,
-                                                                  -28.246552777778
+                                                                  -28.246552777778,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.321913888889007,
-                                                                  -28.246377777778019
+                                                                  -28.246377777778019,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.321444444444,
-                                                                  -28.246205555556
+                                                                  -28.246205555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320975,
-                                                                  -28.246030555556
+                                                                  -28.246030555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320502777778,
-                                                                  -28.245855555556
+                                                                  -28.245855555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.320036111111,
-                                                                  -28.245680555556
+                                                                  -28.245680555556,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.319563888889,
-                                                                  -28.245511111111
+                                                                  -28.245511111111,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.319091666667013,
-                                                                  -28.245333333333
+                                                                  -28.245333333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.318808333333,
-                                                                  -28.245233333333
+                                                                  -28.245233333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.318238888889,
-                                                                  -28.245033333333
+                                                                  -28.245033333333,
+                                                                  0
                                                               ],
                                                               [
                                                                   -52.296838888889,
-                                                                  -28.237752777778
+                                                                  -28.237752777778,
+                                                                  0
                                                               ]
                                                           ]
                                       }

@@ -167,6 +167,17 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
       'entorno_iluminacao',
       'entorno_arborizacao'
     ]
+  },
+  {
+    id: 'restricoes_aeronauticas',
+    title: 'Restrições Aeronáuticas & Proteção do Aeródromo (PBZPA)',
+    shortTitle: 'Aeródromo PBZPA',
+    iconName: 'plane',
+    layerIds: [
+      'pbzpa_superficies',
+      'pbzpa_cotas_rotulos',
+      'pbzpa_linhas_operacionais'
+    ]
   }
 ];
 

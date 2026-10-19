@@ -79,6 +79,14 @@ export const LAYER_GROUPS = [
     iconName: 'building-2',
     description: 'Pesquisa Urbanística do Entorno dos Domicílios — Censo Demográfico IBGE 2022 (Pavimentação de Vias, Calçadas, Acessibilidade, Drenagem Pluvial, Iluminação e Arborização)',
     badge: 'Censo 2022'
+  },
+  {
+    id: 'restricoes_aeronauticas',
+    title: '10. Restrições Aeronáuticas & Proteção do Aeródromo (PBZPA)',
+    iconClass: 'airport',
+    iconName: 'plane',
+    description: 'Plano Básico de Zona de Proteção de Aeródromo (PBZPA) - Aeroporto Lauro Kurtz (SBPF). Limites altimétricos máximos e gabarito vertical de edificações (DECEA Portaria nº 846 / Processo SAGA RS0006).',
+    badge: 'DECEA / SAGA'
   }
 ];
 
@@ -2332,6 +2340,113 @@ export const LAYERS_CONFIG = [
     description: 'Proporção de domicílios em faces com presença de arborização viária apurada pelo Censo 2022 (IBGE).',
     searchable: true,
     searchFields: ['id', 'bairro_seplan']
+  },
+  // ================= 10. RESTRIÇÕES AERONÁUTICAS & PBZPA =================
+  {
+    id: 'pbzpa_superficies',
+    name: 'Superfícies Limitadoras de Obstáculos (PBZPA)',
+    fileName: 'data/aeroporto/pbzpa_superficies_poligonos.geojson',
+    source: 'DECEA / Ministério da Defesa (Portaria nº 846 / Processo SAGA RS0006)',
+    refDate: 'Portaria DECEA nº 846',
+    group: 'restricoes_aeronauticas',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 35,
+    isLazy: true,
+    style: {
+      strokeColor: '#0284c7',
+      strokeWidth: 2.0,
+      fillColor: 'rgba(2, 132, 199, 0.20)',
+      previewColor: '#0284c7'
+    },
+    popupConfig: {
+      titleField: 'categoria',
+      defaultTitle: 'Superfície de Proteção Aeronáutica',
+      fields: [
+        { key: 'nome', label: 'Superfície PBZPA' },
+        { key: 'categoria', label: 'Denominação Técnica' },
+        { key: 'gabarito_rotulo', label: 'Cota Altimétrica Máxima (Teto)' },
+        { key: 'tipo_restricao', label: 'Regime de Restrição Vertical' },
+        { key: 'raio_alcance', label: 'Alcance Geométrico / Raio' },
+        { key: 'formula_gabarito', label: 'Cálculo de Altura da Edificação' },
+        { key: 'orientacao_arquiteto', label: 'Diretriz Técnica para o Arquiteto' },
+        { key: 'portaria', label: 'Ato Normativo Oficial' },
+        { key: 'processo_saga', label: 'Processo SAGA / DECEA' },
+        { key: 'aerodromo', label: 'Aeródromo de Referência' }
+      ]
+    },
+    description: 'Envoltórias tridimensionais de proteção ao voo (Horizontal Interna 770.29m, Cônica 770.29m-845.29m, Horizontal Externa 845.29m, e Cones de Aproximação e Decolagem) que limitam as alturas de novas construções em Passo Fundo.',
+    searchable: true,
+    searchFields: ['nome', 'categoria', 'gabarito_rotulo']
+  },
+  {
+    id: 'pbzpa_cotas_rotulos',
+    name: 'Cotas Altimétricas Oficiais (Pontos de Referência)',
+    fileName: 'data/aeroporto/pbzpa_cotas_pontos.geojson',
+    source: 'DECEA / Ministério da Defesa (Portaria nº 846 / Processo SAGA RS0006)',
+    refDate: 'Portaria DECEA nº 846',
+    group: 'restricoes_aeronauticas',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 42,
+    isLazy: true,
+    style: {
+      pointColor: '#0284c7',
+      pointRadius: 4.5,
+      strokeColor: '#ffffff',
+      strokeWidth: 1.8,
+      previewColor: '#0284c7'
+    },
+    popupConfig: {
+      titleField: 'rotulo',
+      defaultTitle: 'Cota de Referência PBZPA',
+      fields: [
+        { key: 'rotulo', label: 'Altitude Oficial do Ponto' },
+        { key: 'cota_metros', label: 'Cota Altimétrica (m)', format: 'number' },
+        { key: 'tipo', label: 'Natureza do Ponto' },
+        { key: 'descricao_oficial', label: 'Especificação DECEA' },
+        { key: 'portaria', label: 'Ato Normativo Oficial' },
+        { key: 'aerodromo', label: 'Aeródromo' }
+      ]
+    },
+    description: 'Pontos e marcos altimétricos oficiais do PBZPA com valores de altitude em metros acima do nível médio do mar (MSL).',
+    searchable: true,
+    searchFields: ['rotulo', 'cota_metros']
+  },
+  {
+    id: 'pbzpa_linhas_operacionais',
+    name: 'Linhas Operacionais e Voo Visual (SPVV)',
+    fileName: 'data/aeroporto/pbzpa_linhas_operacionais.geojson',
+    source: 'DECEA / Ministério da Defesa (Portaria nº 846 / Processo SAGA RS0006)',
+    refDate: 'Portaria DECEA nº 846',
+    group: 'restricoes_aeronauticas',
+    geometryType: 'LineString',
+    defaultVisible: false,
+    defaultOpacity: 0.95,
+    zIndex: 38,
+    isLazy: true,
+    style: {
+      strokeColor: '#f59e0b',
+      strokeWidth: 2.2,
+      previewColor: '#f59e0b'
+    },
+    popupConfig: {
+      titleField: 'categoria',
+      defaultTitle: 'Alinhamento Operacional / SPVV',
+      fields: [
+        { key: 'nome', label: 'Identificação' },
+        { key: 'categoria', label: 'Categoria Operacional' },
+        { key: 'gabarito_rotulo', label: 'Cota Altimétrica Limite' },
+        { key: 'descricao_oficial', label: 'Parâmetros Técnicos DECEA' },
+        { key: 'portaria', label: 'Ato Normativo Oficial' },
+        { key: 'aerodromo', label: 'Aeródromo' }
+      ]
+    },
+    description: 'Eixos e superfícies operacionais complementares, incluindo distâncias declaradas (ASDA, TORA, TODA, LDA de 1.680m), Superfície de Transição e Superfícies de Proteção de Voo Visual (SPVV).',
+    searchable: true,
+    searchFields: ['nome', 'categoria']
   }
 ];
 
@@ -2341,6 +2456,12 @@ export const OPERATIONAL_PRESETS = [
     name: '🏛️ Visão Geral SEPLAN',
     description: 'Configuração padrão para diagnóstico territorial com limites, bairros, distritos e malha viária',
     activeLayers: ['limite_territorial', 'bairros', 'distritos', 'rio_passo_fundo', 'malha_viaria']
+  },
+  {
+    id: 'preset_aeronautico',
+    name: '✈️ Gabarito & Proteção Aeroportuária (PBZPA)',
+    description: 'Superfícies limitadoras de altura para edificações e cotas oficiais DECEA cruzadas com a topografia',
+    activeLayers: ['pbzpa_superficies', 'pbzpa_cotas_rotulos', 'curvas_nivel_10m', 'bairros', 'limite_territorial']
   },
   {
     id: 'preset_logistica',

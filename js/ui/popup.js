@@ -93,6 +93,7 @@ export class PopupUI {
     if (layerConfig.group === 'areas_verdes') tagClass = 'tag-areas-verdes';
     if (layerConfig.group === 'esporte_cultura') tagClass = 'tag-esporte-cultura';
     if (layerConfig.group === 'equipamentos_uso_coletivo') tagClass = 'tag-equipamentos-coletivo';
+    if (layerConfig.group === 'restricoes_aeronauticas') tagClass = 'tag-aeroporto';
 
     // 3. Multi-feature pagination header if > 1 feature
     let paginationHtml = '';
@@ -238,6 +239,32 @@ export class PopupUI {
           <tr style="background: rgba(245, 158, 11, 0.10);">
             <th style="color: #fcd34d; font-weight: 700;">${escapeHtml(field.label)}</th>
             <td style="font-weight: 700; color: #fef08a;">${escapeHtml(String(val))}</td>
+          </tr>
+        `;
+        return;
+      }
+
+      // Destaque para Gabarito Máximo e Restrições Aeronáuticas (PBZPA)
+      if (field.key === 'gabarito_rotulo') {
+        rowsHtml += `
+          <tr style="background: rgba(2, 132, 199, 0.18); border-left: 3px solid #0284c7;">
+            <th style="color: #7dd3fc; font-weight: 700; padding: 6px 4px 6px 6px;">${escapeHtml(field.label)}</th>
+            <td style="font-weight: 800; color: #ffffff; font-size: 13px; padding: 6px 4px;">
+              <span style="background: #0284c7; color: #ffffff; padding: 2px 8px; border-radius: 4px; display: inline-block;">${escapeHtml(String(val))}</span>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      // Destaque para Diretriz Técnica do Arquiteto
+      if (field.key === 'orientacao_arquiteto') {
+        rowsHtml += `
+          <tr style="background: rgba(14, 165, 233, 0.08); border-left: 3px solid #0ea5e9;">
+            <th style="color: #38bdf8; font-weight: 600; padding: 6px 4px 6px 6px; vertical-align: top;">${escapeHtml(field.label)}</th>
+            <td style="color: #e2e8f0; font-size: 11px; line-height: 1.4; padding: 6px 4px;">
+              ${escapeHtml(String(val))}
+            </td>
           </tr>
         `;
         return;

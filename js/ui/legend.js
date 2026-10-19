@@ -197,6 +197,40 @@ export class LegendUI {
       `;
     }
 
+    // 2.4. PBZPA - Superfícies Limitadoras de Obstáculos (Aeroporto Lauro Kurtz)
+    if (layerConfig.id === 'pbzpa_superficies') {
+      const surfaces = [
+        { name: 'Horizontal Interna (SHI)', cota: '770,29 m', color: '#ef4444' },
+        { name: 'Superfície Cônica (CO)', cota: '770,29 m a 845,29 m', color: '#f97316' },
+        { name: 'Horizontal Externa (SHE)', cota: '845,29 m', color: '#6366f1' },
+        { name: 'Superfícies de Aproximação', cota: '715,06 m a 875,29 m', color: '#0284c7' },
+        { name: 'Superfícies de Decolagem', cota: '715,00 m a 1.025,42 m', color: '#10b981' },
+        { name: 'Pista e Faixa de Pista (1.680m)', cota: '715,06 m a 725,29 m', color: '#0f172a' }
+      ];
+
+      return `
+        <div class="legend-item">
+          <div style="font-size: 12px; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">
+            ${layerConfig.name}
+          </div>
+          <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 8px;">
+            Portaria DECEA nº 846 / Processo SAGA RS0006 &bull; Cotas máximas permitidas (topo do edifício)
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 5px; padding-left: 4px;">
+            ${surfaces.map(s => `
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="display: inline-block; width: 16px; height: 12px; border-radius: 2px; background: ${s.color}; opacity: 0.85; border: 1px solid rgba(255,255,255,0.4);"></span>
+                  <span style="color: var(--text-main);">${s.name}</span>
+                </div>
+                <span style="font-weight: 700; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 10px;">${s.cota}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
     // 3. Point Symbology (Distritos, Praças, Áreas Verdes, etc.)
     if (layerConfig.geometryType === 'Point' || layerConfig.geometryType === 'MultiPoint') {
       const s = layerConfig.style || {};

@@ -1,4 +1,4 @@
-﻿{
+{
     "type":  "FeatureCollection",
     "name":  "pbzpa_cotas_pontos_lauro_kurtz",
     "crs":  {
@@ -11,420 +11,400 @@
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "715.06m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "",
+                                            "rotulo":  "715.06m",
                                             "cota_metros":  715.06,
-                                            "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Cab1 : 715.06 m",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.336433333332991,
                                                               -28.246991666667,
-                                                              0
+                                                              715.06
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "725.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "",
+                                            "rotulo":  "725.29m",
                                             "cota_metros":  725.29,
-                                            "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Cab2 : 725.29 m",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.320513888889,
                                                               -28.241416666667,
-                                                              0
+                                                              725.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "Adel: 725.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "",
+                                            "rotulo":  "Adel: 725.29m",
                                             "cota_metros":  725.29,
-                                            "descricao_oficial":  "",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Adel: 725.29 m",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.328473611111008,
                                                               -28.244204166667,
-                                                              0
+                                                              725.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "770.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie Horizontal Interna (SHI)",
+                                            "rotulo":  "770.29m",
                                             "cota_metros":  770.29,
-                                            "descricao_oficial":  " Superfície Horizontal Interna Altitude HI: 770.29m Altura HI: 45m Raio HI Cabeceira 1: 4000m Raio HI Cabeceira 2: 4000m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Superfície Horizontal Interna Altitude HI: 770.29m Altura HI: 45m Raio HI Cabeceira 1: 4000m Raio HI Cabeceira 2: 4000m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.33531388888899,
                                                               -28.283072222222,
-                                                              0
+                                                              770.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "845.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "",
+                                            "rotulo":  "845.29m",
                                             "cota_metros":  845.29,
-                                            "descricao_oficial":  "Superfície Cônica Altitude Inicial CO: 770.29m Gradiente CO: 5% Altitude Final CO: 845.29m Raio CO: 5500m Diferença Raio CO-HI: 1500m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Altitude Inicial CO: 770.29m Gradiente CO: 5% Altitude Final CO: 845.29m Raio CO: 5500m Diferença Raio CO-HI: 1500m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.334894444444,
                                                               -28.2966,
-                                                              0
+                                                              845.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "845.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie Horizontal Externa (SHE)",
+                                            "rotulo":  "845.29m",
                                             "cota_metros":  845.29,
-                                            "descricao_oficial":  "Superfície Horizontal Externa Altitude HE: 725.29m Altura HE: 120m Raio HE: 20000m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Altitude HE: 725.29m Altura HE: 120m Raio HE: 20000m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.330827777778012,
                                                               -28.427388888889,
-                                                              0
+                                                              845.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "778.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de ProteÃ§Ã£o de Voo Visual",
+                                            "rotulo":  "778.29m",
                                             "cota_metros":  778.29,
-                                            "descricao_oficial":  "Superfície de Proteção de Voo Visual Área 1 Elevação Aprox/Dep Cab1: 778.29m Elevação Aprox/Dep Cab2: 778.29m Elevação Través: 801.29m Largura Esquerda Cab1: 2350m Largura Direita Cab1: 2350m Comprimento: 2350 m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Aprox/Dep Cab1: 778.29m Elevação Aprox/Dep Cab2: 778.29m Elevação Través: 801.29m Largura Esquerda Cab1: 2350m Largura Direita Cab1: 2350m Comprimento: 2350 m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.367502777778,
                                                               -28.235066666667,
-                                                              0
+                                                              778.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "832.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de ProteÃ§Ã£o de Voo Visual",
+                                            "rotulo":  "832.29m",
                                             "cota_metros":  832.29,
-                                            "descricao_oficial":  "Superfície de Proteção de Voo Visual Área 2 Elevação Aprox/Dep Cab1: 832.29m Elevação Aprox/Dep Cab2: 832.29m Elevação Través: 878.29m Largura Esquerda Cab1: 4170m Largura Direita Cab1: 4170m Comprimento: 4170m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Aprox/Dep Cab1: 832.29m Elevação Aprox/Dep Cab2: 832.29m Elevação Través: 878.29m Largura Esquerda Cab1: 4170m Largura Direita Cab1: 4170m Comprimento: 4170m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.391561111111,
                                                               -28.225830555556,
-                                                              0
+                                                              832.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "725.42m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de Decolagem",
+                                            "rotulo":  "725.42m",
                                             "cota_metros":  725.42,
-                                            "descricao_oficial":  "Superfície de Decolagem 1 Elevação Borda Interna: 725.42m Elevação Borda Externa: 1025.42m Abertura: 12.5 % Distância Cab Oposta: 60m Largura Borda Interna: 180m Largura Borda Externa: 1200m Comprimento: 15000m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Borda Interna: 725.42m Elevação Borda Externa: 1025.42m Abertura: 12.5 % Distância Cab Oposta: 60m Largura Borda Interna: 180m Largura Borda Externa: 1200m Comprimento: 15000m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.319202666667,
                                                               -28.241879583333,
-                                                              0
+                                                              725.42
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "715m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de Decolagem",
+                                            "rotulo":  "715m",
                                             "cota_metros":  715,
-                                            "descricao_oficial":  "Superfície de Decolagem 2 Elevação Borda Interna: 715m Elevação Borda Externa: 0m Abertura: 12.5 % Distância Cab Oposta: 60m Largura Borda Interna: 180m Largura Borda Externa: 1200m Comprimento: 15000m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Borda Interna: 715m Elevação Borda Externa: 0m Abertura: 12.5 % Distância Cab Oposta: 60m Largura Borda Interna: 180m Largura Borda Externa: 1200m Comprimento: 15000m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.337744638888992,
                                                               -28.246528666667,
-                                                              0
+                                                              715
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "715.06m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
+                                            "rotulo":  "715.06m",
                                             "cota_metros":  715.06,
-                                            "descricao_oficial":  "Superfície de Aproximação 1 Elevação Borda Interna: 715.06m Elevação Borda Externa: 775.06m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Borda Interna: 715.06m Elevação Borda Externa: 775.06m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.337828944444,
                                                               -28.246078388889,
-                                                              0
+                                                              715.06
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "725.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
+                                            "rotulo":  "725.29m",
                                             "cota_metros":  725.29,
-                                            "descricao_oficial":  "Superfície de Aproximação 2 Primeira Seção Elevação Borda Interna: 725.29m Elevação Borda Externa: 785.29m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Borda Interna: 725.29m Elevação Borda Externa: 785.29m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.319118361111,
                                                               -28.242329833333,
-                                                              0
+                                                              725.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "770.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de TransiÃ§Ã£o",
+                                            "rotulo":  "770.29m",
                                             "cota_metros":  770.29,
-                                            "descricao_oficial":  "Superfície de Transição Altitude Final: 770.29m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Altitude Final: 770.29m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.338975,
                                                               -28.242775,
-                                                              0
+                                                              770.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "770.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de TransiÃ§Ã£o",
+                                            "rotulo":  "770.29m",
                                             "cota_metros":  770.29,
-                                            "descricao_oficial":  "Superfície de Transição Altitude Final: 770.29m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Altitude Final: 770.29m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.321649999999991,
                                                               -28.2374,
-                                                              0
+                                                              770.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "770.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de TransiÃ§Ã£o",
+                                            "rotulo":  "770.29m",
                                             "cota_metros":  770.29,
-                                            "descricao_oficial":  "Superfície de Transição Altitude Final: 770.29m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Altitude Final: 770.29m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.33503055555601,
                                                               -28.251608333333,
-                                                              0
+                                                              770.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "770.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de TransiÃ§Ã£o",
+                                            "rotulo":  "770.29m",
                                             "cota_metros":  770.29,
-                                            "descricao_oficial":  "Superfície de Transição Altitude Final: 770.29m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Altitude Final: 770.29m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.318238888889,
                                                               -28.245033333333,
-                                                              0
+                                                              770.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "775.06m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
+                                            "rotulo":  "775.06m",
                                             "cota_metros":  775.06,
-                                            "descricao_oficial":  "Segunda Seção da Aproximação Elevação Borda Interna: 775.06m Elevação Borda Externa: 865.06m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Borda Interna: 775.06m Elevação Borda Externa: 865.06m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.367644444444,
                                                               -28.252188888889,
-                                                              0
+                                                              775.06
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "785.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
+                                            "rotulo":  "785.29m",
                                             "cota_metros":  785.29,
-                                            "descricao_oficial":  "Segunda Seção da Aproximação Elevação Borda Interna: 785.29m Elevação Borda Externa: 875.29m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação Borda Interna: 785.29m Elevação Borda Externa: 875.29m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.28931111111099,
                                                               -28.236208333333,
-                                                              0
+                                                              785.29
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "865.06m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
+                                            "rotulo":  "865.06m",
                                             "cota_metros":  865.06,
-                                            "descricao_oficial":  "Seção Horizontalda Aproximação Elevação : 865.06m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação : 865.06m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.403786111111,
                                                               -28.259597222222,
-                                                              0
+                                                              865.06
                                                           ]
                                       }
                      },
                      {
                          "type":  "Feature",
                          "properties":  {
-                                            "nome":  "875.29m",
-                                            "tipo":  "Cota_Altimetrica_Rotulo",
-                                            "superficie_referencia":  "SuperfÃ­cie de AproximaÃ§Ã£o",
+                                            "rotulo":  "875.29m",
                                             "cota_metros":  875.29,
-                                            "descricao_oficial":  "Seção Horizontalda Aproximação Elevação : 875.29m ",
-                                            "portaria":  "Portaria DECEA nÂº 846",
+                                            "tipo":  "Cota de Referência PBZPA",
+                                            "descricao_oficial":  "Elevação : 875.29m ]]\u003e",
+                                            "portaria":  "Portaria DECEA nº 846",
                                             "processo_saga":  "RS0006",
-                                            "aerodromo":  "Aeroporto Lauro Kurtz (SBPF)"
+                                            "aerodromo":  "Aeroporto Lauro Kurtz - SBPF (Passo Fundo/RS)"
                                         },
                          "geometry":  {
                                           "type":  "Point",
                                           "coordinates":  [
                                                               -52.253183333333,
                                                               -28.228786111111,
-                                                              0
+                                                              875.29
                                                           ]
                                       }
                      }

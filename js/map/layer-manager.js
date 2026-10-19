@@ -529,6 +529,109 @@ export class LayerManager {
       };
     }
 
+    // 5.1. PBZPA - Superfícies Limitadoras de Obstáculos do Aeroporto Lauro Kurtz
+    if (config.id === 'pbzpa_superficies') {
+      const hexToRgba = (hex, alpha) => {
+        let c = (hex || '#3b82f6').replace('#', '');
+        if (c.length === 3) c = c.split('').map(x => x + x).join('');
+        const num = parseInt(c, 16);
+        return `rgba(${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255}, ${alpha})`;
+      };
+
+      return (feature, resolution) => {
+        const hex = feature.get('cor_sugerida') || '#0284c7';
+        const nome = feature.get('nome') || '';
+        const cota = feature.get('gabarito_rotulo') || '';
+        const showLabel = resolution < 75;
+
+        let strokeDash = undefined;
+        let strokeWidth = 2.0;
+
+        if (nome === 'Horizontal Externa') {
+          strokeDash = [8, 6];
+          strokeWidth = 2.2;
+        } else if (nome === 'Cônica') {
+          strokeDash = [6, 4];
+          strokeWidth = 2.0;
+        } else if (nome === 'Pista' || nome === 'Faixa de Pista') {
+          strokeWidth = 2.6;
+        }
+
+        return new ol.style.Style({
+          fill: new ol.style.Fill({
+            color: hexToRgba(hex, 0.20)
+          }),
+          stroke: new ol.style.Stroke({
+            color: hex,
+            width: strokeWidth,
+            lineDash: strokeDash
+          }),
+          text: showLabel ? new ol.style.Text({
+            text: `${nome} (${cota})`,
+            font: 'bold 11px "Inter", sans-serif',
+            fill: new ol.style.Fill({ color: '#ffffff' }),
+            stroke: new ol.style.Stroke({ color: '#0f172a', width: 3.0 }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
+            padding: [2, 6, 2, 6],
+            overflow: false
+          }) : null
+        });
+      };
+    }
+
+    // 5.2. PBZPA - Cotas Altimétricas Oficiais (Pontos de Referência Altimétrica)
+    if (config.id === 'pbzpa_cotas_rotulos') {
+      return (feature, resolution) => {
+        const rotulo = feature.get('rotulo') || feature.get('nome') || '';
+        const showLabel = resolution < 80;
+
+        return new ol.style.Style({
+          image: new ol.style.Circle({
+            radius: 4.5,
+            fill: new ol.style.Fill({ color: '#0284c7' }),
+            stroke: new ol.style.Stroke({ color: '#ffffff', width: 1.8 })
+          }),
+          text: showLabel ? new ol.style.Text({
+            text: `📍 ${rotulo}`,
+            offsetY: -15,
+            font: 'bold 11px "JetBrains Mono", "Inter", sans-serif',
+            fill: new ol.style.Fill({ color: '#0369a1' }),
+            stroke: new ol.style.Stroke({ color: '#ffffff', width: 3.2 }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(255, 255, 255, 0.95)' }),
+            backgroundStroke: new ol.style.Stroke({ color: '#0284c7', width: 1.2 }),
+            padding: [2, 6, 2, 6]
+          }) : null
+        });
+      };
+    }
+
+    // 5.3. PBZPA - Linhas Operacionais e Voo Visual (SPVV)
+    if (config.id === 'pbzpa_linhas_operacionais') {
+      return (feature, resolution) => {
+        const hex = feature.get('cor_sugerida') || '#f59e0b';
+        const nome = feature.get('nome') || '';
+        const showLabel = resolution < 35;
+
+        const isDash = nome.includes('SPVV') || nome.includes('Transição');
+
+        return new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: hex,
+            width: 2.2,
+            lineDash: isDash ? [6, 4] : undefined
+          }),
+          text: showLabel ? new ol.style.Text({
+            text: nome,
+            font: '600 10.5px "Inter", sans-serif',
+            fill: new ol.style.Fill({ color: '#ffffff' }),
+            stroke: new ol.style.Stroke({ color: '#0f172a', width: 2.8 }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
+            padding: [2, 5, 2, 5]
+          }) : null
+        });
+      };
+    }
+
     if (config.geometryType === 'Point' || config.geometryType === 'MultiPoint') {
       return (feature, resolution) => {
         const rawName = feature.get('nome') || feature.get('NOME') || feature.get('Nome') || '';
