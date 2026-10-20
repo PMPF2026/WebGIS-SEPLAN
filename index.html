@@ -67,11 +67,11 @@
           <span>Métricas</span>
         </button>
 
-        <button class="header-btn" id="btn-import-layer" title="Adicionar arquivo GeoJSON ou KML local">
+        <button class="header-btn" id="btn-import-layer" title="Adicionar arquivo GeoJSON, KML, KMZ, Shapefile (ZIP) ou DXF local">
           <i class="lucide-upload"></i>
           <span>Importar Camada</span>
         </button>
-        <input type="file" id="input-import-geojson" accept=".geojson,.json,.kml" style="display: none;" />
+        <input type="file" id="input-import-geojson" accept=".geojson,.json,.kml,.kmz,.zip,.shp,.dxf" style="display: none;" />
 
         <button class="header-btn" id="btn-export-map-png" title="Exportar imagem do mapa em alta resolução">
           <i class="lucide-camera"></i>
@@ -897,6 +897,10 @@
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.11.0/proj4.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+  <!-- Bibliotecas de Importação de Arquivos: KMZ (JSZip), Shapefile (shpjs) e AutoCAD (dxf-parser) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/shpjs@latest/dist/shp.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dxf-parser@1.1.2/dist/dxf-parser.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ol@v10.3.1/dist/ol.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
