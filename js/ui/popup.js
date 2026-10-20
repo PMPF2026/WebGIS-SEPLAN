@@ -101,6 +101,7 @@ export class PopupUI {
     if (layerConfig.group === 'equipamentos_uso_coletivo') tagClass = 'tag-equipamentos-coletivo';
     if (layerConfig.group === 'restricoes_aeronauticas') tagClass = 'tag-aeroporto';
     if (layerConfig.group === 'educacao') tagClass = 'tag-educacao';
+    if (layerConfig.group === 'camada_customizada' || layerConfig.isCustomLayer) tagClass = 'tag-custom-layer';
 
     // 3. Multi-feature pagination header if > 1 feature
     let paginationHtml = '';

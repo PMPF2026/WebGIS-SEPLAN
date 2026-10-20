@@ -1,573 +1,667 @@
-/**
- * Portal Defesa Civil Passo Fundo - WebGIS Institucional
- * Advanced Sidebar Controller: Layer Filter, Operational Presets & Solo Mode
- */
-
-import { LAYER_GROUPS, LAYERS_CONFIG, OPERATIONAL_PRESETS } from '../config/layers.config.js';
-import { Notification } from './notification.js';
-
-export class SidebarUI {
-  constructor(layerManager, legendUI, mapEngine) {
-    this.layerManager = layerManager;
-    this.legendUI = legendUI;
-    this.mapEngine = mapEngine;
-    
-    this.sidebarElement = document.getElementById('sidebar');
-    this.toggleBtn = document.getElementById('sidebar-toggle-btn');
-    this.layerTreeContainer = document.getElementById('layer-tree-container');
-    this.layerFilterInput = document.getElementById('layer-filter-input');
-    
-    this.activeTab = 'camadas';
-    this.isCollapsed = false;
-
-    this.init();
-  }
-
-  init() {
-    this.setupCollapseToggle();
-    this.setupTabs();
-    this.setupPresets();
-    this.renderLayerTree();
-    this.setupQuickActions();
-    this.setupLayerFilter();
-  }
-
-  setupCollapseToggle() {
-    if (!this.toggleBtn || !this.sidebarElement) return;
-
-    this.toggleBtn.addEventListener('click', () => {
-      this.isCollapsed = !this.isCollapsed;
-      this.sidebarElement.classList.toggle('collapsed', this.isCollapsed);
-      
-      const icon = this.toggleBtn.querySelector('i');
-      if (icon) {
-        icon.className = this.isCollapsed ? 'lucide-chevron-right' : 'lucide-chevron-left';
-      }
-
-      setTimeout(() => {
-        this.mapEngine.getOlMap().updateSize();
-      }, 300);
-    });
-  }
-
-  setupTabs() {
-    const tabButtons = document.querySelectorAll('.sidebar-tab-btn');
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tabId = btn.getAttribute('data-tab');
-        this.switchTab(tabId);
-      });
-    });
-  }
-
-  switchTab(tabId) {
-    if (this.isCollapsed && this.sidebarElement) {
-      this.isCollapsed = false;
-      this.sidebarElement.classList.remove('collapsed');
-      const icon = this.toggleBtn ? this.toggleBtn.querySelector('i') : null;
-      if (icon) icon.className = 'lucide-chevron-left';
-      setTimeout(() => {
-        if (this.mapEngine && this.mapEngine.getOlMap()) {
-          this.mapEngine.getOlMap().updateSize();
-        }
-      }, 300);
-    }
-
-    this.activeTab = tabId;
-
-    document.querySelectorAll('.sidebar-tab-btn').forEach(btn => {
-      const isTarget = btn.getAttribute('data-tab') === tabId;
-      btn.classList.toggle('active', isTarget);
-    });
-
-    document.querySelectorAll('.tab-panel').forEach(panel => {
-      const panelId = panel.getAttribute('id');
-      const isTarget = panelId === `tab-${tabId}` || panelId === tabId;
-      panel.classList.toggle('active', isTarget);
-    });
-
-    if (tabId === 'legenda') {
-      this.legendUI.render();
-    } else if (tabId === 'dashboard' && window.webGis && window.webGis.dashboardUI) {
-      window.webGis.dashboardUI.render();
-    } else if (tabId === 'metricas' && window.webGis && window.webGis.metricsUI) {
-      window.webGis.metricsUI.onTabActivated();
-    } else if (tabId === 'tab-censo-comparativo' || tabId === 'censo-comparativo') {
-      window.dispatchEvent(new CustomEvent('comparativo:tab-opened'));
-    } else {
-      window.dispatchEvent(new CustomEvent('comparativo:tab-closed'));
-    }
-
-    const censoHeaderBtn = document.getElementById('btn-open-censo-comparativo');
-    if (censoHeaderBtn) {
-      censoHeaderBtn.classList.toggle('active', tabId === 'tab-censo-comparativo' || tabId === 'censo-comparativo');
-    }
-
-    const analisesHeaderBtn = document.getElementById('btn-open-analises-territoriais');
-    if (analisesHeaderBtn) {
-      analisesHeaderBtn.classList.toggle('active', tabId === 'tab-analises-territoriais' || tabId === 'analises-territoriais');
-    }
-  }
-
-  setupPresets() {
-    const presetContainer = document.getElementById('preset-container');
-    if (!presetContainer) return;
-
-    presetContainer.innerHTML = '';
-    OPERATIONAL_PRESETS.forEach(preset => {
-      const btn = document.createElement('button');
-      btn.className = 'preset-badge-btn';
-      btn.innerHTML = `<span>${preset.name}</span>`;
-      btn.title = preset.description;
-
-      btn.addEventListener('click', async () => {
-        document.querySelectorAll('.preset-badge-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        Notification.info(`Aplicando ${preset.name}...`);
-        await this.layerManager.applyPreset(preset);
-        this.legendUI.render();
-        this.updateLayerCounters();
-        Notification.success(`Cenário aplicado com sucesso!`);
-      });
-
-      presetContainer.appendChild(btn);
-    });
-  }
-
-  setupLayerFilter() {
-    if (!this.layerFilterInput) return;
-
-    this.layerFilterInput.addEventListener('input', (e) => {
-      const term = e.target.value.toLowerCase().trim();
-      
-      document.querySelectorAll('.layer-item').forEach(item => {
-        const layerName = item.querySelector('.layer-name')?.textContent.toLowerCase() || '';
-        const matches = layerName.includes(term);
-        item.style.display = matches ? 'block' : 'none';
-      });
-
-      // Expand subgroups containing matches
-      document.querySelectorAll('.layer-subgroup').forEach(subgroup => {
-        const hasVisible = Array.from(subgroup.querySelectorAll('.layer-item')).some(i => i.style.display !== 'none');
-        subgroup.style.display = hasVisible ? 'block' : 'none';
-        if (term.length > 0 && hasVisible) {
-          subgroup.classList.add('expanded');
-        }
-      });
-
-      // Expand groups containing matches
-      document.querySelectorAll('.layer-group').forEach(group => {
-        const hasVisible = Array.from(group.querySelectorAll('.layer-item')).some(i => i.style.display !== 'none');
-        group.style.display = hasVisible ? 'block' : 'none';
-        if (term.length > 0 && hasVisible) {
-          group.classList.add('expanded');
-        }
-      });
-    });
-  }
-
-  renderLayerTree() {
-    if (!this.layerTreeContainer) return;
-    this.layerTreeContainer.innerHTML = '';
-
-    LAYER_GROUPS.forEach((group, index) => {
-      const groupLayers = LAYERS_CONFIG.filter(l => l.group === group.id);
-      if (groupLayers.length === 0) return;
-
-      const groupDiv = document.createElement('div');
-      groupDiv.className = `layer-group ${index === 0 || index === 1 ? 'expanded' : ''}`;
-      groupDiv.setAttribute('data-group-id', group.id);
-
-      const hasSubgroups = group.subgroups && group.subgroups.length > 0;
-
-      let groupHeader = `
-        <div class="layer-group-header">
-          <div class="layer-group-title-wrapper">
-            <div class="group-icon ${group.iconClass}">
-              <i class="lucide-${group.iconName}"></i>
-            </div>
-            <div>
-              <span class="layer-group-title">${group.title}</span>
-              <span class="layer-group-count" id="count-group-${group.id}">(${groupLayers.length})</span>
-            </div>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <button class="mini-btn group-toggle-btn" data-group-id="${group.id}" title="Alternar todas as camadas deste grupo" style="padding:2px 6px; font-size:10px;">
-              <i class="lucide-power"></i>
-            </button>
-            <i class="lucide-chevron-down group-chevron"></i>
-          </div>
-        </div>
-      `;
-
-      let groupBody = '<div class="layer-group-body">';
-      if (hasSubgroups) {
-        group.subgroups.forEach(sub => {
-          const subLayers = groupLayers.filter(l => l.subgroup === sub.id);
-          if (subLayers.length === 0) return;
-
-          groupBody += `
-            <div class="layer-subgroup" data-subgroup-id="${sub.id}">
-              <div class="layer-subgroup-header">
-                <div class="layer-subgroup-title-wrapper">
-                  <i class="lucide-${sub.icon || 'folder'}"></i>
-                  <span class="layer-subgroup-title">${sub.title}</span>
-                  <span class="layer-subgroup-count" id="count-subgroup-${sub.id}">(${subLayers.length})</span>
-                </div>
-                <div class="layer-subgroup-actions">
-                  <button class="mini-btn subgroup-toggle-btn" data-subgroup-id="${sub.id}" title="Alternar visibilidade deste subgrupo" style="padding:1px 5px; font-size:9.5px;">
-                    <i class="lucide-power"></i>
-                  </button>
-                  <i class="lucide-chevron-down subgroup-chevron"></i>
-                </div>
-              </div>
-              <div class="layer-subgroup-body">
-                ${subLayers.map(layer => this.createLayerItemHtml(layer)).join('')}
-              </div>
-            </div>
-          `;
-        });
-      } else {
-        groupLayers.forEach(layer => {
-          groupBody += this.createLayerItemHtml(layer);
-        });
-      }
-      groupBody += '</div>';
-
-      groupDiv.innerHTML = groupHeader + groupBody;
-
-      const headerEl = groupDiv.querySelector('.layer-group-header');
-      headerEl.addEventListener('click', (e) => {
-        if (e.target.closest('.group-toggle-btn')) return;
-        groupDiv.classList.toggle('expanded');
-      });
-
-      // Subgroup accordion expand/collapse & toggle
-      if (hasSubgroups) {
-        groupDiv.querySelectorAll('.layer-subgroup-header').forEach(subHeader => {
-          subHeader.addEventListener('click', (e) => {
-            if (e.target.closest('.subgroup-toggle-btn')) return;
-            const subDiv = subHeader.closest('.layer-subgroup');
-            if (subDiv) subDiv.classList.toggle('expanded');
-          });
-        });
-
-        groupDiv.querySelectorAll('.subgroup-toggle-btn').forEach(btn => {
-          btn.addEventListener('click', async (e) => {
-            e.stopPropagation();
-            const subId = btn.getAttribute('data-subgroup-id');
-            const subLayers = groupLayers.filter(l => l.subgroup === subId);
-            const anyVisible = subLayers.some(l => {
-              const olL = this.layerManager.getLayer(l.id);
-              return olL && olL.getVisible();
-            });
-            const targetState = !anyVisible;
-            for (const l of subLayers) {
-              const cb = document.querySelector(`.layer-checkbox[data-layer-id="${l.id}"]`);
-              if (cb) cb.checked = targetState;
-              await this.layerManager.setLayerVisibility(l.id, targetState);
-            }
-            this.legendUI.render();
-            this.updateLayerCounters();
-            Notification.info(`Subgrupo ${targetState ? 'ativado' : 'desativado'}.`);
-          });
-        });
-      }
-
-      // Group toggle button
-      const groupToggleBtn = groupDiv.querySelector('.group-toggle-btn');
-      if (groupToggleBtn) {
-        groupToggleBtn.addEventListener('click', async (e) => {
-          e.stopPropagation();
-          const anyVisible = groupLayers.some(l => {
-            const olL = this.layerManager.getLayer(l.id);
-            return olL && olL.getVisible();
-          });
-          const targetState = !anyVisible;
-          for (const l of groupLayers) {
-            const cb = document.querySelector(`.layer-checkbox[data-layer-id="${l.id}"]`);
-            if (cb) cb.checked = targetState;
-            await this.layerManager.setLayerVisibility(l.id, targetState);
-          }
-          this.legendUI.render();
-          this.updateLayerCounters();
-          Notification.info(`Grupo ${group.title} ${targetState ? 'ativado' : 'desativado'}.`);
-        });
-      }
-
-      this.layerTreeContainer.appendChild(groupDiv);
-    });
-
-    this.bindLayerEvents();
-    this.updateLayerCounters();
-
-    if (window.lucide && typeof window.lucide.createIcons === 'function') {
-      window.lucide.createIcons();
-    }
-  }
-
-  createLayerItemHtml(layer) {
-    const s = layer.style || {};
-    const previewColor = s.previewColor || s.strokeColor || '#ff7800';
-
-    return `
-      <div class="layer-item" data-layer-id="${layer.id}">
-        <div class="layer-header-row">
-          <label class="layer-toggle-label">
-            <input type="checkbox" class="layer-checkbox" data-layer-id="${layer.id}" ${layer.defaultVisible ? 'checked' : ''} />
-            <span class="layer-symbology-preview" style="background-color: ${previewColor};"></span>
-            <span class="layer-name">${layer.name}</span>
-          </label>
-          <div class="layer-actions">
-            <button class="layer-action-btn solo-layer-btn" data-layer-id="${layer.id}" title="Modo Solo: Exibir apenas esta camada">
-              <i class="lucide-eye"></i>
-            </button>
-            <button class="layer-action-btn zoom-layer-btn" data-layer-id="${layer.id}" title="Aproximar para a camada">
-              <i class="lucide-maximize-2"></i>
-            </button>
-            <button class="layer-action-btn toggle-subcontrols-btn" data-layer-id="${layer.id}" title="Opções de transparência">
-              <i class="lucide-sliders"></i>
-            </button>
-          </div>
-        </div>
-        ${this.createColorSelectorHtml(layer)}
-
-        <div class="layer-subcontrols" id="subcontrols-${layer.id}" style="display: none;">
-          <div class="opacity-slider-row">
-            <span>Opacidade:</span>
-            <input type="range" min="0" max="100" value="${(layer.defaultOpacity || 1) * 100}" class="opacity-slider" data-layer-id="${layer.id}" />
-            <span class="opacity-val">${Math.round((layer.defaultOpacity || 1) * 100)}%</span>
-          </div>
-          <div class="layer-meta-badge" style="display:flex; flex-direction:column; gap:3px; font-size:10.5px; margin-top:6px; line-height:1.4;">
-            <div><i class="lucide-database" style="font-size:10px; color:var(--dc-orange-primary);"></i> <strong>Fonte:</strong> ${layer.source || 'Prefeitura Municipal de Passo Fundo'}</div>
-            ${layer.refDate ? `<div><i class="lucide-calendar" style="font-size:10px; color:#38bdf8;"></i> <strong>Referência:</strong> ${layer.refDate}</div>` : ''}
-            <div><i class="lucide-file-text" style="font-size:10px; color:var(--text-muted);"></i> <span>${layer.fileName}</span></div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  bindLayerEvents() {
-    // Checkbox toggles
-    document.querySelectorAll('.layer-checkbox').forEach(cb => {
-      cb.addEventListener('change', async (e) => {
-        const layerId = e.target.getAttribute('data-layer-id');
-        const checked = e.target.checked;
-        
-        try {
-          await this.layerManager.setLayerVisibility(layerId, checked);
-          this.legendUI.render();
-          this.updateLayerCounters();
-          
-          const cfg = this.layerManager.getConfig(layerId);
-          Notification.info(`Camada '${cfg?.name || layerId}' ${checked ? 'ativada' : 'desativada'}.`);
-        } catch (err) {
-          Notification.error(`Erro ao ativar camada: ${err.message}`);
-          e.target.checked = false;
-        }
-      });
-    });
-
-    // Solo Button: Turns off all other layers except this one
-    document.querySelectorAll('.solo-layer-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        const targetId = btn.getAttribute('data-layer-id');
-        
-        for (const cfg of LAYERS_CONFIG) {
-          const isTarget = (cfg.id === targetId);
-          const cb = document.querySelector(`.layer-checkbox[data-layer-id="${cfg.id}"]`);
-          if (cb) cb.checked = isTarget;
-          await this.layerManager.setLayerVisibility(cfg.id, isTarget);
-        }
-
-        this.layerManager.zoomToLayer(targetId);
-        this.legendUI.render();
-        this.updateLayerCounters();
-        const cfg = this.layerManager.getConfig(targetId);
-        Notification.info(`Modo Solo ativado: '${cfg.name}'.`);
-      });
-    });
-
-    // Zoom Buttons
-    document.querySelectorAll('.zoom-layer-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const layerId = btn.getAttribute('data-layer-id');
-        this.layerManager.zoomToLayer(layerId);
-      });
-    });
-
-    // Subcontrols
-    document.querySelectorAll('.toggle-subcontrols-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const layerId = btn.getAttribute('data-layer-id');
-        const sub = document.getElementById(`subcontrols-${layerId}`);
-        if (sub) {
-          sub.style.display = (sub.style.display === 'none') ? 'flex' : 'none';
-        }
-      });
-    });
-
-    // Opacity Sliders
-    document.querySelectorAll('.opacity-slider').forEach(slider => {
-      slider.addEventListener('input', (e) => {
-        const layerId = e.target.getAttribute('data-layer-id');
-        const val = parseInt(e.target.value, 10);
-        const opacity = val / 100;
-        
-        this.layerManager.setLayerOpacity(layerId, opacity);
-        
-        const parent = slider.closest('.opacity-slider-row');
-        if (parent) {
-          const valLabel = parent.querySelector('.opacity-val');
-          if (valLabel) valLabel.textContent = `${val}%`;
-        }
-      });
-    });
-
-    // Contour Color Selector buttons (Instant dynamic switch)
-    document.querySelectorAll('.contour-color-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const layerId = btn.getAttribute('data-layer-id');
-        const color = btn.getAttribute('data-color');
-        if (!color) return;
-
-        // Update active class among sibling buttons
-        const parent = btn.closest('.contour-color-buttons');
-        if (parent) {
-          parent.querySelectorAll('.contour-color-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-        }
-
-        // Update layer manager styling instantly
-        if (this.layerManager && typeof this.layerManager.setContourColor === 'function') {
-          this.layerManager.setContourColor(color);
-        }
-
-        // Update symbology preview swatch in layer item
-        const itemEl = document.querySelector(`.layer-item[data-layer-id="${layerId}"]`);
-        if (itemEl) {
-          const previewEl = itemEl.querySelector('.layer-symbology-preview');
-          if (previewEl) previewEl.style.backgroundColor = color;
-        }
-
-        // Refresh legend tab if rendered
-        if (this.legendUI) {
-          this.legendUI.render();
-        }
-
-        const colorName = color === '#795548' ? 'Marrom' : (color === '#222222' ? 'Preto' : 'Vermelho');
-        Notification.info(`Cor das curvas de nível alterada para ${colorName} (${color}).`);
-      });
-    });
-  }
-
-  createColorSelectorHtml(layer) {
-    if (!layer.colorOptions || !Array.isArray(layer.colorOptions)) return '';
-    const activeColor = layer.contourColor || layer.style?.strokeColor || '#795548';
-
-    return `
-      <div class="contour-color-container" id="contour-colors-${layer.id}">
-        <span class="contour-color-title">Cor da isolinha:</span>
-        <div class="contour-color-buttons">
-          <button type="button" class="contour-color-btn ${activeColor === '#795548' ? 'active' : ''}" data-layer-id="${layer.id}" data-color="#795548" title="Marrom (#795548) — Topografia tradicional">
-            <span class="contour-color-swatch" style="background-color: #795548;"></span>
-            <span class="contour-color-name">Marrom</span>
-          </button>
-          <button type="button" class="contour-color-btn ${activeColor === '#222222' ? 'active' : ''}" data-layer-id="${layer.id}" data-color="#222222" title="Preto (#222222) — Alto contraste">
-            <span class="contour-color-swatch" style="background-color: #222222;"></span>
-            <span class="contour-color-name">Preto</span>
-          </button>
-          <button type="button" class="contour-color-btn ${activeColor === '#D32F2F' ? 'active' : ''}" data-layer-id="${layer.id}" data-color="#D32F2F" title="Vermelho (#D32F2F) — Destaque visual">
-            <span class="contour-color-swatch" style="background-color: #D32F2F;"></span>
-            <span class="contour-color-name">Vermelho</span>
-          </button>
-        </div>
-      </div>
-    `;
-  }
-
-  updateLayerCounters() {
-    LAYER_GROUPS.forEach(group => {
-      const countEl = document.getElementById(`count-group-${group.id}`);
-      if (!countEl) return;
-
-      const groupLayers = LAYERS_CONFIG.filter(l => l.group === group.id);
-      const activeCount = groupLayers.filter(l => {
-        const layer = this.layerManager.getLayer(l.id);
-        return layer && layer.getVisible();
-      }).length;
-
-      countEl.textContent = `(${activeCount}/${groupLayers.length} ativas)`;
-      countEl.style.color = activeCount > 0 ? 'var(--dc-orange-primary)' : 'var(--text-muted)';
-
-      if (group.subgroups) {
-        group.subgroups.forEach(sub => {
-          const subCountEl = document.getElementById(`count-subgroup-${sub.id}`);
-          if (!subCountEl) return;
-          const subLayers = groupLayers.filter(l => l.subgroup === sub.id);
-          const subActiveCount = subLayers.filter(l => {
-            const layer = this.layerManager.getLayer(l.id);
-            return layer && layer.getVisible();
-          }).length;
-          subCountEl.textContent = `(${subActiveCount}/${subLayers.length})`;
-          subCountEl.style.color = subActiveCount > 0 ? '#22c55e' : 'var(--text-muted)';
-        });
-      }
-    });
-  }
-
-  setupQuickActions() {
-    const expandAllBtn = document.getElementById('btn-expand-all-layers');
-    const collapseAllBtn = document.getElementById('btn-collapse-all-groups') || document.getElementById('btn-collapse-all-layers');
-    const turnAllOffBtn = document.getElementById('btn-toggle-all-layers') || document.getElementById('btn-turn-all-off');
-
-    if (expandAllBtn) {
-      expandAllBtn.addEventListener('click', () => {
-        document.querySelectorAll('.layer-group').forEach(g => g.classList.add('expanded'));
-      });
-    }
-
-    if (collapseAllBtn) {
-      collapseAllBtn.addEventListener('click', () => {
-        const groups = document.querySelectorAll('.layer-group');
-        const anyExpanded = Array.from(groups).some(g => g.classList.contains('expanded'));
-        if (anyExpanded) {
-          groups.forEach(g => g.classList.remove('expanded'));
-          collapseAllBtn.innerHTML = '<i class="lucide-chevrons-down-up"></i> Expandir';
-        } else {
-          groups.forEach(g => g.classList.add('expanded'));
-          collapseAllBtn.innerHTML = '<i class="lucide-chevrons-down-up"></i> Recolher';
-        }
-        if (window.lucide && typeof window.lucide.createIcons === 'function') {
-          window.lucide.createIcons();
-        }
-      });
-    }
-
-    if (turnAllOffBtn) {
-      turnAllOffBtn.addEventListener('click', async () => {
-        let turnedOffCount = 0;
-        for (const cfg of LAYERS_CONFIG) {
-          const cb = document.querySelector(`.layer-checkbox[data-layer-id="${cfg.id}"]`);
-          if (cb && cb.checked) {
-            cb.checked = false;
-            await this.layerManager.setLayerVisibility(cfg.id, false);
-            turnedOffCount++;
-          }
-        }
-        this.legendUI.render();
-        this.updateLayerCounters();
-        if (turnedOffCount > 0) {
-          Notification.info(`${turnedOffCount} camada(s) temática(s) desativada(s).`);
-        } else {
-          Notification.info('Nenhuma camada ativa no momento.');
-        }
-      });
-    }
-  }
-}
+/**
+ * Portal Defesa Civil Passo Fundo - WebGIS Institucional
+ * Advanced Sidebar Controller: Layer Filter, Operational Presets & Solo Mode
+ */
+
+import { LAYER_GROUPS, LAYERS_CONFIG, OPERATIONAL_PRESETS } from '../config/layers.config.js';
+import { Notification } from './notification.js';
+
+export class SidebarUI {
+  constructor(layerManager, legendUI, mapEngine) {
+    this.layerManager = layerManager;
+    this.legendUI = legendUI;
+    this.mapEngine = mapEngine;
+    
+    this.sidebarElement = document.getElementById('sidebar');
+    this.toggleBtn = document.getElementById('sidebar-toggle-btn');
+    this.layerTreeContainer = document.getElementById('layer-tree-container');
+    this.layerFilterInput = document.getElementById('layer-filter-input');
+    
+    this.activeTab = 'camadas';
+    this.isCollapsed = false;
+
+    this.init();
+  }
+
+  init() {
+    this.setupCollapseToggle();
+    this.setupTabs();
+    this.setupPresets();
+    this.renderLayerTree();
+    this.setupQuickActions();
+    this.setupLayerFilter();
+
+    window.addEventListener('custom-layers:updated', () => {
+      this.renderLayerTree();
+    });
+  }
+
+  setupCollapseToggle() {
+    if (!this.toggleBtn || !this.sidebarElement) return;
+
+    this.toggleBtn.addEventListener('click', () => {
+      this.isCollapsed = !this.isCollapsed;
+      this.sidebarElement.classList.toggle('collapsed', this.isCollapsed);
+      
+      const icon = this.toggleBtn.querySelector('i');
+      if (icon) {
+        icon.className = this.isCollapsed ? 'lucide-chevron-right' : 'lucide-chevron-left';
+      }
+
+      setTimeout(() => {
+        this.mapEngine.getOlMap().updateSize();
+      }, 300);
+    });
+  }
+
+  setupTabs() {
+    const tabButtons = document.querySelectorAll('.sidebar-tab-btn');
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+        this.switchTab(tabId);
+      });
+    });
+  }
+
+  switchTab(tabId) {
+    if (this.isCollapsed && this.sidebarElement) {
+      this.isCollapsed = false;
+      this.sidebarElement.classList.remove('collapsed');
+      const icon = this.toggleBtn ? this.toggleBtn.querySelector('i') : null;
+      if (icon) icon.className = 'lucide-chevron-left';
+      setTimeout(() => {
+        if (this.mapEngine && this.mapEngine.getOlMap()) {
+          this.mapEngine.getOlMap().updateSize();
+        }
+      }, 300);
+    }
+
+    this.activeTab = tabId;
+
+    document.querySelectorAll('.sidebar-tab-btn').forEach(btn => {
+      const isTarget = btn.getAttribute('data-tab') === tabId;
+      btn.classList.toggle('active', isTarget);
+    });
+
+    document.querySelectorAll('.tab-panel').forEach(panel => {
+      const panelId = panel.getAttribute('id');
+      const isTarget = panelId === `tab-${tabId}` || panelId === tabId;
+      panel.classList.toggle('active', isTarget);
+    });
+
+    if (tabId === 'legenda') {
+      this.legendUI.render();
+    } else if (tabId === 'dashboard' && window.webGis && window.webGis.dashboardUI) {
+      window.webGis.dashboardUI.render();
+    } else if (tabId === 'metricas' && window.webGis && window.webGis.metricsUI) {
+      window.webGis.metricsUI.onTabActivated();
+    } else if (tabId === 'tab-censo-comparativo' || tabId === 'censo-comparativo') {
+      window.dispatchEvent(new CustomEvent('comparativo:tab-opened'));
+    } else {
+      window.dispatchEvent(new CustomEvent('comparativo:tab-closed'));
+    }
+
+    const censoHeaderBtn = document.getElementById('btn-open-censo-comparativo');
+    if (censoHeaderBtn) {
+      censoHeaderBtn.classList.toggle('active', tabId === 'tab-censo-comparativo' || tabId === 'censo-comparativo');
+    }
+
+    const analisesHeaderBtn = document.getElementById('btn-open-analises-territoriais');
+    if (analisesHeaderBtn) {
+      analisesHeaderBtn.classList.toggle('active', tabId === 'tab-analises-territoriais' || tabId === 'analises-territoriais');
+    }
+  }
+
+  setupPresets() {
+    const presetContainer = document.getElementById('preset-container');
+    if (!presetContainer) return;
+
+    presetContainer.innerHTML = '';
+    OPERATIONAL_PRESETS.forEach(preset => {
+      const btn = document.createElement('button');
+      btn.className = 'preset-badge-btn';
+      btn.innerHTML = `<span>${preset.name}</span>`;
+      btn.title = preset.description;
+
+      btn.addEventListener('click', async () => {
+        document.querySelectorAll('.preset-badge-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        Notification.info(`Aplicando ${preset.name}...`);
+        await this.layerManager.applyPreset(preset);
+        this.legendUI.render();
+        this.updateLayerCounters();
+        Notification.success(`Cenário aplicado com sucesso!`);
+      });
+
+      presetContainer.appendChild(btn);
+    });
+  }
+
+  setupLayerFilter() {
+    if (!this.layerFilterInput) return;
+
+    this.layerFilterInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      
+      document.querySelectorAll('.layer-item').forEach(item => {
+        const layerName = item.querySelector('.layer-name')?.textContent.toLowerCase() || '';
+        const matches = layerName.includes(term);
+        item.style.display = matches ? 'block' : 'none';
+      });
+
+      // Expand subgroups containing matches
+      document.querySelectorAll('.layer-subgroup').forEach(subgroup => {
+        const hasVisible = Array.from(subgroup.querySelectorAll('.layer-item')).some(i => i.style.display !== 'none');
+        subgroup.style.display = hasVisible ? 'block' : 'none';
+        if (term.length > 0 && hasVisible) {
+          subgroup.classList.add('expanded');
+        }
+      });
+
+      // Expand groups containing matches
+      document.querySelectorAll('.layer-group').forEach(group => {
+        const hasVisible = Array.from(group.querySelectorAll('.layer-item')).some(i => i.style.display !== 'none');
+        group.style.display = hasVisible ? 'block' : 'none';
+        if (term.length > 0 && hasVisible) {
+          group.classList.add('expanded');
+        }
+      });
+    });
+  }
+
+  renderLayerTree() {
+    if (!this.layerTreeContainer) return;
+    this.layerTreeContainer.innerHTML = '';
+
+    // Renderizar grupo de camadas importadas pelo usuário (KML, KMZ, SHP, DXF, GeoJSON)
+    if (this.layerManager && typeof this.layerManager.getCustomLayersList === 'function') {
+      const customLayers = this.layerManager.getCustomLayersList();
+      if (customLayers && customLayers.length > 0) {
+        const customGroupDiv = document.createElement('div');
+        customGroupDiv.className = 'layer-group expanded custom-layers-container';
+        customGroupDiv.style.border = '1.5px solid #0284c7';
+        customGroupDiv.style.background = 'rgba(2, 132, 199, 0.08)';
+        customGroupDiv.style.borderRadius = 'var(--radius-md)';
+        customGroupDiv.style.marginBottom = '14px';
+
+        let customRows = customLayers.map(cl => `
+          <div class="custom-layer-item" style="display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.08); background:rgba(15,23,42,0.6); margin-bottom:4px; border-radius:4px;">
+            <div style="display:flex; align-items:center; gap:8px; overflow:hidden; flex:1;">
+              <input type="checkbox" class="custom-layer-cb" data-custom-id="${cl.id}" ${cl.visible ? 'checked' : ''} style="cursor:pointer; accent-color:#0284c7;">
+              <span style="display:inline-block; width:12px; height:12px; border-radius:3px; background:${cl.color}; flex-shrink:0;"></span>
+              <div style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                <span style="font-size:12px; font-weight:700; color:#ffffff; display:block; text-overflow:ellipsis; overflow:hidden;" title="${cl.name}">${cl.name}</span>
+                <span style="font-size:10px; color:#38bdf8;">${cl.formatType} &bull; ${cl.featureCount} feição(ões)</span>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:4px; margin-left:6px; flex-shrink:0;">
+              <button class="mini-btn btn-custom-zoom" data-custom-id="${cl.id}" title="Aproximar para esta camada" style="padding:3px 6px; background:rgba(2, 132, 199, 0.2); border-color:#0284c7; color:#38bdf8; cursor:pointer;">
+                <i class="lucide-zoom-in"></i>
+              </button>
+              <button class="mini-btn btn-custom-remove" data-custom-id="${cl.id}" title="Excluir camada importada" style="padding:3px 6px; background:rgba(239, 68, 68, 0.2); border-color:#ef4444; color:#f87171; cursor:pointer;">
+                <i class="lucide-trash-2"></i>
+              </button>
+            </div>
+          </div>
+        `).join('');
+
+        customGroupDiv.innerHTML = `
+          <div class="layer-group-header" style="background: rgba(2, 132, 199, 0.25); border-bottom: 1px solid rgba(2, 132, 199, 0.35);">
+            <div class="layer-group-title-wrapper">
+              <div class="group-icon" style="background: #0284c7;">
+                <i class="lucide-folder-up"></i>
+              </div>
+              <div>
+                <span class="layer-group-title" style="color:#ffffff;">📁 Camadas do Usuário</span>
+                <span class="layer-group-count">(${customLayers.length})</span>
+              </div>
+            </div>
+            <i class="lucide-chevron-down group-chevron"></i>
+          </div>
+          <div class="layer-group-body" style="padding: 8px 10px; display: block;">
+            ${customRows}
+          </div>
+        `;
+
+        this.layerTreeContainer.appendChild(customGroupDiv);
+
+        // Bind events
+        customGroupDiv.querySelectorAll('.custom-layer-cb').forEach(cb => {
+          cb.addEventListener('change', (e) => {
+            const id = e.target.dataset.customId;
+            this.layerManager.setCustomLayerVisibility(id, e.target.checked);
+          });
+        });
+
+        customGroupDiv.querySelectorAll('.btn-custom-zoom').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.customId;
+            this.layerManager.zoomToCustomLayer(id);
+          });
+        });
+
+        customGroupDiv.querySelectorAll('.btn-custom-remove').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.customId;
+            this.layerManager.removeCustomLayer(id);
+            this.renderLayerTree();
+            Notification.info('Camada removida do mapa.');
+          });
+        });
+
+        const customHeader = customGroupDiv.querySelector('.layer-group-header');
+        customHeader.addEventListener('click', (e) => {
+          if (e.target.closest('button')) return;
+          customGroupDiv.classList.toggle('expanded');
+          const body = customGroupDiv.querySelector('.layer-group-body');
+          if (body) {
+            body.style.display = customGroupDiv.classList.contains('expanded') ? 'block' : 'none';
+          }
+        });
+      }
+    }
+
+    LAYER_GROUPS.forEach((group, index) => {
+      const groupLayers = LAYERS_CONFIG.filter(l => l.group === group.id);
+      if (groupLayers.length === 0) return;
+
+      const groupDiv = document.createElement('div');
+      groupDiv.className = `layer-group ${index === 0 || index === 1 ? 'expanded' : ''}`;
+      groupDiv.setAttribute('data-group-id', group.id);
+
+      const hasSubgroups = group.subgroups && group.subgroups.length > 0;
+
+      let groupHeader = `
+        <div class="layer-group-header">
+          <div class="layer-group-title-wrapper">
+            <div class="group-icon ${group.iconClass}">
+              <i class="lucide-${group.iconName}"></i>
+            </div>
+            <div>
+              <span class="layer-group-title">${group.title}</span>
+              <span class="layer-group-count" id="count-group-${group.id}">(${groupLayers.length})</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button class="mini-btn group-toggle-btn" data-group-id="${group.id}" title="Alternar todas as camadas deste grupo" style="padding:2px 6px; font-size:10px;">
+              <i class="lucide-power"></i>
+            </button>
+            <i class="lucide-chevron-down group-chevron"></i>
+          </div>
+        </div>
+      `;
+
+      let groupBody = '<div class="layer-group-body">';
+      if (hasSubgroups) {
+        group.subgroups.forEach(sub => {
+          const subLayers = groupLayers.filter(l => l.subgroup === sub.id);
+          if (subLayers.length === 0) return;
+
+          groupBody += `
+            <div class="layer-subgroup" data-subgroup-id="${sub.id}">
+              <div class="layer-subgroup-header">
+                <div class="layer-subgroup-title-wrapper">
+                  <i class="lucide-${sub.icon || 'folder'}"></i>
+                  <span class="layer-subgroup-title">${sub.title}</span>
+                  <span class="layer-subgroup-count" id="count-subgroup-${sub.id}">(${subLayers.length})</span>
+                </div>
+                <div class="layer-subgroup-actions">
+                  <button class="mini-btn subgroup-toggle-btn" data-subgroup-id="${sub.id}" title="Alternar visibilidade deste subgrupo" style="padding:1px 5px; font-size:9.5px;">
+                    <i class="lucide-power"></i>
+                  </button>
+                  <i class="lucide-chevron-down subgroup-chevron"></i>
+                </div>
+              </div>
+              <div class="layer-subgroup-body">
+                ${subLayers.map(layer => this.createLayerItemHtml(layer)).join('')}
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        groupLayers.forEach(layer => {
+          groupBody += this.createLayerItemHtml(layer);
+        });
+      }
+      groupBody += '</div>';
+
+      groupDiv.innerHTML = groupHeader + groupBody;
+
+      const headerEl = groupDiv.querySelector('.layer-group-header');
+      headerEl.addEventListener('click', (e) => {
+        if (e.target.closest('.group-toggle-btn')) return;
+        groupDiv.classList.toggle('expanded');
+      });
+
+      // Subgroup accordion expand/collapse & toggle
+      if (hasSubgroups) {
+        groupDiv.querySelectorAll('.layer-subgroup-header').forEach(subHeader => {
+          subHeader.addEventListener('click', (e) => {
+            if (e.target.closest('.subgroup-toggle-btn')) return;
+            const subDiv = subHeader.closest('.layer-subgroup');
+            if (subDiv) subDiv.classList.toggle('expanded');
+          });
+        });
+
+        groupDiv.querySelectorAll('.subgroup-toggle-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const subId = btn.getAttribute('data-subgroup-id');
+            const subLayers = groupLayers.filter(l => l.subgroup === subId);
+            const anyVisible = subLayers.some(l => {
+              const olL = this.layerManager.getLayer(l.id);
+              return olL && olL.getVisible();
+            });
+            const targetState = !anyVisible;
+            for (const l of subLayers) {
+              const cb = document.querySelector(`.layer-checkbox[data-layer-id="${l.id}"]`);
+              if (cb) cb.checked = targetState;
+              await this.layerManager.setLayerVisibility(l.id, targetState);
+            }
+            this.legendUI.render();
+            this.updateLayerCounters();
+            Notification.info(`Subgrupo ${targetState ? 'ativado' : 'desativado'}.`);
+          });
+        });
+      }
+
+      // Group toggle button
+      const groupToggleBtn = groupDiv.querySelector('.group-toggle-btn');
+      if (groupToggleBtn) {
+        groupToggleBtn.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          const anyVisible = groupLayers.some(l => {
+            const olL = this.layerManager.getLayer(l.id);
+            return olL && olL.getVisible();
+          });
+          const targetState = !anyVisible;
+          for (const l of groupLayers) {
+            const cb = document.querySelector(`.layer-checkbox[data-layer-id="${l.id}"]`);
+            if (cb) cb.checked = targetState;
+            await this.layerManager.setLayerVisibility(l.id, targetState);
+          }
+          this.legendUI.render();
+          this.updateLayerCounters();
+          Notification.info(`Grupo ${group.title} ${targetState ? 'ativado' : 'desativado'}.`);
+        });
+      }
+
+      this.layerTreeContainer.appendChild(groupDiv);
+    });
+
+    this.bindLayerEvents();
+    this.updateLayerCounters();
+
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+  }
+
+  createLayerItemHtml(layer) {
+    const s = layer.style || {};
+    const previewColor = s.previewColor || s.strokeColor || '#ff7800';
+
+    return `
+      <div class="layer-item" data-layer-id="${layer.id}">
+        <div class="layer-header-row">
+          <label class="layer-toggle-label">
+            <input type="checkbox" class="layer-checkbox" data-layer-id="${layer.id}" ${layer.defaultVisible ? 'checked' : ''} />
+            <span class="layer-symbology-preview" style="background-color: ${previewColor};"></span>
+            <span class="layer-name">${layer.name}</span>
+          </label>
+          <div class="layer-actions">
+            <button class="layer-action-btn solo-layer-btn" data-layer-id="${layer.id}" title="Modo Solo: Exibir apenas esta camada">
+              <i class="lucide-eye"></i>
+            </button>
+            <button class="layer-action-btn zoom-layer-btn" data-layer-id="${layer.id}" title="Aproximar para a camada">
+              <i class="lucide-maximize-2"></i>
+            </button>
+            <button class="layer-action-btn toggle-subcontrols-btn" data-layer-id="${layer.id}" title="Opções de transparência">
+              <i class="lucide-sliders"></i>
+            </button>
+          </div>
+        </div>
+        ${this.createColorSelectorHtml(layer)}
+
+        <div class="layer-subcontrols" id="subcontrols-${layer.id}" style="display: none;">
+          <div class="opacity-slider-row">
+            <span>Opacidade:</span>
+            <input type="range" min="0" max="100" value="${(layer.defaultOpacity || 1) * 100}" class="opacity-slider" data-layer-id="${layer.id}" />
+            <span class="opacity-val">${Math.round((layer.defaultOpacity || 1) * 100)}%</span>
+          </div>
+          <div class="layer-meta-badge" style="display:flex; flex-direction:column; gap:3px; font-size:10.5px; margin-top:6px; line-height:1.4;">
+            <div><i class="lucide-database" style="font-size:10px; color:var(--dc-orange-primary);"></i> <strong>Fonte:</strong> ${layer.source || 'Prefeitura Municipal de Passo Fundo'}</div>
+            ${layer.refDate ? `<div><i class="lucide-calendar" style="font-size:10px; color:#38bdf8;"></i> <strong>Referência:</strong> ${layer.refDate}</div>` : ''}
+            <div><i class="lucide-file-text" style="font-size:10px; color:var(--text-muted);"></i> <span>${layer.fileName}</span></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  bindLayerEvents() {
+    // Checkbox toggles
+    document.querySelectorAll('.layer-checkbox').forEach(cb => {
+      cb.addEventListener('change', async (e) => {
+        const layerId = e.target.getAttribute('data-layer-id');
+        const checked = e.target.checked;
+        
+        try {
+          await this.layerManager.setLayerVisibility(layerId, checked);
+          this.legendUI.render();
+          this.updateLayerCounters();
+          
+          const cfg = this.layerManager.getConfig(layerId);
+          Notification.info(`Camada '${cfg?.name || layerId}' ${checked ? 'ativada' : 'desativada'}.`);
+        } catch (err) {
+          Notification.error(`Erro ao ativar camada: ${err.message}`);
+          e.target.checked = false;
+        }
+      });
+    });
+
+    // Solo Button: Turns off all other layers except this one
+    document.querySelectorAll('.solo-layer-btn').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const targetId = btn.getAttribute('data-layer-id');
+        
+        for (const cfg of LAYERS_CONFIG) {
+          const isTarget = (cfg.id === targetId);
+          const cb = document.querySelector(`.layer-checkbox[data-layer-id="${cfg.id}"]`);
+          if (cb) cb.checked = isTarget;
+          await this.layerManager.setLayerVisibility(cfg.id, isTarget);
+        }
+
+        this.layerManager.zoomToLayer(targetId);
+        this.legendUI.render();
+        this.updateLayerCounters();
+        const cfg = this.layerManager.getConfig(targetId);
+        Notification.info(`Modo Solo ativado: '${cfg.name}'.`);
+      });
+    });
+
+    // Zoom Buttons
+    document.querySelectorAll('.zoom-layer-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const layerId = btn.getAttribute('data-layer-id');
+        this.layerManager.zoomToLayer(layerId);
+      });
+    });
+
+    // Subcontrols
+    document.querySelectorAll('.toggle-subcontrols-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const layerId = btn.getAttribute('data-layer-id');
+        const sub = document.getElementById(`subcontrols-${layerId}`);
+        if (sub) {
+          sub.style.display = (sub.style.display === 'none') ? 'flex' : 'none';
+        }
+      });
+    });
+
+    // Opacity Sliders
+    document.querySelectorAll('.opacity-slider').forEach(slider => {
+      slider.addEventListener('input', (e) => {
+        const layerId = e.target.getAttribute('data-layer-id');
+        const val = parseInt(e.target.value, 10);
+        const opacity = val / 100;
+        
+        this.layerManager.setLayerOpacity(layerId, opacity);
+        
+        const parent = slider.closest('.opacity-slider-row');
+        if (parent) {
+          const valLabel = parent.querySelector('.opacity-val');
+          if (valLabel) valLabel.textContent = `${val}%`;
+        }
+      });
+    });
+
+    // Contour Color Selector buttons (Instant dynamic switch)
+    document.querySelectorAll('.contour-color-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const layerId = btn.getAttribute('data-layer-id');
+        const color = btn.getAttribute('data-color');
+        if (!color) return;
+
+        // Update active class among sibling buttons
+        const parent = btn.closest('.contour-color-buttons');
+        if (parent) {
+          parent.querySelectorAll('.contour-color-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        }
+
+        // Update layer manager styling instantly
+        if (this.layerManager && typeof this.layerManager.setContourColor === 'function') {
+          this.layerManager.setContourColor(color);
+        }
+
+        // Update symbology preview swatch in layer item
+        const itemEl = document.querySelector(`.layer-item[data-layer-id="${layerId}"]`);
+        if (itemEl) {
+          const previewEl = itemEl.querySelector('.layer-symbology-preview');
+          if (previewEl) previewEl.style.backgroundColor = color;
+        }
+
+        // Refresh legend tab if rendered
+        if (this.legendUI) {
+          this.legendUI.render();
+        }
+
+        const colorName = color === '#795548' ? 'Marrom' : (color === '#222222' ? 'Preto' : 'Vermelho');
+        Notification.info(`Cor das curvas de nível alterada para ${colorName} (${color}).`);
+      });
+    });
+  }
+
+  createColorSelectorHtml(layer) {
+    if (!layer.colorOptions || !Array.isArray(layer.colorOptions)) return '';
+    const activeColor = layer.contourColor || layer.style?.strokeColor || '#795548';
+
+    return `
+      <div class="contour-color-container" id="contour-colors-${layer.id}">
+        <span class="contour-color-title">Cor da isolinha:</span>
+        <div class="contour-color-buttons">
+          <button type="button" class="contour-color-btn ${activeColor === '#795548' ? 'active' : ''}" data-layer-id="${layer.id}" data-color="#795548" title="Marrom (#795548) — Topografia tradicional">
+            <span class="contour-color-swatch" style="background-color: #795548;"></span>
+            <span class="contour-color-name">Marrom</span>
+          </button>
+          <button type="button" class="contour-color-btn ${activeColor === '#222222' ? 'active' : ''}" data-layer-id="${layer.id}" data-color="#222222" title="Preto (#222222) — Alto contraste">
+            <span class="contour-color-swatch" style="background-color: #222222;"></span>
+            <span class="contour-color-name">Preto</span>
+          </button>
+          <button type="button" class="contour-color-btn ${activeColor === '#D32F2F' ? 'active' : ''}" data-layer-id="${layer.id}" data-color="#D32F2F" title="Vermelho (#D32F2F) — Destaque visual">
+            <span class="contour-color-swatch" style="background-color: #D32F2F;"></span>
+            <span class="contour-color-name">Vermelho</span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  updateLayerCounters() {
+    LAYER_GROUPS.forEach(group => {
+      const countEl = document.getElementById(`count-group-${group.id}`);
+      if (!countEl) return;
+
+      const groupLayers = LAYERS_CONFIG.filter(l => l.group === group.id);
+      const activeCount = groupLayers.filter(l => {
+        const layer = this.layerManager.getLayer(l.id);
+        return layer && layer.getVisible();
+      }).length;
+
+      countEl.textContent = `(${activeCount}/${groupLayers.length} ativas)`;
+      countEl.style.color = activeCount > 0 ? 'var(--dc-orange-primary)' : 'var(--text-muted)';
+
+      if (group.subgroups) {
+        group.subgroups.forEach(sub => {
+          const subCountEl = document.getElementById(`count-subgroup-${sub.id}`);
+          if (!subCountEl) return;
+          const subLayers = groupLayers.filter(l => l.subgroup === sub.id);
+          const subActiveCount = subLayers.filter(l => {
+            const layer = this.layerManager.getLayer(l.id);
+            return layer && layer.getVisible();
+          }).length;
+          subCountEl.textContent = `(${subActiveCount}/${subLayers.length})`;
+          subCountEl.style.color = subActiveCount > 0 ? '#22c55e' : 'var(--text-muted)';
+        });
+      }
+    });
+  }
+
+  setupQuickActions() {
+    const expandAllBtn = document.getElementById('btn-expand-all-layers');
+    const collapseAllBtn = document.getElementById('btn-collapse-all-groups') || document.getElementById('btn-collapse-all-layers');
+    const turnAllOffBtn = document.getElementById('btn-toggle-all-layers') || document.getElementById('btn-turn-all-off');
+
+    if (expandAllBtn) {
+      expandAllBtn.addEventListener('click', () => {
+        document.querySelectorAll('.layer-group').forEach(g => g.classList.add('expanded'));
+      });
+    }
+
+    if (collapseAllBtn) {
+      collapseAllBtn.addEventListener('click', () => {
+        const groups = document.querySelectorAll('.layer-group');
+        const anyExpanded = Array.from(groups).some(g => g.classList.contains('expanded'));
+        if (anyExpanded) {
+          groups.forEach(g => g.classList.remove('expanded'));
+          collapseAllBtn.innerHTML = '<i class="lucide-chevrons-down-up"></i> Expandir';
+        } else {
+          groups.forEach(g => g.classList.add('expanded'));
+          collapseAllBtn.innerHTML = '<i class="lucide-chevrons-down-up"></i> Recolher';
+        }
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      });
+    }
+
+    if (turnAllOffBtn) {
+      turnAllOffBtn.addEventListener('click', async () => {
+        let turnedOffCount = 0;
+        for (const cfg of LAYERS_CONFIG) {
+          const cb = document.querySelector(`.layer-checkbox[data-layer-id="${cfg.id}"]`);
+          if (cb && cb.checked) {
+            cb.checked = false;
+            await this.layerManager.setLayerVisibility(cfg.id, false);
+            turnedOffCount++;
+          }
+        }
+        this.legendUI.render();
+        this.updateLayerCounters();
+        if (turnedOffCount > 0) {
+          Notification.info(`${turnedOffCount} camada(s) temática(s) desativada(s).`);
+        } else {
+          Notification.info('Nenhuma camada ativa no momento.');
+        }
+      });
+    }
+  }
+}

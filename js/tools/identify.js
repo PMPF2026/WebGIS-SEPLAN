@@ -32,7 +32,12 @@ export class IdentifyTool {
       // Query all features intersecting the pixel with an 8px hit tolerance
       this.map.forEachFeatureAtPixel(pixel, (feature, layer) => {
         if (!layer || !layer.get('isThematicLayer')) return;
-        const layerConfig = layer.get('layerConfig') || { name: layer.get('layerName') || 'Camada Customizada' };
+        const layerConfig = layer.get('layerConfig') || {
+          id: layer.get('layerId'),
+          name: layer.get('layerName') || 'Camada Customizada',
+          group: layer.get('isCustomLayer') ? 'camada_customizada' : 'outros',
+          zIndex: layer.getZIndex ? layer.getZIndex() : 75
+        };
         clickedFeatures.push({ feature, layerConfig, layer });
       }, {
         hitTolerance: 8

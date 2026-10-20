@@ -107,6 +107,7 @@
 .tag-equipamentos-coletivo { background: rgba(79, 70, 229, 0.2); color: #818cf8; border: 1px solid #4f46e5; }
 .tag-aeroporto { background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid #0284c7; }
 .tag-educacao { background: rgba(139, 92, 246, 0.2); color: #c084fc; border: 1px solid #8b5cf6; }
+.tag-custom-layer { background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid #0284c7; }
 
 .popup-title {
   font-size: 14px;
