@@ -360,8 +360,40 @@ export const LAYERS_CONFIG = [
     searchFields: ['id', 'Pontes']
   },
   {
+    id: 'malha_perimetro_urbano',
+    name: 'Malha Perímetro Urbano (Ruas)',
+    fileName: 'Malha Perímetro Urbano.geojson',
+    source: 'Prefeitura Municipal de Passo Fundo',
+    refDate: '2026',
+    group: 'sistema_viario',
+    geometryType: 'MultiLineString',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 36,
+    isLazy: true,
+    minZoom: 13,
+    style: {
+      strokeColor: '#334155',
+      strokeWidth: 1.2,
+      previewColor: '#334155'
+    },
+    popupConfig: {
+      titleField: 'name',
+      defaultTitle: 'Logradouro Urbano (Via)',
+      fields: [
+        { key: 'name', label: 'Nome da Rua / Avenida' },
+        { key: 'highway', label: 'Classificação Viária' },
+        { key: 'surface', label: 'Tipo de Pavimento' },
+        { key: 'maxspeed', label: 'Velocidade Máxima (km/h)' },
+        { key: 'ref', label: 'Referência / Código' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['name']
+  },
+  {
     id: 'malha_viaria',
-    name: 'Malha Viária Urbana (Ruas)',
+    name: 'Malha Viária Urbana (Faces de Quadra)',
     fileName: 'Malha Viária.geojson',
     source: 'Prefeitura Municipal de Passo Fundo',
     refDate: '2026',

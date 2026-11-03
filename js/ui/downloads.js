@@ -28,6 +28,7 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
       'rodovia_federal',
       'rodovia_estadual',
       'estradas_municipais',
+      'malha_perimetro_urbano',
       'malha_viaria',
       'pontes',
       'ferrovia'
@@ -219,7 +220,8 @@ export class DownloadsUI {
       'estradas_municipais': 'Malha de estradas vicinais e vias rurais do interior de Passo Fundo.',
       'ferrovia': 'Traçado da malha ferroviária operacional concedida que atravessa o território municipal (ANTT).',
       'pontes': 'Mapeamento de pontes e transposições sobre cursos d’água no sistema viário municipal.',
-      'malha_viaria': 'Malha viária urbana completa de logradouros, ruas e avenidas do município de Passo Fundo.',
+      'malha_perimetro_urbano': 'Malha completa de logradouros, ruas e avenidas do perímetro urbano de Passo Fundo.',
+      'malha_viaria': 'Faces de quadra urbanas com contagem residencial e atributos censitários do IBGE.',
       'limite_territorial': 'Polígono oficial do limite territorial e administrativo do município de Passo Fundo (IBGE 2022).',
       'bairros': 'Delimitação das regiões urbanas, vilas e bairros municipais de Passo Fundo.',
       'distritos': 'Sedes dos distritos municipais de Passo Fundo (Sede, São Roque, Bom Recreio, Bela Vista, Capinzal, Sede Independência e Pulador).',
