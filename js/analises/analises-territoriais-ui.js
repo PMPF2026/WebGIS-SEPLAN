@@ -771,6 +771,131 @@ export class AnalisesTerritoriaisUI {
     `;
   }
 
+  getEducacaoHtml() {
+    const data = ANALISE_EDUCACAO_DEMOGRAFIA;
+    const emei = data.totaisEmei;
+    const emef = data.totaisEmef;
+    const ranking = data.rankingDeficitEmei || [];
+
+    return `
+      <div class="analises-card">
+        <div class="analises-card-title">
+          <span>🎒 Educação Municipal & Demografia Infantil</span>
+          <span class="analises-bairro-badge badge-high">Censo 2022 × SME</span>
+        </div>
+        <p class="analises-card-desc">
+          Diagnóstico espacial de cobertura da rede municipal frente à distribuição das crianças pelo Censo IBGE 2022. 
+          O raio pedonal de <strong>800 m para EMEIs (0 a 4 anos)</strong> atende a <strong>${emei.taxaCoberturaPct.toFixed(1)}%</strong> da faixa etária, 
+          enquanto no <strong>Ensino Fundamental (EMEFs - 5 a 14 anos)</strong> a cobertura atinge <strong>${emef.taxaCoberturaPct.toFixed(1)}%</strong> num raio de 1.500 m.
+        </p>
+
+        <!-- Seção 1: Educação Infantil (EMEIs) -->
+        <div style="margin-top: 10px; margin-bottom: 6px; font-weight: 600; font-size: 0.85rem; color: #38bdf8; display: flex; align-items: center; gap: 6px;">
+          <i class="fas fa-baby"></i> 1. Educação Infantil (EMEIs &bull; 0 a 4 anos &bull; Raio 800m)
+        </div>
+
+        <div class="analises-kpi-grid">
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Crianças (0 a 4 anos)</div>
+            <div class="analises-kpi-value">${emei.totalCriancas0a4.toLocaleString('pt-BR')}</div>
+            <div class="analises-kpi-sub">${emei.pctPopulacao}% da pop. total</div>
+          </div>
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Atendidas no Raio</div>
+            <div class="analises-kpi-value" style="color: #10b981;">${emei.atendidas800m.toLocaleString('pt-BR')}</div>
+            <div class="analises-kpi-sub">${emei.taxaCoberturaPct.toFixed(1)}% de cobertura</div>
+          </div>
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Vazio de Atendimento</div>
+            <div class="analises-kpi-value" style="color: #f43f5e;">${emei.deficit800m.toLocaleString('pt-BR')}</div>
+            <div class="analises-kpi-sub">${emei.taxaDeficitPct.toFixed(1)}% desassistidas</div>
+          </div>
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Rede Municipal</div>
+            <div class="analises-kpi-value" style="color: #38bdf8;">${emei.totalEmeis} EMEIs</div>
+            <div class="analises-kpi-sub">Raio pedonal 800m</div>
+          </div>
+        </div>
+
+        <div class="analises-actions" style="margin-top: 10px; margin-bottom: 14px;">
+          <button type="button" class="analises-btn-action analises-btn-primary" id="btn-activate-educacao-layers">
+            <i class="fas fa-baby"></i>
+            <span>Ativar EMEIs + Raio 800m + Censo 0 a 4 anos</span>
+          </button>
+        </div>
+
+        <!-- Seção 2: Ensino Fundamental (EMEFs) -->
+        <div style="margin-top: 16px; margin-bottom: 6px; font-weight: 600; font-size: 0.85rem; color: #a78bfa; display: flex; align-items: center; gap: 6px;">
+          <i class="fas fa-school"></i> 2. Ensino Fundamental (EMEFs &bull; 5 a 14 anos &bull; Raio 1.500m)
+        </div>
+
+        <div class="analises-kpi-grid">
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Crianças (5 a 14 anos)</div>
+            <div class="analises-kpi-value">${emef.totalCriancas5a14.toLocaleString('pt-BR')}</div>
+            <div class="analises-kpi-sub">${emef.pctPopulacao}% da pop. total</div>
+          </div>
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Atendidas no Raio</div>
+            <div class="analises-kpi-value" style="color: #10b981;">${emef.atendidas1500m.toLocaleString('pt-BR')}</div>
+            <div class="analises-kpi-sub">${emef.taxaCoberturaPct.toFixed(1)}% de cobertura</div>
+          </div>
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Fora do Raio 1.500m</div>
+            <div class="analises-kpi-value" style="color: #f59e0b;">${emef.deficit1500m.toLocaleString('pt-BR')}</div>
+            <div class="analises-kpi-sub">${emef.taxaDeficitPct.toFixed(1)}% fora do raio</div>
+          </div>
+          <div class="analises-kpi-item">
+            <div class="analises-kpi-label">Rede Municipal</div>
+            <div class="analises-kpi-value" style="color: #a78bfa;">${emef.totalEmefs} EMEFs</div>
+            <div class="analises-kpi-sub">Raio ampliado 1.500m</div>
+          </div>
+        </div>
+
+        <div class="analises-actions" style="margin-top: 10px;">
+          <button type="button" class="analises-btn-action analises-btn-primary" id="btn-activate-emef-layers" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+            <i class="fas fa-school"></i>
+            <span>Ativar EMEFs + Raio 1.500m + Censo 5 a 9 anos</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Ranking de Bairros com Déficit de Vagas/EMEIs -->
+      <div class="analises-card">
+        <div class="analises-card-title">
+          <span>🚨 Bairros com Maior Déficit de EMEIs (0 a 4 anos)</span>
+          <span style="font-size:0.7rem; color:#94a3b8;">Vazio a 800m</span>
+        </div>
+        <p class="analises-card-desc" style="margin-bottom: 10px;">
+          Bairros com maior número de crianças de 0 a 4 anos residentes fora do raio de 800m de qualquer EMEI pública. Clique no bairro para aproximar o mapa:
+        </p>
+        <div class="analises-bairros-list">
+          ${ranking.map(b => {
+            let badgeClass = 'badge-moderate';
+            if (b.deficit >= 190 || b.coberturaPct < 30.0) badgeClass = 'badge-critical';
+            else if (b.deficit >= 140) badgeClass = 'badge-high';
+
+            const targetBairro = b.bairro.includes('Centro') ? 'Centro' : b.bairro;
+
+            return `
+              <div class="analises-bairro-item" data-bairro="${targetBairro}">
+                <div class="analises-bairro-info">
+                  <span class="analises-bairro-name">${b.bairro} (${b.setorId})</span>
+                  <span class="analises-bairro-sub">0-4 anos: <strong>${b.total0a4}</strong> &bull; Cob: <strong>${b.coberturaPct.toFixed(1)}%</strong> (${b.atendidas} atend.)</span>
+                  <span style="font-size:0.68rem; color:#94a3b8; display:block; margin-top:2px;">${b.obs}</span>
+                </div>
+                <div style="text-align: right; flex-shrink: 0;">
+                  <span class="analises-bairro-badge ${badgeClass}">${b.deficit} vagas</span>
+                  <small style="display:block; font-size:0.62rem; color:#94a3b8; margin-top:3px;">${b.prioridade}</small>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
   bindEvents() {
     // 1. Alternador dos 6 Eixos Temáticos
     const navButtons = this.container.querySelectorAll('.analises-axis-btn');
