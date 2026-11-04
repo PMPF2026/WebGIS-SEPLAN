@@ -3,7 +3,7 @@
  * Módulo de Interface do Usuário: Análises Territoriais Integradas (Censo 2022)
  */
 
-import { ANALISES_TERRITORIAIS_DATA } from './analises-data.js';
+import { ANALISES_TERRITORIAIS_DATA, ANALISE_EDUCACAO_DEMOGRAFIA } from './analises-data.js';
 
 export class AnalisesTerritoriaisUI {
   constructor(mapEngine, layerManager, sidebarUI) {
@@ -88,6 +88,12 @@ export class AnalisesTerritoriaisUI {
           <span>6. Declividade</span>
           <small style="font-size:0.65rem; opacity:0.8;">Relevo, Mobilidade &amp; Erosão</small>
         </button>
+
+        <button type="button" class="analises-axis-btn ${this.activeAxis === 'educacao' ? 'active' : ''}" data-axis="educacao">
+          <span class="axis-icon">🎒</span>
+          <span>7. Educação & Vagas</span>
+          <small style="font-size:0.65rem; opacity:0.8;">Demografia Infantil &amp; Escolas</small>
+        </button>
       </nav>
 
       <!-- Conteúdo Dinâmico do Eixo Selecionado -->
@@ -117,6 +123,8 @@ export class AnalisesTerritoriaisUI {
         return this.getIqeuHtml();
       case 'declividade':
         return this.getDeclividadeHtml();
+      case 'educacao':
+        return this.getEducacaoHtml();
       default:
         return '';
     }
@@ -822,6 +830,21 @@ export class AnalisesTerritoriaisUI {
     if (btnDecliv) {
       btnDecliv.addEventListener('click', () => {
         this.activateLayers(['curvas_nivel_10m', 'hipsometria_relevo', 'malha_viaria', 'bairros']);
+      });
+    }
+
+    // 3.7. Botões do Eixo de Educação
+    const btnEdu = document.getElementById('btn-activate-educacao-layers');
+    if (btnEdu) {
+      btnEdu.addEventListener('click', () => {
+        this.activateLayers(['escolas_infantil_emei', 'abrangencia_emeis_800m', 'censo_pop_0a4', 'bairros']);
+      });
+    }
+
+    const btnEmef = document.getElementById('btn-activate-emef-layers');
+    if (btnEmef) {
+      btnEmef.addEventListener('click', () => {
+        this.activateLayers(['escolas_fundamental_emef', 'abrangencia_emefs_1500m', 'censo_pop_5a9', 'bairros']);
       });
     }
 

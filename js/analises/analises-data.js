@@ -1193,3 +1193,48 @@ export const DADOS_PCD_TEA_PASSO_FUNDO = {
     apiIbge: 'https://servicodados.ibge.gov.br/api/v3/agregados/10127/periodos/2022/variaveis/12785?localidades=N6[4314100]&classificacao=1509[all]'
   }
 };
+
+
+/**
+ * Dados Oficiais da Análise Integrada: Educação Municipal x Demografia Infantil
+ * Cruzamento espacial: 40 EMEIs (raio 800m) e 35 EMEFs (raio 1500m) x Censo IBGE 2022
+ * Município: Passo Fundo/RS (EPSG:31982)
+ */
+export const ANALISE_EDUCACAO_DEMOGRAFIA = {
+  municipio: 'Passo Fundo',
+  anoCenso: 2022,
+  fonte: 'SEPLAN / SME Passo Fundo & IBGE (Censo 2022)',
+  totaisEmei: {
+    totalCriancas0a4: 12482,
+    pctPopulacao: 6.05,
+    atendidas800m: 9865,
+    deficit800m: 2617,
+    taxaCoberturaPct: 79.0,
+    taxaDeficitPct: 21.0,
+    totalEmeis: 40,
+    raioMetros: 800
+  },
+  totaisEmef: {
+    totalCriancas5a14: 25760,
+    pctPopulacao: 12.49,
+    atendidas1500m: 24043,
+    deficit1500m: 1717,
+    taxaCoberturaPct: 93.3,
+    taxaDeficitPct: 6.7,
+    totalEmefs: 35,
+    raioMetros: 1500
+  },
+  rankingDeficitEmei: [
+    { bairro: "Área Rural", setorId: "Distritos", total0a4: 579, atendidas: 156, deficit: 423, coberturaPct: 26.9, prioridade: "Média (Rural)", obs: "Demanda dispersa nos distritos; atendimento por transporte escolar rural." },
+    { bairro: "Centro e Vila Vergueiro", setorId: "Setor 01", total0a4: 917, atendidas: 498, deficit: 419, coberturaPct: 54.3, prioridade: "Moderada (Central)", obs: "Vazio de EMEIs públicas centrais; grande absorção por escolas privadas e conveniadas." },
+    { bairro: "São José", setorId: "Setor 15", total0a4: 622, atendidas: 428, deficit: 194, coberturaPct: 68.8, prioridade: "🚨 Alta Prioridade", obs: "Bairro populoso com novos loteamentos periféricos afastados da unidade escolar." },
+    { bairro: "Vila Rodrigues", setorId: "Setor 19", total0a4: 234, atendidas: 58, deficit: 176, coberturaPct: 24.8, prioridade: "🚨 Alta Prioridade", obs: "Menor cobertura da malha urbana consolidada (75,2% das crianças sem EMEI a 800m)." },
+    { bairro: "Valinhos", setorId: "Setor 17", total0a4: 400, atendidas: 239, deficit: 161, coberturaPct: 59.8, prioridade: "🚨 Alta Prioridade", obs: "Vetor leste em expansão com novas famílias jovens; demanda de ampliação de vagas." },
+    { bairro: "Victor Issler", setorId: "Setor 10", total0a4: 413, atendidas: 261, deficit: 152, coberturaPct: 63.2, prioridade: "⚠️ Prioridade Média", obs: "Região com forte crescimento imobiliário e loteamentos residenciais recentes." },
+    { bairro: "Vera Cruz", setorId: "Setor 02", total0a4: 1273, atendidas: 1130, deficit: 143, coberturaPct: 88.8, prioridade: "⚠️ Prioridade Média", obs: "Maior contingente infantil da cidade (1.273 crianças); excelente cobertura, mas demanda residual." },
+    { bairro: "São Cristóvão", setorId: "Setor 06", total0a4: 631, atendidas: 489, deficit: 142, coberturaPct: 77.5, prioridade: "⚠️ Prioridade Média", obs: "Trechos limítrofes ao norte necessitam de reforço de cobertura pedonal." },
+    { bairro: "São Luiz Gonzaga", setorId: "Setor 05", total0a4: 1267, atendidas: 1142, deficit: 125, coberturaPct: 90.1, prioridade: "Acompanhamento", obs: "Alta concentração infantil (8,1% do bairro); cobertura exemplar de 90,1%." },
+    { bairro: "Planaltina", setorId: "Setor 13", total0a4: 437, atendidas: 315, deficit: 122, coberturaPct: 72.1, prioridade: "Acompanhamento", obs: "Bolsões residenciais periféricos sem acesso pedonal direto." },
+    { bairro: "Petrópolis", setorId: "Setor 04", total0a4: 859, atendidas: 746, deficit: 113, coberturaPct: 86.8, prioridade: "Acompanhamento", obs: "Bairro consolidado; pontos desassistidos nos extremos da rodovia." }
+  ]
+};
