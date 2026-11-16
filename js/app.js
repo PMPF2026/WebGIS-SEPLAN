@@ -5,9 +5,9 @@
 
 import { MapEngine } from './map/map-engine.js';
 import { BasemapManager } from './map/basemap-manager.js';
-import { LayerManager } from './map/layer-manager.js';
+import { LayerManager } from './map/layer-manager.js?v=20261116_v4';
 import { SidebarUI } from './ui/sidebar.js';
-import { LegendUI } from './ui/legend.js';
+import { LegendUI } from './ui/legend.js?v=20261116_v4';
 import { SearchUI } from './ui/search.js';
 import { PopupUI } from './ui/popup.js';
 import { Notification } from './ui/notification.js';
