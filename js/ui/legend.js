@@ -1,6 +1,6 @@
 /**
- * Portal Defesa Civil Passo Fundo - WebGIS
- * Dynamic Thematic Legend Generator
+ * WebGIS SEPLAN Passo Fundo - Diagnósticos Territoriais
+ * Legenda Cartográfica Dinâmica, Inteligente e Institucional
  */
 
 import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js';
@@ -10,54 +10,114 @@ export class LegendUI {
     this.layerManager = layerManager;
     this.container = document.getElementById(containerId);
     this.analysisTool = null;
-    
-    // Refresh legend when layers load or change visibility
-    this.layerManager.onLayerLoaded(() => this.render());
+    this.collapsedGroups = new Set();
+    this._renderScheduled = false;
+
+    // Escutar término de carregamento de camadas no layerManager
+    if (this.layerManager && typeof this.layerManager.onLayerLoaded === 'function') {
+      this.layerManager.onLayerLoaded(() => this.scheduleRender());
+    }
+
+    // Escutar eventos globais de alteração de visibilidade e camadas personalizadas
+    window.addEventListener('layer:visibility-changed', () => this.scheduleRender());
+    window.addEventListener('custom-layers:updated', () => this.scheduleRender());
+
+    // Delegação de eventos para expansão e recolhimento dos grupos temáticos
+    if (this.container) {
+      this.container.addEventListener('click', (e) => {
+        const header = e.target.closest('.legend-group-header');
+        if (header) {
+          const groupId = header.dataset.groupId;
+          const card = header.closest('.legend-group-card');
+          if (card && groupId) {
+            if (this.collapsedGroups.has(groupId)) {
+              this.collapsedGroups.delete(groupId);
+              card.classList.remove('collapsed');
+            } else {
+              this.collapsedGroups.add(groupId);
+              card.classList.add('collapsed');
+            }
+          }
+        }
+      });
+    }
   }
 
   setAnalysisTool(analysisTool) {
     this.analysisTool = analysisTool;
+    this.scheduleRender();
   }
 
   /**
-   * Render dynamic legend for all currently visible layers and active analysis buffers
+   * Agenda renderização via microtask/requestAnimationFrame para consolidar múltiplos toggles (ex: presets)
+   */
+  scheduleRender() {
+    if (this._renderScheduled) return;
+    this._renderScheduled = true;
+    const runner = typeof requestAnimationFrame === 'function' ? requestAnimationFrame : setTimeout;
+    runner(() => {
+      this._renderScheduled = false;
+      this.render();
+    });
+  }
+
+  /**
+   * Renderiza a legenda dinâmica com as camadas e análises ativas
    */
   render() {
     if (!this.container) return;
 
+    // 1. Filtrar camadas nativas que estão visíveis no mapa
     const visibleLayers = LAYERS_CONFIG.filter(cfg => {
-      const olLayer = this.layerManager.getLayer(cfg.id);
+      const olLayer = this.layerManager ? this.layerManager.getLayer(cfg.id) : null;
       return olLayer && olLayer.getVisible();
     });
 
+    // 2. Filtrar camadas customizadas do usuário visíveis
+    const visibleCustomLayers = (this.layerManager && typeof this.layerManager.getCustomLayersList === 'function')
+      ? this.layerManager.getCustomLayersList().filter(cl => cl.visible)
+      : [];
+
+    // 3. Recuperar análises espaciais ativas (Buffers / Faixas de Proteção)
     const analysisItems = (this.analysisTool && typeof this.analysisTool.getActiveAnalysisLegends === 'function')
       ? this.analysisTool.getActiveAnalysisLegends()
       : [];
 
-    if (visibleLayers.length === 0 && analysisItems.length === 0) {
+    // Se nenhuma camada ou análise estiver visível, apresentar mensagem institucional limpa
+    if (visibleLayers.length === 0 && visibleCustomLayers.length === 0 && analysisItems.length === 0) {
       this.container.innerHTML = `
-        <div style="padding: 24px 16px; text-align: center; color: var(--text-muted); font-size: 12.5px;">
-          <i class="lucide-layers" style="font-size: 24px; margin-bottom: 8px; display: block; opacity: 0.5;"></i>
-          Nenhuma camada temática ou análise está visível no momento.<br>
-          Ative uma ou mais camadas no painel para visualizar a legenda.
+        <div class="legend-empty">
+          <i class="lucide-layers"></i>
+          <p>Nenhuma camada ativa para exibição na legenda.</p>
+          <span>Ative camadas temáticas na aba anterior ou selecione um cenário rápido de planejamento.</span>
         </div>
       `;
       return;
     }
 
-    let html = '<div class="legend-list" style="display:flex; flex-direction:column; gap:12px;">';
+    let html = '<div class="legend-content">';
 
-    // Group visible layers by thematic group
+    // 4. Renderizar grupos temáticos do WebGIS SEPLAN
     LAYER_GROUPS.forEach(group => {
       const groupVisibleLayers = visibleLayers.filter(l => l.group === group.id);
-      if (groupVisibleLayers.length === 0) return;
+      if (groupVisibleLayers.length === 0) return; // Grupo vazio não aparece
+
+      const isCollapsed = this.collapsedGroups.has(group.id);
+      const collapsedClass = isCollapsed ? ' collapsed' : '';
 
       html += `
-        <div class="legend-group" style="background: var(--dc-blue-card); border: 1px solid var(--dc-blue-border); border-radius: var(--radius-md); padding: 10px 12px;">
-          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.5px;">
-            ${group.title}
+        <div class="legend-group-card${collapsedClass}">
+          <div class="legend-group-header" data-group-id="${group.id}" title="Clique para expandir/recolher">
+            <div class="legend-group-title">
+              <i class="lucide-${group.iconName || 'folder'}"></i>
+              <span>${group.title}</span>
+            </div>
+            <div class="legend-group-meta">
+              <span class="legend-group-badge">${groupVisibleLayers.length}</span>
+              <i class="lucide-chevron-down legend-group-chevron"></i>
+            </div>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="legend-group-body">
       `;
 
       groupVisibleLayers.forEach(layer => {
@@ -70,23 +130,67 @@ export class LegendUI {
       `;
     });
 
-    // Seção de Análise Espacial Territorial (Faixas de Proteção)
-    if (analysisItems.length > 0) {
+    // 5. Camadas Personalizadas Importadas pelo Usuário
+    if (visibleCustomLayers.length > 0) {
+      const isCustomCollapsed = this.collapsedGroups.has('custom_layers');
+      const customCollapsedClass = isCustomCollapsed ? ' collapsed' : '';
+
       html += `
-        <div class="legend-group" style="background: var(--dc-blue-card); border: 1px solid var(--dc-blue-border); border-radius: var(--radius-md); padding: 10px 12px;">
-          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #38bdf8; margin-bottom: 8px; letter-spacing: 0.5px;">
-            Análise Espacial — Faixas de Proteção
+        <div class="legend-group-card${customCollapsedClass}">
+          <div class="legend-group-header" data-group-id="custom_layers" title="Clique para expandir/recolher">
+            <div class="legend-group-title">
+              <i class="lucide-upload"></i>
+              <span>Camadas Importadas (Usuário)</span>
+            </div>
+            <div class="legend-group-meta">
+              <span class="legend-group-badge">${visibleCustomLayers.length}</span>
+              <i class="lucide-chevron-down legend-group-chevron"></i>
+            </div>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 8px;">
-            ${analysisItems.map(item => `
-              <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-                <span style="display: inline-block; width: 18px; height: 14px; border-radius: 3px; background: ${item.fillColor}; border: 1.5px solid ${item.strokeColor}; flex-shrink: 0;"></span>
-                <div>
-                  <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display: block;">${item.title}</span>
-                  <span style="font-size: 10px; color: var(--text-muted);">${item.areaFormatted}</span>
-                </div>
-              </div>
-            `).join('')}
+          <div class="legend-group-body">
+      `;
+
+      visibleCustomLayers.forEach(cl => {
+        const color = cl.color || '#3b82f6';
+        let symHtml = '';
+        if (cl.geomType === 'Point' || cl.geomType === 'MultiPoint') {
+          symHtml = `<span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:${color}; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>`;
+        } else if (cl.geomType === 'LineString' || cl.geomType === 'MultiLineString') {
+          symHtml = `<span style="display:inline-block; width:22px; height:0px; border-top:2.2px solid ${color};"></span>`;
+        } else {
+          symHtml = `<span style="display:inline-block; width:18px; height:13px; border-radius:2px; background:${color}33; border:1.5px solid ${color};"></span>`;
+        }
+        html += this.renderItemRow(symHtml, cl.name, `${cl.format || 'Camada Externa'} • ${cl.featuresCount || 0} feições`);
+      });
+
+      html += `
+          </div>
+        </div>
+      `;
+    }
+
+    // 6. Análise Espacial Territorial (Faixas de Proteção / Buffers)
+    if (analysisItems.length > 0) {
+      const isAnalysisCollapsed = this.collapsedGroups.has('analise_espacial');
+      const analysisCollapsedClass = isAnalysisCollapsed ? ' collapsed' : '';
+
+      html += `
+        <div class="legend-group-card${analysisCollapsedClass}">
+          <div class="legend-group-header" data-group-id="analise_espacial" title="Clique para expandir/recolher">
+            <div class="legend-group-title">
+              <i class="lucide-radar"></i>
+              <span>Análise Espacial — Faixas de Proteção</span>
+            </div>
+            <div class="legend-group-meta">
+              <span class="legend-group-badge">${analysisItems.length}</span>
+              <i class="lucide-chevron-down legend-group-chevron"></i>
+            </div>
+          </div>
+          <div class="legend-group-body">
+            ${analysisItems.map(item => {
+              const swatch = `<span style="display:inline-block; width:18px; height:14px; border-radius:3px; background:${item.fillColor}; border:1.5px solid ${item.strokeColor}; flex-shrink:0;"></span>`;
+              return this.renderItemRow(swatch, item.title, item.areaFormatted || 'Faixa de Proteção Territorial');
+            }).join('')}
           </div>
         </div>
       `;
@@ -97,133 +201,294 @@ export class LegendUI {
   }
 
   /**
-   * Generates single layer legend entry HTML
+   * Helper para renderizar linha de item com símbolo à esquerda e textos à direita
+   */
+  renderItemRow(symbolHtml, title, desc = '') {
+    return `
+      <div class="legend-item-row">
+        <div class="legend-symbol-wrapper">
+          ${symbolHtml}
+        </div>
+        <div class="legend-item-info">
+          <span class="legend-item-name">${title}</span>
+          ${desc ? `<span class="legend-item-desc">${desc}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * Gera o item de legenda correspondente à camada geográfica com representação cartográfica fiel
    * @param {Object} layerConfig 
    * @returns {string}
    */
   generateLayerLegendItem(layerConfig) {
-    // 1. Choropleth Legend Ramp (Densidade Populacional)
-    if (layerConfig.isChoropleth && layerConfig.choroplethBreaks) {
-      let rampHtml = `
-        <div class="legend-item">
-          <div style="font-size: 12px; font-weight: 600; color: var(--text-main); margin-bottom: 6px;">
-            ${layerConfig.name}
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 6px;">
+    const s = layerConfig.style || {};
+
+    // -------------------------------------------------------------
+    // 1. DISTRITOS DE PASSO FUNDO (MAP PIN VERMELHO #DC2626)
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'distritos') {
+      const pinSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="16" height="22" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45));">
+          <path d="M12 2 C7.03 2 3 6.03 3 11 C3 17.5 12 30 12 30 C12 30 21 17.5 21 11 C21 6.03 16.97 2 12 2 Z" fill="#dc2626" stroke="#ffffff" stroke-width="1.8"/>
+          <circle cx="12" cy="11" r="3.6" fill="#ffffff"/>
+          <circle cx="12" cy="11" r="1.8" fill="#991b1b"/>
+        </svg>
       `;
-      layerConfig.choroplethBreaks.forEach(b => {
-        rampHtml += `
-          <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-muted);">
-            <span style="display: inline-block; width: 18px; height: 12px; border-radius: 2px; background: ${b.color}; border: 1px solid rgba(255,255,255,0.2);"></span>
-            <span>${b.label}</span>
-          </div>
-        `;
-      });
-      rampHtml += `</div></div>`;
-      return rampHtml;
+      return this.renderItemRow(pinSvg, layerConfig.name, 'Sede distrital (Passo Fundo e distritos rurais)');
     }
 
-    // 2. Railway Track Symbology
-    if (layerConfig.isRailway) {
-      return `
-        <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-          <div style="width: 24px; height: 10px; background: #1e293b; border-radius: 2px; position: relative; display: flex; align-items: center; justify-content: center;">
-            <div style="width: 100%; height: 2px; background: #ffffff; border-top: 1px dashed #ffffff;"></div>
+    // -------------------------------------------------------------
+    // 2. AEROPORTO LAURO KURTZ & AEROCLUBE (ÍCONE AERONÁUTICO)
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'aeroporto_aeroclube') {
+      const airportSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="22" height="22" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35));">
+          <circle cx="18" cy="18" r="16" fill="#0284c7" stroke="#ffffff" stroke-width="2.2"/>
+          <path d="M18 7 L18 19 L28 24 L28 26 L18 22 L18 27 L21 29 L21 30.5 L18 29.5 L15 30.5 L15 29 L18 27 L18 22 L8 26 L8 24 L18 19 Z" fill="#ffffff"/>
+        </svg>
+      `;
+      return this.renderItemRow(airportSvg, layerConfig.name, 'Aeroporto Regional Lauro Kurtz (SBPF) & Aeroclube');
+    }
+
+    // -------------------------------------------------------------
+    // 3. RODOVIAS FEDERAIS E ESTADUAIS (DUAL CASING + BADGE)
+    // -------------------------------------------------------------
+    if (layerConfig.isHighway || layerConfig.id === 'rodovia_federal' || layerConfig.id === 'rodovia_estadual') {
+      const isFederal = layerConfig.highwayType === 'BR' || layerConfig.id === 'rodovia_federal';
+      const mainColor = isFederal ? '#dc2626' : '#ea580c';
+      const badgeText = isFederal ? 'BR' : 'ERS';
+      const desc = isFederal
+        ? 'Eixos rodoviários federais (BR-285, BR-153)'
+        : 'Rodovias estaduais pavimentadas (ERS-324, ERS-135, RSC-153)';
+
+      const highwaySymbol = `
+        <div style="display:flex; align-items:center; gap:5px;">
+          <div style="position:relative; width:22px; height:6px; display:flex; align-items:center;">
+            <div style="position:absolute; width:100%; height:4.5px; background:#ffffff; border-radius:1px;"></div>
+            <div style="position:absolute; width:100%; height:2.2px; background:${mainColor}; border-radius:1px;"></div>
           </div>
-          <span style="font-size: 12px; font-weight: 600; color: var(--text-main);">${layerConfig.name}</span>
+          <span style="font-size:8.5px; font-weight:800; background:${mainColor}; color:#ffffff; padding:0 3.5px; border-radius:3px; border:0.8px solid #ffffff; line-height:12px; font-family:'Inter',sans-serif;">${badgeText}</span>
         </div>
       `;
+      return this.renderItemRow(highwaySymbol, layerConfig.name, desc);
     }
 
-    // 2.0. Sede da Defesa Civil
+    // -------------------------------------------------------------
+    // 4. ESCOLAS MUNICIPAIS (EMEIs E EMEFs)
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'escolas_infantil_emei') {
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:#ec4899; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.35);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, 'Escolas de Educação Infantil (Pública Municipal)');
+    }
+    if (layerConfig.id === 'escolas_fundamental_emef') {
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:#2563eb; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.35);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, 'Escolas de Ensino Fundamental (Pública Municipal)');
+    }
+
+    // -------------------------------------------------------------
+    // 5. HIDROGRAFIA & RESERVATÓRIOS
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'reservatorio_miranda' || layerConfig.id === 'reservatorio_barragem') {
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(56, 189, 248, 0.35); border:1.5px solid #0284c7;"></span>`;
+      const desc = layerConfig.id === 'reservatorio_miranda'
+        ? 'Lâmina d'água — Reservatório Miranda'
+        : 'Lâmina d'água — Reservatório da Barragem (Captação Corsan)';
+      return this.renderItemRow(box, layerConfig.name, desc);
+    }
+    if (layerConfig.id === 'rio_passo_fundo') {
+      const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.4px solid #0284c7;"></span>`;
+      return this.renderItemRow(line, layerConfig.name, 'Curso principal da bacia hidrográfica municipal');
+    }
+    if (layerConfig.id === 'arroio_miranda') {
+      const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.2px solid #0ea5e9;"></span>`;
+      return this.renderItemRow(line, layerConfig.name, 'Cursos d'água da bacia do Arroio Miranda');
+    }
+    if (layerConfig.id === 'arroio_santo_antonio') {
+      const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.2px solid #38bdf8;"></span>`;
+      return this.renderItemRow(line, layerConfig.name, 'Cursos d'água da sub-bacia Santo Antônio');
+    }
+    if (layerConfig.id === 'malha_hidrica') {
+      const line = `<span style="display:inline-block; width:22px; height:0px; border-top:1.6px solid #0284c7;"></span>`;
+      return this.renderItemRow(line, layerConfig.name, 'Rede hidrográfica (rios, arroios e sangas)');
+    }
+    if (layerConfig.id === 'bacias_hidrograficas') {
+      const line = `<span style="display:inline-block; width:22px; height:0px; border-top:1.8px dashed #7c3aed;"></span>`;
+      return this.renderItemRow(line, layerConfig.name, 'Divisores topográficos das bacias hidrográficas');
+    }
+
+    // -------------------------------------------------------------
+    // 6. FERROVIA
+    // -------------------------------------------------------------
+    if (layerConfig.isRailway || layerConfig.id === 'ferrovia') {
+      const rail = `
+        <div style="width: 24px; height: 10px; background: #0f172a; border-radius: 2px; position: relative; display: flex; align-items: center; justify-content: center; border: 1px solid #475569;">
+          <div style="width: 100%; height: 2px; background: #ffffff; border-top: 1px dashed #ffffff;"></div>
+        </div>
+      `;
+      return this.renderItemRow(rail, layerConfig.name, 'Linha férrea / Malha ferroviária regional');
+    }
+
+    // -------------------------------------------------------------
+    // 7. DIVISÃO TERRITORIAL E LIMITES
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'limite_territorial') {
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:transparent; border:2.4px solid #B71C1C;"></span>`;
+      return this.renderItemRow(box, layerConfig.name, 'Perímetro e limite territorial oficial de Passo Fundo');
+    }
+    if (layerConfig.id === 'bairros') {
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(16, 185, 129, 0.12); border:1.6px solid #059669;"></span>`;
+      return this.renderItemRow(box, layerConfig.name, 'Delimitação de bairros e regiões urbanas');
+    }
+    if (layerConfig.id === 'limite_plano_diretor') {
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(147, 51, 234, 0.12); border:1.8px dashed #9333ea;"></span>`;
+      return this.renderItemRow(box, layerConfig.name, 'Perímetro urbano consolidado pelo Plano Diretor');
+    }
+    if (layerConfig.id === 'setores_censitarios') {
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(100, 116, 139, 0.12); border:1.4px solid #475569;"></span>`;
+      return this.renderItemRow(box, layerConfig.name, 'Setores censitários oficiais (IBGE Censo 2022)');
+    }
+    if (layerConfig.id === 'municipios_rs') {
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(71, 85, 105, 0.08); border:1.2px solid #64748b;"></span>`;
+      return this.renderItemRow(box, layerConfig.name, 'Divisão territorial dos municípios do Rio Grande do Sul');
+    }
+
+    // -------------------------------------------------------------
+    // 8. EQUIPAMENTOS DE USO COLETIVO & ESPECÍFICOS
+    // -------------------------------------------------------------
     if (layerConfig.id === 'sede_defesa_civil') {
-      return `
-        <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: #ff7800; border: 2px solid #ffffff; box-shadow: 0 1px 4px rgba(0,0,0,0.3);">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="#ffffff" stroke="#ffffff" stroke-width="1.5">
-              <polygon points="12,2 22,20 2,20"/>
-            </svg>
-          </span>
-          <div>
-            <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display: block;">${layerConfig.name}</span>
-            <span style="font-size: 10px; color: var(--text-muted);">Sede Operacional — Passo Fundo/RS</span>
-          </div>
-        </div>
+      const icon = `
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:#ff7800; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.3);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="#ffffff" stroke="#ffffff" stroke-width="1.5">
+            <polygon points="12,2 22,20 2,20"/>
+          </svg>
+        </span>
       `;
+      return this.renderItemRow(icon, layerConfig.name, 'Sede Operacional — Defesa Civil Passo Fundo');
     }
-
-    // 2.1. Zonas de Pouso de Helicóptero (ZPH)
     if (layerConfig.id === 'zph_helicoptero') {
-      return `
-        <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: #0284c7; border: 2px solid #ffffff; box-shadow: 0 1px 4px rgba(0,0,0,0.3);">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 3h18M12 3v3M6 14h12a4 4 0 0 0 0-8H6a4 4 0 0 0 0 8zm14 0 2 3M4 17l2-3M4 21h16M7 17v4M17 17v4"/>
-            </svg>
-          </span>
-          <div>
-            <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display: block;">${layerConfig.name}</span>
-            <span style="font-size: 10px; color: var(--text-muted);">Áreas Estratégicas de Resgate Aéreo</span>
-          </div>
-        </div>
+      const icon = `
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:#0284c7; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.3);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3h18M12 3v3M6 14h12a4 4 0 0 0 0-8H6a4 4 0 0 0 0 8zm14 0 2 3M4 17l2-3M4 21h16M7 17v4M17 17v4"/>
+          </svg>
+        </span>
       `;
+      return this.renderItemRow(icon, layerConfig.name, 'Zonas de Pouso de Helicóptero (Resgate Aéreo)');
     }
-
-    // 2.2. Domicílios em Área de Risco (SGB, 2025)
     if (layerConfig.id === 'domicilios_risco_sgb_2025') {
-      return `
-        <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: #f97316; border: 2px solid #ffffff; box-shadow: 0 1px 4px rgba(0,0,0,0.35);">
-            <i class="lucide-home" style="font-size: 10px; color: #ffffff;"></i>
-          </span>
-          <div>
-            <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display: block;">${layerConfig.name}</span>
-            <span style="font-size: 10px; color: var(--text-muted);">1.115 Domicílios &bull; Serviço Geológico do Brasil (SGB, 2025)</span>
-          </div>
-        </div>
-      `;
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:#f97316; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.35);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, '1.115 Domicílios em Setores de Risco (SGB, 2025)');
     }
-
-    // 2.3. Mapeamento de Áreas de Risco (SGB, 2025 - Polígonos)
     if (layerConfig.id === 'mapeamento_sgb_2025') {
-      return `
-        <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 18px; height: 14px; border-radius: 3px; background: rgba(234, 88, 12, 0.35); border: 2px solid #ea580c;"></span>
-          <div>
-            <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display: block;">${layerConfig.name}</span>
-            <span style="font-size: 10px; color: var(--text-muted);">25 Setores de Risco (R3 e R4) &bull; Serviço Geológico do Brasil (SGB, 2025)</span>
-          </div>
-        </div>
-      `;
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(234, 88, 12, 0.35); border:1.8px solid #ea580c;"></span>`;
+      return this.renderItemRow(box, layerConfig.name, '25 Setores de Alto e Muito Alto Risco — R3/R4 (SGB, 2025)');
+    }
+    if (layerConfig.id === 'corpo_bombeiros') {
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:#dc2626; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, 'Unidades e Quartéis do Corpo de Bombeiros');
+    }
+    if (layerConfig.id === 'seguranca_policia') {
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:#2563eb; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, 'Segurança Pública (Polícia Civil e Brigada Militar)');
+    }
+    if (layerConfig.id === 'terminal_rodoviario') {
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:#0d9488; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, 'Estação Rodoviária Municipal');
+    }
+    if (layerConfig.id === 'shopping_centers') {
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:#7c3aed; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, 'Centros Comerciais e Shopping Centers');
+    }
+    if (layerConfig.id === 'hoteis') {
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:#d97706; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, 'Rede Hoteleira & Meios de Hospedagem');
+    }
+    if (layerConfig.id === 'cemiterios_municipais' || layerConfig.id === 'cemiterios_privados') {
+      const color = layerConfig.id === 'cemiterios_municipais' ? '#475569' : '#64748b';
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:${color}; border:1.8px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, layerConfig.id === 'cemiterios_municipais' ? 'Necrópoles públicas municipais' : 'Cemitérios privados');
     }
 
-    // 2.4. PBZPA - Superfícies Limitadoras de Obstáculos (Aeroporto Lauro Kurtz)
+    // -------------------------------------------------------------
+    // 9. ESCOLAS - ÁREAS DE ABRANGÊNCIA
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'abrangencia_emeis_800m') {
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(236, 72, 153, 0.18); border:1.5px solid #db2777;"></span>`;
+      return this.renderItemRow(box, layerConfig.name, 'Raio de atendimento territorial de 800 metros (EMEIs)');
+    }
+    if (layerConfig.id === 'abrangencia_emefs_1500m') {
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(37, 99, 235, 0.16); border:1.5px solid #1d4ed8;"></span>`;
+      return this.renderItemRow(box, layerConfig.name, 'Raio de atendimento territorial de 1.500 metros (EMEFs)');
+    }
+
+    // -------------------------------------------------------------
+    // 10. CURVAS DE NÍVEL — 10 M (TOPOGRAFIA & RELEVO)
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'curvas_nivel_10m') {
+      const activeColor = this.layerManager?.contourColor || layerConfig.style?.strokeColor || '#795548';
+      const line = `<span style="display:inline-block; width:24px; height:0px; border-top:2.2px solid ${activeColor};"></span>`;
+      return this.renderItemRow(line, layerConfig.name, 'Isolinhas com equidistância altimétrica de 10 metros (MDE)');
+    }
+
+    // -------------------------------------------------------------
+    // 11. RESTRIÇÕES AERONÁUTICAS (PBZPA)
+    // -------------------------------------------------------------
     if (layerConfig.id === 'pbzpa_superficies') {
       const surfaces = [
         { name: 'Horizontal Interna (SHI)', cota: '770,29 m', color: '#ef4444' },
-        { name: 'Superfície Cônica (CO)', cota: '770,29 m a 845,29 m', color: '#f97316' },
+        { name: 'Superfície Cônica (CO)', cota: '770,29 a 845,29 m', color: '#f97316' },
         { name: 'Horizontal Externa (SHE)', cota: '845,29 m', color: '#6366f1' },
-        { name: 'Superfícies de Aproximação', cota: '715,06 m a 875,29 m', color: '#0284c7' },
-        { name: 'Superfícies de Decolagem', cota: '715,00 m a 1.025,42 m', color: '#10b981' },
-        { name: 'Pista e Faixa de Pista (1.680m)', cota: '715,06 m a 725,29 m', color: '#0f172a' }
+        { name: 'Superfícies de Aproximação', cota: '715,06 a 875,29 m', color: '#0284c7' },
+        { name: 'Superfícies de Decolagem', cota: '715,00 a 1.025,42 m', color: '#10b981' },
+        { name: 'Pista e Faixa de Pista (1.680m)', cota: '715,06 a 725,29 m', color: '#0f172a' }
       ];
 
       return `
-        <div class="legend-item">
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">
-            ${layerConfig.name}
+        <div class="legend-complex-item">
+          <div class="legend-complex-header">
+            <span class="legend-item-name">${layerConfig.name}</span>
+            <span class="legend-item-desc">Portaria DECEA nº 846 • Gabarito vertical máximo (topo do edifício)</span>
           </div>
-          <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 8px;">
-            Portaria DECEA nº 846 / Processo SAGA RS0006 &bull; Cotas máximas permitidas (topo do edifício)
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 5px; padding-left: 4px;">
-            ${surfaces.map(s => `
-              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="display: inline-block; width: 16px; height: 12px; border-radius: 2px; background: ${s.color}; opacity: 0.85; border: 1px solid rgba(255,255,255,0.4);"></span>
-                  <span style="color: var(--text-main);">${s.name}</span>
+          <div class="legend-ramp-list">
+            ${surfaces.map(sfc => `
+              <div class="legend-ramp-row" style="justify-content: space-between;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="legend-ramp-swatch" style="background:${sfc.color};"></span>
+                  <span style="color:var(--text-main); font-size:11px;">${sfc.name}</span>
                 </div>
-                <span style="font-weight: 700; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 10px;">${s.cota}</span>
+                <span style="font-weight:700; color:#38bdf8; font-family:'JetBrains Mono',monospace; font-size:10px;">${sfc.cota}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+    if (layerConfig.id === 'pbzpa_linhas_operacionais') {
+      const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.2px solid #f59e0b;"></span>`;
+      return this.renderItemRow(line, layerConfig.name, 'Setor de Padrão de Voo Visual (SPVV Aeródromo)');
+    }
+    if (layerConfig.id === 'pbzpa_cotas_rotulos') {
+      const dot = `<span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#0284c7; border:1.5px solid #ffffff;"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, 'Pontos de Referência Altimétrica Oficial');
+    }
+
+    // -------------------------------------------------------------
+    // 12. MAPA COROPLÉTICO (POPULAÇÃO & ENTORNO IBGE 2022)
+    // -------------------------------------------------------------
+    if (layerConfig.isChoropleth && layerConfig.choroplethBreaks) {
+      return `
+        <div class="legend-complex-item">
+          <div class="legend-complex-header">
+            <span class="legend-item-name">${layerConfig.name}</span>
+            <span class="legend-item-desc">${layerConfig.source || 'Censo Demográfico IBGE 2022'}</span>
+          </div>
+          <div class="legend-ramp-list">
+            ${layerConfig.choroplethBreaks.map(b => `
+              <div class="legend-ramp-row">
+                <span class="legend-ramp-swatch" style="background:${b.color};"></span>
+                <span>${b.label}</span>
               </div>
             `).join('')}
           </div>
@@ -231,111 +496,87 @@ export class LegendUI {
       `;
     }
 
-    // 3. Point Symbology (Distritos, Praças, Áreas Verdes, etc.)
-    if (layerConfig.geometryType === 'Point' || layerConfig.geometryType === 'MultiPoint') {
-      const s = layerConfig.style || {};
-      return `
-        <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: ${s.pointColor || '#dc2626'}; border: 2px solid ${s.strokeColor || '#ffffff'};"></span>
-          <span style="font-size: 12px; font-weight: 600; color: var(--text-main);">${layerConfig.name}</span>
-        </div>
-      `;
-    }
-
-    // 3.5. Curvas de nível — 10 m (Topografia & Relevo)
-    if (layerConfig.id === 'curvas_nivel_10m') {
-      const activeColor = this.layerManager?.contourColor || layerConfig.style?.strokeColor || '#795548';
-      return `
-        <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 24px; height: 0px; border-top: 2.2px solid ${activeColor};"></span>
-          <div>
-            <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display: block;">${layerConfig.name}</span>
-            <span style="font-size: 10px; color: var(--text-muted);">Isolinhas com equidistância de 10 metros &bull; MDE Passo Fundo</span>
-          </div>
-        </div>
-      `;
-    }
-
-    // 4. LineString Symbology
-    if (layerConfig.geometryType === 'MultiLineString' || layerConfig.geometryType === 'LineString') {
-      const s = layerConfig.style || {};
-      const borderStyle = s.strokeDash ? 'dashed' : 'solid';
-      return `
-        <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 24px; height: 0px; border-top: ${s.strokeWidth || 2}px ${borderStyle} ${s.strokeColor || '#3b82f6'};"></span>
-          <span style="font-size: 12px; font-weight: 600; color: var(--text-main);">${layerConfig.name}</span>
-        </div>
-      `;
-    }
-
-    // 5. Hipsometria e Relevo Sombreado
+    // -------------------------------------------------------------
+    // 13. HIPSOMETRIA E RELEVO SOMBREADO
+    // -------------------------------------------------------------
     if (layerConfig.id === 'hipsometria_relevo' && layerConfig.hypsometryClasses) {
-      let classesHtml = `
-        <div class="legend-item">
-          <div style="font-size: 12px; font-weight: 600; color: var(--text-main); margin-bottom: 6px;">
-            ${layerConfig.name}
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 6px;">
-      `;
-      layerConfig.hypsometryClasses.forEach(c => {
-        classesHtml += `
-          <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-muted);">
-            <span style="display: inline-block; width: 18px; height: 12px; border-radius: 2px; background: ${c.color}; border: 1px solid rgba(255,255,255,0.2);"></span>
-            <span>${c.label}</span>
-          </div>
-        `;
-      });
-      classesHtml += `</div></div>`;
-      return classesHtml;
-    }
-
-    // 5.0. Densidade Espacial — Kernel (Educação: EMEIs e EMEFs)
-    if (layerConfig.kernelClasses) {
-      let classesHtml = `
-        <div class="legend-item">
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-main); margin-bottom: 3px;">
-            ${layerConfig.name}
-          </div>
-          <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 6px;">
-            Estimador de Densidade de Kernel (QGIS) &bull; Raio 1.000 m
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 6px;">
-      `;
-      layerConfig.kernelClasses.forEach(c => {
-        classesHtml += `
-          <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-muted);">
-            <span style="display: inline-block; width: 18px; height: 12px; border-radius: 2px; background: ${c.color}; border: 1px solid rgba(255,255,255,0.25);"></span>
-            <span style="color: var(--text-main); font-weight: 500;">${c.label}</span>
-          </div>
-        `;
-      });
-      classesHtml += `</div></div>`;
-      return classesHtml;
-    }
-
-    // 5.1. Ortofotos e Camadas Raster Genéricas
-    if (layerConfig.isRaster || layerConfig.isGeoTIFF) {
       return `
-        <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 16px; border-radius: 3px; background: linear-gradient(135deg, #0891b2, #065f46); border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 10px;">
-            <i class="lucide-camera" style="font-size: 11px;"></i>
-          </span>
-          <div>
-            <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display: block;">${layerConfig.name}</span>
-            <span style="font-size: 10px; color: var(--text-muted);">Ortofotos – Levantamento Aerofotogramétrico &bull; Prefeitura de Passo Fundo (Jul/2026)</span>
+        <div class="legend-complex-item">
+          <div class="legend-complex-header">
+            <span class="legend-item-name">${layerConfig.name}</span>
+            <span class="legend-item-desc">Modelo Digital de Elevação (Prefeitura de Passo Fundo / SEPLAN)</span>
+          </div>
+          <div class="legend-ramp-list">
+            ${layerConfig.hypsometryClasses.map(c => `
+              <div class="legend-ramp-row">
+                <span class="legend-ramp-swatch" style="background:${c.color};"></span>
+                <span>${c.label}</span>
+              </div>
+            `).join('')}
           </div>
         </div>
       `;
     }
 
-    // 6. Polygon Symbology
-    const s = layerConfig.style || {};
+    // -------------------------------------------------------------
+    // 14. DENSIDADE ESPACIAL — KERNEL (EDUCAÇÃO)
+    // -------------------------------------------------------------
+    if (layerConfig.kernelClasses) {
+      return `
+        <div class="legend-complex-item">
+          <div class="legend-complex-header">
+            <span class="legend-item-name">${layerConfig.name}</span>
+            <span class="legend-item-desc">Estimador de Densidade de Kernel (QGIS) • Raio 1.000 m</span>
+          </div>
+          <div class="legend-ramp-list">
+            ${layerConfig.kernelClasses.map(c => `
+              <div class="legend-ramp-row">
+                <span class="legend-ramp-swatch" style="background:${c.color};"></span>
+                <span style="color:var(--text-main); font-weight:500;">${c.label}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // -------------------------------------------------------------
+    // 15. ORTOFOTOS E RASTERS
+    // -------------------------------------------------------------
+    if (layerConfig.isRaster || layerConfig.isGeoTIFF) {
+      const icon = `
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:16px; border-radius:3px; background:linear-gradient(135deg, #0891b2, #065f46); border:1px solid rgba(255,255,255,0.4); color:#fff; font-size:10px;">
+          <i class="lucide-camera" style="font-size:11px;"></i>
+        </span>
+      `;
+      return this.renderItemRow(icon, layerConfig.name, 'Levantamento Aerofotogramétrico • Alta Resolução');
+    }
+
+    // -------------------------------------------------------------
+    // 16. CAMADAS PONTUAIS GENÉRICAS / DEMAIS EQUIPAMENTOS
+    // -------------------------------------------------------------
+    if (layerConfig.geometryType === 'Point' || layerConfig.geometryType === 'MultiPoint') {
+      const color = s.pointColor || s.previewColor || '#dc2626';
+      const stroke = s.strokeColor || '#ffffff';
+      const dot = `<span style="display:inline-block; width:13px; height:13px; border-radius:50%; background:${color}; border:1.8px solid ${stroke}; box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>`;
+      return this.renderItemRow(dot, layerConfig.name, layerConfig.description || '');
+    }
+
+    // -------------------------------------------------------------
+    // 17. CAMADAS LINEARES GENÉRICAS
+    // -------------------------------------------------------------
+    if (layerConfig.geometryType === 'MultiLineString' || layerConfig.geometryType === 'LineString') {
+      const color = s.strokeColor || s.previewColor || '#3b82f6';
+      const borderStyle = s.strokeDash ? 'dashed' : 'solid';
+      const line = `<span style="display:inline-block; width:22px; height:0px; border-top:${s.strokeWidth || 2}px ${borderStyle} ${color};"></span>`;
+      return this.renderItemRow(line, layerConfig.name, layerConfig.description || '');
+    }
+
+    // -------------------------------------------------------------
+    // 18. CAMADAS POLIGONAIS GENÉRICAS
+    // -------------------------------------------------------------
     const borderStyle = s.strokeDash ? 'dashed' : 'solid';
-    return `
-      <div class="legend-item" style="display: flex; align-items: center; gap: 10px;">
-        <span style="display: inline-block; width: 18px; height: 14px; border-radius: 3px; background: ${s.fillColor || 'rgba(59, 130, 246, 0.2)'}; border: ${s.strokeWidth || 1.5}px ${borderStyle} ${s.strokeColor || '#3b82f6'};"></span>
-        <span style="font-size: 12px; font-weight: 600; color: var(--text-main);">${layerConfig.name}</span>
-      </div>
-    `;
+    const poly = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:${s.fillColor || 'rgba(59, 130, 246, 0.2)'}; border:${s.strokeWidth || 1.5}px ${borderStyle} ${s.strokeColor || '#3b82f6'};"></span>`;
+    return this.renderItemRow(poly, layerConfig.name, layerConfig.description || '');
   }
 }
