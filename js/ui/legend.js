@@ -230,10 +230,11 @@ export class LegendUI {
     // -------------------------------------------------------------
     if (layerConfig.id === 'distritos') {
       const pinSvg = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="16" height="22" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45));">
-          <path d="M12 2 C7.03 2 3 6.03 3 11 C3 17.5 12 30 12 30 C12 30 21 17.5 21 11 C21 6.03 16.97 2 12 2 Z" fill="#dc2626" stroke="#ffffff" stroke-width="1.8"/>
-          <circle cx="12" cy="11" r="3.6" fill="#ffffff"/>
-          <circle cx="12" cy="11" r="1.8" fill="#991b1b"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="16" height="22">
+          <ellipse cx="12" cy="30.5" rx="5" ry="1.5" fill="rgba(0,0,0,0.35)"/>
+          <path d="M12 2 C7 2 3 6.2 3 11.5 C3 18.5 12 30 12 30 C12 30 21 18.5 21 11.5 C21 6.2 17 2 12 2 Z" fill="#dc2626" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/>
+          <circle cx="12" cy="11.5" r="4.0" fill="#ffffff"/>
+          <circle cx="12" cy="11.5" r="2.0" fill="#991b1b"/>
         </svg>
       `;
       return this.renderItemRow(pinSvg, layerConfig.name, 'Sede distrital (Passo Fundo e distritos rurais)');
