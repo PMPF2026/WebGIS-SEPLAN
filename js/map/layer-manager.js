@@ -1017,9 +1017,6 @@ export class LayerManager {
         ? [0.10, 0.30, 0.50, 0.70, 0.90]
         : (isMiranda ? [0.15, 0.40, 0.65, 0.90] : [0.20, 0.50, 0.80]);
 
-      const fontSize = isRioPrincipal ? '11px' : '10px';
-      const haloWidth = isRioPrincipal ? 3.8 : 3.4;
-
       return (feature, resolution) => {
         const styles = [
           new ol.style.Style({
@@ -1034,6 +1031,17 @@ export class LayerManager {
 
         // Exibir toponímia em escala municipal e aproximação (resolution < 75)
         if (resolution < 75) {
+          // Tipografia discreta e proporcional: tamanho reduzido na visão geral inicial (resolution >= 25)
+          // e sutilmente ajustado ao aproximar (resolution < 25)
+          const isDetailZoom = resolution < 25;
+          const currentFontSize = isRioPrincipal 
+            ? (isDetailZoom ? '9px' : '8px') 
+            : (isDetailZoom ? '8px' : '7.5px');
+          const currentHalo = isRioPrincipal 
+            ? (isDetailZoom ? 2.4 : 2.0) 
+            : (isDetailZoom ? 2.0 : 1.8);
+          const currentOffsetY = isDetailZoom ? -6 : -5;
+
           let labelPoints = feature.get('_cachedLabelGeoms');
           if (!labelPoints) {
             labelPoints = [];
@@ -1076,10 +1084,10 @@ export class LayerManager {
               geometry: pt,
               text: new ol.style.Text({
                 text: labelText,
-                offsetY: -7,
-                font: `italic 600 ${fontSize} "Inter", sans-serif`,
+                offsetY: currentOffsetY,
+                font: `italic 600 ${currentFontSize} "Inter", sans-serif`,
                 fill: new ol.style.Fill({ color: '#0369a1' }),
-                stroke: new ol.style.Stroke({ color: '#ffffff', width: haloWidth }),
+                stroke: new ol.style.Stroke({ color: '#ffffff', width: currentHalo }),
                 overflow: true
               })
             }));
