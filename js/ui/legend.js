@@ -294,8 +294,8 @@ export class LegendUI {
     if (layerConfig.id === 'reservatorio_miranda' || layerConfig.id === 'reservatorio_barragem') {
       const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(56, 189, 248, 0.35); border:1.5px solid #0284c7;"></span>`;
       const desc = layerConfig.id === 'reservatorio_miranda'
-        ? 'Lâmina d'água — Reservatório Miranda'
-        : 'Lâmina d'água — Reservatório da Barragem (Captação Corsan)';
+        ? "Lâmina d'água — Reservatório Miranda"
+        : "Lâmina d'água — Reservatório da Barragem (Captação Corsan)";
       return this.renderItemRow(box, layerConfig.name, desc);
     }
     if (layerConfig.id === 'rio_passo_fundo') {
@@ -304,11 +304,11 @@ export class LegendUI {
     }
     if (layerConfig.id === 'arroio_miranda') {
       const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.2px solid #0ea5e9;"></span>`;
-      return this.renderItemRow(line, layerConfig.name, 'Cursos d'água da bacia do Arroio Miranda');
+      return this.renderItemRow(line, layerConfig.name, "Cursos d'água da bacia do Arroio Miranda");
     }
     if (layerConfig.id === 'arroio_santo_antonio') {
       const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.2px solid #38bdf8;"></span>`;
-      return this.renderItemRow(line, layerConfig.name, 'Cursos d'água da sub-bacia Santo Antônio');
+      return this.renderItemRow(line, layerConfig.name, "Cursos d'água da sub-bacia Santo Antônio");
     }
     if (layerConfig.id === 'malha_hidrica') {
       const line = `<span style="display:inline-block; width:22px; height:0px; border-top:1.6px solid #0284c7;"></span>`;
