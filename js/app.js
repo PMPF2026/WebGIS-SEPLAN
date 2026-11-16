@@ -5,7 +5,7 @@
 
 import { MapEngine } from './map/map-engine.js';
 import { BasemapManager } from './map/basemap-manager.js';
-import { LayerManager } from './map/layer-manager.js?v=20261116_v5';
+import { LayerManager } from './map/layer-manager.js?v=20261116_toponimia_v6';
 import { SidebarUI } from './ui/sidebar.js?v=20261116_v5';
 import { LegendUI } from './ui/legend.js?v=20261116_v5';
 import { SearchUI } from './ui/search.js';

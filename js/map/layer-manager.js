@@ -997,6 +997,99 @@ export class LayerManager {
       };
     }
 
+    // 3.6. Cursos Hídricos Principais: Toponímia Hidrográfica Distribuída (Estilo Reservatório — Opção A)
+    if (config.id === 'rio_passo_fundo' || config.id === 'arroio_miranda' || config.id === 'arroio_santo_antonio') {
+      const isRioPrincipal = config.id === 'rio_passo_fundo';
+      const isMiranda = config.id === 'arroio_miranda';
+      const strokeColor = config.style?.strokeColor || '#0284c7';
+      const strokeWidth = config.style?.strokeWidth || (isRioPrincipal ? 2.8 : 2.2);
+
+      // Toponímia oficial de cada curso
+      const labelText = isRioPrincipal 
+        ? 'Rio Passo Fundo' 
+        : (isMiranda ? 'Arroio Miranda' : 'Arroio Santo Antônio');
+
+      // Frações percentuais para distribuição uniforme ao longo do traçado:
+      // Rio Passo Fundo (47 km): 5 repetições (~10%, 30%, 50%, 70%, 90%)
+      // Arroio Miranda (18 km): 4 repetições (~15%, 40%, 65%, 90%)
+      // Arroio Santo Antônio (8.4 km): 3 repetições (~20%, 50%, 80%)
+      const sampleFractions = isRioPrincipal 
+        ? [0.10, 0.30, 0.50, 0.70, 0.90]
+        : (isMiranda ? [0.15, 0.40, 0.65, 0.90] : [0.20, 0.50, 0.80]);
+
+      const fontSize = isRioPrincipal ? '11px' : '10px';
+      const haloWidth = isRioPrincipal ? 3.8 : 3.4;
+
+      return (feature, resolution) => {
+        const styles = [
+          new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: strokeColor,
+              width: strokeWidth,
+              lineCap: 'round',
+              lineJoin: 'round'
+            })
+          })
+        ];
+
+        // Exibir toponímia em escala municipal e aproximação (resolution < 75)
+        if (resolution < 75) {
+          let labelPoints = feature.get('_cachedLabelGeoms');
+          if (!labelPoints) {
+            labelPoints = [];
+            const geom = feature.getGeometry();
+            if (geom) {
+              const geomType = geom.getType();
+              let targetLine = null;
+              if (geomType === 'LineString') {
+                targetLine = geom;
+              } else if (geomType === 'MultiLineString') {
+                const lines = geom.getLineStrings();
+                if (lines && lines.length > 0) {
+                  targetLine = lines.reduce((max, l) => l.getLength() > max.getLength() ? l : max, lines[0]);
+                }
+              }
+
+              if (targetLine) {
+                for (const frac of sampleFractions) {
+                  let coord = null;
+                  if (typeof targetLine.getCoordinateAt === 'function') {
+                    coord = targetLine.getCoordinateAt(frac);
+                  } else {
+                    const coords = targetLine.getCoordinates();
+                    if (coords && coords.length > 0) {
+                      const idx = Math.min(coords.length - 1, Math.max(0, Math.floor(coords.length * frac)));
+                      coord = coords[idx];
+                    }
+                  }
+                  if (coord) {
+                    labelPoints.push(new ol.geom.Point(coord));
+                  }
+                }
+              }
+            }
+            feature.set('_cachedLabelGeoms', labelPoints);
+          }
+
+          for (const pt of labelPoints) {
+            styles.push(new ol.style.Style({
+              geometry: pt,
+              text: new ol.style.Text({
+                text: labelText,
+                offsetY: -7,
+                font: `italic 600 ${fontSize} "Inter", sans-serif`,
+                fill: new ol.style.Fill({ color: '#0369a1' }),
+                stroke: new ol.style.Stroke({ color: '#ffffff', width: haloWidth }),
+                overflow: true
+              })
+            }));
+          }
+        }
+
+        return styles;
+      };
+    }
+
     // 4. Ferrovia (Linha Férrea com dormentes)
 
     if (config.isRailway) {
