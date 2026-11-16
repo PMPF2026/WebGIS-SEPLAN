@@ -813,8 +813,24 @@ export class LayerManager {
 
 
 
-    // 3.1. Distritos Municipais: Identificação Nominal Clara e Centralizada com Halo Protetivo
+        // 3.1. Distritos Municipais: Marcador Map Pin Vermelho (#DC2626) com Identificação Nominal Acima
     if (config.id === 'distritos') {
+      const svgMapPin = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="24" height="32">
+          <defs>
+            <filter id="pin-shadow" x="-30%" y="-20%" width="160%" height="150%">
+              <feDropShadow dx="0" dy="1.2" stdDeviation="1.0" flood-color="#000000" flood-opacity="0.55"/>
+            </filter>
+          </defs>
+          <!-- Corpo do pino vermelho (#DC2626) com contorno branco e ponta inferior -->
+          <path d="M12 2 C7.03 2 3 6.03 3 11 C3 17.5 12 30 12 30 C12 30 21 17.5 21 11 C21 6.03 16.97 2 12 2 Z" 
+                fill="#dc2626" stroke="#ffffff" stroke-width="1.8" filter="url(#pin-shadow)"/>
+          <!-- Detalhe interno branco com núcleo vermelho -->
+          <circle cx="12" cy="11" r="3.6" fill="#ffffff"/>
+          <circle cx="12" cy="11" r="1.8" fill="#991b1b"/>
+        </svg>
+      `);
+
       return (feature, resolution) => {
         const rawName = feature.get('nome') || feature.get('Nome') || '';
         const name = rawName.trim();
@@ -823,18 +839,18 @@ export class LayerManager {
         const displayName = name === 'Passo Fundo' ? 'Distrito Sede' : name;
 
         return new ol.style.Style({
-          image: new ol.style.Circle({
-            radius: 4,
-            fill: new ol.style.Fill({ color: '#f8fafc' }),
-            stroke: new ol.style.Stroke({ color: '#1e293b', width: 2.0 })
+          image: new ol.style.Icon({
+            src: svgMapPin,
+            anchor: [0.5, 1.0],
+            scale: 0.8
           }),
           text: new ol.style.Text({
             text: displayName,
-            offsetY: -14,
+            offsetY: -32,
             font: 'bold 11px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#ffffff' }),
             stroke: new ol.style.Stroke({ color: '#0f172a', width: 3.5 }),
-            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.82)' }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.85)' }),
             backgroundStroke: new ol.style.Stroke({ color: 'rgba(255, 255, 255, 0.4)', width: 0.8 }),
             padding: [2, 6, 2, 6]
           })
