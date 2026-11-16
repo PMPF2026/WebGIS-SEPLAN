@@ -394,6 +394,8 @@ export class LayerManager {
 
         style: styleFunction,
 
+        declutter: config.declutter !== false,
+
         // High-performance image rendering mode for heavy layers
 
         renderMode: config.isLazy || config.id === 'malha_hidrica' ? 'image' : 'vector'
@@ -750,52 +752,62 @@ export class LayerManager {
 
 
 
-    // 3. Rodovias (Federal / Estadual): Dual Casing Style (Padrão Cartográfico Oficial Limpo)
-
+    // 3. Rodovias (Federal / Estadual): Dual Casing Style com Rótulos de Eixo ao Longo da Linha
     if (config.isHighway) {
-
       const isFederal = config.highwayType === 'BR';
-
       const mainColor = isFederal ? '#dc2626' : '#ea580c';
-
       const mainWidth = isFederal ? 1.8 : 1.4;
-
       const casingWidth = isFederal ? 2.8 : 2.2;
 
-
-
-      return [
-
-        // Linha externa (casing branco de contraste sutil)
-
-        new ol.style.Style({
-
-          stroke: new ol.style.Stroke({
-
-            color: '#ffffff',
-
-            width: casingWidth
-
+      return (feature, resolution) => {
+        const styles = [
+          // Linha externa (casing branco de contraste sutil)
+          new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: '#ffffff',
+              width: casingWidth
+            })
+          }),
+          // Linha interna principal
+          new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: mainColor,
+              width: mainWidth
+            })
           })
+        ];
 
-        }),
+        // Identificação nominal das rodovias (placement: 'line')
+        let label = feature.get('nome') || '';
+        const cod = feature.get('codTrechoR') || '';
+        if (!label) {
+          if (cod.includes('285')) label = 'BR-285';
+          else if (cod.includes('153BRS') || cod.includes('BRS153')) label = 'BR-153';
+          else if (cod.includes('324')) label = 'ERS-324';
+          else if (cod.includes('135')) label = 'ERS-135';
+          else if (cod.includes('153RSC') || cod.includes('RSC153')) label = 'RSC-153';
+        }
+        label = label.replace('BRS-', 'BR-');
 
-        // Linha interna principal
+        // Exibir código da rodovia em escala municipal e aproximação (resolution < 75)
+        if (label && resolution < 75) {
+          const repeatDist = resolution < 18 ? 400 : 700;
+          styles.push(new ol.style.Style({
+            text: new ol.style.Text({
+              text: label,
+              font: 'bold 10px "Inter", sans-serif',
+              placement: 'line',
+              repeat: repeatDist,
+              maxAngle: Math.PI / 4,
+              keepUpright: true,
+              fill: new ol.style.Fill({ color: '#ffffff' }),
+              stroke: new ol.style.Stroke({ color: mainColor, width: 3.5 })
+            })
+          }));
+        }
 
-        new ol.style.Style({
-
-          stroke: new ol.style.Stroke({
-
-            color: mainColor,
-
-            width: mainWidth
-
-          })
-
-        })
-
-      ];
-
+        return styles;
+      };
     }
 
 
