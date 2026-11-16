@@ -216,7 +216,7 @@ export class DownloadsUI {
    */
   prepareLayerCatalog() {
     const descriptions = {
-      'rio_passo_fundo': 'Traçado vetorial do curso d’água principal do Rio Passo Fundo em sua travessia pelo perímetro urbano e rural.',
+      'rio_passo_fundo': 'Traçado vetorial contínuo do curso principal do Rio Passo Fundo em toda a sua extensão municipal (47,27 km).',
       'malha_hidrica': 'Rede hidrográfica com cursos d’água, rios, arroios e tributários do município de Passo Fundo.',
       'bacias_hidrograficas': 'Divisores topográficos e delimitação das microbacias hidrográficas do município.',
       'rodovia_federal': 'Eixos e trechos das rodovias federais (BR-285 e BR-153) que cruzam o território municipal (DNIT).',

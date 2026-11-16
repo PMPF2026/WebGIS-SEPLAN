@@ -299,7 +299,7 @@ export class LegendUI {
     }
     if (layerConfig.id === 'rio_passo_fundo') {
       const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.4px solid #0284c7;"></span>`;
-      return this.renderItemRow(line, layerConfig.name, 'Curso principal da bacia hidrográfica municipal');
+      return this.renderItemRow(line, layerConfig.name, 'Curso principal da bacia hidrográfica municipal (47,27 km)');
     }
     if (layerConfig.id === 'arroio_miranda') {
       const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.2px solid #0ea5e9;"></span>`;

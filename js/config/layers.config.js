@@ -112,7 +112,7 @@ export const LAYERS_CONFIG = [
     source: 'Prefeitura Municipal de Passo Fundo',
     refDate: '2026',
     group: 'hidrografia',
-    geometryType: 'MultiLineString',
+    geometryType: 'LineString',
     defaultVisible: true,
     defaultOpacity: 1.0,
     zIndex: 54,
@@ -120,21 +120,25 @@ export const LAYERS_CONFIG = [
     isLazy: false,
     style: {
       strokeColor: '#0284c7',
-      strokeWidth: 1.8,
+      strokeWidth: 2.2,
       previewColor: '#0284c7'
     },
     popupConfig: {
       titleField: 'Nome',
-      defaultTitle: 'Rio Passo Fundo',
+      defaultTitle: 'Rio Passo Fundo (Curso Principal)',
       fields: [
-        { key: 'Nome', label: 'Curso Hídrico Principal' },
-        { key: 'Distância', label: 'Extensão do Segmento (m)', format: 'number' },
-        { key: 'Comp_total', label: 'Comprimento Total (m)', format: 'number' },
-        { key: 'SubClasses', label: 'Entidade CAD/GIS' }
+        { key: 'Nome', label: 'Curso Hídrico' },
+        { key: 'extensao_km_fmt', label: 'Extensão no Município' },
+        { key: 'extensao_m_fmt', label: 'Comprimento Total' },
+        { key: 'bacia', label: 'Bacia Hidrográfica' },
+        { key: 'tipo', label: 'Classificação' },
+        { key: 'municipio', label: 'Município' },
+        { key: 'fonte', label: 'Fonte Oficial' }
       ]
     },
     searchable: true,
-    searchFields: ['Nome']
+    searchFields: ['Nome', 'nome', 'bacia'],
+    description: 'Curso principal do Rio Passo Fundo em toda a sua extensão administrativa municipal (47,27 km).'
   },
   {
     id: 'malha_hidrica',

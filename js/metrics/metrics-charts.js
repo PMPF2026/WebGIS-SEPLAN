@@ -24,9 +24,9 @@ export const METRICS_ANALYTICAL_DATA = {
   },
   hydro: {
     labels: ['Rio Passo Fundo', 'Demais Cursos d\'Água'],
-    data: [19.76, 1654.98],
+    data: [47.27, 1654.98],
     colors: ['#0284c7', '#38bdf8'],
-    total: 1674.74,
+    total: 1702.25,
     trechos: 3682,
     unit: 'km'
   },
