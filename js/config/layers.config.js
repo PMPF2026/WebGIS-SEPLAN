@@ -198,6 +198,137 @@ export const LAYERS_CONFIG = [
     searchable: false
   },
 
+  {
+    id: 'arroio_miranda',
+    name: 'Arroio Miranda',
+    fileName: 'data/hidrografia/Arroio Miranda.geojson',
+    source: 'Prefeitura Municipal de Passo Fundo',
+    refDate: '2026',
+    group: 'hidrografia',
+    geometryType: 'LineString',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 52,
+    isLazy: true,
+    style: {
+      strokeColor: '#0ea5e9',
+      strokeWidth: 2.0,
+      previewColor: '#0ea5e9'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Arroio Miranda',
+      fields: [
+        { key: 'nome', label: 'Curso Hídrico' },
+        { key: 'extensao_km', label: 'Extensão Total (km)', format: 'number' },
+        { key: 'extensao_m', label: 'Extensão Total (m)', format: 'number' },
+        { key: 'tipo', label: 'Classificação' },
+        { key: 'bacia', label: 'Bacia Hidrográfica' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['nome']
+  },
+  {
+    id: 'arroio_santo_antonio',
+    name: 'Arroio Santo Antônio',
+    fileName: 'data/hidrografia/Arroio Santo Antônio.geojson',
+    source: 'Prefeitura Municipal de Passo Fundo',
+    refDate: '2026',
+    group: 'hidrografia',
+    geometryType: 'LineString',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 52,
+    isLazy: true,
+    style: {
+      strokeColor: '#38bdf8',
+      strokeWidth: 2.0,
+      previewColor: '#38bdf8'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Arroio Santo Antônio',
+      fields: [
+        { key: 'nome', label: 'Curso Hídrico' },
+        { key: 'extensao_km', label: 'Extensão Total (km)', format: 'number' },
+        { key: 'extensao_m', label: 'Extensão Total (m)', format: 'number' },
+        { key: 'tipo', label: 'Classificação' },
+        { key: 'bacia', label: 'Bacia Hidrográfica' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['nome']
+  },
+  {
+    id: 'reservatorio_miranda',
+    name: 'Reservatório Miranda',
+    fileName: 'data/hidrografia/Reservatório Miranda.geojson',
+    source: 'Prefeitura Municipal de Passo Fundo',
+    refDate: '2026',
+    group: 'hidrografia',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 45,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(14, 165, 233, 0.40)',
+      strokeColor: '#0284c7',
+      strokeWidth: 1.6,
+      previewColor: '#0284c7'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Reservatório Miranda',
+      fields: [
+        { key: 'nome', label: 'Corpo Hídrico' },
+        { key: 'area_ha', label: "Área do Espelho d'Água (ha)", format: 'number' },
+        { key: 'area_m2', label: 'Área da Superfície (m²)', format: 'number' },
+        { key: 'perimetro_km', label: 'Perímetro / Borda (km)', format: 'number' },
+        { key: 'tipo', label: 'Classificação' },
+        { key: 'bacia', label: 'Bacia Hidrográfica' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['nome']
+  },
+  {
+    id: 'reservatorio_barragem',
+    name: 'Reservatório da Barragem',
+    fileName: 'data/hidrografia/Reservatório da Barragem.geojson',
+    source: 'Prefeitura Municipal de Passo Fundo',
+    refDate: '2026',
+    group: 'hidrografia',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.85,
+    zIndex: 45,
+    isLazy: true,
+    style: {
+      fillColor: 'rgba(2, 132, 199, 0.45)',
+      strokeColor: '#0369a1',
+      strokeWidth: 1.6,
+      previewColor: '#0369a1'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Reservatório da Barragem',
+      fields: [
+        { key: 'nome', label: 'Corpo Hídrico' },
+        { key: 'compartimento', label: 'Compartimento' },
+        { key: 'area_ha', label: 'Área do Compartimento (ha)', format: 'number' },
+        { key: 'area_total_ha', label: 'Área Total do Reservatório (ha)', format: 'number' },
+        { key: 'area_m2', label: 'Área (m²)', format: 'number' },
+        { key: 'perimetro_km', label: 'Perímetro / Borda (km)', format: 'number' },
+        { key: 'tipo', label: 'Classificação' },
+        { key: 'bacia', label: 'Bacia Hidrográfica' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['nome']
+  },
+
   // ================= 4. SISTEMA VIÁRIO =================
   {
     id: 'rodovia_federal',
@@ -2726,7 +2857,7 @@ export const OPERATIONAL_PRESETS = [
     id: 'preset_hidrografia',
     name: '💧 Bacias Hidrográficas & Recursos Hídricos',
     description: 'Foco no Rio Passo Fundo, bacias hidrográficas e malha hídrica municipal',
-    activeLayers: ['rio_passo_fundo', 'malha_hidrica', 'bacias_hidrograficas', 'limite_territorial']
+    activeLayers: ['rio_passo_fundo', 'malha_hidrica', 'bacias_hidrograficas', 'arroio_miranda', 'arroio_santo_antonio', 'reservatorio_miranda', 'reservatorio_barragem', 'limite_territorial']
   },
   {
     id: 'preset_demografico',

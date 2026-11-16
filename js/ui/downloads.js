@@ -16,7 +16,11 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
     layerIds: [
       'rio_passo_fundo',
       'malha_hidrica',
-      'bacias_hidrograficas'
+      'bacias_hidrograficas',
+      'arroio_miranda',
+      'arroio_santo_antonio',
+      'reservatorio_miranda',
+      'reservatorio_barragem'
     ]
   },
   {
