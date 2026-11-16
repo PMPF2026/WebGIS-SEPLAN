@@ -937,7 +937,7 @@ export class SpatialAnalysisTool {
         sgbPopulacao: 2468,
         sgbMuitoAlto: { setores: 4, edif: 112, pess: 448 },
         abrigosCapacidade: 17,
-        rioPassoFundoExtensaoKm: 17.68,
+        rioPassoFundoExtensaoKm: 47.27,
         conclusao: 'Condição meteorológica com potencial relevância para áreas sensíveis mapeadas no município (calha do Rio Passo Fundo e setores com declividade acentuada/suscetibilidade a alagamento).'
       };
 
@@ -1019,7 +1019,7 @@ export class SpatialAnalysisTool {
 
     let csvContent = 'data:text/csv;charset=utf-8,';
     csvContent += 'SISTEMA,MODULO,CATEGORIA,INDICADOR,VALOR,OBSERVACAO\n';
-    csvContent += 'DEFESA_CIVIL_PASSO_FUNDO,"Central Meteorologica","Monitoramento de Risco","Residencias na Faixa 30m Rio Passo Fundo",318,"Calha fluvial de 17.68 km"\n';
+    csvContent += 'DEFESA_CIVIL_PASSO_FUNDO,"Central Meteorologica","Monitoramento de Risco","Residencias na Faixa 30m Rio Passo Fundo",318,"Calha fluvial de 47.27 km"\n';
     csvContent += 'DEFESA_CIVIL_PASSO_FUNDO,"Central Meteorologica","Monitoramento de Risco","Setores de Risco SGB",25,"32.95 hectares mapeados"\n';
     csvContent += 'DEFESA_CIVIL_PASSO_FUNDO,"Central Meteorologica","Monitoramento de Risco","Populacao em Risco SGB",2468,"Cadastramento de campo SGB 2025"\n';
     csvContent += 'DEFESA_CIVIL_PASSO_FUNDO,"Central Meteorologica","Monitoramento de Risco","Edificacoes em Risco SGB",617,"Total de edificacoes mapeadas"\n';

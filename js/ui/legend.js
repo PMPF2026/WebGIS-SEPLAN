@@ -3,7 +3,7 @@
  * Legenda Cartográfica Dinâmica, Inteligente e Institucional
  */
 
-import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js';
+import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261116_v5';
 
 export class LegendUI {
   constructor(layerManager, containerId = 'legend-container') {
@@ -299,8 +299,8 @@ export class LegendUI {
       return this.renderItemRow(box, layerConfig.name, desc);
     }
     if (layerConfig.id === 'rio_passo_fundo') {
-      const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.4px solid #0284c7;"></span>`;
-      return this.renderItemRow(line, layerConfig.name, 'Curso principal da bacia hidrográfica municipal (47,27 km)');
+      const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.8px solid #0284c7;"></span>`;
+      return this.renderItemRow(line, layerConfig.name, 'Curso principal completo da bacia hidrográfica municipal (47,27 km)');
     }
     if (layerConfig.id === 'arroio_miranda') {
       const line = `<span style="display:inline-block; width:22px; height:0px; border-top:2.2px solid #0ea5e9;"></span>`;

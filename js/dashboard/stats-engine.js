@@ -75,7 +75,7 @@ export class StatsEngine {
       floodAreaHa: 490.9,
       residenciasApp: 318,
       app30mHa: 130.49,
-      rioPassoFundoKm: 17.68,
+      rioPassoFundoKm: 47.27,
       hidroKm: 1708.73,
       viariaKm: 1501.61,
       estradasMunicipaisKm: 285.29,

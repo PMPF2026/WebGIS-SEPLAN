@@ -728,12 +728,12 @@ export class ExportReportTool {
           <tbody>
             <tr>
               <td><strong>Nome do Curso D'água</strong></td>
-              <td><strong>Rio Passo Fundo (Curso Principal)</strong></td>
+              <td><strong>Rio Passo Fundo Completo</strong></td>
               <td>Bacia Hidrográfica do Rio Passo Fundo / Rio da Várzea</td>
             </tr>
             <tr>
               <td><strong>Extensão Analisada no Município</strong></td>
-              <td><strong>${formatNumber(stats.rioPassoFundoKm, 2)} km</strong> (17.680 metros)</td>
+              <td><strong>${formatNumber(stats.rioPassoFundoKm, 2)} km</strong> (47.268 metros)</td>
               <td>Vetorização contínua da calha fluvial</td>
             </tr>
             <tr>

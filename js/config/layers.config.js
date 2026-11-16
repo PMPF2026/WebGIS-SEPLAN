@@ -107,8 +107,8 @@ export const LAYERS_CONFIG = [
   // ================= 3. HIDROGRAFIA =================
   {
     id: 'rio_passo_fundo',
-    name: 'Rio Passo Fundo (Curso Principal)',
-    fileName: 'Rio Passo Fundo.geojson',
+    name: 'Rio Passo Fundo Completo (47,27 km)',
+    fileName: 'Rio Passo Fundo Completo.geojson?v=20261116_47km',
     source: 'Prefeitura Municipal de Passo Fundo',
     refDate: '2026',
     group: 'hidrografia',
@@ -120,16 +120,17 @@ export const LAYERS_CONFIG = [
     isLazy: false,
     style: {
       strokeColor: '#0284c7',
-      strokeWidth: 2.2,
+      strokeWidth: 2.8,
       previewColor: '#0284c7'
     },
     popupConfig: {
       titleField: 'Nome',
-      defaultTitle: 'Rio Passo Fundo (Curso Principal)',
+      defaultTitle: 'Rio Passo Fundo Completo (47,27 km)',
       fields: [
         { key: 'Nome', label: 'Curso Hídrico' },
         { key: 'extensao_km_fmt', label: 'Extensão no Município' },
         { key: 'extensao_m_fmt', label: 'Comprimento Total' },
+        { key: 'Distância', label: 'Distância Percorrida' },
         { key: 'bacia', label: 'Bacia Hidrográfica' },
         { key: 'tipo', label: 'Classificação' },
         { key: 'municipio', label: 'Município' },
@@ -138,7 +139,7 @@ export const LAYERS_CONFIG = [
     },
     searchable: true,
     searchFields: ['Nome', 'nome', 'bacia'],
-    description: 'Curso principal do Rio Passo Fundo em toda a sua extensão administrativa municipal (47,27 km).'
+    description: 'Curso principal completo do Rio Passo Fundo em toda a sua extensão administrativa municipal (47,27 km).'
   },
   {
     id: 'malha_hidrica',

@@ -3,7 +3,7 @@
  * Downloads UI Controller: Catálogo de Dados Espaciais Temático & Exportação
  */
 
-import { LAYER_GROUPS, LAYERS_CONFIG } from '../config/layers.config.js';
+import { LAYER_GROUPS, LAYERS_CONFIG } from '../config/layers.config.js?v=20261116_v5';
 import { Notification } from './notification.js';
 import { toUTM22S } from '../utils/projection.js';
 

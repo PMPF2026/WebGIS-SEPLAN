@@ -8,7 +8,7 @@
 
 
 
-import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js';
+import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261116_v5';
 
 import { loadGeoJson } from '../utils/async-loader.js';
 
