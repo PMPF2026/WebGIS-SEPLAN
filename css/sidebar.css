@@ -1245,3 +1245,212 @@
   border-color: #b45309;
   color: #ffffff;
 }
+
+
+/* ==========================================================================
+   Legenda Cartográfica Dinâmica e Inteligente (WebGIS SEPLAN)
+   ========================================================================== */
+
+.legend-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px 0 24px 0;
+}
+
+.legend-empty {
+  padding: 36px 16px;
+  text-align: center;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: var(--dc-blue-card);
+  border: 1px dashed var(--dc-blue-border);
+  border-radius: var(--radius-md);
+  margin-top: 6px;
+}
+
+.legend-empty i {
+  font-size: 28px;
+  opacity: 0.5;
+  color: var(--text-subtle);
+  margin-bottom: 2px;
+}
+
+.legend-empty p {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.legend-empty span {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  max-width: 290px;
+}
+
+.legend-group-card {
+  background: var(--dc-blue-card);
+  border: 1px solid var(--dc-blue-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.legend-group-card:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+.legend-group-header {
+  padding: 8px 12px;
+  background: var(--dc-blue-surface);
+  border-bottom: 1px solid var(--dc-blue-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--transition-fast);
+}
+
+.legend-group-card.collapsed .legend-group-header {
+  border-bottom: none;
+}
+
+.legend-group-header:hover {
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.legend-group-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 0.3px;
+}
+
+.legend-group-title i {
+  font-size: 14px;
+  color: #38bdf8;
+}
+
+.legend-group-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-group-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1.5px 6.5px;
+  border-radius: 10px;
+  background: var(--dc-blue-navy);
+  color: #38bdf8;
+  border: 1px solid var(--dc-blue-border);
+  line-height: 1.2;
+}
+
+.legend-group-chevron {
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.legend-group-card.collapsed .legend-group-chevron {
+  transform: rotate(-90deg);
+}
+
+.legend-group-body {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legend-group-card.collapsed .legend-group-body {
+  display: none;
+}
+
+.legend-item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-symbol-wrapper {
+  flex-shrink: 0;
+  width: 24px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.legend-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.legend-item-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.35;
+  display: block;
+}
+
+.legend-item-desc {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  line-height: 1.3;
+  margin-top: 1px;
+  display: block;
+}
+
+/* Itens Complexos (Rampas de Cores, Classes e Subdivisões) */
+.legend-complex-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 2px;
+}
+
+.legend-complex-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.legend-ramp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 8px;
+  margin-top: 3px;
+  border-left: 2px solid rgba(56, 189, 248, 0.3);
+}
+
+.legend-ramp-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.legend-ramp-swatch {
+  width: 18px;
+  height: 11px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  flex-shrink: 0;
+}
