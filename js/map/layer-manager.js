@@ -752,10 +752,11 @@ export class LayerManager {
 
 
 
-    // 3. Rodovias (Federal / Estadual): Dual Casing Style com Rótulos de Eixo ao Longo da Linha
+    // 3. Rodovias (Federal / Estadual): Dual Casing Style com Rótulos Padronizados (Shield / Eixo)
     if (config.isHighway) {
       const isFederal = config.highwayType === 'BR';
       const mainColor = isFederal ? '#dc2626' : '#ea580c';
+      const casingColor = '#ffffff';
       const mainWidth = isFederal ? 1.8 : 1.4;
       const casingWidth = isFederal ? 2.8 : 2.2;
 
@@ -764,7 +765,7 @@ export class LayerManager {
           // Linha externa (casing branco de contraste sutil)
           new ol.style.Style({
             stroke: new ol.style.Stroke({
-              color: '#ffffff',
+              color: casingColor,
               width: casingWidth
             })
           }),
@@ -777,7 +778,7 @@ export class LayerManager {
           })
         ];
 
-        // Identificação nominal das rodovias (placement: 'line')
+        // Identificação nominal padronizada das rodovias (placement: 'line')
         let label = feature.get('nome') || '';
         const cod = feature.get('codTrechoR') || '';
         if (!label) {
@@ -791,17 +792,28 @@ export class LayerManager {
 
         // Exibir código da rodovia em escala municipal e aproximação (resolution < 75)
         if (label && resolution < 75) {
-          const repeatDist = resolution < 18 ? 400 : 700;
+          const repeatDist = resolution < 18 ? 500 : 850;
           styles.push(new ol.style.Style({
             text: new ol.style.Text({
               text: label,
-              font: 'bold 10px "Inter", sans-serif',
+              font: '600 9.5px "Inter", sans-serif',
               placement: 'line',
               repeat: repeatDist,
               maxAngle: Math.PI / 4,
               keepUpright: true,
               fill: new ol.style.Fill({ color: '#ffffff' }),
-              stroke: new ol.style.Stroke({ color: mainColor, width: 3.5 })
+              stroke: new ol.style.Stroke({
+                color: isFederal ? '#991b1b' : '#c2410c',
+                width: 3.2
+              }),
+              backgroundFill: new ol.style.Fill({
+                color: isFederal ? 'rgba(185, 28, 28, 0.90)' : 'rgba(194, 65, 12, 0.90)'
+              }),
+              backgroundStroke: new ol.style.Stroke({
+                color: '#ffffff',
+                width: 0.8
+              }),
+              padding: [1, 4, 1, 4]
             })
           }));
         }
@@ -858,7 +870,7 @@ export class LayerManager {
       };
     }
 
-    // 3.2. Aeroporto Lauro Kurtz & Aeroclube: Ícone Aeronáutico com Identificação Nominal Discreta
+    // 3.2. Aeroporto Lauro Kurtz & Aeroclube: Ícone Aeronáutico com Etiqueta Compacta Padronizada
     if (config.id === 'aeroporto_aeroclube') {
       const svgAirport = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36">
@@ -876,81 +888,95 @@ export class LayerManager {
           image: new ol.style.Icon({
             src: svgAirport,
             anchor: [0.5, 0.5],
-            scale: 0.75
+            scale: 0.72
           }),
           text: new ol.style.Text({
-            text: `✈ ${cleanName}`,
-            offsetY: -18,
-            font: 'bold 10.5px "Inter", sans-serif',
+            text: cleanName,
+            offsetY: -17,
+            font: '600 10px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#ffffff' }),
-            stroke: new ol.style.Stroke({ color: '#0369a1', width: 3.2 }),
-            backgroundFill: new ol.style.Fill({ color: 'rgba(3, 105, 161, 0.88)' }),
-            backgroundStroke: new ol.style.Stroke({ color: '#ffffff', width: 0.8 }),
-            padding: [2, 6, 2, 6]
+            stroke: new ol.style.Stroke({ color: '#0369a1', width: 3.0 }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.85)' }),
+            backgroundStroke: new ol.style.Stroke({ color: 'rgba(56, 189, 248, 0.6)', width: 0.8 }),
+            padding: [2, 5, 2, 5]
           })
         });
       };
     }
 
-    // 3.3. Escolas de Educação Infantil (EMEIs): Simbologia Discreta com Controle de Rótulo por Escala
+    // 3.3. Escolas de Educação Infantil (EMEIs): Marcador Discreto com Rótulo Progressivo sem Caixa
     if (config.id === 'escolas_infantil_emei') {
       return (feature, resolution) => {
         const rawName = feature.get('Escola') || feature.get('nome') || '';
         const name = rawName.trim();
-        // Em zoom municipal amplo exibe apenas o ponto discreto. Ao aproximar (zoom 14+ / res < 20), exibe o nome
-        const showLabel = name && resolution < 20;
+
+        // Controle rigoroso de escala:
+        // - Visão Municipal (res >= 18 / zoom 11-13): SOMENTE o ponto discreto (zero poluição)
+        // - Escala Intermediária (res < 18 e res >= 7 / zoom 14-15): Nome direto com halo (sem caixa)
+        // - Escala Aproximada (res < 7 / zoom 16+): Nome completo com prefixo EMEI
+        const isIntermediaria = resolution < 18 && resolution >= 7;
+        const isAproximada = resolution < 7;
+        const showLabel = name && (isIntermediaria || isAproximada);
+        const labelText = isAproximada ? `EMEI ${name}` : name;
 
         return new ol.style.Style({
           image: new ol.style.Circle({
-            radius: resolution < 20 ? 5.5 : 4.2,
+            radius: resolution < 18 ? 4.8 : 4.0,
             fill: new ol.style.Fill({ color: '#ec4899' }),
-            stroke: new ol.style.Stroke({ color: '#ffffff', width: 1.5 })
+            stroke: new ol.style.Stroke({ color: '#ffffff', width: 1.4 })
           }),
           text: showLabel ? new ol.style.Text({
-            text: `EMEI ${name}`,
-            offsetY: -13,
-            font: '600 10px "Inter", sans-serif',
-            fill: new ol.style.Fill({ color: '#ffffff' }),
-            stroke: new ol.style.Stroke({ color: '#be185d', width: 2.8 }),
-            backgroundFill: new ol.style.Fill({ color: 'rgba(190, 24, 93, 0.85)' }),
-            padding: [1, 5, 1, 5]
+            text: labelText,
+            offsetY: -11,
+            font: isAproximada ? '600 10.5px "Inter", sans-serif' : '600 9.5px "Inter", sans-serif',
+            fill: new ol.style.Fill({ color: '#fdf2f8' }),
+            stroke: new ol.style.Stroke({ color: '#831843', width: 3.2 })
           }) : null
         });
       };
     }
 
-    // 3.4. Escolas de Ensino Fundamental (EMEFs): Simbologia Discreta com Controle de Rótulo por Escala
+    // 3.4. Escolas de Ensino Fundamental (EMEFs): Marcador Discreto com Rótulo Progressivo sem Caixa
     if (config.id === 'escolas_fundamental_emef') {
       return (feature, resolution) => {
         const rawName = feature.get('Escola') || feature.get('nome') || '';
         const name = rawName.trim();
-        // Em zoom municipal amplo exibe apenas o ponto discreto. Ao aproximar (zoom 14+ / res < 20), exibe o nome
-        const showLabel = name && resolution < 20;
+
+        const isIntermediaria = resolution < 18 && resolution >= 7;
+        const isAproximada = resolution < 7;
+        const showLabel = name && (isIntermediaria || isAproximada);
+        const labelText = isAproximada ? `EMEF ${name}` : name;
 
         return new ol.style.Style({
           image: new ol.style.Circle({
-            radius: resolution < 20 ? 5.5 : 4.2,
+            radius: resolution < 18 ? 4.8 : 4.0,
             fill: new ol.style.Fill({ color: '#2563eb' }),
-            stroke: new ol.style.Stroke({ color: '#ffffff', width: 1.5 })
+            stroke: new ol.style.Stroke({ color: '#ffffff', width: 1.4 })
           }),
           text: showLabel ? new ol.style.Text({
-            text: `EMEF ${name}`,
-            offsetY: -13,
-            font: '600 10px "Inter", sans-serif',
-            fill: new ol.style.Fill({ color: '#ffffff' }),
-            stroke: new ol.style.Stroke({ color: '#1e40af', width: 2.8 }),
-            backgroundFill: new ol.style.Fill({ color: 'rgba(30, 64, 175, 0.85)' }),
-            padding: [1, 5, 1, 5]
+            text: labelText,
+            offsetY: -11,
+            font: isAproximada ? '600 10.5px "Inter", sans-serif' : '600 9.5px "Inter", sans-serif',
+            fill: new ol.style.Fill({ color: '#eff6ff' }),
+            stroke: new ol.style.Stroke({ color: '#1e3a8a', width: 3.2 })
           }) : null
         });
       };
     }
 
-    // 3.5. Reservatórios e Espelhos d'Água: Preenchimento Azul Suave com Rótulo Delicado
+    // 3.5. Reservatórios e Espelhos d'Água: Texto Direto sobre o Mapa com Halo Branco de Contraste
     if (config.id === 'reservatorio_miranda' || config.id === 'reservatorio_barragem') {
       return (feature, resolution) => {
         const nome = feature.get('nome') || '';
-        const showLabel = resolution < 40;
+        const comp = feature.get('compartimento') || '';
+        
+        // No Reservatório da Barragem, exibir o rótulo principal na bacia sul e evitar duplicidade
+        let displayLabel = nome;
+        if (config.id === 'reservatorio_barragem' && comp.includes('Norte')) {
+          displayLabel = resolution < 16 ? 'Bacia Norte' : '';
+        }
+
+        const showLabel = displayLabel && resolution < 38;
 
         return new ol.style.Style({
           fill: new ol.style.Fill({
@@ -961,10 +987,10 @@ export class LayerManager {
             width: 1.2
           }),
           text: showLabel ? new ol.style.Text({
-            text: nome,
-            font: 'italic bold 10.5px "Inter", sans-serif',
+            text: displayLabel,
+            font: 'italic 600 11px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#0369a1' }),
-            stroke: new ol.style.Stroke({ color: '#ffffff', width: 3.2 }),
+            stroke: new ol.style.Stroke({ color: '#ffffff', width: 3.8 }),
             overflow: false
           }) : null
         });
@@ -1566,17 +1592,11 @@ export class LayerManager {
 
 
           textStyle = new ol.style.Text({
-
             text: cleanName,
-
-            font: 'bold 11px "Inter", sans-serif',
-
+            font: '600 11px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#ffffff' }),
-
-            stroke: new ol.style.Stroke({ color: '#064e3b', width: 2.8 }),
-
+            stroke: new ol.style.Stroke({ color: '#064e3b', width: 3.2 }),
             overflow: false
-
           });
 
         }
