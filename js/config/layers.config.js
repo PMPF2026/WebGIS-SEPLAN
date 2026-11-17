@@ -35,38 +35,46 @@ export const LAYER_GROUPS = [
     description: 'Distribuição, densidade demográfica setorial e domicílios (Censo IBGE 2022)'
   },
   {
+    id: 'equipamentos_saude',
+    title: '5. Equipamentos de Saúde',
+    iconClass: 'health',
+    iconName: 'activity',
+    description: 'Rede assistencial de saúde municipal: Hospitais, Centros de Atenção Integral à Saúde (CAIS) e Unidades Básicas de Saúde (UBS/ESF)',
+    badge: 'SMS / PMPF'
+  },
+  {
     id: 'areas_verdes',
-    title: '5. Áreas Verdes',
+    title: '6. Áreas Verdes',
     iconClass: 'nature',
     iconName: 'trees',
     description: 'Parques urbanos, praças públicas, áreas de preservação ambiental, corredores verdes e zonas de proteção natural',
     subgroups: [
-      { id: 'pontos', title: '5.1 Pontos', icon: 'map-pin' },
-      { id: 'linhas', title: '5.2 Linhas', icon: 'git-commit' },
-      { id: 'poligonos', title: '5.3 Polígonos', icon: 'shapes' }
+      { id: 'pontos', title: '6.1 Pontos', icon: 'map-pin' },
+      { id: 'linhas', title: '6.2 Linhas', icon: 'git-commit' },
+      { id: 'poligonos', title: '6.3 Polígonos', icon: 'shapes' }
     ]
   },
   {
     id: 'esporte_cultura',
-    title: '6. Esporte e Cultura',
+    title: '7. Esporte e Cultura',
     iconClass: 'sport-culture',
     iconName: 'trophy',
     description: 'Equipamentos esportivos, estádios, arenas, ginásios, teatros, museus e centros culturais municipais',
     subgroups: [
-      { id: 'esporte', title: '6.1 Esporte', icon: 'activity' },
-      { id: 'cultura', title: '6.2 Cultura', icon: 'landmark' }
+      { id: 'esporte', title: '7.1 Esporte', icon: 'activity' },
+      { id: 'cultura', title: '7.2 Cultura', icon: 'landmark' }
     ]
   },
   {
     id: 'equipamentos_uso_coletivo',
-    title: '7. Equipamentos de Uso Coletivo',
+    title: '8. Equipamentos de Uso Coletivo',
     iconClass: 'facilities',
     iconName: 'building-2',
     description: 'Equipamentos e serviços essenciais de uso coletivo: aeroporto, bombeiros, cemitérios, rede hoteleira, segurança pública, rodoviária e shopping centers'
   },
   {
     id: 'topografia_relevo',
-    title: '8. Topografia, Hipsometria & Relevo',
+    title: '9. Topografia, Hipsometria & Relevo',
     iconClass: 'topography',
     iconName: 'mountain-snow',
     description: 'Modelo Digital de Elevação, hipsometria e relevo sombreado municipal (Prefeitura Municipal / SEPLAN)',
@@ -74,7 +82,7 @@ export const LAYER_GROUPS = [
   },
   {
     id: 'infraestrutura_entorno',
-    title: '9. Infraestrutura Urbana & Entorno dos Domicílios',
+    title: '10. Infraestrutura Urbana & Entorno dos Domicílios',
     iconClass: 'infrastructure',
     iconName: 'building-2',
     description: 'Pesquisa Urbanística do Entorno dos Domicílios — Censo Demográfico IBGE 2022 (Pavimentação de Vias, Calçadas, Acessibilidade, Drenagem Pluvial, Iluminação e Arborização)',
@@ -82,7 +90,7 @@ export const LAYER_GROUPS = [
   },
   {
     id: 'restricoes_aeronauticas',
-    title: '10. Restrições Aeronáuticas & Proteção do Aeródromo (PBZPA)',
+    title: '11. Restrições Aeronáuticas & Proteção do Aeródromo (PBZPA)',
     iconClass: 'airport',
     iconName: 'plane',
     description: 'Plano Básico de Zona de Proteção de Aeródromo (PBZPA) - Aeroporto Lauro Kurtz (SBPF). Limites altimétricos máximos e gabarito vertical de edificações (DECEA Portaria nº 846 / Processo SAGA RS0006).',
@@ -90,20 +98,20 @@ export const LAYER_GROUPS = [
   },
   {
     id: 'educacao',
-    title: '11. Educação e Equipamentos Educacionais',
+    title: '12. Educação e Equipamentos Educacionais',
     iconClass: 'education',
     iconName: 'graduation-cap',
     description: 'Rede municipal de ensino: EMEIs, EMEFs, áreas de abrangência territorial e mapas de densidade de Kernel.',
     badge: 'SEPLAN / SME',
     subgroups: [
-      { id: 'unidades_educacionais', title: '11.1 Unidades Educacionais', icon: 'school' },
-      { id: 'areas_abrangencia', title: '11.2 Áreas de Abrangência', icon: 'maximize-2' },
-      { id: 'densidade_kernel', title: '11.3 Densidade Espacial — Kernel', icon: 'flame' }
+      { id: 'unidades_educacionais', title: '12.1 Unidades Educacionais', icon: 'school' },
+      { id: 'areas_abrangencia', title: '12.2 Áreas de Abrangência', icon: 'maximize-2' },
+      { id: 'densidade_kernel', title: '12.3 Densidade Espacial — Kernel', icon: 'flame' }
     ]
   },
   {
     id: 'patrimonio_historico',
-    title: '12. Patrimônio Histórico e Cultural',
+    title: '13. Patrimônio Histórico e Cultural',
     iconClass: 'heritage',
     iconName: 'landmark',
     description: 'Bens imóveis tombados e patrimônio histórico-arquitetônico e cultural do município de Passo Fundo',
@@ -112,7 +120,111 @@ export const LAYER_GROUPS = [
 ];
 
 export const LAYERS_CONFIG = [
-  // ================= 12. PATRIMÔNIO HISTÓRICO E CULTURAL =================
+  // ================= 5. EQUIPAMENTOS DE SAÚDE =================
+  {
+    id: 'hospitais',
+    name: 'Hospitais',
+    fileName: 'Hospitais Passo Fundo.geojson?v=20261117_saude_v1',
+    source: 'Secretaria Municipal de Saúde (SMS) / SEPLAN',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 78,
+    isCore: false,
+    isLazy: true,
+    style: {
+      pointRadius: 6.5,
+      pointColor: '#e11d48',
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#e11d48'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Hospital',
+      fields: [
+        { key: 'categoria', label: 'Categoria' },
+        { key: 'bairro', label: 'Bairro / Região Urbana Oficial' },
+        { key: 'esfera', label: 'Gestão / Esfera' },
+        { key: 'coord_e', label: 'Coordenada E (UTM 22S)' },
+        { key: 'coord_n', label: 'Coordenada N (UTM 22S)' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['nome', 'bairro', 'categoria']
+  },
+  {
+    id: 'cais',
+    name: 'Centros de Atenção Integral à Saúde (CAIS)',
+    fileName: 'Centros de Atenção Integral à Saúde CAIS.geojson?v=20261117_saude_v1',
+    source: 'Secretaria Municipal de Saúde (SMS) / SEPLAN',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 77,
+    isCore: false,
+    isLazy: true,
+    style: {
+      pointRadius: 6.0,
+      pointColor: '#0891b2',
+      strokeColor: '#ffffff',
+      strokeWidth: 2.0,
+      previewColor: '#0891b2'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'CAIS',
+      fields: [
+        { key: 'categoria', label: 'Categoria' },
+        { key: 'bairro', label: 'Bairro / Região Urbana Oficial' },
+        { key: 'esfera', label: 'Gestão / Esfera' },
+        { key: 'coord_e', label: 'Coordenada E (UTM 22S)' },
+        { key: 'coord_n', label: 'Coordenada N (UTM 22S)' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['nome', 'bairro', 'categoria']
+  },
+  {
+    id: 'ubs_esf',
+    name: 'Unidades Básicas de Saúde (UBS / ESF)',
+    fileName: 'Unidades Básicas de Saúde UBS ESF.geojson?v=20261117_saude_v1',
+    source: 'Secretaria Municipal de Saúde (SMS) / SEPLAN',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    geometryType: 'Point',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 76,
+    isCore: false,
+    isLazy: true,
+    style: {
+      pointRadius: 4.8,
+      pointColor: '#059669',
+      strokeColor: '#ffffff',
+      strokeWidth: 1.5,
+      previewColor: '#059669'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Unidade Básica de Saúde',
+      fields: [
+        { key: 'categoria', label: 'Categoria' },
+        { key: 'tipo_sigla', label: 'Tipo' },
+        { key: 'bairro', label: 'Bairro / Região Urbana Oficial' },
+        { key: 'esfera', label: 'Gestão / Esfera' },
+        { key: 'coord_e', label: 'Coordenada E (UTM 22S)' },
+        { key: 'coord_n', label: 'Coordenada N (UTM 22S)' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['nome', 'bairro', 'categoria', 'tipo_sigla']
+  },
+  // ================= 13. PATRIMÔNIO HISTÓRICO E CULTURAL =================
   {
     id: 'patrimonio_historico',
     name: 'Bens Imóveis Tombados',

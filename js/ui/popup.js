@@ -206,6 +206,12 @@ export class PopupUI {
 
     if (layerConfig.group === 'patrimonio_historico') tagClass = 'tag-patrimonio';
 
+    if (layerConfig.group === 'equipamentos_saude') {
+      if (layerConfig.id === 'hospitais') tagClass = 'tag-saude-hospital';
+      else if (layerConfig.id === 'cais') tagClass = 'tag-saude-cais';
+      else tagClass = 'tag-saude-ubs';
+    }
+
     if (layerConfig.group === 'camada_customizada' || layerConfig.isCustomLayer) tagClass = 'tag-custom-layer';
 
 

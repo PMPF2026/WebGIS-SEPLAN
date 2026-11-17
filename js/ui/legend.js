@@ -226,7 +226,41 @@ export class LegendUI {
     const s = layerConfig.style || {};
 
     // -------------------------------------------------------------
-    // 0. PATRIMÔNIO HISTÓRICO E CULTURAL (MONUMENTO CLÁSSICO)
+    // 0. EQUIPAMENTOS DE SAÚDE (HOSPITAIS, CAIS, UBS / ESF)
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'hospitais') {
+      const hospSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" style="vertical-align:middle;">
+          <circle cx="16" cy="16" r="14.5" fill="#e11d48" stroke="#ffffff" stroke-width="2"/>
+          <path d="M10.5 8.5 L13.5 8.5 L13.5 14 L18.5 14 L18.5 8.5 L21.5 8.5 L21.5 23.5 L18.5 23.5 L18.5 16.8 L13.5 16.8 L13.5 23.5 L10.5 23.5 Z" fill="#ffffff"/>
+        </svg>
+      `;
+      return this.renderItemRow(hospSvg, layerConfig.name, 'Alta Complexidade Hospitalar (5 unidades)');
+    }
+
+    if (layerConfig.id === 'cais') {
+      const caisSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" style="vertical-align:middle;">
+          <circle cx="16" cy="16" r="14.5" fill="#0891b2" stroke="#ffffff" stroke-width="2"/>
+          <path d="M6.5 16.5 L11 16.5 L13.2 11 L16 22 L18.8 13.5 L21 16.5 L25.5 16.5" 
+                fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      `;
+      return this.renderItemRow(caisSvg, layerConfig.name, 'Pronto Atendimento e Especialidades (4 unidades)');
+    }
+
+    if (layerConfig.id === 'ubs_esf') {
+      const ubsSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" style="vertical-align:middle;">
+          <circle cx="16" cy="16" r="14.5" fill="#059669" stroke="#ffffff" stroke-width="2"/>
+          <path d="M13.5 7.5 L18.5 7.5 L18.5 13.5 L24.5 13.5 L24.5 18.5 L18.5 18.5 L18.5 24.5 L13.5 24.5 L13.5 18.5 L7.5 18.5 L7.5 13.5 L13.5 13.5 Z" fill="#ffffff"/>
+        </svg>
+      `;
+      return this.renderItemRow(ubsSvg, layerConfig.name, 'Atenção Primária à Saúde nos Bairros (33 unidades)');
+    }
+
+    // -------------------------------------------------------------
+    // 0.1. PATRIMÔNIO HISTÓRICO E CULTURAL (MONUMENTO CLÁSSICO)
     // -------------------------------------------------------------
     if (layerConfig.id === 'patrimonio_historico') {
       const defSvg = `

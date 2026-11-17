@@ -1,0 +1,122 @@
+{
+    "type":  "FeatureCollection",
+    "name":  "Hospitais Passo Fundo",
+    "crs":  {
+                "type":  "name",
+                "properties":  {
+                                   "name":  "urn:ogc:def:crs:EPSG::31982"
+                               }
+            },
+    "features":  [
+                     {
+                         "type":  "Feature",
+                         "id":  "hosp_0",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              361387.987,
+                                                              6873189.872
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  0,
+                                            "nome":  "Hospital São Vicente de Paulo (HSVP)",
+                                            "nome_original":  "H. S. V. de Paulo",
+                                            "categoria":  "Hospital",
+                                            "tipo_sigla":  "HOSPITAL",
+                                            "bairro":  "Centro (Setor 01)",
+                                            "esfera":  "Filantrópico / Privado conveniado SUS",
+                                            "coord_e":  "361387.987 m",
+                                            "coord_n":  "6873189.872 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "hosp_1",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              361761.447,
+                                                              6873383.828
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  1,
+                                            "nome":  "Hospital Prontoclínica",
+                                            "nome_original":  "Hosp. Prontoclínica",
+                                            "categoria":  "Hospital",
+                                            "tipo_sigla":  "HOSPITAL",
+                                            "bairro":  "Centro (Setor 01)",
+                                            "esfera":  "Filantrópico / Privado conveniado SUS",
+                                            "coord_e":  "361761.447 m",
+                                            "coord_n":  "6873383.828 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "hosp_2",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              362367.075,
+                                                              6873615.032
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  2,
+                                            "nome":  "Hospital de Clínicas de Passo Fundo (HCPF)",
+                                            "nome_original":  "Hosp. de Clinicas",
+                                            "categoria":  "Hospital",
+                                            "tipo_sigla":  "HOSPITAL",
+                                            "bairro":  "Centro (Setor 01)",
+                                            "esfera":  "Filantrópico / Privado conveniado SUS",
+                                            "coord_e":  "362367.075 m",
+                                            "coord_n":  "6873615.032 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "hosp_3",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              363273.59,
+                                                              6873376.763
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  3,
+                                            "nome":  "Hospital Municipal Dr. César Santos (HMDCS)",
+                                            "nome_original":  "Hosp. Dr. César Sant",
+                                            "categoria":  "Hospital",
+                                            "tipo_sigla":  "HOSPITAL",
+                                            "bairro":  "Vila Rodrigues (Setor 19)",
+                                            "esfera":  "Municipal",
+                                            "coord_e":  "363273.59 m",
+                                            "coord_n":  "6873376.763 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "hosp_4",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              361008.626,
+                                                              6872923.264
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  4,
+                                            "nome":  "Instituto de Ortopedia e Traumatologia (IOT)",
+                                            "nome_original":  "IOT. São Vicente",
+                                            "categoria":  "Hospital",
+                                            "tipo_sigla":  "HOSPITAL",
+                                            "bairro":  "Centro (Setor 01)",
+                                            "esfera":  "Filantrópico / Privado conveniado SUS",
+                                            "coord_e":  "361008.626 m",
+                                            "coord_n":  "6872923.264 m"
+                                        }
+                     }
+                 ]
+}

@@ -1,0 +1,738 @@
+{
+    "type":  "FeatureCollection",
+    "name":  "Unidades Básicas de Saúde UBS ESF",
+    "crs":  {
+                "type":  "name",
+                "properties":  {
+                                   "name":  "urn:ogc:def:crs:EPSG::31982"
+                               }
+            },
+    "features":  [
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_1",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              359566.888,
+                                                              6873054.69
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  1,
+                                            "nome":  "ESF Independente",
+                                            "nome_original":  "Independente",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Boqueirão (Setor 02)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "359566.888 m",
+                                            "coord_n":  "6873054.69 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_2",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              367338.09,
+                                                              6870037.814
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  2,
+                                            "nome":  "ESF Vila Mattos",
+                                            "nome_original":  "ESF Vila Mattos",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Vila Mattos (Setor 14)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "367338.09 m",
+                                            "coord_n":  "6870037.814 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_3",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              366073.085,
+                                                              6871271.147
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  3,
+                                            "nome":  "ESF São Cristóvão",
+                                            "nome_original":  "ESF São Cristóvão",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "São Cristóvão (Setor 12)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "366073.085 m",
+                                            "coord_n":  "6871271.147 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_4",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              360098.188,
+                                                              6871088.284
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  4,
+                                            "nome":  "UBS Menino Deus",
+                                            "nome_original":  "UBS Menino Deus",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Boqueirão (Setor 02)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "360098.188 m",
+                                            "coord_n":  "6871088.284 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_5",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              358791.914,
+                                                              6870586.947
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  5,
+                                            "nome":  "ESF Santa Marta",
+                                            "nome_original":  "ESF Santa Marta",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Santa Marta (Setor 08)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "358791.914 m",
+                                            "coord_n":  "6870586.947 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_6",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              358007.077,
+                                                              6869304.369
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  6,
+                                            "nome":  "UBS Jardim América",
+                                            "nome_original":  "UBS Jardim América",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Santa Marta (Setor 08)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "358007.077 m",
+                                            "coord_n":  "6869304.369 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_7",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              356630.122,
+                                                              6871944.242
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  7,
+                                            "nome":  "UBS Jaboticabal",
+                                            "nome_original":  "UBS Jaboticabal",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Integração (Setor 09)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "356630.122 m",
+                                            "coord_n":  "6871944.242 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_8",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              357319.009,
+                                                              6873236.322
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  8,
+                                            "nome":  "ESF Adolfo Groth",
+                                            "nome_original":  "ESF Adolfo Groth",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Integração (Setor 09)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "357319.009 m",
+                                            "coord_n":  "6873236.322 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_9",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              361546.611,
+                                                              6874646.64
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  9,
+                                            "nome":  "ESF Aristides Corralo",
+                                            "nome_original":  "ESF A. Corralo",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Annes (Setor 15)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "361546.611 m",
+                                            "coord_n":  "6874646.64 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_10",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              358600.685,
+                                                              6875561.969
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  10,
+                                            "nome":  "ESF Valinhos",
+                                            "nome_original":  "ESF Valinhos",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Valinhos (Setor 17)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "358600.685 m",
+                                            "coord_n":  "6875561.969 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_11",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              365385.498,
+                                                              6873484.461
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  11,
+                                            "nome":  "ESF São Luiz Gonzaga",
+                                            "nome_original":  "ESF.S.L.Gonzaga",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "São Luiz Gonzaga (Setor 05)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "365385.498 m",
+                                            "coord_n":  "6873484.461 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_12",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              365419.19,
+                                                              6875171.454
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  12,
+                                            "nome":  "UBS Parque Farroupilha",
+                                            "nome_original":  "UBS P.Farroupilha",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "São Luiz Gonzaga (Setor 05)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "365419.19 m",
+                                            "coord_n":  "6875171.454 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_13",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              365692.511,
+                                                              6875818.402
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  13,
+                                            "nome":  "ESF São José",
+                                            "nome_original":  "ESF São José",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "São José (Setor 11)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "365692.511 m",
+                                            "coord_n":  "6875818.402 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_14",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              358643.408,
+                                                              6873254.25
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  14,
+                                            "nome":  "ESF Nenê Graeff",
+                                            "nome_original":  "ESF Nene Graeff",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Nenê Graeff (Setor 22)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "358643.408 m",
+                                            "coord_n":  "6873254.25 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_15",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              357965.316,
+                                                              6871343.63
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  15,
+                                            "nome":  "UBS Nossa Senhora Aparecida",
+                                            "nome_original":  "UBS N.S.Aparecida",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Santa Marta (Setor 08)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "357965.316 m",
+                                            "coord_n":  "6871343.63 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_16",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              364155.954,
+                                                              6870503.425
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  16,
+                                            "nome":  "ESF Planaltina",
+                                            "nome_original":  "Planaltina",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Planaltina (Setor 21)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "364155.954 m",
+                                            "coord_n":  "6870503.425 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_17",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              363725.405,
+                                                              6871265.627
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  17,
+                                            "nome":  "UBS Ivo Ferreira",
+                                            "nome_original":  "UBS Ivo Ferreira",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Planaltina (Setor 21)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "363725.405 m",
+                                            "coord_n":  "6871265.627 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_18",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              365369.692,
+                                                              6870443.805
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  18,
+                                            "nome":  "UBS Santo Antônio da Pedreira",
+                                            "nome_original":  "UBS S.A.da Pedreira",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "São Cristóvão (Setor 12)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "365369.692 m",
+                                            "coord_n":  "6870443.805 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_19",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              365070.07,
+                                                              6871785.295
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  19,
+                                            "nome":  "ESF Ricci",
+                                            "nome_original":  "ESF Ricci",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "São Cristóvão (Setor 12)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "365070.07 m",
+                                            "coord_n":  "6871785.295 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_20",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              363209.167,
+                                                              6869571.705
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  20,
+                                            "nome":  "UBS Santa Rita",
+                                            "nome_original":  "UBS Santa Rita",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Roselândia (Setor 13)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "363209.167 m",
+                                            "coord_n":  "6869571.705 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_21",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              357969.764,
+                                                              6871663.89
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  21,
+                                            "nome":  "UBS Jerônimo Coelho",
+                                            "nome_original":  "UBS J.Coelho",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Integração (Setor 09)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "357969.764 m",
+                                            "coord_n":  "6871663.89 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_22",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              360316.069,
+                                                              6873479.726
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  22,
+                                            "nome":  "ESF Nonoai",
+                                            "nome_original":  "Nonoai",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Vera Cruz (Setor 03)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "360316.069 m",
+                                            "coord_n":  "6873479.726 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_23",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              362359.062,
+                                                              6874518.944
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  23,
+                                            "nome":  "UBS Annes",
+                                            "nome_original":  "UBS Annes",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Annes (Setor 15)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "362359.062 m",
+                                            "coord_n":  "6874518.944 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_24",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              358979.169,
+                                                              6876839.569
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  24,
+                                            "nome":  "ESF José Alexandre Záchia",
+                                            "nome_original":  "ESF Zachia",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "José Alexandre Záchia (Setor 16)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "358979.169 m",
+                                            "coord_n":  "6876839.569 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_25",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              364830.888,
+                                                              6872825.637
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  25,
+                                            "nome":  "UBS Vila Nova",
+                                            "nome_original":  "UBS Vila Nova",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Vila Santa Maria (Setor 20)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "364830.888 m",
+                                            "coord_n":  "6872825.637 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_26",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              360160.394,
+                                                              6872785.852
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  26,
+                                            "nome":  "ESF Operária",
+                                            "nome_original":  "ESF Operária",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Boqueirão (Setor 02)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "360160.394 m",
+                                            "coord_n":  "6872785.852 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_27",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              359115.893,
+                                                              6871707.361
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  27,
+                                            "nome":  "UBS CAIC",
+                                            "nome_original":  "UBS Caic",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Alviverde (Setor 23)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "359115.893 m",
+                                            "coord_n":  "6871707.361 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_28",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              358977.255,
+                                                              6875113.43
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  28,
+                                            "nome":  "ESF Hípica",
+                                            "nome_original":  "ESF Hípica",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Vera Cruz (Setor 03)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "358977.255 m",
+                                            "coord_n":  "6875113.43 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_29",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              359946.399,
+                                                              6875138.586
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  29,
+                                            "nome":  "ESF Primeiro Centenário",
+                                            "nome_original":  "ESF 1º Centenário",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Vera Cruz (Setor 03)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "359946.399 m",
+                                            "coord_n":  "6875138.586 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_30",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              364304.012,
+                                                              6875050.127
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  30,
+                                            "nome":  "UBS Petrópolis",
+                                            "nome_original":  "UBS Petrópolis",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "Petrópolis (Setor 04)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "364304.012 m",
+                                            "coord_n":  "6875050.127 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_31",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              365659.406,
+                                                              6876778.522
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  31,
+                                            "nome":  "UBS Santo Antônio",
+                                            "nome_original":  "UBS Santo Antõnio",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "São José (Setor 11)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "365659.406 m",
+                                            "coord_n":  "6876778.522 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_32",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              363875.631,
+                                                              6874192.319
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  32,
+                                            "nome":  "ESF Entre Rios",
+                                            "nome_original":  "Entre Rios",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "ESF",
+                                            "bairro":  "Petrópolis (Setor 04)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "363875.631 m",
+                                            "coord_n":  "6874192.319 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "ubs_33",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              365480.067,
+                                                              6873576.801
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  33,
+                                            "nome":  "UBS Prisional",
+                                            "nome_original":  "UBS Prisional",
+                                            "categoria":  "Unidade Básica de Saúde (UBS/ESF)",
+                                            "tipo_sigla":  "UBS",
+                                            "bairro":  "São Luiz Gonzaga (Setor 05)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "365480.067 m",
+                                            "coord_n":  "6873576.801 m"
+                                        }
+                     }
+                 ]
+}

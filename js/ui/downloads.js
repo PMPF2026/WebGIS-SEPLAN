@@ -186,8 +186,19 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
     ]
   },
   {
+    id: 'equipamentos_saude',
+    title: '5. Equipamentos de Saúde',
+    shortTitle: 'Saúde Pública',
+    iconName: 'activity',
+    layerIds: [
+      'hospitais',
+      'cais',
+      'ubs_esf'
+    ]
+  },
+  {
     id: 'patrimonio_historico',
-    title: '12. Patrimônio Histórico e Cultural',
+    title: '13. Patrimônio Histórico e Cultural',
     shortTitle: 'Patrimônio Histórico',
     iconName: 'landmark',
     layerIds: [
@@ -226,6 +237,9 @@ export class DownloadsUI {
    */
   prepareLayerCatalog() {
     const descriptions = {
+      'hospitais': 'Mapeamento geográfico oficial dos 5 hospitais de alta complexidade de Passo Fundo (HSVP, Clínicas, Prontoclínica, Hospital Municipal Dr. César Santos e IOT).',
+      'cais': 'Mapeamento geográfico dos 4 Centros de Atenção Integral à Saúde (CAIS) de Passo Fundo: Boqueirão, Hípica, Vila Luíza e São Cristóvão.',
+      'ubs_esf': 'Rede municipal com 33 Unidades Básicas de Saúde (UBS) e Estratégias Saúde da Família (ESF) distribuídas pelos bairros de Passo Fundo.',
       'patrimonio_historico': 'Mapeamento geográfico oficial dos 24 bens imóveis tombados (definitivos e provisórios) e patrimônio histórico e cultural de Passo Fundo.',
       'areas_risco_hidrologico': 'Polígonos das áreas com histórico de inundação e planícies aluviais de atenção hidrológica do município de Passo Fundo.',
       'rio_passo_fundo': 'Traçado vetorial contínuo do curso principal do Rio Passo Fundo em toda a sua extensão municipal (47,27 km).',

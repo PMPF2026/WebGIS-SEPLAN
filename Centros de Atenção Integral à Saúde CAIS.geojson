@@ -1,0 +1,100 @@
+{
+    "type":  "FeatureCollection",
+    "name":  "Centros de Atenção Integral à Saúde CAIS",
+    "crs":  {
+                "type":  "name",
+                "properties":  {
+                                   "name":  "urn:ogc:def:crs:EPSG::31982"
+                               }
+            },
+    "features":  [
+                     {
+                         "type":  "Feature",
+                         "id":  "cais_2",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              359019.968,
+                                                              6872748.735
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  2,
+                                            "nome":  "CAIS Boqueirão",
+                                            "nome_original":  "Cais Boqueirão",
+                                            "categoria":  "Centro de Atenção Integral à Saúde (CAIS)",
+                                            "tipo_sigla":  "CAIS",
+                                            "bairro":  "Boqueirão (Setor 02)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "359019.968 m",
+                                            "coord_n":  "6872748.735 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "cais_1",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              359505.235,
+                                                              6874746.868
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  1,
+                                            "nome":  "CAIS Hípica",
+                                            "nome_original":  "Cais Hípica",
+                                            "categoria":  "Centro de Atenção Integral à Saúde (CAIS)",
+                                            "tipo_sigla":  "CAIS",
+                                            "bairro":  "Vera Cruz (Setor 03)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "359505.235 m",
+                                            "coord_n":  "6874746.868 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "cais_3",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              361438.13,
+                                                              6871732.06
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  3,
+                                            "nome":  "CAIS Vila Luíza",
+                                            "nome_original":  "C.Vila Luíza",
+                                            "categoria":  "Centro de Atenção Integral à Saúde (CAIS)",
+                                            "tipo_sigla":  "CAIS",
+                                            "bairro":  "Vila Luíza (Setor 18)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "361438.13 m",
+                                            "coord_n":  "6871732.06 m"
+                                        }
+                     },
+                     {
+                         "type":  "Feature",
+                         "id":  "cais_4",
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              363660.768,
+                                                              6871816.958
+                                                          ]
+                                      },
+                         "properties":  {
+                                            "fid":  4,
+                                            "nome":  "CAIS São Cristóvão",
+                                            "nome_original":  "C.S. Cristóvão",
+                                            "categoria":  "Centro de Atenção Integral à Saúde (CAIS)",
+                                            "tipo_sigla":  "CAIS",
+                                            "bairro":  "São Cristóvão (Setor 12)",
+                                            "esfera":  "Municipal (SMS / PMPF)",
+                                            "coord_e":  "363660.768 m",
+                                            "coord_n":  "6871816.958 m"
+                                        }
+                     }
+                 ]
+}

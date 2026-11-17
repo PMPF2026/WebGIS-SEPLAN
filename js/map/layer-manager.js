@@ -1035,6 +1035,130 @@ export class LayerManager {
       };
     }
 
+    // 3.2.2. Hospitais: Marcador Circular #e11d48 com Letra H Branca em Destaque
+    if (config.id === 'hospitais') {
+      const svgHospital = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+          <circle cx="16" cy="16" r="14.5" fill="#e11d48" stroke="#ffffff" stroke-width="2.2"/>
+          <circle cx="16" cy="16" r="12" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
+          <path d="M10.5 8.5 L13.5 8.5 L13.5 14 L18.5 14 L18.5 8.5 L21.5 8.5 L21.5 23.5 L18.5 23.5 L18.5 16.8 L13.5 16.8 L13.5 23.5 L10.5 23.5 Z" fill="#ffffff"/>
+        </svg>
+      `);
+
+      return (feature, resolution) => {
+        const nome = feature.get('nome') || '';
+        const style = new ol.style.Style({
+          image: new ol.style.Icon({
+            src: svgHospital,
+            anchor: [0.5, 0.5],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'fraction',
+            scale: 0.65,
+            imgSize: [32, 32]
+          })
+        });
+
+        // Toponímia elegante no zoom aproximado (resolução <= 4.8 / zoom >= 15)
+        if (resolution <= 4.8 && nome) {
+          style.setText(new ol.style.Text({
+            text: nome,
+            offsetY: 16,
+            font: '600 8.5px "Inter", sans-serif',
+            fill: new ol.style.Fill({ color: '#ffffff' }),
+            stroke: new ol.style.Stroke({ color: '#881337', width: 2.4 }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
+            backgroundStroke: new ol.style.Stroke({ color: 'rgba(225, 29, 72, 0.65)', width: 0.8 }),
+            padding: [1.2, 4.5, 1.2, 4.5]
+          }));
+        }
+
+        return style;
+      };
+    }
+
+    // 3.2.3. Centros de Atenção Integral à Saúde (CAIS): Símbolo Heart-Pulse #0891b2
+    if (config.id === 'cais') {
+      const svgCais = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+          <circle cx="16" cy="16" r="14.5" fill="#0891b2" stroke="#ffffff" stroke-width="2.2"/>
+          <circle cx="16" cy="16" r="12" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
+          <path d="M6.5 16.5 L11 16.5 L13.2 11 L16 22 L18.8 13.5 L21 16.5 L25.5 16.5" 
+                fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      `);
+
+      return (feature, resolution) => {
+        const nome = feature.get('nome') || '';
+        const style = new ol.style.Style({
+          image: new ol.style.Icon({
+            src: svgCais,
+            anchor: [0.5, 0.5],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'fraction',
+            scale: 0.62,
+            imgSize: [32, 32]
+          })
+        });
+
+        if (resolution <= 4.8 && nome) {
+          style.setText(new ol.style.Text({
+            text: nome,
+            offsetY: 16,
+            font: '600 8.5px "Inter", sans-serif',
+            fill: new ol.style.Fill({ color: '#ffffff' }),
+            stroke: new ol.style.Stroke({ color: '#0e7490', width: 2.4 }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
+            backgroundStroke: new ol.style.Stroke({ color: 'rgba(8, 145, 178, 0.65)', width: 0.8 }),
+            padding: [1.2, 4.5, 1.2, 4.5]
+          }));
+        }
+
+        return style;
+      };
+    }
+
+    // 3.2.4. Unidades Básicas de Saúde (UBS / ESF): Cruz Médica Clássica #059669
+    if (config.id === 'ubs_esf') {
+      const svgUbs = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+          <circle cx="16" cy="16" r="14.5" fill="#059669" stroke="#ffffff" stroke-width="2.2"/>
+          <circle cx="16" cy="16" r="12" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
+          <path d="M13.5 7.5 L18.5 7.5 L18.5 13.5 L24.5 13.5 L24.5 18.5 L18.5 18.5 L18.5 24.5 L13.5 24.5 L13.5 18.5 L7.5 18.5 L7.5 13.5 L13.5 13.5 Z" fill="#ffffff"/>
+        </svg>
+      `);
+
+      return (feature, resolution) => {
+        const nome = feature.get('nome') || '';
+        const isIntermediaria = resolution < 18 && resolution >= 7;
+        const isAproximada = resolution < 7;
+        const showLabel = nome && (isIntermediaria || isAproximada);
+        const iconScale = resolution >= 18 ? 0.45 : 0.58;
+
+        const style = new ol.style.Style({
+          image: new ol.style.Icon({
+            src: svgUbs,
+            anchor: [0.5, 0.5],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'fraction',
+            scale: iconScale,
+            imgSize: [32, 32]
+          })
+        });
+
+        if (showLabel) {
+          style.setText(new ol.style.Text({
+            text: nome,
+            offsetY: isAproximada ? -10 : -8,
+            font: isAproximada ? '600 9.5px "Inter", sans-serif' : '600 8.5px "Inter", sans-serif',
+            fill: new ol.style.Fill({ color: '#ecfdf5' }),
+            stroke: new ol.style.Stroke({ color: '#064e3b', width: 2.6 })
+          }));
+        }
+
+        return style;
+      };
+    }
+
     // 3.3. Escolas de Educação Infantil (EMEIs): Marcador Discreto com Rótulo Progressivo sem Caixa
     if (config.id === 'escolas_infantil_emei') {
       return (feature, resolution) => {
