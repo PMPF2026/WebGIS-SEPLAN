@@ -667,7 +667,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'distritos',
     name: 'Distritos de Passo Fundo',
-    fileName: 'Distritos de Passo Fundo.geojson',
+    fileName: 'Distritos de Passo Fundo.geojson?v=20261117_prefeitura',
     source: 'IBGE / Prefeitura Municipal',
     refDate: '2022',
     group: 'divisao_territorial',

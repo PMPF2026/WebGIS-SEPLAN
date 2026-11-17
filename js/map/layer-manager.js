@@ -838,8 +838,28 @@ export class LayerManager {
 
 
 
-        // 3.1. Distritos Municipais: Marcador Map Pin Vermelho (#DC2626) com Identificação Nominal Acima
+        // 3.1. Distritos Municipais: Prefeitura Municipal (Ícone Cívico) e Distritos do Interior (Map Pin #DC2626)
     if (config.id === 'distritos') {
+      const svgPrefeitura = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+          <!-- Círculo base azul cívico com contorno branco -->
+          <circle cx="16" cy="16" r="14.5" fill="#0284c7" stroke="#ffffff" stroke-width="2.2"/>
+          <!-- Frontão triangular clássico -->
+          <polygon points="16,6.5 7,12.5 25,12.5" fill="#ffffff"/>
+          <circle cx="16" cy="10" r="1.1" fill="#0284c7"/>
+          <!-- Arquitrave / Viga horizontal -->
+          <rect x="7.5" y="12.8" width="17" height="1.5" rx="0.5" fill="#ffffff"/>
+          <!-- 4 Colunas cívicas -->
+          <rect x="8.5" y="14.8" width="2.2" height="6.4" rx="0.4" fill="#ffffff"/>
+          <rect x="12.5" y="14.8" width="2.2" height="6.4" rx="0.4" fill="#ffffff"/>
+          <rect x="17.3" y="14.8" width="2.2" height="6.4" rx="0.4" fill="#ffffff"/>
+          <rect x="21.3" y="14.8" width="2.2" height="6.4" rx="0.4" fill="#ffffff"/>
+          <!-- Estilóbato / Degraus de entrada -->
+          <rect x="7.5" y="21.5" width="17" height="1.4" rx="0.4" fill="#ffffff"/>
+          <rect x="6.5" y="23.2" width="19" height="1.6" rx="0.4" fill="#ffffff"/>
+        </svg>
+      `);
+
       const svgMapPin = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="24" height="32">
           <!-- Sombra vetorial sólida na base -->
@@ -858,7 +878,30 @@ export class LayerManager {
         const name = rawName.trim();
         if (!name) return null;
 
-        const displayName = name === 'Passo Fundo' ? 'Distrito Sede' : name;
+        const isSede = name === 'Passo Fundo';
+
+        if (isSede) {
+          return new ol.style.Style({
+            image: new ol.style.Icon({
+              src: svgPrefeitura,
+              anchor: [0.5, 0.5],
+              anchorXUnits: 'fraction',
+              anchorYUnits: 'fraction',
+              scale: 0.95,
+              imgSize: [32, 32]
+            }),
+            text: new ol.style.Text({
+              text: 'Prefeitura Municipal de Passo Fundo',
+              offsetY: -24,
+              font: 'bold 11px "Inter", sans-serif',
+              fill: new ol.style.Fill({ color: '#ffffff' }),
+              stroke: new ol.style.Stroke({ color: '#0f172a', width: 3.5 }),
+              backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
+              backgroundStroke: new ol.style.Stroke({ color: 'rgba(255, 255, 255, 0.4)', width: 0.8 }),
+              padding: [2, 7, 2, 7]
+            })
+          });
+        }
 
         return new ol.style.Style({
           image: new ol.style.Icon({
@@ -870,7 +913,7 @@ export class LayerManager {
             imgSize: [24, 32]
           }),
           text: new ol.style.Text({
-            text: displayName,
+            text: name,
             offsetY: -34,
             font: 'bold 11px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#ffffff' }),

@@ -229,15 +229,28 @@ export class LegendUI {
     // 1. DISTRITOS DE PASSO FUNDO (MAP PIN VERMELHO #DC2626)
     // -------------------------------------------------------------
     if (layerConfig.id === 'distritos') {
+      const prefSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" style="vertical-align:middle;">
+          <circle cx="16" cy="16" r="14.5" fill="#0284c7" stroke="#ffffff" stroke-width="2"/>
+          <polygon points="16,6.5 7,12.5 25,12.5" fill="#ffffff"/>
+          <rect x="7.5" y="12.8" width="17" height="1.5" fill="#ffffff"/>
+          <rect x="8.5" y="14.8" width="2.2" height="6.4" fill="#ffffff"/>
+          <rect x="12.5" y="14.8" width="2.2" height="6.4" fill="#ffffff"/>
+          <rect x="17.3" y="14.8" width="2.2" height="6.4" fill="#ffffff"/>
+          <rect x="21.3" y="14.8" width="2.2" height="6.4" fill="#ffffff"/>
+          <rect x="6.5" y="22.5" width="19" height="2" fill="#ffffff"/>
+        </svg>
+      `;
       const pinSvg = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="16" height="22">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="14" height="19" style="vertical-align:middle;">
           <ellipse cx="12" cy="30.5" rx="5" ry="1.5" fill="rgba(0,0,0,0.35)"/>
           <path d="M12 2 C7 2 3 6.2 3 11.5 C3 18.5 12 30 12 30 C12 30 21 18.5 21 11.5 C21 6.2 17 2 12 2 Z" fill="#dc2626" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/>
           <circle cx="12" cy="11.5" r="4.0" fill="#ffffff"/>
           <circle cx="12" cy="11.5" r="2.0" fill="#991b1b"/>
         </svg>
       `;
-      return this.renderItemRow(pinSvg, layerConfig.name, 'Sede distrital (Passo Fundo e distritos rurais)');
+      const combinedIcons = `<span style="display:inline-flex; align-items:center; gap:4px;">${prefSvg}${pinSvg}</span>`;
+      return this.renderItemRow(combinedIcons, layerConfig.name, 'Prefeitura Municipal (Sede) e Distritos do Interior');
     }
 
     // -------------------------------------------------------------
