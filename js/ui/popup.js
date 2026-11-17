@@ -204,6 +204,8 @@ export class PopupUI {
 
     if (layerConfig.group === 'educacao') tagClass = 'tag-educacao';
 
+    if (layerConfig.group === 'patrimonio_historico') tagClass = 'tag-patrimonio';
+
     if (layerConfig.group === 'camada_customizada' || layerConfig.isCustomLayer) tagClass = 'tag-custom-layer';
 
 
@@ -416,7 +418,8 @@ export class PopupUI {
 
       'fill-opacity', 'stroke-opacity', 'stroke-width', 'icon', 'scale', 
 
-      'heading', 'tilt', 'roll', 'gx_media_links', 'visibility', 'drawOrder'
+      'heading', 'tilt', 'roll', 'gx_media_links', 'visibility', 'drawOrder',
+      'foto_local', 'foto_url', 'link_oficial'
 
     ]);
 
@@ -976,6 +979,40 @@ export class PopupUI {
 
 
 
+    // 4.11. Card Especializado de Patrimônio Histórico e Cultural (Fotografia e Legislação)
+    let heritageCardHtml = '';
+    if (layerConfig.id === 'patrimonio_historico' || layerConfig.group === 'patrimonio_historico') {
+      const fotoLocal = props['foto_local'] || '';
+      const fotoFallback = props['foto_url'] || '';
+      const isDef = (props['tipo_tombamento'] || '').toLowerCase().includes('definitivo');
+      const badgeClass = isDef ? 'badge-definitivo' : 'badge-provisorio';
+      const badgeLabel = props['tipo_tombamento'] || (isDef ? 'Tombamento Definitivo' : 'Tombamento Provisório');
+
+      heritageCardHtml = `
+        <div style="margin-bottom: 12px;">
+          ${(fotoLocal || fotoFallback) ? `
+            <div class="popup-heritage-media">
+              <img class="popup-heritage-img" 
+                   src="${escapeHtml(fotoLocal)}" 
+                   onerror="if (this.src !== '${escapeHtml(fotoFallback)}') { this.src = '${escapeHtml(fotoFallback)}'; } else { this.style.display = 'none'; }" 
+                   alt="${escapeHtml(props['nome'] || 'Patrimônio Histórico')}" />
+            </div>
+          ` : ''}
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 6px;">
+            <span class="popup-badge-tombamento ${badgeClass}">
+              <i class="lucide-landmark" style="font-size:11px;"></i>
+              ${escapeHtml(badgeLabel)}
+            </span>
+            ${props['ano_tombamento'] ? `
+              <span style="font-size: 11px; font-weight: 700; color: #94a3b8; background: rgba(255,255,255,0.06); padding: 2px 7px; border-radius: 4px;">
+                Ano: ${escapeHtml(String(props['ano_tombamento']))}
+              </span>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }
+
     // 5. Build HTML
 
     this.contentEl.innerHTML = `
@@ -999,6 +1036,8 @@ export class PopupUI {
       
 
       <div class="popup-body">
+
+        ${heritageCardHtml}
 
         ${pbzpaCardHtml}
 
@@ -1027,6 +1066,16 @@ export class PopupUI {
             <i class="lucide-activity"></i> Ver Central
 
           </button>
+
+        ` : ''}
+
+        ${(layerConfig.id === 'patrimonio_historico' || layerConfig.group === 'patrimonio_historico') ? `
+
+          <a href="${escapeHtml(props['link_oficial'] || 'https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/')}" target="_blank" rel="noopener noreferrer" class="popup-action-btn" style="text-decoration:none; background:rgba(136,19,55,0.22); color:#fda4af; border-color:#881337; font-weight:700;" title="Acessar página oficial da Secretaria de Cultura da PMPF">
+
+            <i class="lucide-external-link"></i> Portal Oficial
+
+          </a>
 
         ` : ''}
 

@@ -3,7 +3,7 @@
  * Legenda Cartográfica Dinâmica, Inteligente e Institucional
  */
 
-import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261116_v5';
+import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261117_patrimonio_v1';
 
 export class LegendUI {
   constructor(layerManager, containerId = 'legend-container') {
@@ -224,6 +224,36 @@ export class LegendUI {
    */
   generateLayerLegendItem(layerConfig) {
     const s = layerConfig.style || {};
+
+    // -------------------------------------------------------------
+    // 0. PATRIMÔNIO HISTÓRICO E CULTURAL (MONUMENTO CLÁSSICO)
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'patrimonio_historico') {
+      const defSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" style="vertical-align:middle;">
+          <circle cx="16" cy="16" r="14.5" fill="#881337" stroke="#f59e0b" stroke-width="2"/>
+          <polygon points="16,6.8 8,12 24,12" fill="#ffffff"/>
+          <rect x="8.5" y="12.4" width="15" height="1.4" fill="#f59e0b"/>
+          <rect x="9.8" y="14.2" width="2.2" height="6.8" fill="#ffffff"/>
+          <rect x="14.9" y="14.2" width="2.2" height="6.8" fill="#ffffff"/>
+          <rect x="20" y="14.2" width="2.2" height="6.8" fill="#ffffff"/>
+          <rect x="7.5" y="23" width="17" height="1.6" fill="#ffffff"/>
+        </svg>
+      `;
+      const provSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" style="vertical-align:middle;">
+          <circle cx="16" cy="16" r="14.5" fill="#881337" stroke="#38bdf8" stroke-width="2"/>
+          <polygon points="16,6.8 8,12 24,12" fill="#ffffff"/>
+          <rect x="8.5" y="12.4" width="15" height="1.4" fill="#38bdf8"/>
+          <rect x="9.8" y="14.2" width="2.2" height="6.8" fill="#ffffff"/>
+          <rect x="14.9" y="14.2" width="2.2" height="6.8" fill="#ffffff"/>
+          <rect x="20" y="14.2" width="2.2" height="6.8" fill="#ffffff"/>
+          <rect x="7.5" y="23" width="17" height="1.6" fill="#ffffff"/>
+        </svg>
+      `;
+      const combinedIcons = `<span style="display:inline-flex; align-items:center; gap:4px;">${defSvg}${provSvg}</span>`;
+      return this.renderItemRow(combinedIcons, layerConfig.name, 'Tombamento Definitivo (17) e Provisório (7)');
+    }
 
     // -------------------------------------------------------------
     // 1. DISTRITOS DE PASSO FUNDO (MAP PIN VERMELHO #DC2626)

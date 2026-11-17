@@ -100,10 +100,53 @@ export const LAYER_GROUPS = [
       { id: 'areas_abrangencia', title: '11.2 Áreas de Abrangência', icon: 'maximize-2' },
       { id: 'densidade_kernel', title: '11.3 Densidade Espacial — Kernel', icon: 'flame' }
     ]
+  },
+  {
+    id: 'patrimonio_historico',
+    title: '12. Patrimônio Histórico e Cultural',
+    iconClass: 'heritage',
+    iconName: 'landmark',
+    description: 'Bens imóveis tombados e patrimônio histórico-arquitetônico e cultural do município de Passo Fundo',
+    badge: 'SEPLAN / Cultura'
   }
 ];
 
 export const LAYERS_CONFIG = [
+  // ================= 12. PATRIMÔNIO HISTÓRICO E CULTURAL =================
+  {
+    id: 'patrimonio_historico',
+    name: 'Bens Imóveis Tombados',
+    fileName: 'Patrimônio Histórico e Cultural.geojson?v=20261117_v1',
+    source: 'Prefeitura Municipal de Passo Fundo / SEPLAN / Cultura',
+    refDate: '2026',
+    group: 'patrimonio_historico',
+    geometryType: 'Point',
+    defaultVisible: true,
+    defaultOpacity: 1.0,
+    zIndex: 80,
+    isCore: false,
+    isLazy: true,
+    style: {
+      pointRadius: 7,
+      pointColor: '#881337',
+      strokeColor: '#f59e0b',
+      strokeWidth: 2.2,
+      previewColor: '#881337'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Patrimônio Histórico e Cultural',
+      fields: [
+        { key: 'tipo_tombamento', label: 'Classificação' },
+        { key: 'legislacao', label: 'Legislação / Decreto' },
+        { key: 'ano_tombamento', label: 'Ano de Tombamento' },
+        { key: 'matricula', label: 'Registro Imobiliário (CRI)' },
+        { key: 'descricao', label: 'Descrição / Diretrizes de Preservação' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['nome', 'legislacao', 'tipo_tombamento', 'descricao']
+  },
   // ================= 3. HIDROGRAFIA =================
   {
     id: 'rio_passo_fundo',

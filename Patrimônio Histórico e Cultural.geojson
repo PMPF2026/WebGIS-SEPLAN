@@ -1,0 +1,564 @@
+{
+    "features":  [
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Localizado dentro do imóvel de propriedade de Mitra Diocesana de Passo Fundo, localizado na Estrada Passo Fundo - Ernestina, RS 153. As características arquitetônicas, volumetrias e fachadas, da edificação acima descrita, devem ser preservadas, observando o seu aspecto original",
+                                            "id":  1,
+                                            "foto_local":  "assets/img/patrimonio/01_portico_nossa_senhora_aparecida.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Provisório",
+                                            "legislacao":  "Decreto/Lei nº 47/2008",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZiy9rd6tO2_YkDM_vyWLpvNuXAyYpnQ7tm_gcWWM6_-8ha6rYSlOVR78pEVwNBa8AWPIP0VZosLj7PuD8MxqCJGZqhw9tZyLYouLRmWsEb4ekYERtVJJcsVq3BeNe6RrxeM9XthHw0srAB753Mzn3BJryLVr93na5pTgjb86ngdTSHcDt4uFORblGU8eoCju-ljePw?fife=s16383",
+                                            "nome":  "Pórtico Nossa Senhora Aparecida",
+                                            "ano_tombamento":  2008
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              357340.136,
+                                                              6869784.615,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Edificação em alvenaria, com área de 19,55m², conhecida como o jazigo de Maria Elizabeth Oliveira, localizada na Quadra 1a-20, junto ao Cemitério Municipal da Vera Cruz. As características do jazigo, incluso a volumetria e fachada principal, devem ser preservados.",
+                                            "id":  2,
+                                            "foto_local":  "assets/img/patrimonio/02_jazigo_de_maria_elizabeth_de_oliveira.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Provisório",
+                                            "legislacao":  "Decreto/Lei nº 183/2007",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZgGQDokskQKUhDk4_jZxhazaARS4fVoFtQSM9PRSJrn1fuoBwzfDLlLsopXdGhWBFXgokrmgOQ9V9-D5WGKObnO3qO6UcU8i1Tor79_jAF3qok6PWtFidvaHyJ1b8OT1WikOjXlLM1Me7IoiB-9G4HMXxNOTyGmCUE0x78QR1o5FHMyeODQ3Wp__8Z5LzFydeGNNu5v?fife=s16383",
+                                            "nome":  "Jazigo de Maria Elizabeth de Oliveira",
+                                            "ano_tombamento":  2007
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              360886.105,
+                                                              6873981.576,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "A edificação conhecida como \"Casa Dipp\", o tombamento de uma só matrícula localizada na Av. Brasil, nº 83, pertencente ao terreno urbano, devidamente registrada sobre as matrículas de nº 53.046 e 53.048, conforme descrição pelo Registro Geral, do Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa, da edificação acima descrita, devem ser preservadas.",
+                                            "id":  3,
+                                            "foto_local":  "assets/img/patrimonio/03_casa_dipp.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Provisório",
+                                            "legislacao":  "Decreto/Lei nº 89/2007",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZhzIidPw567P905srpwIDkWkVzM-e-qYp_-_XyBVmUEfv-gRJGSg2JQBuuyIlEvqoAIXBtkxmwK1C1FvuBLICC9idXMbn5_5BPiBcc_RqnIMTEZ0vOiZzcgXbIUGis45YKRXvDbLzr04hzqRrWBy9_mRFQLikicLwS_3EFCPXwcL65jGFn10UppWhUgOndth_3oFd_t?fife=s16383",
+                                            "nome":  "Casa Dipp",
+                                            "ano_tombamento":  2007
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362161.215,
+                                                              6873235.122,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "A edificação em alvenaria, localizada na Av. Sete de Setembro, nº 496, conhecida como \"Silo\" do complexo Moinhos Rio-grandense., devidamente registrada sobre a matrícula de nº 53.360, conforme descrição feita pelo Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa, da edificação acima descrita, devem ser preservadas.",
+                                            "id":  4,
+                                            "foto_local":  "assets/img/patrimonio/04_silo_do_complexo_de_moinhos_rio_grandense.jpg",
+                                            "matricula":  "53.360,",
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 236/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZhMOIWlbNn7pR1rDQT_Hw_gY-JLX6Ccu1lZJeG2htq5g6rHzZAzDWqzZ881VThArGwp6E0M7_oZ-iCkR-r_YypuVtUn1J3RwLcep-5KLkDGGlfk0NQlpFD1DOBcSVBbYl5R4pH3gw-Ql9nBWrV3-IwWxxWfm3AJH4B-YaltMmFdj7lgNlyhPpl-En07XllM-Oa7iRQy?fife=s16383",
+                                            "nome":  "Silo do Complexo de Moinhos rio-grandense",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362554.086,
+                                                              6872669.492,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "A edificação em alvenaria, localizada na Av. Sete de Setembro, nº 399, conhecida como \"Moinho\" do complexo Moinhos Rio-grandense, devidamente registrada sobre a matrícula de nº 53.361, conforme descrição feita pelo Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa, da edificação acima descrita, devem ser preservadas.",
+                                            "id":  5,
+                                            "foto_local":  "assets/img/patrimonio/05_moinho_do_complexo_moinhos_rio_grandense.jpg",
+                                            "matricula":  "53.361,",
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 233/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZjUZnrBsHJiG6WAhtIVZ9LaPPv2ADMiFn50XOZHV5qD8y2v2lVNluvDBY2XIcYjRJzvKIGKMjJQTM2bZNcaSAUOOX49Rzq3rfSCGtnddRclIhFzcG6sAyH09WmfKVPZAxyfhmQhu3hTTn29Gqmvv0wX-mg7rSt_4U46nsq3FuU7peH6VLkLWOzk-yv-VHzWGR5Yeu4?fife=s16383",
+                                            "nome":  "Moinho do complexo Moinhos Rio-grandense",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362564.065,
+                                                              6872693.953,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "A edificação conhecida como \"Casa João Café\", localizada na Av. Brasil, nº 70, pertencente ao terreno urbano, devidamente registrada sobre à matrícula de nº 27.809, conforme descrição pelo Registro Geral, do Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa, da edificação acima descrita, devem ser preservadas.",
+                                            "id":  6,
+                                            "foto_local":  "assets/img/patrimonio/06_casa_joao_cafe.jpg",
+                                            "matricula":  "27.809,",
+                                            "tipo_tombamento":  "Tombamento Provisório",
+                                            "legislacao":  "Decreto/Lei nº 235/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZgfi87fGTLA_osPBg9J95vQy8d9aXDlKJ0PC6fGGbcXNGBeI1QPS3XtyFTt1YGRWk4jGBBGanmeZqv8FHFZrc4MT6Bg5VUJ6ObkHnr1qhCiH_kGwFQpwi0vi9BE-w99TxzjZrXB52K5cMtsdEJs8G8hlcGm44X7Il6Bc8sqlObjdkAlN78tCdM-uNmSTmchFcpvXaM?fife=s16383",
+                                            "nome":  "Casa João Café",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362364.315,
+                                                              6873353.456,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "O monumento conhecido como \"Ruína\", localizado na Av. Sete de Setembro, no Parque da GARE. A característica volumetrica, bem como sua integridade externa e interna, do monumento acima descrito, devem ser preservadas.",
+                                            "id":  7,
+                                            "foto_local":  "assets/img/patrimonio/07_ruinas.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 234/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZg7aqfDT8s-xMhaNIeedJR9Iwbh3nXHFZfGuWWXQXzBeW2FYcFttKUI9OxibWgb4z3d3WWlJNfVhZVUTiiWwlVzcFq9_xksFnLK8cabqloMplzZuZwQi8LHcIIHP9HKg_nV0jFTlzl-XjfAy07HEZJotkseCVGpfw60ybdP4yS1s2Eo7iKHpJkr6QJTMHSAYzacbsYX?fife=s16383",
+                                            "nome":  "Ruínas",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362334.306,
+                                                              6872492.07,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "A edificação localizada na Av. General Neto, nº 378, pertencente ao terreno urbano, devidamente registrada sobre à matrícula de nº 14.135, conforme descrição pelo Registro Geral, do Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa, da edificação acima descrita, devem ser preservadas.",
+                                            "id":  8,
+                                            "foto_local":  "assets/img/patrimonio/08_edificio.jpg",
+                                            "matricula":  "14.135,",
+                                            "tipo_tombamento":  "Tombamento Provisório",
+                                            "legislacao":  "Decreto/Lei nº 232/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZg_BTindchRtU6kFJAAROY9BxRRRIzt9GFcEODwyAKUstAfuhWEStj7eVm5qpPNZSG4jzeb-IeMQYcZ36AfmGQ2fHM66-dtRFN_uLe1KupDZU4o953Yt1PLkB1XPeJYQYcwDTJAM5N7fIrwsDDmTLY5XqnzPpWV6vD6F6co7mfwAy-2E-Z3McSkZ5Gi-r2iq8_UW20?fife=s16383",
+                                            "nome":  "Edifício",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              361943.784,
+                                                              6872855.343,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "A edificação em alvenaria, a qual está situada a Igreja Nossa Senhora da Conceição, conhecida como \"Igreja Matriz\", localizada na Rua Uruguai, nº 1.717, pertencente ao terreno urbano, devidamente registrado sobre à matrícula de nº 81786, conforme descrição feita no Registro Geral, do Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa e interna, da edificação acima descrito, devem ser preservadas.",
+                                            "id":  9,
+                                            "foto_local":  "assets/img/patrimonio/09_igreja_nossa_senhora_da_conceicao.jpg",
+                                            "matricula":  "81786,",
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 231/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZgm3pFqh4IfU0ooiQRrcOzIjxJkKW3ta8wPC_s7zfX-2vBq8GqIrkLBNrNELDY5xtYYqCcZ0qCes0xC3uX3QodWBHL36QawfsHHDJdyCqg5h_uqEsLZ9R_3KxhUrDn2HXl7pw4hly0Pf2sUTdLOcXjE3Qkzye_Q_Cz5Hn_Ilsl4bAkFDiFP5FRjea2Mvju1YG6qh7Dx?fife=s16383",
+                                            "nome":  "Igreja Nossa Senhora da Conceição",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              361317.299,
+                                                              6873071.615,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "A edificação em alvenaria, localizada na Av. Brasil Oeste, esquina com a Rua 10 de Abril, conhecida como \"Casa Morch\", devidamente registrada sobre as matrículas de nº 42.984 e 78.088, conforme descrição feita no livro nº 02 - Registro Geral, do Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa, da edificação acima descrita, devem ser preservadas, observando o seu aspecto original.",
+                                            "id":  10,
+                                            "foto_local":  "assets/img/patrimonio/10_casa_morch.jpg",
+                                            "matricula":  "42.984 e 78.088,",
+                                            "tipo_tombamento":  "Tombamento Provisório",
+                                            "legislacao":  "Decreto/Lei nº 230/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZgcSO_4aDEPaXWRYx8G0Ln5embno-Pn-z0Av3kOke4JeWMQYUINH_ygb074zQP6le4r9o4UczuCKxNT-nEeXA1QXGWo48VeeZQGZbhYfzQTzn6AGXWtHzTvUnDCU4FmeRugRkBlc7AcqlbzxYAxPAp6JmP9bPoksyiHVg0azCFZSc0DXR_cTE5I8YGnLnMkyOVKUX0?fife=s16383",
+                                            "nome":  "Casa Morch",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              361212.911,
+                                                              6872636.605,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "O muro, a guarita e as três principais edificações de dois pavimentos, localizadas na Rua Teixeira Soares s/nº, conhecida como \"Quartel do Exército\", pertencente aos terrenos urbanos, devidamente registradas sobre às matrículas de nº 78.305 e 78.306, conforme descrição pelo Registro Geral, do Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa, da edificação acima descrita, devem ser preservadas, observando o seu aspecto original.",
+                                            "id":  11,
+                                            "foto_local":  "assets/img/patrimonio/11_quartel_do_exercito.jpg",
+                                            "matricula":  "78.305 e 78.306,",
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 229/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZiz1GUTiVWSnXUYHB6XkOI-0CuJWmXo-j2CfdWDB1fbKTkjptuhRqiQbt-GscFpLRxVyoYDnJY13A6-G-xv0QlXPZB15_05mmdUZN3uBgKDAm5mEq40nk-KKXSD4aaejAVcOZHzFsb6ta7SLaO6piBv9yToCGf9ct_nyQ9xebEIB6_QDIW-nthgOhT8j18zeTrYrWA?fife=s16383",
+                                            "nome":  "Quartel do Exército",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              361171.814,
+                                                              6873360.244,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "A edificação principal da Escola Estadual de Ensino Médio Protásio Alves, localizada na Av. Brasil, s/nº, pertencente ao terreno urbano, devidamente registrada sobre à matrícula de nº 30.286, conforme descrição pelo Registro Geral, do Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa, da edificação acima descrita, devem ser preservadas, observando o seu aspecto original.",
+                                            "id":  12,
+                                            "foto_local":  "assets/img/patrimonio/12_protasio_alves.jpg",
+                                            "matricula":  "30.286,",
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 229/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZizbCDabXWpkFJAbCdhkf5K1F1fjPQG77921P-xVfQHZ3XNU4xhAYy6RQuGm67UKlsWK1UHJSYtUEeyXw5ANQn0WVOwUKpwb_vVqDuL6kcEOLpt1gYNYTFioQwkFst9FkxCT5ElmkuSiJk1bGoadR_D2Ytm-7iex3V1W_UCzS1yRq4uhR7lVHlmLzXTtx5MKmA-4A4?fife=s16383",
+                                            "nome":  "Protásio Alves",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362298.124,
+                                                              6873252.159,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "O monumento conhecido como \"Caixa d´água\", localizado na Av. Sete de Setembro, no Parque da GARE. A característica volumétrica e sua integridade externa, do monumento acima descrito, devem ser preservadas, observando o seu aspecto original.",
+                                            "id":  13,
+                                            "foto_local":  "assets/img/patrimonio/13_caixa_d_agua.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 226/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZjTAwFiIgxfhu-4ZhKbBusPDBPbTdl24B_g42lamkdHKSbMeZAZSGQ9pqKaIfY1RosWgaS1wNK6GVoP9gSolp9NRLQHC382s1pANZl0euEsYat9zlqa5QHLU0SCnoB5Q_hqqkcxl2Wom21i-XhWNXNFjxeyrblsIMFxFIwdaLPWLXK86fLodJ60UWUUC6rA9h9PbA8?fife=s16383",
+                                            "nome":  "Caixa d´água",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362333.26,
+                                                              6872514.575,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "A edificação conhecida como \"Casa Della Méa\", está localizada na Rua Paul Harris, nº 15, pertencente ao terreno urbano, devidamente registrada sobre à matrícula de nº 8.379, conforme descrição pelo Registro Geral, do Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, bem como sua integridade externa, da edificação acima descrita, devem ser preservadas, observando o seu aspecto original.",
+                                            "id":  14,
+                                            "foto_local":  "assets/img/patrimonio/14_casa_della_mea.jpg",
+                                            "matricula":  "8.379,",
+                                            "tipo_tombamento":  "Tombamento Provisório",
+                                            "legislacao":  "Decreto/Lei nº 226/2006",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZgAJV3n0IFe9uyVmc0RbJRmX80dpajnkWOhdZWUTcb02p4UhosYAkFQH6zQkt0JnFBsrzgxbQ6Je480xJJ7O38hX7cnCBC70uglmiBcskC9jOcc4s4Y0n4sJRd0JGSqLTngP6s0cI92MRy9NTmKqWi7tPwXoMm_hPD8d2-2OOc7kmjuI21vXOt7k_SV8-oYS8d7PXA?fife=s16383",
+                                            "nome":  "Casa Della Méa",
+                                            "ano_tombamento":  2006
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362266.775,
+                                                              6873368.026,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "O Hotel Glória, imóvel de propriedade de Marcolina Ataide e Mário dos Santos, localizado na Rua General Canabarro, nº 907, Centro, Passo Fundo/RS, devidamente registrado na matrícula de nº 14.408, conforme descrição feita no livro nº 2 - Registro Geral, do Cartório de Registro de Imóveis de Passo Fundo. As características arquitetônicas, volumetrias e fachadas, da edificação acima descrita, devem ser preservadas, observando o seu aspecto original.",
+                                            "id":  15,
+                                            "foto_local":  "assets/img/patrimonio/15_hotel_gloria.jpg",
+                                            "matricula":  "14.408,",
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 122/2014",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZj4Qzh6UenqFQchidNlG1b13obcvx4tRQOtanSgTNXNRvYLrftoJeMiFEANlyggNrxLtMahZZSgu9jlCFRSBMzEjsMpnlYj6usDvhPK4W4MedEpJZoKgkC3cBa97hQcH1HWLFJs9UCulC230CcwO4ag06jPN3s55KiiQVttcG9Gdn70L9roz-07Hs5NgOseQ8_1ptQ?fife=s16383",
+                                            "nome":  "Hotel Glória",
+                                            "ano_tombamento":  2014
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362343.942,
+                                                              6872705.02,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Os imóveis situados na rua Paissandú, lado par, Matrícula 18.926, na rua General Netto, lado par, Matrícula 18927 na rua General Netto, lado impar, Matrícula 18.928, todos registrados no Cartório de Registro de Imóveis de Passo Fundo, de propriedade da companhia Cervejaria Brahma, sobre os quais está assentado todo o complexo industrial, administrativo, de estoque e expedição, para efeitos desta Lei formam uma unidade indivisível, passam a integrar o Patrimônio Histórico-Cultural de Passo Fundo, para fins do artigo 221 da Lei Orgânica do Município, da Lei Municipal 2.997, de 06 de janeiro de 1995, artigos 222 e 223 da Constituição do Estado do Rio Grande do Sul e artigos 23, III e IV, 30, IX e 216 da Constituição Federal.",
+                                            "id":  16,
+                                            "foto_local":  "assets/img/patrimonio/16_cervejaria_brahma.jpg",
+                                            "matricula":  "18.926,",
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 3275/1997",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZgrmBcvDa9Xo2xBsR-H37t_sIcCNDqqFKh4PUQyFQKzNcGPUZu7ninSP-y9TxlYbm8_hHFKzidxCamBaUf5vmJ-HTdoYmV__ZR7k02QTSe1GUYtyhPdHUhl2dzfNUVB9GM31fuEWKVR0LyjZB--zqSe6VHBLWzfuuI-o5qnxroioxZYCa2-gcdWAWH6AiXklJpFZBCW?fife=s16383",
+                                            "nome":  "Cervejaria Brahma",
+                                            "ano_tombamento":  1997
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              361789.4,
+                                                              6873141.261,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Fica tombado e passa a integrar o patrimônio histórico e cultural do Município de Passo Fundo o Bebedouro de Animais, localizado na esquina das Ruas Bento Gonçalves e General Canabarro, cujas características só podem ser modificadas para preservação de sua estrutura arquitetônica ou para restauração de seu aspecto original.",
+                                            "id":  17,
+                                            "foto_local":  "assets/img/patrimonio/17_bebedouro.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 3043/1995",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZjuu0ewJjT6d85M_5VC9KrARRzwrr-MJlnU8azhux5uKNBL54hduD1rZjSCABCTWG0XWKElE9s99X0QVgfJ2DJYUyPhLjpx44wAEJXeT3mvivmWgN4anO6fdFanJ1ncrqQnB8x3Ul2nptngxG8XLd1ht-ifx-WDxGXP3Fp_YCdgWvj-3QW4uttVMa58b4OyAdpINu1r?fife=s16383",
+                                            "nome":  "Bebedouro",
+                                            "ano_tombamento":  1995
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362247.974,
+                                                              6872630.338,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Fica tombado e passa a integrar o patrimônio histórico e cultural do Município de Passo Fundo o prédio do Banco Itaú, localizado na rua Bento Gonçalves nº 518, esquina com a rua Morom, cujas características só podem ser modificadas para preservação de sua estrutura arquitetônica ou para restauração de seu aspecto original.",
+                                            "id":  18,
+                                            "foto_local":  "assets/img/patrimonio/18_banco_itau.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 2955/1994",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZh2k3HFvY6s5_gRKIGlyEcr7CHYd2ntz_GOgAXZP_Dy0uQfVNpMVWYyOJugCyGgrdkW-cgdPCf0SFS1zQcFtq5OPRMQKxyu4tLbBgGAFSz1TyvSYpy1RXJlC4HM6Kkvf6gJpZekfj3hUioC9KK21iytpq8SyYTzJOLisdpl_4-_TGCYoGYsxCNGtF5JwLADiYYONHp9?fife=s16383",
+                                            "nome":  "Banco Itaú",
+                                            "ano_tombamento":  1994
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362080.277,
+                                                              6872975.267,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Fica tombado e passa a integrar o patrimônio histórico e cultural do Município de Passo Fundo o prédio Texas, do Instituto Educacional de Passo Fundo, localizado na Avenida Brasil, 1623, cujas características só podem ser modificadas para preservação de sua estrutura arquitetônica ou para restauração de seu aspecto original.",
+                                            "id":  19,
+                                            "foto_local":  "assets/img/patrimonio/19_predio_texas_do_instituto_educacional_de_passo_fundo.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 2937/1994",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZhq5xqoTHQ4_S7xay1fiXCuTNjU9NNApNVmD-RA3QdrmtsNb8BWwh6yd773U-qmckv-AW791NnKMSEznoMLqGfoULI9P_GhSQC-KURMXqcepYJV_2B2mTdkHFnVRt-IR3cs3ri-grxPS8YosvqrtAJ6NJhBKt5ymgNRAM8vtb7xZQagGWB8LdIPVgqtKF0lNwjFuMgS?fife=s16383",
+                                            "nome":  "Prédio Texas, do Instituto Educacional de Passo Fundo",
+                                            "ano_tombamento":  1994
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              360779.164,
+                                                              6872508.487,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Fica tombado e passa a integrar o patrimônio histórico e cultural do Município de Passo Fundo o prédio da Igreja Metodista, localizado na esquina da rua Bento Gonçalves e Avenida Brasil, cujas características só podem ser modificadas para preservação de sua estrutura arquitetônica ou para restauração de seu aspecto original.",
+                                            "id":  20,
+                                            "foto_local":  "assets/img/patrimonio/20_igreja_metodista.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 2906/1993",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZippRBntbaUpykwSeD_uqdRhpBboojAyZD8khmbZCV5lOBgxbafpnd7pTZMgX8Ntq7O7DpSwOsgD8Hn6yyMYIfOiqMu_cQKNk1ckIcBWIolsalVtc16L-1_Dm_S43Cpb9Y_-Be3Efc9nrYUyFJz_b4UYC5MzIAF-smZ8AxyEtnr9zSgIgSIupuDHKp7qnUkUZvN9eo?fife=s16383",
+                                            "nome":  "Igreja Metodista",
+                                            "ano_tombamento":  1993
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362015.907,
+                                                              6873102.53,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Fica tombado e passa a integrar o patrimônio histórico e cultural de Passo Fundo o prédio da Capela de SÃO MIGUEL, localizado no lugar antigamente conhecido como Pinheiro Torto, cujas características só podem ser modificadas para restauração de seu aspecto.",
+                                            "id":  21,
+                                            "foto_local":  "assets/img/patrimonio/21_capela_de_sao_miguel.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 2696/1991",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZiXZ9cAVxjHMxdUHA48ty2fyjJO-m_V72_qK5L6yc3kWYGA8QhTbxuuIoh0JqDyKWdvSHObykRYFlnGVee2C7GppYdx6s4Aez4aXEUruYVfUV2tBRq49sxdrcxapWup2YOF6y-EAYzHRYHxecd1H3tJagOGdZD6hUON8i2HKBfSQrJLjaoKE5aeOjlrp1WO2qcb9Y0?fife=s16383",
+                                            "nome":  "Capela de SÃO MIGUEL",
+                                            "ano_tombamento":  1991
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              356425.732,
+                                                              6873317.398,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Fica tombado e passa a integrar o patrimônio histórico do Município o prédio da antiga Gare, localizado na Avenida Sete de Setembro, cujas características só podem ser modificadas para restauração de seu aspecto original. Numa distância de 10 metros da lateral do prédio tombado, fica vedada a construção de prédios com mais de 8 metros de altura total.",
+                                            "id":  22,
+                                            "foto_local":  "assets/img/patrimonio/22_predio_da_antiga_gare.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 2671/1991",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZiQNUG38Aylv6ToGL1JQw53p0BRdxkQ57tJ3zx-1qn-KRVaO5-hK4jVzzi4fFtI3hVir9dQ06HYGcpd-O_-5UVgc0imh1CMY2ZohHOyHMSWXH3x5kqmwQWr7Pk-wIjSFUs79yXODewgqXO4ibYvWOfS1qyF89EEet6jNoEdDXta321guiFUIZueo2rQJtNE7NhFsMHi?fife=s16383",
+                                            "nome":  "Prédio da antiga Gare",
+                                            "ano_tombamento":  1991
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              362195.186,
+                                                              6872575.803,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Fica declarado patrimônio Histórico do Município, o cemitério do Capitão Fagundes dos Reis, situado á margem da Rodovia Federal Passo Fundo - Lagoa Vermelha, nas proximidades da Fazenda da Brigada Militar, onde se encontram os restos mortais do fundador da cidade, Joaquim Fagundes dos Reis.",
+                                            "id":  23,
+                                            "foto_local":  "assets/img/patrimonio/23_cemiterio_do_capitao_fagundes_dos_reis.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 748/1957",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZhn2UWooVw9-1LrqW8m6u2TXjgR9qP878xHgKLgqU4HHZ7q39v0C8Vh1x2b4K-lJraml4H--iuV0PGwTM0zYpzig91aFcjI0-iVGRp1FEhwQepshZMy2u6wt_R-Vhs3_dBN_zFeXNUcwxZAJn-SIb3zs6hFedoE-7N3s2qEae_mL6Pwdzn-0REVAtu0ENq8kq6-s-g?fife=s16383",
+                                            "nome":  "Cemitério do Capitão Fagundes dos Reis",
+                                            "ano_tombamento":  1957
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              366989.671,
+                                                              6875683.234,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "link_oficial":  "https://www.pmpf.rs.gov.br/cultura/patrimonio-historico/",
+                                            "descricao":  "Fica tombado e passa a integrar o patrimônio histórico do MUNICÍPIO o conjunto arquitetônico localizado na Avenida Brasil Oeste e constituído pelos prédios onde funcionaram a Prefeitura e Câmara Municipal e também o prédio da Academia Passofundense de Letras, cujas características só podem ser modificadas para restauração de seu aspecto original. Numa distância de 15 metros das laterais dos prédios tombados, fica vedada a construção de prédios com mais de 8 metros de altura total.",
+                                            "id":  24,
+                                            "foto_local":  "assets/img/patrimonio/24_academia_passofundense_de_letras_museu_teatro.jpg",
+                                            "matricula":  null,
+                                            "tipo_tombamento":  "Tombamento Definitivo",
+                                            "legislacao":  "Decreto/Lei nº 2608/1990",
+                                            "foto_url":  "https://mymaps.usercontent.google.com/hostedimage/m/*/3ABkJAZi7hzlzt0FgGSVXHiLWPwDvPZz-h2pytuWQCRj8pmuizHeDsDV6dt_3fjVzfVKY_8C3_6U-8WKy6xINJENyguHTJjqDTsTlzD9tuVN1DcGwjgIlo9x_ONrGa_25DBGRYpopkvtTI3emjH2hMr_4qLI3glJ0Kz_Bl1CWctiLsGtQ9muMPOL1lemGJNwYL1W-MhODu5w?fife=s16383",
+                                            "nome":  "Academia Passofundense de Letras, Museu, Teatro",
+                                            "ano_tombamento":  1990
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              361566.301,
+                                                              6872842.313,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     }
+                 ],
+    "name":  "Patrimônio Histórico e Cultural",
+    "crs":  {
+                "properties":  {
+                                   "name":  "urn:ogc:def:crs:EPSG::31982"
+                               },
+                "type":  "name"
+            },
+    "type":  "FeatureCollection"
+}

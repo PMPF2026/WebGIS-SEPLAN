@@ -3,7 +3,7 @@
  * Downloads UI Controller: Catálogo de Dados Espaciais Temático & Exportação
  */
 
-import { LAYER_GROUPS, LAYERS_CONFIG } from '../config/layers.config.js?v=20261116_v5';
+import { LAYER_GROUPS, LAYERS_CONFIG } from '../config/layers.config.js?v=20261117_patrimonio_v1';
 import { Notification } from './notification.js';
 import { toUTM22S } from '../utils/projection.js';
 
@@ -184,6 +184,15 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
       'pbzpa_cotas_rotulos',
       'pbzpa_linhas_operacionais'
     ]
+  },
+  {
+    id: 'patrimonio_historico',
+    title: '12. Patrimônio Histórico e Cultural',
+    shortTitle: 'Patrimônio Histórico',
+    iconName: 'landmark',
+    layerIds: [
+      'patrimonio_historico'
+    ]
   }
 ];
 
@@ -217,6 +226,7 @@ export class DownloadsUI {
    */
   prepareLayerCatalog() {
     const descriptions = {
+      'patrimonio_historico': 'Mapeamento geográfico oficial dos 24 bens imóveis tombados (definitivos e provisórios) e patrimônio histórico e cultural de Passo Fundo.',
       'areas_risco_hidrologico': 'Polígonos das áreas com histórico de inundação e planícies aluviais de atenção hidrológica do município de Passo Fundo.',
       'rio_passo_fundo': 'Traçado vetorial contínuo do curso principal do Rio Passo Fundo em toda a sua extensão municipal (47,27 km).',
       'malha_hidrica': 'Rede hidrográfica com cursos d’água, rios, arroios e tributários do município de Passo Fundo.',

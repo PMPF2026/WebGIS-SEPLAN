@@ -8,7 +8,7 @@
 
 
 
-import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261117_prefeitura_v3';
+import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261117_patrimonio_v1';
 
 import { loadGeoJson } from '../utils/async-loader.js?v=20261117_prefeitura_v3';
 
@@ -957,6 +957,81 @@ export class LayerManager {
             padding: [2, 5, 2, 5]
           })
         });
+      };
+    }
+
+    // 3.2.1. Patrimônio Histórico e Cultural: Símbolo Monumental (#881337 com borda ouro #f59e0b)
+    if (config.id === 'patrimonio_historico') {
+      const svgDefinitivo = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+          <!-- Círculo base bordô nobre com contorno duplo ouro -->
+          <circle cx="16" cy="16" r="14.5" fill="#881337" stroke="#f59e0b" stroke-width="2.2"/>
+          <circle cx="16" cy="16" r="12" fill="none" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <!-- Frontão triangular de monumento clássico -->
+          <polygon points="16,6.8 8,12 24,12" fill="#ffffff"/>
+          <!-- Arquitrave -->
+          <rect x="8.5" y="12.4" width="15" height="1.4" rx="0.4" fill="#f59e0b"/>
+          <!-- 3 Colunas jônicas clássicas -->
+          <rect x="9.8" y="14.2" width="2.2" height="6.8" rx="0.3" fill="#ffffff"/>
+          <rect x="14.9" y="14.2" width="2.2" height="6.8" rx="0.3" fill="#ffffff"/>
+          <rect x="20" y="14.2" width="2.2" height="6.8" rx="0.3" fill="#ffffff"/>
+          <!-- Degraus / Base -->
+          <rect x="8.5" y="21.4" width="15" height="1.4" rx="0.3" fill="#f59e0b"/>
+          <rect x="7.5" y="23" width="17" height="1.6" rx="0.4" fill="#ffffff"/>
+        </svg>
+      `);
+
+      const svgProvisorio = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+          <!-- Círculo base bordô com contorno ciano/azul para tombamento provisório -->
+          <circle cx="16" cy="16" r="14.5" fill="#881337" stroke="#38bdf8" stroke-width="2.2"/>
+          <circle cx="16" cy="16" r="12" fill="none" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <!-- Frontão -->
+          <polygon points="16,6.8 8,12 24,12" fill="#ffffff"/>
+          <!-- Arquitrave -->
+          <rect x="8.5" y="12.4" width="15" height="1.4" rx="0.4" fill="#38bdf8"/>
+          <!-- 3 Colunas -->
+          <rect x="9.8" y="14.2" width="2.2" height="6.8" rx="0.3" fill="#ffffff"/>
+          <rect x="14.9" y="14.2" width="2.2" height="6.8" rx="0.3" fill="#ffffff"/>
+          <rect x="20" y="14.2" width="2.2" height="6.8" rx="0.3" fill="#ffffff"/>
+          <!-- Base -->
+          <rect x="8.5" y="21.4" width="15" height="1.4" rx="0.3" fill="#38bdf8"/>
+          <rect x="7.5" y="23" width="17" height="1.6" rx="0.4" fill="#ffffff"/>
+        </svg>
+      `);
+
+      return (feature, resolution) => {
+        const tipo = feature.get('tipo_tombamento') || '';
+        const isDef = tipo.toLowerCase().includes('definitivo');
+        const iconSrc = isDef ? svgDefinitivo : svgProvisorio;
+        const nome = feature.get('nome') || '';
+
+        const style = new ol.style.Style({
+          image: new ol.style.Icon({
+            src: iconSrc,
+            anchor: [0.5, 0.5],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'fraction',
+            scale: 0.95,
+            imgSize: [32, 32]
+          })
+        });
+
+        // Toponímia elegante no zoom aproximado (resolução <= 4.8 / zoom >= 15)
+        if (resolution <= 4.8 && nome) {
+          style.setText(new ol.style.Text({
+            text: nome,
+            offsetY: 22,
+            font: '600 11px "Inter", sans-serif',
+            fill: new ol.style.Fill({ color: '#ffffff' }),
+            stroke: new ol.style.Stroke({ color: '#0f172a', width: 3.5 }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
+            backgroundStroke: new ol.style.Stroke({ color: isDef ? 'rgba(245, 158, 11, 0.65)' : 'rgba(56, 189, 248, 0.65)', width: 1 }),
+            padding: [2, 6, 2, 6]
+          }));
+        }
+
+        return style;
       };
     }
 
