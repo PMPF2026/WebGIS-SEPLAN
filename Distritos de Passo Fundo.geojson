@@ -1,1 +1,131 @@
-﻿{"type":"FeatureCollection","name":"Distritos de Passo Fundo","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:EPSG::31982"}},"features":[{"type":"Feature","properties":{"nome":"Bela Vista","nomeAbrev":null,"d_geometri":null,"Pop 2022":581},"geometry":{"type":"Point","coordinates":[348583.653732707374729,6881936.818560818210244,0.0]}},{"type":"Feature","properties":{"nome":"Sede Independência","nomeAbrev":null,"d_geometri":null,"Pop 2022":392},"geometry":{"type":"Point","coordinates":[377131.673356998711824,6860209.638761587440968,0.0]}},{"type":"Feature","properties":{"nome":"Bom Recreio","nomeAbrev":null,"d_geometri":null,"Pop 2022":1105},"geometry":{"type":"Point","coordinates":[354449.04742212354904,6866616.069065000861883,0.0]}},{"type":"Feature","properties":{"nome":"Passo Fundo","nomeAbrev":null,"d_geometri":null,"Pop 2022":201847},"geometry":{"type":"Point","coordinates":[363077.901493,6874136.242893,0]}},{"type":"Feature","properties":{"nome":"Pulador","nomeAbrev":null,"d_geometri":null,"Pop 2022":383},"geometry":{"type":"Point","coordinates":[346386.17287051002495,6869506.69775500241667,0.0]}},{"type":"Feature","properties":{"nome":"São Roque","nomeAbrev":null,"d_geometri":null,"Pop 2022":1377},"geometry":{"type":"Point","coordinates":[363762.248612749390304,6866667.617932464927435,0.0]}},{"type":"Feature","properties":{"nome":"Sto Antônio do Capinzal","nomeAbrev":null,"d_geometri":null,"Pop 2022":433},"geometry":{"type":"Point","coordinates":[360698.55909721669741,6864735.598957415670156,0.0]}}]}
+{
+    "features":  [
+                     {
+                         "properties":  {
+                                            "nomeAbrev":  null,
+                                            "d_geometri":  null,
+                                            "nome":  "Bela Vista",
+                                            "Pop 2022":  581
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              348583.65373270737,
+                                                              6881936.8185608182,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "nomeAbrev":  null,
+                                            "d_geometri":  null,
+                                            "nome":  "Sede Independência",
+                                            "Pop 2022":  392
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              377131.67335699871,
+                                                              6860209.6387615874,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "nomeAbrev":  null,
+                                            "d_geometri":  null,
+                                            "nome":  "Bom Recreio",
+                                            "Pop 2022":  1105
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              354449.04742212355,
+                                                              6866616.0690650009,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "nomeAbrev":  null,
+                                            "d_geometri":  null,
+                                            "nome":  "Passo Fundo",
+                                            "Pop 2022":  201847
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              363079.443,
+                                                              6874130.166,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "nomeAbrev":  null,
+                                            "d_geometri":  null,
+                                            "nome":  "Pulador",
+                                            "Pop 2022":  383
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              346386.17287051,
+                                                              6869506.6977550024,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "nomeAbrev":  null,
+                                            "d_geometri":  null,
+                                            "nome":  "São Roque",
+                                            "Pop 2022":  1377
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              363762.24861274939,
+                                                              6866667.6179324649,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "nomeAbrev":  null,
+                                            "d_geometri":  null,
+                                            "nome":  "Sto Antônio do Capinzal",
+                                            "Pop 2022":  433
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              360698.5590972167,
+                                                              6864735.5989574157,
+                                                              0
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     }
+                 ],
+    "name":  "Distritos de Passo Fundo",
+    "crs":  {
+                "properties":  {
+                                   "name":  "urn:ogc:def:crs:EPSG::31982"
+                               },
+                "type":  "name"
+            },
+    "type":  "FeatureCollection"
+}

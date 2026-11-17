@@ -8,9 +8,9 @@
 
 
 
-import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261116_v5';
+import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261117_prefeitura_v3';
 
-import { loadGeoJson } from '../utils/async-loader.js';
+import { loadGeoJson } from '../utils/async-loader.js?v=20261117_prefeitura_v3';
 
 import { EPSG_UTM22S, EPSG_WEBMERCATOR } from '../utils/projection.js';
 

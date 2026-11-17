@@ -26,7 +26,11 @@ export async function loadGeoJson(url, onProgress = null) {
     let data;
 
     if (!contentLength || !onProgress) {
-      data = await response.json();
+      let rawText = await response.text();
+      if (rawText.charCodeAt(0) === 0xFEFF) {
+        rawText = rawText.slice(1);
+      }
+      data = JSON.parse(rawText);
     } else {
       const total = parseInt(contentLength, 10);
       let loaded = 0;
@@ -50,7 +54,10 @@ export async function loadGeoJson(url, onProgress = null) {
         position += chunk.length;
       }
 
-      const text = new TextDecoder('utf-8').decode(allChunks);
+      let text = new TextDecoder('utf-8').decode(allChunks);
+      if (text.charCodeAt(0) === 0xFEFF) {
+        text = text.slice(1);
+      }
       data = JSON.parse(text);
     }
 
