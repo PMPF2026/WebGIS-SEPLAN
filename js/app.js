@@ -5,7 +5,7 @@
 
 import { MapEngine } from './map/map-engine.js';
 import { BasemapManager } from './map/basemap-manager.js';
-import { LayerManager } from './map/layer-manager.js?v=20261117_patrimonio_v1';
+import { LayerManager } from './map/layer-manager.js?v=20261117_clean_v2';
 import { SidebarUI } from './ui/sidebar.js?v=20261117_patrimonio_v1';
 import { LegendUI } from './ui/legend.js?v=20261117_patrimonio_v1';
 import { SearchUI } from './ui/search.js';
