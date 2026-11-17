@@ -124,7 +124,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'hospitais',
     name: 'Hospitais',
-    fileName: 'Hospitais Passo Fundo.geojson?v=20261117_saude_v1',
+    fileName: 'Hospitais Passo Fundo.geojson',
     source: 'Secretaria Municipal de Saúde (SMS) / SEPLAN',
     refDate: '2026',
     group: 'equipamentos_saude',
@@ -133,7 +133,7 @@ export const LAYERS_CONFIG = [
     defaultOpacity: 1.0,
     zIndex: 78,
     isCore: false,
-    isLazy: true,
+    isLazy: false,
     style: {
       pointRadius: 6.5,
       pointColor: '#e11d48',
@@ -158,7 +158,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'cais',
     name: 'Centros de Atenção Integral à Saúde (CAIS)',
-    fileName: 'Centros de Atenção Integral à Saúde CAIS.geojson?v=20261117_saude_v1',
+    fileName: 'Centros de Atenção Integral à Saúde CAIS.geojson',
     source: 'Secretaria Municipal de Saúde (SMS) / SEPLAN',
     refDate: '2026',
     group: 'equipamentos_saude',
@@ -167,7 +167,7 @@ export const LAYERS_CONFIG = [
     defaultOpacity: 1.0,
     zIndex: 77,
     isCore: false,
-    isLazy: true,
+    isLazy: false,
     style: {
       pointRadius: 6.0,
       pointColor: '#0891b2',
@@ -192,7 +192,7 @@ export const LAYERS_CONFIG = [
   {
     id: 'ubs_esf',
     name: 'Unidades Básicas de Saúde (UBS / ESF)',
-    fileName: 'Unidades Básicas de Saúde UBS ESF.geojson?v=20261117_saude_v1',
+    fileName: 'Unidades Básicas de Saúde UBS ESF.geojson',
     source: 'Secretaria Municipal de Saúde (SMS) / SEPLAN',
     refDate: '2026',
     group: 'equipamentos_saude',
@@ -201,7 +201,7 @@ export const LAYERS_CONFIG = [
     defaultOpacity: 1.0,
     zIndex: 76,
     isCore: false,
-    isLazy: true,
+    isLazy: false,
     style: {
       pointRadius: 4.8,
       pointColor: '#059669',
