@@ -805,11 +805,11 @@ export class LayerManager {
 
         // Exibir código da rodovia em escala municipal e aproximação (resolution < 75)
         if (label && resolution < 75) {
-          const repeatDist = resolution < 18 ? 500 : 850;
+          const repeatDist = resolution < 18 ? 600 : 1200;
           styles.push(new ol.style.Style({
             text: new ol.style.Text({
               text: label,
-              font: '600 9.5px "Inter", sans-serif',
+              font: '600 8px "Inter", sans-serif',
               placement: 'line',
               repeat: repeatDist,
               maxAngle: Math.PI / 4,
@@ -817,16 +817,16 @@ export class LayerManager {
               fill: new ol.style.Fill({ color: '#ffffff' }),
               stroke: new ol.style.Stroke({
                 color: isFederal ? '#991b1b' : '#c2410c',
-                width: 3.2
+                width: 2.2
               }),
               backgroundFill: new ol.style.Fill({
                 color: isFederal ? 'rgba(185, 28, 28, 0.90)' : 'rgba(194, 65, 12, 0.90)'
               }),
               backgroundStroke: new ol.style.Stroke({
                 color: '#ffffff',
-                width: 0.8
+                width: 0.6
               }),
-              padding: [1, 4, 1, 4]
+              padding: [1, 3.5, 1, 3.5]
             })
           }));
         }
@@ -887,18 +887,18 @@ export class LayerManager {
               anchor: [0.5, 0.5],
               anchorXUnits: 'fraction',
               anchorYUnits: 'fraction',
-              scale: 0.95,
+              scale: 0.68,
               imgSize: [32, 32]
             }),
             text: new ol.style.Text({
               text: 'Prefeitura Municipal de Passo Fundo',
-              offsetY: -24,
-              font: 'bold 11px "Inter", sans-serif',
+              offsetY: -16,
+              font: 'bold 8.5px "Inter", sans-serif',
               fill: new ol.style.Fill({ color: '#ffffff' }),
-              stroke: new ol.style.Stroke({ color: '#0f172a', width: 3.5 }),
+              stroke: new ol.style.Stroke({ color: '#0f172a', width: 2.2 }),
               backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
-              backgroundStroke: new ol.style.Stroke({ color: 'rgba(255, 255, 255, 0.4)', width: 0.8 }),
-              padding: [2, 7, 2, 7]
+              backgroundStroke: new ol.style.Stroke({ color: 'rgba(255, 255, 255, 0.4)', width: 0.6 }),
+              padding: [1.2, 4.5, 1.2, 4.5]
             })
           });
         }
@@ -909,18 +909,18 @@ export class LayerManager {
             anchor: [0.5, 1.0],
             anchorXUnits: 'fraction',
             anchorYUnits: 'fraction',
-            scale: 0.9,
+            scale: 0.62,
             imgSize: [24, 32]
           }),
           text: new ol.style.Text({
             text: name,
-            offsetY: -34,
-            font: 'bold 11px "Inter", sans-serif',
+            offsetY: -22,
+            font: '600 8px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#ffffff' }),
-            stroke: new ol.style.Stroke({ color: '#0f172a', width: 3.5 }),
+            stroke: new ol.style.Stroke({ color: '#0f172a', width: 2.2 }),
             backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.85)' }),
-            backgroundStroke: new ol.style.Stroke({ color: 'rgba(255, 255, 255, 0.4)', width: 0.8 }),
-            padding: [2, 6, 2, 6]
+            backgroundStroke: new ol.style.Stroke({ color: 'rgba(255, 255, 255, 0.4)', width: 0.6 }),
+            padding: [1, 3.8, 1, 3.8]
           })
         });
       };
@@ -944,17 +944,17 @@ export class LayerManager {
           image: new ol.style.Icon({
             src: svgAirport,
             anchor: [0.5, 0.5],
-            scale: 0.72
+            scale: 0.48
           }),
           text: new ol.style.Text({
             text: cleanName,
-            offsetY: -17,
-            font: '600 10px "Inter", sans-serif',
+            offsetY: -12,
+            font: '600 7.8px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#ffffff' }),
-            stroke: new ol.style.Stroke({ color: '#0369a1', width: 3.0 }),
+            stroke: new ol.style.Stroke({ color: '#0369a1', width: 2.0 }),
             backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.85)' }),
-            backgroundStroke: new ol.style.Stroke({ color: 'rgba(56, 189, 248, 0.6)', width: 0.8 }),
-            padding: [2, 5, 2, 5]
+            backgroundStroke: new ol.style.Stroke({ color: 'rgba(56, 189, 248, 0.6)', width: 0.6 }),
+            padding: [1, 3.5, 1, 3.5]
           })
         });
       };
@@ -1012,7 +1012,7 @@ export class LayerManager {
             anchor: [0.5, 0.5],
             anchorXUnits: 'fraction',
             anchorYUnits: 'fraction',
-            scale: 0.95,
+            scale: 0.68,
             imgSize: [32, 32]
           })
         });
@@ -1021,13 +1021,13 @@ export class LayerManager {
         if (resolution <= 4.8 && nome) {
           style.setText(new ol.style.Text({
             text: nome,
-            offsetY: 22,
-            font: '600 11px "Inter", sans-serif',
+            offsetY: 16,
+            font: '600 8.5px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#ffffff' }),
-            stroke: new ol.style.Stroke({ color: '#0f172a', width: 3.5 }),
+            stroke: new ol.style.Stroke({ color: '#0f172a', width: 2.4 }),
             backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
-            backgroundStroke: new ol.style.Stroke({ color: isDef ? 'rgba(245, 158, 11, 0.65)' : 'rgba(56, 189, 248, 0.65)', width: 1 }),
-            padding: [2, 6, 2, 6]
+            backgroundStroke: new ol.style.Stroke({ color: isDef ? 'rgba(245, 158, 11, 0.65)' : 'rgba(56, 189, 248, 0.65)', width: 0.8 }),
+            padding: [1.2, 4.5, 1.2, 4.5]
           }));
         }
 
@@ -1042,26 +1042,28 @@ export class LayerManager {
         const name = rawName.trim();
 
         // Controle rigoroso de escala:
-        // - Visão Municipal (res >= 18 / zoom 11-13): SOMENTE o ponto discreto (zero poluição)
+        // - Visão Municipal (res >= 18 / zoom 11-13): Ponto ultradiscreto (raio 2.4) para desobstruir a malha urbana
         // - Escala Intermediária (res < 18 e res >= 7 / zoom 14-15): Nome direto com halo (sem caixa)
         // - Escala Aproximada (res < 7 / zoom 16+): Nome completo com prefixo EMEI
         const isIntermediaria = resolution < 18 && resolution >= 7;
         const isAproximada = resolution < 7;
         const showLabel = name && (isIntermediaria || isAproximada);
         const labelText = isAproximada ? `EMEI ${name}` : name;
+        const circleRadius = resolution >= 18 ? 2.4 : (resolution < 7 ? 4.8 : 3.6);
+        const strokeWidth = resolution >= 18 ? 0.8 : (resolution < 7 ? 1.4 : 1.1);
 
         return new ol.style.Style({
           image: new ol.style.Circle({
-            radius: resolution < 18 ? 4.8 : 4.0,
+            radius: circleRadius,
             fill: new ol.style.Fill({ color: '#ec4899' }),
-            stroke: new ol.style.Stroke({ color: '#ffffff', width: 1.4 })
+            stroke: new ol.style.Stroke({ color: '#ffffff', width: strokeWidth })
           }),
           text: showLabel ? new ol.style.Text({
             text: labelText,
-            offsetY: -11,
-            font: isAproximada ? '600 10.5px "Inter", sans-serif' : '600 9.5px "Inter", sans-serif',
+            offsetY: isAproximada ? -10 : -8,
+            font: isAproximada ? '600 9.5px "Inter", sans-serif' : '600 8.5px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#fdf2f8' }),
-            stroke: new ol.style.Stroke({ color: '#831843', width: 3.2 })
+            stroke: new ol.style.Stroke({ color: '#831843', width: 2.8 })
           }) : null
         });
       };
@@ -1077,19 +1079,21 @@ export class LayerManager {
         const isAproximada = resolution < 7;
         const showLabel = name && (isIntermediaria || isAproximada);
         const labelText = isAproximada ? `EMEF ${name}` : name;
+        const circleRadius = resolution >= 18 ? 2.4 : (resolution < 7 ? 4.8 : 3.6);
+        const strokeWidth = resolution >= 18 ? 0.8 : (resolution < 7 ? 1.4 : 1.1);
 
         return new ol.style.Style({
           image: new ol.style.Circle({
-            radius: resolution < 18 ? 4.8 : 4.0,
+            radius: circleRadius,
             fill: new ol.style.Fill({ color: '#2563eb' }),
-            stroke: new ol.style.Stroke({ color: '#ffffff', width: 1.4 })
+            stroke: new ol.style.Stroke({ color: '#ffffff', width: strokeWidth })
           }),
           text: showLabel ? new ol.style.Text({
             text: labelText,
-            offsetY: -11,
-            font: isAproximada ? '600 10.5px "Inter", sans-serif' : '600 9.5px "Inter", sans-serif',
+            offsetY: isAproximada ? -10 : -8,
+            font: isAproximada ? '600 9.5px "Inter", sans-serif' : '600 8.5px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#eff6ff' }),
-            stroke: new ol.style.Stroke({ color: '#1e3a8a', width: 3.2 })
+            stroke: new ol.style.Stroke({ color: '#1e3a8a', width: 2.8 })
           }) : null
         });
       };
@@ -1107,7 +1111,7 @@ export class LayerManager {
           displayLabel = resolution < 16 ? 'Bacia Norte' : '';
         }
 
-        const showLabel = displayLabel && resolution < 38;
+        const showLabel = displayLabel && resolution < 28;
 
         return new ol.style.Style({
           fill: new ol.style.Fill({
@@ -1119,34 +1123,69 @@ export class LayerManager {
           }),
           text: showLabel ? new ol.style.Text({
             text: displayLabel,
-            font: 'italic 600 11px "Inter", sans-serif',
+            font: 'italic 600 8.5px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#0369a1' }),
-            stroke: new ol.style.Stroke({ color: '#ffffff', width: 3.8 }),
+            stroke: new ol.style.Stroke({ color: '#ffffff', width: 2.4 }),
             overflow: false
           }) : null
         });
       };
     }
 
-    // 3.6. Cursos Hídricos Principais: Toponímia Hidrográfica Distribuída (Estilo Reservatório — Opção A)
+    // 3.6. Cursos Hídricos Principais: Toponímia Hidrográfica Distribuída e Equilibrada
     if (config.id === 'rio_passo_fundo' || config.id === 'arroio_miranda' || config.id === 'arroio_santo_antonio') {
       const isRioPrincipal = config.id === 'rio_passo_fundo';
       const isMiranda = config.id === 'arroio_miranda';
       const strokeColor = config.style?.strokeColor || '#0284c7';
-      const strokeWidth = config.style?.strokeWidth || (isRioPrincipal ? 2.8 : 2.2);
+      const strokeWidth = config.style?.strokeWidth || (isRioPrincipal ? 2.6 : 2.0);
 
       // Toponímia oficial de cada curso
       const labelText = isRioPrincipal 
         ? 'Rio Passo Fundo' 
         : (isMiranda ? 'Arroio Miranda' : 'Arroio Santo Antônio');
 
-      // Frações percentuais para distribuição uniforme ao longo do traçado:
-      // Rio Passo Fundo (47 km): 5 repetições (~10%, 30%, 50%, 70%, 90%)
-      // Arroio Miranda (18 km): 4 repetições (~15%, 40%, 65%, 90%)
-      // Arroio Santo Antônio (8.4 km): 3 repetições (~20%, 50%, 80%)
-      const sampleFractions = isRioPrincipal 
+      // Frações para visão detalhada (zoom >= 14 / resolution < 25)
+      const detailFractions = isRioPrincipal 
         ? [0.10, 0.30, 0.50, 0.70, 0.90]
         : (isMiranda ? [0.15, 0.40, 0.65, 0.90] : [0.20, 0.50, 0.80]);
+
+      // Frações espaçadas para visão geral inicial (resolution >= 25) para não poluir
+      const overviewFractions = isRioPrincipal
+        ? [0.35, 0.72]
+        : (isMiranda ? [0.45, 0.82] : [0.50]);
+
+      function extractPoints(geom, fractions) {
+        const points = [];
+        if (!geom) return points;
+        const geomType = geom.getType();
+        let targetLine = null;
+        if (geomType === 'LineString') {
+          targetLine = geom;
+        } else if (geomType === 'MultiLineString') {
+          const lines = geom.getLineStrings();
+          if (lines && lines.length > 0) {
+            targetLine = lines.reduce((max, l) => l.getLength() > max.getLength() ? l : max, lines[0]);
+          }
+        }
+        if (targetLine) {
+          for (const frac of fractions) {
+            let coord = null;
+            if (typeof targetLine.getCoordinateAt === 'function') {
+              coord = targetLine.getCoordinateAt(frac);
+            } else {
+              const coords = targetLine.getCoordinates();
+              if (coords && coords.length > 0) {
+                const idx = Math.min(coords.length - 1, Math.max(0, Math.floor(coords.length * frac)));
+                coord = coords[idx];
+              }
+            }
+            if (coord) {
+              points.push(new ol.geom.Point(coord));
+            }
+          }
+        }
+        return points;
+      }
 
       return (feature, resolution) => {
         const styles = [
@@ -1162,52 +1201,21 @@ export class LayerManager {
 
         // Exibir toponímia em escala municipal e aproximação (resolution < 75)
         if (resolution < 75) {
-          // Tipografia discreta e proporcional: tamanho reduzido na visão geral inicial (resolution >= 25)
-          // e sutilmente ajustado ao aproximar (resolution < 25)
           const isDetailZoom = resolution < 25;
           const currentFontSize = isRioPrincipal 
-            ? (isDetailZoom ? '9px' : '8px') 
-            : (isDetailZoom ? '8px' : '7.5px');
+            ? (isDetailZoom ? '8.2px' : '6.8px') 
+            : (isDetailZoom ? '7.2px' : '6.2px');
           const currentHalo = isRioPrincipal 
-            ? (isDetailZoom ? 2.4 : 2.0) 
-            : (isDetailZoom ? 2.0 : 1.8);
-          const currentOffsetY = isDetailZoom ? -6 : -5;
+            ? (isDetailZoom ? 1.8 : 1.3) 
+            : (isDetailZoom ? 1.6 : 1.2);
+          const currentOffsetY = isDetailZoom ? -5 : -4;
 
-          let labelPoints = feature.get('_cachedLabelGeoms');
+          const cacheKey = isDetailZoom ? '_cachedDetailGeoms' : '_cachedOverviewGeoms';
+          let labelPoints = feature.get(cacheKey);
           if (!labelPoints) {
-            labelPoints = [];
-            const geom = feature.getGeometry();
-            if (geom) {
-              const geomType = geom.getType();
-              let targetLine = null;
-              if (geomType === 'LineString') {
-                targetLine = geom;
-              } else if (geomType === 'MultiLineString') {
-                const lines = geom.getLineStrings();
-                if (lines && lines.length > 0) {
-                  targetLine = lines.reduce((max, l) => l.getLength() > max.getLength() ? l : max, lines[0]);
-                }
-              }
-
-              if (targetLine) {
-                for (const frac of sampleFractions) {
-                  let coord = null;
-                  if (typeof targetLine.getCoordinateAt === 'function') {
-                    coord = targetLine.getCoordinateAt(frac);
-                  } else {
-                    const coords = targetLine.getCoordinates();
-                    if (coords && coords.length > 0) {
-                      const idx = Math.min(coords.length - 1, Math.max(0, Math.floor(coords.length * frac)));
-                      coord = coords[idx];
-                    }
-                  }
-                  if (coord) {
-                    labelPoints.push(new ol.geom.Point(coord));
-                  }
-                }
-              }
-            }
-            feature.set('_cachedLabelGeoms', labelPoints);
+            const fractions = isDetailZoom ? detailFractions : overviewFractions;
+            labelPoints = extractPoints(feature.getGeometry(), fractions);
+            feature.set(cacheKey, labelPoints);
           }
 
           for (const pt of labelPoints) {
