@@ -718,7 +718,20 @@ export class LayerManager {
 
     }
 
-
+    // 1.1. Áreas de Risco Hidrológico / Atenção Hidrológica (Opção 1: Âmbar Translúcido de Alerta)
+    if (config.id === 'areas_risco_hidrologico') {
+      return new ol.style.Style({
+        fill: new ol.style.Fill({
+          color: 'rgba(245, 158, 11, 0.28)'
+        }),
+        stroke: new ol.style.Stroke({
+          color: '#d97706',
+          width: 1.8,
+          lineCap: 'round',
+          lineJoin: 'round'
+        })
+      });
+    }
 
     // 2. Hidrografia: Espessura hierárquica calibrada e não invasiva
 

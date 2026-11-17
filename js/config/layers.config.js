@@ -333,6 +333,35 @@ export const LAYERS_CONFIG = [
     searchable: true,
     searchFields: ['nome']
   },
+  {
+    id: 'areas_risco_hidrologico',
+    name: 'Áreas de Risco Hidrológico',
+    fileName: 'data/hidrografia/Áreas de Risco Hidrológico.geojson',
+    source: 'Secretaria Municipal de Planejamento (SEPLAN)',
+    refDate: '2026',
+    group: 'hidrografia',
+    geometryType: 'MultiPolygon',
+    defaultVisible: true,
+    defaultOpacity: 0.90,
+    zIndex: 44,
+    isLazy: false,
+    style: {
+      fillColor: 'rgba(245, 158, 11, 0.28)',
+      strokeColor: '#d97706',
+      strokeWidth: 1.8,
+      previewColor: '#f59e0b'
+    },
+    popupConfig: {
+      titleField: 'nome',
+      defaultTitle: 'Área com histórico de inundação',
+      fields: [
+        { key: 'area_inundacao_fmt', label: 'Área de Inundação' }
+      ]
+    },
+    searchable: true,
+    searchFields: ['nome'],
+    description: 'Polígonos das áreas com histórico de inundação e planícies aluviais de atenção hidrológica do município de Passo Fundo.'
+  },
 
   // ================= 4. SISTEMA VIÁRIO =================
   {
@@ -2862,7 +2891,7 @@ export const OPERATIONAL_PRESETS = [
     id: 'preset_hidrografia',
     name: '💧 Bacias Hidrográficas & Recursos Hídricos',
     description: 'Foco no Rio Passo Fundo, bacias hidrográficas e malha hídrica municipal',
-    activeLayers: ['rio_passo_fundo', 'malha_hidrica', 'bacias_hidrograficas', 'arroio_miranda', 'arroio_santo_antonio', 'reservatorio_miranda', 'reservatorio_barragem', 'limite_territorial']
+    activeLayers: ['rio_passo_fundo', 'malha_hidrica', 'bacias_hidrograficas', 'arroio_miranda', 'arroio_santo_antonio', 'reservatorio_miranda', 'reservatorio_barragem', 'areas_risco_hidrologico', 'limite_territorial']
   },
   {
     id: 'preset_demografico',

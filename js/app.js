@@ -5,9 +5,9 @@
 
 import { MapEngine } from './map/map-engine.js';
 import { BasemapManager } from './map/basemap-manager.js';
-import { LayerManager } from './map/layer-manager.js?v=20261116_toponimia_v7';
-import { SidebarUI } from './ui/sidebar.js?v=20261116_v5';
-import { LegendUI } from './ui/legend.js?v=20261116_v5';
+import { LayerManager } from './map/layer-manager.js?v=20261117_risco_v1';
+import { SidebarUI } from './ui/sidebar.js?v=20261117_risco_v1';
+import { LegendUI } from './ui/legend.js?v=20261117_risco_v1';
 import { SearchUI } from './ui/search.js';
 import { PopupUI } from './ui/popup.js';
 import { Notification } from './ui/notification.js';
@@ -15,7 +15,7 @@ import { IdentifyTool } from './tools/identify.js';
 import { MeasureTool } from './tools/measure.js';
 import { ExportReportTool } from './tools/export-report.js';
 import { LayerImporter } from './tools/layer-importer.js';
-import { DownloadsUI } from './ui/downloads.js?v=20261116_v5';
+import { DownloadsUI } from './ui/downloads.js?v=20261117_risco_v1';
 import { Item6ThematicLegendUI } from './ui/thematic-legend-item6.js';
 import { MetricsUI } from './metrics/metrics-ui.js';
 import { TerritorialAnalysisTool } from './tools/territorial-analysis.js';

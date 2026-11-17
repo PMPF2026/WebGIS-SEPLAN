@@ -20,7 +20,8 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
       'arroio_miranda',
       'arroio_santo_antonio',
       'reservatorio_miranda',
-      'reservatorio_barragem'
+      'reservatorio_barragem',
+      'areas_risco_hidrologico'
     ]
   },
   {
@@ -216,6 +217,7 @@ export class DownloadsUI {
    */
   prepareLayerCatalog() {
     const descriptions = {
+      'areas_risco_hidrologico': 'Polígonos das áreas com histórico de inundação e planícies aluviais de atenção hidrológica do município de Passo Fundo.',
       'rio_passo_fundo': 'Traçado vetorial contínuo do curso principal do Rio Passo Fundo em toda a sua extensão municipal (47,27 km).',
       'malha_hidrica': 'Rede hidrográfica com cursos d’água, rios, arroios e tributários do município de Passo Fundo.',
       'bacias_hidrograficas': 'Divisores topográficos e delimitação das microbacias hidrográficas do município.',

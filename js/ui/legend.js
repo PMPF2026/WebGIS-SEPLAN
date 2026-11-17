@@ -291,6 +291,10 @@ export class LegendUI {
     // -------------------------------------------------------------
     // 5. HIDROGRAFIA & RESERVATÓRIOS
     // -------------------------------------------------------------
+    if (layerConfig.id === 'areas_risco_hidrologico') {
+      const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(245, 158, 11, 0.35); border:1.8px solid #d97706;"></span>`;
+      return this.renderItemRow(box, layerConfig.name, 'Áreas com histórico de inundação e planícies de atenção hidrológica');
+    }
     if (layerConfig.id === 'reservatorio_miranda' || layerConfig.id === 'reservatorio_barragem') {
       const box = `<span style="display:inline-block; width:20px; height:14px; border-radius:3px; background:rgba(56, 189, 248, 0.35); border:1.5px solid #0284c7;"></span>`;
       const desc = layerConfig.id === 'reservatorio_miranda'
