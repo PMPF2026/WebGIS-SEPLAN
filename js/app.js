@@ -23,6 +23,7 @@ import { ComparativoCensoUI } from './comparativo/comparativo-ui.js';
 import { AnalisesTerritoriaisUI } from './analises/analises-territoriais-ui.js';
 import { ElevationQueryTool } from './tools/elevation-query.js';
 import { HipsometriaFloatingLegendUI } from './ui/thematic-legend-hipsometria.js';
+import { PermanentLegendUI } from './ui/permanent-legend.js?v=20261118_escala2km_v1';
 
 class WebGisApp {
   constructor() {
@@ -42,6 +43,7 @@ class WebGisApp {
     this.metricsUI = null;
     this.territorialAnalysisTool = null;
     this.comparativoUI = null;
+    this.permanentLegendUI = null;
   }
 
   async start() {
@@ -122,6 +124,10 @@ class WebGisApp {
       // 15.1. Inicializar Legenda Cartográfica Flutuante da Camada Hipsométrica
       this.hipsometriaFloatingLegendUI = new HipsometriaFloatingLegendUI(this.layerManager, 'hipsometria-floating-legend');
       this.hipsometriaFloatingLegendUI.init();
+
+      // 15.2. Inicializar Legenda Cartográfica Flutuante Permanente (SEPLAN)
+      this.permanentLegendUI = new PermanentLegendUI(this.layerManager, this.legendUI, 'permanent-floating-legend');
+      this.permanentLegendUI.init();
 
       // 16. Refresh Lucide Icons across all rendered components
       this.refreshIcons();

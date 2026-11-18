@@ -615,3 +615,347 @@
     height: 8.5px;
   }
 }
+
+/* ==========================================================================
+   LEGENDA CARTOGRÁFICA FLUTUANTE PERMANENTE (SEPLAN)
+   Posicionamento: Canto inferior direito da área cartográfica
+   ========================================================================== */
+.permanent-floating-legend {
+  position: absolute;
+  bottom: 36px;
+  right: 14px;
+  z-index: 87;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  user-select: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Card Aberto */
+.permanent-legend-card {
+  width: 310px;
+  max-width: calc(100vw - 28px);
+  max-height: min(460px, calc(100% - 70px));
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow var(--transition-fast, 0.2s ease);
+}
+
+.permanent-legend-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+}
+
+/* Cabeçalho */
+.permanent-legend-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.permanent-legend-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.permanent-legend-icon-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+.permanent-legend-titles {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.permanent-legend-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.permanent-legend-subtitle {
+  font-size: 9px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.permanent-legend-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.permanent-legend-badge-count {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1.5px 6.5px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.14);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  letter-spacing: 0.2px;
+}
+
+.permanent-legend-btn-minimize {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.permanent-legend-btn-minimize:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Barra de Abas (No Mapa / Catálogo) */
+.permanent-legend-tabs {
+  display: flex;
+  padding: 5px 8px;
+  background: rgba(2, 6, 23, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 4px;
+}
+
+.permanent-legend-tab-btn {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.permanent-legend-tab-btn:hover {
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.permanent-legend-tab-btn.active {
+  background: rgba(56, 189, 248, 0.16);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+/* Corpo com Rolagem */
+.permanent-legend-body {
+  padding: 8px 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.permanent-legend-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.permanent-legend-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* Grupo Temático */
+.permanent-legend-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: rgba(30, 41, 59, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 7px;
+  padding: 6px 8px;
+}
+
+.permanent-legend-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 700;
+  color: #93c5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+
+.permanent-legend-group-header:hover {
+  color: #bfdbfe;
+}
+
+.permanent-legend-group-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.permanent-legend-group-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 2px;
+}
+
+.permanent-legend-group.collapsed .permanent-legend-group-items {
+  display: none;
+}
+
+.permanent-legend-group.collapsed .lucide-chevron-down {
+  transform: rotate(-90deg);
+}
+
+/* Vazio */
+.permanent-legend-empty {
+  padding: 16px 12px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 10.5px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Rodapé */
+.permanent-legend-footer {
+  padding: 5px 10px;
+  background: rgba(2, 6, 23, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 8.5px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Pill Minimizado */
+.permanent-legend-minimized {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.permanent-legend-minimized:hover {
+  background: rgba(30, 41, 59, 0.98);
+  border-color: #38bdf8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.25);
+}
+
+.permanent-legend-minimized-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+}
+
+.permanent-legend-minimized-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.permanent-legend-minimized-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 0.8px solid rgba(56, 189, 248, 0.4);
+}
+
+/* Deslocamento dos outros painéis quando a legenda permanente está aberta */
+.permanent-floating-legend:not(.minimized) ~ .hipsometria-floating-legend,
+.permanent-floating-legend:not(.minimized) ~ .item6-floating-legend,
+.permanent-floating-legend:not(.minimized) ~ .comparativo-floating-legend {
+  right: 334px;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 640px) {
+  .permanent-floating-legend {
+    bottom: 32px;
+    right: 8px;
+  }
+  .permanent-legend-card {
+    width: 280px;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100% - 60px);
+  }
+  .permanent-legend-body {
+    max-height: 240px;
+  }
+  .permanent-floating-legend:not(.minimized) ~ .hipsometria-floating-legend,
+  .permanent-floating-legend:not(.minimized) ~ .item6-floating-legend,
+  .permanent-floating-legend:not(.minimized) ~ .comparativo-floating-legend {
+    right: 8px;
+    bottom: 240px;
+  }
+}
