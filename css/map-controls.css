@@ -617,7 +617,7 @@
 }
 
 /* ==========================================================================
-   LEGENDA CARTOGRÁFICA FLUTUANTE PERMANENTE (SEPLAN)
+   LEGENDA CARTOGRÁFICA FLUTUANTE PERMANENTE (COMPACTA)
    Posicionamento: Canto inferior direito da área cartográfica
    ========================================================================== */
 .permanent-floating-legend {
@@ -633,17 +633,17 @@
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* Card Aberto */
+/* Card Aberto - Compacto (255px) */
 .permanent-legend-card {
-  width: 310px;
-  max-width: calc(100vw - 28px);
-  max-height: min(460px, calc(100% - 70px));
+  width: 255px;
+  max-width: calc(100vw - 24px);
+  max-height: min(420px, calc(100% - 70px));
   background: rgba(15, 23, 42, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border-radius: 9px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -652,15 +652,15 @@
 
 .permanent-legend-card:hover {
   border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.6);
 }
 
-/* Cabeçalho */
+/* Cabeçalho Compacto */
 .permanent-legend-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 9px 12px;
+  padding: 7px 10px;
   background: linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -668,14 +668,14 @@
 .permanent-legend-title-wrap {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   min-width: 0;
 }
 
 .permanent-legend-icon-badge {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
   background: rgba(56, 189, 248, 0.12);
   border: 1px solid rgba(56, 189, 248, 0.28);
   display: flex;
@@ -685,6 +685,11 @@
   flex-shrink: 0;
 }
 
+.permanent-legend-icon-badge svg {
+  width: 11px;
+  height: 11px;
+}
+
 .permanent-legend-titles {
   display: flex;
   flex-direction: column;
@@ -692,10 +697,10 @@
 }
 
 .permanent-legend-title {
-  font-size: 11.5px;
+  font-size: 10px;
   font-weight: 700;
   color: #f8fafc;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
@@ -703,7 +708,7 @@
 }
 
 .permanent-legend-subtitle {
-  font-size: 9px;
+  font-size: 8px;
   color: #94a3b8;
   white-space: nowrap;
   overflow: hidden;
@@ -713,15 +718,15 @@
 .permanent-legend-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   flex-shrink: 0;
 }
 
 .permanent-legend-badge-count {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
-  padding: 1.5px 6.5px;
-  border-radius: 12px;
+  padding: 1px 5px;
+  border-radius: 10px;
   background: rgba(56, 189, 248, 0.14);
   color: #38bdf8;
   border: 1px solid rgba(56, 189, 248, 0.3);
@@ -729,9 +734,9 @@
 }
 
 .permanent-legend-btn-minimize {
-  width: 22px;
-  height: 22px;
-  border-radius: 5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #cbd5e1;
@@ -749,21 +754,26 @@
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-/* Barra de Abas (No Mapa / Catálogo) */
+.permanent-legend-btn-minimize svg {
+  width: 11px;
+  height: 11px;
+}
+
+/* Barra de Abas Compacta */
 .permanent-legend-tabs {
   display: flex;
-  padding: 5px 8px;
+  padding: 3px 6px;
   background: rgba(2, 6, 23, 0.45);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  gap: 4px;
+  gap: 3px;
 }
 
 .permanent-legend-tab-btn {
   flex: 1;
-  padding: 4px 6px;
-  font-size: 10px;
+  padding: 2.5px 5px;
+  font-size: 8.5px;
   font-weight: 600;
-  border-radius: 5px;
+  border-radius: 4px;
   background: transparent;
   border: 1px solid transparent;
   color: #94a3b8;
@@ -771,7 +781,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
   transition: all 0.15s ease;
 }
 
@@ -786,15 +796,20 @@
   border-color: rgba(56, 189, 248, 0.35);
 }
 
+.permanent-legend-tab-btn svg {
+  width: 10px;
+  height: 10px;
+}
+
 /* Corpo com Rolagem */
 .permanent-legend-body {
-  padding: 8px 10px;
+  padding: 6px 8px;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 320px;
+  max-height: 270px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
@@ -812,23 +827,23 @@
 .permanent-legend-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   background: rgba(30, 41, 59, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 7px;
-  padding: 6px 8px;
+  border-radius: 6px;
+  padding: 4px 6px;
 }
 
 .permanent-legend-group-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 8.5px;
   font-weight: 700;
   color: #93c5fd;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
-  padding-bottom: 4px;
+  letter-spacing: 0.25px;
+  padding-bottom: 3px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   cursor: pointer;
 }
@@ -837,19 +852,70 @@
   color: #bfdbfe;
 }
 
+.permanent-legend-group-header svg {
+  width: 10px;
+  height: 10px;
+}
+
 .permanent-legend-group-title {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
 
-.permanent-legend-group-items {
+/* Escopo Específico de Itens da Legenda Flutuante (Tamanho Compacto) */
+.permanent-floating-legend .legend-group-items {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding-top: 2px;
+  gap: 4px;
+  padding-top: 1px;
 }
 
+.permanent-floating-legend .legend-item-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.permanent-floating-legend .legend-symbol-wrapper {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.permanent-floating-legend .legend-item-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-main, #f1f5f9);
+  line-height: 1.25;
+  display: block;
+}
+
+.permanent-floating-legend .legend-item-desc {
+  font-size: 8.5px;
+  color: var(--text-muted, #94a3b8);
+  line-height: 1.2;
+  margin-top: 1px;
+  display: block;
+}
+
+.permanent-floating-legend .legend-complex-header {
+  gap: 6px;
+}
+
+.permanent-floating-legend .legend-complex-classes {
+  gap: 3px;
+}
+
+.permanent-floating-legend .legend-class-name {
+  font-size: 8px;
+}
+
+.permanent-legend-group.collapsed .legend-group-items,
 .permanent-legend-group.collapsed .permanent-legend-group-items {
   display: none;
 }
@@ -860,23 +926,23 @@
 
 /* Vazio */
 .permanent-legend-empty {
-  padding: 16px 12px;
+  padding: 14px 10px;
   text-align: center;
   color: #94a3b8;
-  font-size: 10.5px;
-  line-height: 1.4;
+  font-size: 9.5px;
+  line-height: 1.35;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
-/* Rodapé */
+/* Rodapé Compacto */
 .permanent-legend-footer {
-  padding: 5px 10px;
+  padding: 4px 8px;
   background: rgba(2, 6, 23, 0.6);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 8.5px;
+  font-size: 7.5px;
   color: #64748b;
   display: flex;
   align-items: center;
@@ -887,14 +953,14 @@
 .permanent-legend-minimized {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 6px 12px;
+  gap: 6px;
+  padding: 5px 10px;
   background: rgba(15, 23, 42, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(56, 189, 248, 0.35);
-  border-radius: 20px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
   color: #ffffff;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -905,7 +971,7 @@
   background: rgba(30, 41, 59, 0.98);
   border-color: #38bdf8;
   transform: translateY(-1px);
-  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.25);
 }
 
 .permanent-legend-minimized-icon {
@@ -915,17 +981,22 @@
   color: #38bdf8;
 }
 
+.permanent-legend-minimized-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
 .permanent-legend-minimized-text {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.2px;
 }
 
 .permanent-legend-minimized-badge {
-  font-size: 9.5px;
+  font-size: 8.5px;
   font-weight: 700;
-  padding: 1px 6px;
-  border-radius: 10px;
+  padding: 1px 5px;
+  border-radius: 9px;
   background: rgba(56, 189, 248, 0.2);
   color: #38bdf8;
   border: 0.8px solid rgba(56, 189, 248, 0.4);
@@ -935,7 +1006,7 @@
 .permanent-floating-legend:not(.minimized) ~ .hipsometria-floating-legend,
 .permanent-floating-legend:not(.minimized) ~ .item6-floating-legend,
 .permanent-floating-legend:not(.minimized) ~ .comparativo-floating-legend {
-  right: 334px;
+  right: 275px;
 }
 
 /* Responsividade Mobile */
@@ -945,17 +1016,17 @@
     right: 8px;
   }
   .permanent-legend-card {
-    width: 280px;
+    width: 235px;
     max-width: calc(100vw - 16px);
     max-height: calc(100% - 60px);
   }
   .permanent-legend-body {
-    max-height: 240px;
+    max-height: 200px;
   }
   .permanent-floating-legend:not(.minimized) ~ .hipsometria-floating-legend,
   .permanent-floating-legend:not(.minimized) ~ .item6-floating-legend,
   .permanent-floating-legend:not(.minimized) ~ .comparativo-floating-legend {
     right: 8px;
-    bottom: 240px;
+    bottom: 220px;
   }
 }
