@@ -134,6 +134,7 @@ export const LAYERS_CONFIG = [
     zIndex: 78,
     isCore: false,
     isLazy: false,
+    declutter: false,
     style: {
       pointRadius: 6.5,
       pointColor: '#e11d48',
@@ -168,6 +169,7 @@ export const LAYERS_CONFIG = [
     zIndex: 77,
     isCore: false,
     isLazy: false,
+    declutter: false,
     style: {
       pointRadius: 6.0,
       pointColor: '#0891b2',
@@ -202,6 +204,7 @@ export const LAYERS_CONFIG = [
     zIndex: 76,
     isCore: false,
     isLazy: false,
+    declutter: false,
     style: {
       pointRadius: 4.8,
       pointColor: '#059669',
@@ -2830,6 +2833,7 @@ export const LAYERS_CONFIG = [
     zIndex: 65,
     isCore: false,
     isLazy: false,
+    declutter: false,
     style: {
       pointColor: '#ec4899',
       strokeColor: '#ffffff',
@@ -2865,6 +2869,7 @@ export const LAYERS_CONFIG = [
     zIndex: 66,
     isCore: false,
     isLazy: false,
+    declutter: false,
     style: {
       pointColor: '#1d4ed8',
       strokeColor: '#ffffff',

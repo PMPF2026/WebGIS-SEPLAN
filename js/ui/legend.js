@@ -3,7 +3,7 @@
  * Legenda Cartográfica Dinâmica, Inteligente e Institucional
  */
 
-import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261117_patrimonio_v1';
+import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261118_escala2km_v1';
 
 export class LegendUI {
   constructor(layerManager, containerId = 'legend-container') {

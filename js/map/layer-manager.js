@@ -8,7 +8,7 @@
 
 
 
-import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261117_patrimonio_v1';
+import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261118_escala2km_v1';
 
 import { loadGeoJson } from '../utils/async-loader.js?v=20261117_prefeitura_v3';
 
@@ -1035,7 +1035,7 @@ export class LayerManager {
       };
     }
 
-    // 3.2.2. Hospitais: Marcador Circular #e11d48 com Letra H Branca em Destaque
+    // 3.2.2. Hospitais: Marcador Circular #e11d48 com Letra H Branca em Destaque (Calibrado para Escala 2km)
     if (config.id === 'hospitais') {
       const svgHospital = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
@@ -1047,28 +1047,31 @@ export class LayerManager {
 
       return (feature, resolution) => {
         const nome = feature.get('nome') || '';
+        const is2kmOuAproximada = resolution <= 28;
+        const iconScale = is2kmOuAproximada ? 0.85 : 0.65;
+
         const style = new ol.style.Style({
           image: new ol.style.Icon({
             src: svgHospital,
             anchor: [0.5, 0.5],
             anchorXUnits: 'fraction',
             anchorYUnits: 'fraction',
-            scale: 0.65,
+            scale: iconScale,
             imgSize: [32, 32]
           })
         });
 
-        // Toponímia elegante no zoom aproximado (resolução <= 4.8 / zoom >= 15)
-        if (resolution <= 4.8 && nome) {
+        // Toponímia elegante visível a partir da escala de 2km (resolução <= 28)
+        if (is2kmOuAproximada && nome) {
           style.setText(new ol.style.Text({
             text: nome,
-            offsetY: 16,
-            font: '600 8.5px "Inter", sans-serif',
+            offsetY: 18,
+            font: 'bold 9px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#ffffff' }),
-            stroke: new ol.style.Stroke({ color: '#881337', width: 2.4 }),
-            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
-            backgroundStroke: new ol.style.Stroke({ color: 'rgba(225, 29, 72, 0.65)', width: 0.8 }),
-            padding: [1.2, 4.5, 1.2, 4.5]
+            stroke: new ol.style.Stroke({ color: '#881337', width: 2.6 }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.90)' }),
+            backgroundStroke: new ol.style.Stroke({ color: 'rgba(225, 29, 72, 0.75)', width: 1.0 }),
+            padding: [2, 5, 2, 5]
           }));
         }
 
@@ -1076,7 +1079,7 @@ export class LayerManager {
       };
     }
 
-    // 3.2.3. Centros de Atenção Integral à Saúde (CAIS): Símbolo Heart-Pulse #0891b2
+    // 3.2.3. Centros de Atenção Integral à Saúde (CAIS): Símbolo Heart-Pulse #0891b2 (Calibrado para Escala 2km)
     if (config.id === 'cais') {
       const svgCais = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
@@ -1089,27 +1092,30 @@ export class LayerManager {
 
       return (feature, resolution) => {
         const nome = feature.get('nome') || '';
+        const is2kmOuAproximada = resolution <= 28;
+        const iconScale = is2kmOuAproximada ? 0.78 : 0.62;
+
         const style = new ol.style.Style({
           image: new ol.style.Icon({
             src: svgCais,
             anchor: [0.5, 0.5],
             anchorXUnits: 'fraction',
             anchorYUnits: 'fraction',
-            scale: 0.62,
+            scale: iconScale,
             imgSize: [32, 32]
           })
         });
 
-        if (resolution <= 4.8 && nome) {
+        if (is2kmOuAproximada && nome) {
           style.setText(new ol.style.Text({
             text: nome,
-            offsetY: 16,
-            font: '600 8.5px "Inter", sans-serif',
+            offsetY: 18,
+            font: 'bold 9px "Inter", sans-serif',
             fill: new ol.style.Fill({ color: '#ffffff' }),
-            stroke: new ol.style.Stroke({ color: '#0e7490', width: 2.4 }),
-            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.88)' }),
-            backgroundStroke: new ol.style.Stroke({ color: 'rgba(8, 145, 178, 0.65)', width: 0.8 }),
-            padding: [1.2, 4.5, 1.2, 4.5]
+            stroke: new ol.style.Stroke({ color: '#0e7490', width: 2.6 }),
+            backgroundFill: new ol.style.Fill({ color: 'rgba(15, 23, 42, 0.90)' }),
+            backgroundStroke: new ol.style.Stroke({ color: 'rgba(8, 145, 178, 0.75)', width: 1.0 }),
+            padding: [2, 5, 2, 5]
           }));
         }
 
@@ -1117,7 +1123,7 @@ export class LayerManager {
       };
     }
 
-    // 3.2.4. Unidades Básicas de Saúde (UBS / ESF): Cruz Médica Clássica #059669
+    // 3.2.4. Unidades Básicas de Saúde (UBS / ESF): Cruz Médica Clássica #059669 (Calibrado para Escala 2km)
     if (config.id === 'ubs_esf') {
       const svgUbs = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
@@ -1129,10 +1135,10 @@ export class LayerManager {
 
       return (feature, resolution) => {
         const nome = feature.get('nome') || '';
-        const isIntermediaria = resolution < 18 && resolution >= 7;
+        const is2kmOuIntermediaria = resolution <= 28 && resolution >= 7;
         const isAproximada = resolution < 7;
-        const showLabel = nome && (isIntermediaria || isAproximada);
-        const iconScale = resolution >= 18 ? 0.45 : 0.58;
+        const showLabel = nome && (is2kmOuIntermediaria || isAproximada);
+        const iconScale = resolution > 28 ? 0.45 : (resolution < 7 ? 0.70 : 0.62);
 
         const style = new ol.style.Style({
           image: new ol.style.Icon({
@@ -1159,22 +1165,22 @@ export class LayerManager {
       };
     }
 
-    // 3.3. Escolas de Educação Infantil (EMEIs): Marcador Discreto com Rótulo Progressivo sem Caixa
+    // 3.3. Escolas de Educação Infantil (EMEIs): Marcador Progressivo Calibrado para Escala 2km
     if (config.id === 'escolas_infantil_emei') {
       return (feature, resolution) => {
         const rawName = feature.get('Escola') || feature.get('nome') || '';
         const name = rawName.trim();
 
-        // Controle rigoroso de escala:
-        // - Visão Municipal (res >= 18 / zoom 11-13): Ponto ultradiscreto (raio 2.4) para desobstruir a malha urbana
-        // - Escala Intermediária (res < 18 e res >= 7 / zoom 14-15): Nome direto com halo (sem caixa)
-        // - Escala Aproximada (res < 7 / zoom 16+): Nome completo com prefixo EMEI
-        const isIntermediaria = resolution < 18 && resolution >= 7;
+        // Controle calibrado de escala:
+        // - Visão Panorâmica Afastada (res > 28 / zoom <= 12): Ponto discreto (raio 2.4) para desobstruir a visão municipal geral
+        // - Escala de 2km e Intermediária (res <= 28 e res >= 7 / zoom 12.5-15): Círculo nítido (raio 3.8) e nome com halo de contraste
+        // - Escala Aproximada de Bairro/Rua (res < 7 / zoom 16+): Círculo expandido (raio 4.8) e nome com prefixo EMEI
+        const is2kmOuIntermediaria = resolution <= 28 && resolution >= 7;
         const isAproximada = resolution < 7;
-        const showLabel = name && (isIntermediaria || isAproximada);
+        const showLabel = name && (is2kmOuIntermediaria || isAproximada);
         const labelText = isAproximada ? `EMEI ${name}` : name;
-        const circleRadius = resolution >= 18 ? 2.4 : (resolution < 7 ? 4.8 : 3.6);
-        const strokeWidth = resolution >= 18 ? 0.8 : (resolution < 7 ? 1.4 : 1.1);
+        const circleRadius = resolution > 28 ? 2.4 : (resolution < 7 ? 4.8 : 3.8);
+        const strokeWidth = resolution > 28 ? 0.8 : (resolution < 7 ? 1.4 : 1.2);
 
         return new ol.style.Style({
           image: new ol.style.Circle({
@@ -1193,18 +1199,18 @@ export class LayerManager {
       };
     }
 
-    // 3.4. Escolas de Ensino Fundamental (EMEFs): Marcador Discreto com Rótulo Progressivo sem Caixa
+    // 3.4. Escolas de Ensino Fundamental (EMEFs): Marcador Progressivo Calibrado para Escala 2km
     if (config.id === 'escolas_fundamental_emef') {
       return (feature, resolution) => {
         const rawName = feature.get('Escola') || feature.get('nome') || '';
         const name = rawName.trim();
 
-        const isIntermediaria = resolution < 18 && resolution >= 7;
+        const is2kmOuIntermediaria = resolution <= 28 && resolution >= 7;
         const isAproximada = resolution < 7;
-        const showLabel = name && (isIntermediaria || isAproximada);
+        const showLabel = name && (is2kmOuIntermediaria || isAproximada);
         const labelText = isAproximada ? `EMEF ${name}` : name;
-        const circleRadius = resolution >= 18 ? 2.4 : (resolution < 7 ? 4.8 : 3.6);
-        const strokeWidth = resolution >= 18 ? 0.8 : (resolution < 7 ? 1.4 : 1.1);
+        const circleRadius = resolution > 28 ? 2.4 : (resolution < 7 ? 4.8 : 3.8);
+        const strokeWidth = resolution > 28 ? 0.8 : (resolution < 7 ? 1.4 : 1.2);
 
         return new ol.style.Style({
           image: new ol.style.Circle({
