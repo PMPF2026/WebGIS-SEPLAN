@@ -824,31 +824,88 @@ export class LayerManager {
     // 2. Hidrografia: Espessura hierárquica calibrada e não invasiva
 
     if (config.id === 'malha_hidrica') {
-
       return (feature) => {
-
         const ordem = parseInt(feature.get('ordem'), 10) || 1;
+        const nomeRaw = String(feature.get('nome') || '').trim();
+        const nomeNorm = nomeRaw.toLowerCase()
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Remove acentos
 
-        const width = ordem >= 4 ? 1.3 : (ordem === 3 ? 0.95 : (ordem === 2 ? 0.7 : 0.5));
+        // Cursos excluídos (mantêm padrão da malha para não concorrer com camadas específicas)
+        const isExcluido = nomeNorm.includes('passo fundo') || 
+                           nomeNorm.includes('santo antonio') || 
+                           nomeNorm.includes('miranda');
 
-        const color = ordem >= 4 ? '#0284c7' : (ordem === 3 ? '#0ea5e9' : (ordem === 2 ? '#38bdf8' : '#7dd3fc'));
+        let width = 0.5;
+        let color = '#7dd3fc';
 
-
+        // 1. Rio da Várzea e Rio Jacuí: Cursos principais em ordem 5 e 6
+        if (!isExcluido && (nomeNorm.includes('varzea') || nomeNorm.includes('jacui'))) {
+          if (ordem >= 5) {
+            width = ordem === 6 ? 2.8 : 2.4;  // Curso principal destacado
+            color = ordem === 6 ? '#0369a1' : '#0284c7';
+          } else {
+            // Afluentes e cabeceiras menores do próprio rio
+            width = ordem === 4 ? 1.3 : (ordem === 3 ? 0.95 : (ordem === 2 ? 0.7 : 0.5));
+            color = ordem === 4 ? '#0ea5e9' : (ordem === 3 ? '#38bdf8' : (ordem === 2 ? '#7dd3fc' : '#bae6fd'));
+          }
+        }
+        // 2. Arroios principais com ordem máxima 5 (Pinheiro Torto, Aracá, Engenho Velho, Passo do Herval, Capingu, Conceição)
+        else if (!isExcluido && (
+          nomeNorm.includes('pinheiro torto') || 
+          nomeNorm.includes('araca') || 
+          nomeNorm.includes('engenho velho') || 
+          nomeNorm.includes('passo do herval') || 
+          nomeNorm.includes('capingu') || 
+          nomeNorm.includes('conceicao')
+        )) {
+          if (ordem === 5) {
+            width = 2.0;                      // Curso principal do arroio destacado
+            color = '#0284c7';
+          } else {
+            width = ordem === 4 ? 1.3 : (ordem === 3 ? 0.95 : (ordem === 2 ? 0.7 : 0.5));
+            color = ordem === 4 ? '#0ea5e9' : (ordem === 3 ? '#38bdf8' : (ordem === 2 ? '#7dd3fc' : '#bae6fd'));
+          }
+        }
+        // 3. Arroios com ordem máxima 4 (Rio Xadrez, Arroio Burro Preto)
+        else if (!isExcluido && (nomeNorm.includes('xadrez') || nomeNorm.includes('burro preto'))) {
+          if (ordem === 4) {
+            width = 1.7;                      // Curso principal destacado
+            color = '#0ea5e9';
+          } else {
+            width = ordem === 3 ? 0.95 : (ordem === 2 ? 0.7 : 0.5);
+            color = ordem === 3 ? '#38bdf8' : (ordem === 2 ? '#7dd3fc' : '#bae6fd');
+          }
+        }
+        // 4. Arroios com ordem máxima 3 (Posto, Palhano, Herval, Passo do Chinelo)
+        else if (!isExcluido && (
+          nomeNorm.includes('posto') || 
+          nomeNorm.includes('palhano') || 
+          nomeNorm.includes('herval') || 
+          nomeNorm.includes('chinelo')
+        )) {
+          if (ordem === 3) {
+            width = 1.4;                      // Curso principal destacado
+            color = '#38bdf8';
+          } else {
+            width = ordem === 2 ? 0.7 : 0.5;
+            color = ordem === 2 ? '#7dd3fc' : '#bae6fd';
+          }
+        }
+        // 5. Demais cursos da malha (cursos sem nome ou excluídos)
+        else {
+          width = ordem >= 4 ? 1.3 : (ordem === 3 ? 0.95 : (ordem === 2 ? 0.7 : 0.5));
+          color = ordem >= 4 ? '#0284c7' : (ordem === 3 ? '#0ea5e9' : (ordem === 2 ? '#38bdf8' : '#7dd3fc'));
+        }
 
         return new ol.style.Style({
-
           stroke: new ol.style.Stroke({
-
             color: color,
-
-            width: width
-
+            width: width,
+            lineCap: 'round',
+            lineJoin: 'round'
           })
-
         });
-
       };
-
     }
 
 
