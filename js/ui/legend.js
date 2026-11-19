@@ -3,7 +3,7 @@
  * Legenda Cartográfica Dinâmica, Inteligente e Institucional
  */
 
-import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261118_escala2km_v1';
+import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261119_analises_v1';
 
 export class LegendUI {
   constructor(layerManager, containerId = 'legend-container') {
@@ -224,6 +224,65 @@ export class LegendUI {
    */
   generateLayerLegendItem(layerConfig) {
     const s = layerConfig.style || {};
+
+    // -------------------------------------------------------------
+    // ANÁLISES TERRITORIAIS INTEGRADAS
+    // -------------------------------------------------------------
+    if (layerConfig.id === 'cidade_15min_graus_cobertura') {
+      const swatch = `
+        <div style="display:flex; flex-direction:column; gap:4px; margin-top:4px;">
+          <div style="display:flex; align-items:center; gap:6px; font-size:11px;">
+            <span style="display:inline-block; width:14px; height:10px; background:#2e7d32; border:1px solid #1b5e20; border-radius:2px;"></span>
+            <span><strong>Grau 3:</strong> Cobertura Plena (15 Minutos Real)</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:11px;">
+            <span style="display:inline-block; width:14px; height:10px; background:#f9a825; border:1px solid #f57f17; border-radius:2px;"></span>
+            <span><strong>Grau 2:</strong> Cobertura Parcial Alta (2 serviços)</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:11px;">
+            <span style="display:inline-block; width:14px; height:10px; background:#ef6c00; border:1px solid #e65100; border-radius:2px;"></span>
+            <span><strong>Grau 1:</strong> Cobertura Mínima (1 serviço)</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:11px;">
+            <span style="display:inline-block; width:14px; height:10px; background:#c62828; border:1px solid #b71c1c; border-radius:2px;"></span>
+            <span><strong>Grau 0:</strong> Deserto de Serviços (> 15 min)</span>
+          </div>
+        </div>
+      `;
+      return `
+        <div class="legend-item-row" style="flex-direction:column; align-items:flex-start; gap:4px;">
+          <div class="legend-item-name" style="font-weight:600;">${layerConfig.name}</div>
+          <div class="legend-item-desc" style="font-size:11px; color:#64748b;">Classificação territorial pelo tripé Saúde, Educação e Praças</div>
+          ${swatch}
+        </div>
+      `;
+    }
+
+    if (layerConfig.id === 'vias_acessibilidade_saude_500m') {
+      const swatch = `
+        <div style="display:flex; flex-direction:column; gap:4px; margin-top:4px;">
+          <div style="display:flex; align-items:center; gap:6px; font-size:11px;">
+            <span style="display:inline-block; width:18px; height:3.5px; background:#d32f2f; border-radius:1px;"></span>
+            <span><strong>Prioridade Máxima:</strong> Alta Demanda de Idosos & Déficit de Rampas</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:11px;">
+            <span style="display:inline-block; width:18px; height:3px; background:#f57c00; border-radius:1px;"></span>
+            <span><strong>Prioridade Moderada:</strong> Adequação de Passeios e Guias</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:11px;">
+            <span style="display:inline-block; width:18px; height:2.5px; background:#2e7d32; border-radius:1px;"></span>
+            <span><strong>Baixa Prioridade:</strong> Acessibilidade Consolidada</span>
+          </div>
+        </div>
+      `;
+      return `
+        <div class="legend-item-row" style="flex-direction:column; align-items:flex-start; gap:4px;">
+          <div class="legend-item-name" style="font-weight:600;">${layerConfig.name}</div>
+          <div class="legend-item-desc" style="font-size:11px; color:#64748b;">1.753 trechos viários no raio de 500m da saúde classificados para obras pedonais</div>
+          ${swatch}
+        </div>
+      `;
+    }
 
     // -------------------------------------------------------------
     // 0. EQUIPAMENTOS DE SAÚDE (HOSPITAIS, CAIS, UBS / ESF)

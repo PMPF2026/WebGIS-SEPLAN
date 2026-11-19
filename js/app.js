@@ -5,17 +5,17 @@
 
 import { MapEngine } from './map/map-engine.js';
 import { BasemapManager } from './map/basemap-manager.js';
-import { LayerManager } from './map/layer-manager.js?v=20261118_escala2km_v1';
-import { SidebarUI } from './ui/sidebar.js?v=20261118_escala2km_v1';
-import { LegendUI } from './ui/legend.js?v=20261118_escala2km_v1';
+import { LayerManager } from './map/layer-manager.js?v=20261119_analises_v1';
+import { SidebarUI } from './ui/sidebar.js?v=20261119_analises_v1';
+import { LegendUI } from './ui/legend.js?v=20261119_analises_v1';
 import { SearchUI } from './ui/search.js';
-import { PopupUI } from './ui/popup.js?v=20261118_escala2km_v1';
+import { PopupUI } from './ui/popup.js?v=20261119_analises_v1';
 import { Notification } from './ui/notification.js';
 import { IdentifyTool } from './tools/identify.js';
 import { MeasureTool } from './tools/measure.js';
 import { ExportReportTool } from './tools/export-report.js';
 import { LayerImporter } from './tools/layer-importer.js';
-import { DownloadsUI } from './ui/downloads.js?v=20261118_escala2km_v1';
+import { DownloadsUI } from './ui/downloads.js?v=20261119_analises_v1';
 import { Item6ThematicLegendUI } from './ui/thematic-legend-item6.js';
 import { MetricsUI } from './metrics/metrics-ui.js';
 import { TerritorialAnalysisTool } from './tools/territorial-analysis.js';
@@ -23,7 +23,7 @@ import { ComparativoCensoUI } from './comparativo/comparativo-ui.js';
 import { AnalisesTerritoriaisUI } from './analises/analises-territoriais-ui.js';
 import { ElevationQueryTool } from './tools/elevation-query.js';
 import { HipsometriaFloatingLegendUI } from './ui/thematic-legend-hipsometria.js';
-import { PermanentLegendUI } from './ui/permanent-legend.js?v=20261118_escala2km_v1';
+import { PermanentLegendUI } from './ui/permanent-legend.js?v=20261119_analises_v1';
 
 class WebGisApp {
   constructor() {

@@ -4,7 +4,7 @@
  * Posicionada no canto inferior direito da área cartográfica
  */
 
-import { LAYER_GROUPS, LAYERS_CONFIG } from '../config/layers.config.js?v=20261118_escala2km_v1';
+import { LAYER_GROUPS, LAYERS_CONFIG } from '../config/layers.config.js?v=20261119_analises_v1';
 
 export class PermanentLegendUI {
   /**

@@ -3,7 +3,7 @@
  * Advanced Sidebar Controller: Layer Filter, Operational Presets & Solo Mode
  */
 
-import { LAYER_GROUPS, LAYERS_CONFIG, OPERATIONAL_PRESETS } from '../config/layers.config.js?v=20261118_escala2km_v1';
+import { LAYER_GROUPS, LAYERS_CONFIG, OPERATIONAL_PRESETS } from '../config/layers.config.js?v=20261119_analises_v1';
 import { Notification } from './notification.js';
 
 export class SidebarUI {

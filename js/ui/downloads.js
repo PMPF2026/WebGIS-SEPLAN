@@ -3,7 +3,7 @@
  * Downloads UI Controller: Catálogo de Dados Espaciais Temático & Exportação
  */
 
-import { LAYER_GROUPS, LAYERS_CONFIG } from '../config/layers.config.js?v=20261118_escala2km_v1';
+import { LAYER_GROUPS, LAYERS_CONFIG } from '../config/layers.config.js?v=20261119_analises_v1';
 import { Notification } from './notification.js';
 import { toUTM22S } from '../utils/projection.js';
 
@@ -249,6 +249,29 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
     layerIds: [
       'patrimonio_historico'
     ]
+  },
+  {
+    id: 'analises_territoriais',
+    title: '14. Análises Territoriais Integradas (Censo 2022)',
+    shortTitle: 'Análises Integradas',
+    iconName: 'network',
+    subsections: [
+      {
+        title: '14.1 A Cidade de 15 Minutos (Acessibilidade a Serviços Essenciais)',
+        layerIds: [
+          'cidade_15min_graus_cobertura',
+          'cidade_15min_tripe_pleno',
+          'cidade_15min_desertos'
+        ]
+      },
+      {
+        title: '14.2 Rotas Acessíveis à Saúde (Idosos e PCDs)',
+        layerIds: [
+          'vias_acessibilidade_saude_500m',
+          'setores_vulnerabilidade_idosos_saude'
+        ]
+      }
+    ]
   }
 ];
 
@@ -282,6 +305,11 @@ export class DownloadsUI {
    */
   prepareLayerCatalog() {
     const descriptions = {
+      'cidade_15min_graus_cobertura': 'Zoneamento completo dos 4 Graus de Acessibilidade a Serviços Essenciais (Saúde 1.000m, EMEIs 800m e Praças 400m) com dados demográficos do Censo IBGE 2022.',
+      'cidade_15min_tripe_pleno': 'Delimitação da área urbana de excelência (12,11 km²) onde a população atinge simultaneamente a pé Saúde, Educação Infantil e Praças públicas (Tripé Pleno).',
+      'cidade_15min_desertos': 'Identificação dos vazios urbanos e periferias desprovidas de serviços essenciais a pé (> 15 min), com quantificação de população e domicílios impactados.',
+      'vias_acessibilidade_saude_500m': 'Classificação operacional dos 1.753 trechos viários no raio imediato de 500m da saúde por Prioridade de Obras de Acessibilidade (Calçadas, Rampas e Remoção de Obstáculos).',
+      'setores_vulnerabilidade_idosos_saude': 'Setores censitários urbanos do Censo IBGE 2022 no entorno da saúde com indicadores de população idosa (60+ anos), calçadas, rampas e obstáculos.',
       'hospitais': 'Mapeamento geográfico oficial dos 5 hospitais de alta complexidade de Passo Fundo (HSVP, Clínicas, Prontoclínica, Hospital Municipal Dr. César Santos e IOT).',
       'cais': 'Mapeamento geográfico dos 4 Centros de Atenção Integral à Saúde (CAIS) de Passo Fundo: Boqueirão, Hípica, Vila Luíza e São Cristóvão.',
       'ubs_esf': 'Rede municipal com 33 Unidades Básicas de Saúde (UBS) e Estratégias Saúde da Família (ESF) distribuídas pelos bairros de Passo Fundo.',

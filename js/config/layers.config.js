@@ -121,6 +121,18 @@ export const LAYER_GROUPS = [
     iconName: 'landmark',
     description: 'Bens imóveis tombados e patrimônio histórico-arquitetônico e cultural do município de Passo Fundo',
     badge: 'SEPLAN / Cultura'
+  },
+  {
+    id: 'analises_territoriais',
+    title: '14. Análises Territoriais Integradas',
+    iconClass: 'analytics',
+    iconName: 'network',
+    description: 'Diagnósticos espaciais avançados: A Cidade de 15 Minutos (Saúde + Educação + Praças) e Rotas Acessíveis à Saúde (Idosos e PCDs)',
+    badge: 'SEPLAN / Censo 2022',
+    subgroups: [
+      { id: 'cidade_15min', title: '14.1 A Cidade de 15 Minutos', icon: 'clock' },
+      { id: 'rotas_acessiveis_saude', title: '14.2 Rotas Acessíveis à Saúde (Idosos & PCDs)', icon: 'accessibility' }
+    ]
   }
 ];
 
@@ -3283,10 +3295,207 @@ export const LAYERS_CONFIG = [
     ],
     description: 'Mapa contínuo de densidade espacial (Kernel) das Escolas de Ensino Fundamental. Raio de busca: 1.000 m, resolução: 10 m.',
     searchable: false
+  },
+  // ================= 14. ANÁLISES TERRITORIAIS INTEGRADAS =================
+  // --- 14.1 A CIDADE DE 15 MINUTOS ---
+  {
+    id: 'cidade_15min_graus_cobertura',
+    name: 'Índice de Cobertura Essencial (Graus 0 a 3)',
+    fileName: 'data/analises-integradas/cidade_15min_graus_cobertura.geojson?v=20261119_v1',
+    csvFileName: 'data/analises-integradas/cidade_15min_graus_cobertura.csv',
+    source: 'SEPLAN / Censo Demográfico IBGE 2022',
+    refDate: '2026',
+    group: 'analises_territoriais',
+    subgroup: 'cidade_15min',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.65,
+    zIndex: 43,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      fillColor: 'rgba(46, 125, 50, 0.45)',
+      strokeColor: '#1b5e20',
+      strokeWidth: 1.8,
+      previewColor: '#2e7d32'
+    },
+    popupConfig: {
+      defaultTitle: 'A Cidade de 15 Minutos — Cobertura',
+      titleField: 'categoria',
+      fields: [
+        { key: 'servicos', label: 'Equipamentos Integrados' },
+        { key: 'diagnostico', label: 'Diagnóstico Territorial' },
+        { key: 'pop_estimada', label: 'População Estimada (Censo 2022)' },
+        { key: 'pct_pop_total', label: '% da População Municipal' },
+        { key: 'dom_estimados', label: 'Domicílios Estimados' },
+        { key: 'idosos_60m', label: 'Idosos (60+ anos)' },
+        { key: 'criancas_0a4', label: 'Crianças (0 a 4 anos)' },
+        { key: 'area_km2', label: 'Área Territorial (km²)' },
+        { key: 'pct_area_urbana', label: '% da Área Urbana' }
+      ]
+    }
+  },
+  {
+    id: 'cidade_15min_tripe_pleno',
+    name: 'Tripé Pleno — A Cidade de 15 Minutos Real',
+    fileName: 'data/analises-integradas/cidade_15min_tripe_pleno.geojson?v=20261119_v1',
+    csvFileName: 'data/analises-integradas/cidade_15min_tripe_pleno.csv',
+    source: 'SEPLAN / Censo Demográfico IBGE 2022',
+    refDate: '2026',
+    group: 'analises_territoriais',
+    subgroup: 'cidade_15min',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.60,
+    zIndex: 44,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      fillColor: 'rgba(46, 125, 50, 0.55)',
+      strokeColor: '#1b5e20',
+      strokeWidth: 2.5,
+      previewColor: '#2e7d32'
+    },
+    popupConfig: {
+      defaultTitle: 'Tripé Pleno — A Cidade de 15 Minutos',
+      fields: [
+        { key: 'servicos', label: 'Serviços Simultâneos a Pé' },
+        { key: 'pop_estimada', label: 'População Atendida (Censo 2022)' },
+        { key: 'pct_pop_total', label: '% da População da Cidade' },
+        { key: 'dom_estimados', label: 'Domicílios Cobertos' },
+        { key: 'idosos_60m', label: 'Idosos Beneficiados (60+ anos)' },
+        { key: 'criancas_0a4', label: 'Crianças Pequenas (0 a 4 anos)' },
+        { key: 'area_km2', label: 'Área Coberta (km²)' },
+        { key: 'pct_area_urbana', label: '% do Perímetro Urbano' }
+      ]
+    }
+  },
+  {
+    id: 'cidade_15min_desertos',
+    name: 'Desertos de Serviços Essenciais (Vazio a Pé)',
+    fileName: 'data/analises-integradas/cidade_15min_desertos.geojson?v=20261119_v1',
+    csvFileName: 'data/analises-integradas/cidade_15min_desertos.csv',
+    source: 'SEPLAN / Censo Demográfico IBGE 2022',
+    refDate: '2026',
+    group: 'analises_territoriais',
+    subgroup: 'cidade_15min',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.50,
+    zIndex: 43,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      fillColor: 'rgba(198, 40, 40, 0.38)',
+      strokeColor: '#b71c1c',
+      strokeWidth: 2.2,
+      previewColor: '#c62828'
+    },
+    popupConfig: {
+      defaultTitle: 'Deserto de Serviços Essenciais (> 15 min)',
+      fields: [
+        { key: 'diagnostico', label: 'Situação de Isolamento' },
+        { key: 'pop_estimada', label: 'População Desassistida' },
+        { key: 'pct_pop_total', label: '% da População Urbana' },
+        { key: 'dom_estimados', label: 'Domicílios Impactados' },
+        { key: 'idosos_60m', label: 'Idosos sem Serviço Próximo' },
+        { key: 'criancas_0a4', label: 'Crianças sem Creche Próxima' },
+        { key: 'area_km2', label: 'Área do Vazio Assistencial (km²)' }
+      ]
+    }
+  },
+  // --- 14.2 ROTAS ACESSÍVEIS À SAÚDE (IDOSOS E PCDS) ---
+  {
+    id: 'vias_acessibilidade_saude_500m',
+    name: 'Prioridade de Intervenção Pedonal nas Vias (500m)',
+    fileName: 'data/analises-integradas/vias_acessibilidade_saude_500m.geojson?v=20261119_v1',
+    csvFileName: 'data/analises-integradas/vias_acessibilidade_saude_500m.csv',
+    source: 'SEPLAN / Censo IBGE 2022 (Entorno dos Domicílios)',
+    refDate: '2026',
+    group: 'analises_territoriais',
+    subgroup: 'rotas_acessiveis_saude',
+    geometryType: 'LineString',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 65,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      strokeColor: '#d32f2f',
+      strokeWidth: 2.6,
+      previewColor: '#d32f2f'
+    },
+    popupConfig: {
+      defaultTitle: 'Rota de Saúde — Acessibilidade Pedonal',
+      titleField: 'name',
+      fields: [
+        { key: 'bairro_seplan', label: 'Bairro SEPLAN' },
+        { key: 'prioridade_obra', label: 'Prioridade de Intervenção' },
+        { key: 'diretriz_intervencao', label: 'Diretriz de Obras Públicas' },
+        { key: 'ivap_score', label: 'Índice de Vulnerabilidade (IVAP)' },
+        { key: 'pct_idosos', label: '% População Idosa no Setor' },
+        { key: 'pop_60', label: 'Total de Idosos no Setor' },
+        { key: 'pct_calcada', label: '% Domicílios com Calçada' },
+        { key: 'pct_rampa', label: '% Domicílios com Rampas PCD' },
+        { key: 'pct_obstaculo', label: '% Calçadas com Obstáculos' },
+        { key: 'highway', label: 'Classificação Funcional' },
+        { key: 'surface', label: 'Pavimentação Viária' }
+      ]
+    }
+  },
+  {
+    id: 'setores_vulnerabilidade_idosos_saude',
+    name: 'Vulnerabilidade Pedonal do Entorno da Saúde',
+    fileName: 'data/analises-integradas/setores_vulnerabilidade_idosos_saude.geojson?v=20261119_v1',
+    csvFileName: 'data/analises-integradas/setores_vulnerabilidade_idosos_saude.csv',
+    source: 'SEPLAN / Censo IBGE 2022 (Entorno dos Domicílios)',
+    refDate: '2026',
+    group: 'analises_territoriais',
+    subgroup: 'rotas_acessiveis_saude',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.55,
+    zIndex: 39,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      fillColor: 'rgba(245, 124, 0, 0.35)',
+      strokeColor: '#e65100',
+      strokeWidth: 1.2,
+      previewColor: '#f57c00'
+    },
+    popupConfig: {
+      defaultTitle: 'Setor Censitário — Entorno da Saúde (500m)',
+      titleField: 'CD_SETOR',
+      fields: [
+        { key: 'bairro_seplan', label: 'Bairro SEPLAN' },
+        { key: 'categoria_risco', label: 'Classificação de Risco Pedonal' },
+        { key: 'ivap_score', label: 'Índice de Vulnerabilidade (IVAP)' },
+        { key: 'pop_tot', label: 'População Residente' },
+        { key: 'pop_60', label: 'População Idosa (60+ anos)' },
+        { key: 'pct_idosos', label: '% de Idosos no Setor' },
+        { key: 'tot_domicilios', label: 'Domicílios no Setor' },
+        { key: 'pct_calcada', label: '% Domicílios com Calçada' },
+        { key: 'pct_rampa', label: '% Domicílios com Rampa PCD' },
+        { key: 'pct_obstaculo', label: '% Calçadas com Obstáculos' },
+        { key: 'pct_pavimentacao', label: '% Ruas Pavimentadas' }
+      ]
+    }
   }
 ];
 
 export const OPERATIONAL_PRESETS = [
+  {
+    id: 'preset_cidade_15min',
+    name: '⏱️ A Cidade de 15 Minutos & Acessibilidade',
+    description: 'Análise integrada de serviços essenciais (Saúde, Educação e Praças) e rotas acessíveis para idosos e PCDs',
+    activeLayers: ['cidade_15min_graus_cobertura', 'vias_acessibilidade_saude_500m', 'bairros', 'limite_territorial']
+  },
   {
     id: 'preset_planejamento_geral',
     name: '🏛️ Visão Geral SEPLAN',

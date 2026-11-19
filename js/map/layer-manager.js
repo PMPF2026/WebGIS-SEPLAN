@@ -8,7 +8,7 @@
 
 
 
-import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261118_escala2km_v1';
+import { LAYERS_CONFIG, LAYER_GROUPS } from '../config/layers.config.js?v=20261119_analises_v1';
 
 import { loadGeoJson } from '../utils/async-loader.js?v=20261117_prefeitura_v3';
 
@@ -691,6 +691,94 @@ export class LayerManager {
   createLayerStyle(config) {
 
     const s = config.style || {};
+
+    // 0. ANÁLISES TERRITORIAIS INTEGRADAS: A Cidade de 15 Minutos
+    if (config.id === 'cidade_15min_graus_cobertura') {
+      return (feature) => {
+        const grau = feature.get('grau');
+        let fill = 'rgba(46, 125, 50, 0.42)';
+        let stroke = '#1b5e20';
+        let width = 1.6;
+        if (grau === 3) {
+          fill = 'rgba(46, 125, 50, 0.50)'; // Verde escuro (Tripé Pleno)
+          stroke = '#1b5e20';
+          width = 2.0;
+        } else if (grau === 2) {
+          fill = 'rgba(249, 168, 37, 0.44)'; // Amarelo âmbar (Cobertura Parcial Alta)
+          stroke = '#f57f17';
+          width = 1.6;
+        } else if (grau === 1) {
+          fill = 'rgba(239, 108, 0, 0.40)'; // Laranja (Cobertura Mínima)
+          stroke = '#e65100';
+          width = 1.6;
+        } else if (grau === 0) {
+          fill = 'rgba(198, 40, 40, 0.35)'; // Vermelho (Deserto)
+          stroke = '#b71c1c';
+          width = 2.0;
+        }
+        return new ol.style.Style({
+          fill: new ol.style.Fill({ color: fill }),
+          stroke: new ol.style.Stroke({ color: stroke, width: width })
+        });
+      };
+    }
+
+    if (config.id === 'cidade_15min_tripe_pleno') {
+      return new ol.style.Style({
+        fill: new ol.style.Fill({ color: 'rgba(46, 125, 50, 0.55)' }),
+        stroke: new ol.style.Stroke({ color: '#1b5e20', width: 2.6 })
+      });
+    }
+
+    if (config.id === 'cidade_15min_desertos') {
+      return new ol.style.Style({
+        fill: new ol.style.Fill({ color: 'rgba(198, 40, 40, 0.38)' }),
+        stroke: new ol.style.Stroke({ color: '#b71c1c', width: 2.4, lineDash: [6, 4] })
+      });
+    }
+
+    // 0.1 ANÁLISES TERRITORIAIS INTEGRADAS: Rotas Acessíveis à Saúde (Idosos e PCDs)
+    if (config.id === 'vias_acessibilidade_saude_500m') {
+      return (feature, resolution) => {
+        const prio = feature.get('prioridade_obra') || '';
+        let color = '#d32f2f'; // Prioridade Máxima (Urgente)
+        let width = resolution < 8 ? 3.8 : 2.6;
+        if (prio.includes('Moderada')) {
+          color = '#f57c00'; // Prioridade Moderada
+          width = resolution < 8 ? 3.2 : 2.2;
+        } else if (prio.includes('Baixa') || prio.includes('Consolidado')) {
+          color = '#2e7d32'; // Baixa Prioridade / Consolidado
+          width = resolution < 8 ? 2.8 : 1.8;
+        }
+        return new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: color,
+            width: width,
+            lineCap: 'round',
+            lineJoin: 'round'
+          })
+        });
+      };
+    }
+
+    if (config.id === 'setores_vulnerabilidade_idosos_saude') {
+      return (feature) => {
+        const score = parseFloat(feature.get('ivap_score')) || 50;
+        let fill = 'rgba(245, 124, 0, 0.35)';
+        let stroke = '#e65100';
+        if (score >= 65) {
+          fill = 'rgba(211, 47, 47, 0.42)'; // Risco Crítico
+          stroke = '#b71c1c';
+        } else if (score < 45) {
+          fill = 'rgba(46, 125, 50, 0.35)'; // Consolidado
+          stroke = '#1b5e20';
+        }
+        return new ol.style.Style({
+          fill: new ol.style.Fill({ color: fill }),
+          stroke: new ol.style.Stroke({ color: stroke, width: 1.2 })
+        });
+      };
+    }
 
 
 
