@@ -39,8 +39,13 @@ export const LAYER_GROUPS = [
     title: '5. Equipamentos de Saúde',
     iconClass: 'health',
     iconName: 'activity',
-    description: 'Rede assistencial de saúde municipal: Hospitais, Centros de Atenção Integral à Saúde (CAIS) e Unidades Básicas de Saúde (UBS/ESF)',
-    badge: 'SMS / PMPF'
+    description: 'Rede assistencial de saúde municipal: Hospitais, CAIS, UBS e Áreas de Abrangência Territorial (Análise de Rede)',
+    badge: 'SMS / PMPF',
+    subgroups: [
+      { id: 'unidades_saude', title: '5.1 Equipamentos de Atendimento', icon: 'map-pin' },
+      { id: 'abrangencia_rede_publica', title: '5.2 Acessibilidade & Abrangência (Análise de Rede)', icon: 'maximize-2' },
+      { id: 'vias_atendidas', title: '5.3 Malha Viária Atendida a Pé', icon: 'route' }
+    ]
   },
   {
     id: 'areas_verdes',
@@ -128,6 +133,7 @@ export const LAYERS_CONFIG = [
     source: 'Secretaria Municipal de Saúde (SMS) / SEPLAN',
     refDate: '2026',
     group: 'equipamentos_saude',
+    subgroup: 'unidades_saude',
     geometryType: 'Point',
     defaultVisible: false,
     defaultOpacity: 1.0,
@@ -163,6 +169,7 @@ export const LAYERS_CONFIG = [
     source: 'Secretaria Municipal de Saúde (SMS) / SEPLAN',
     refDate: '2026',
     group: 'equipamentos_saude',
+    subgroup: 'unidades_saude',
     geometryType: 'Point',
     defaultVisible: false,
     defaultOpacity: 1.0,
@@ -198,6 +205,7 @@ export const LAYERS_CONFIG = [
     source: 'Secretaria Municipal de Saúde (SMS) / SEPLAN',
     refDate: '2026',
     group: 'equipamentos_saude',
+    subgroup: 'unidades_saude',
     geometryType: 'Point',
     defaultVisible: false,
     defaultOpacity: 1.0,
@@ -226,6 +234,262 @@ export const LAYERS_CONFIG = [
     },
     searchable: true,
     searchFields: ['nome', 'bairro', 'categoria', 'tipo_sigla']
+  },
+    // ================= 5.2 ACESSIBILIDADE & ABRANGÊNCIA (ANÁLISE DE REDE) =================
+  {
+    id: 'rede_saude_500m',
+    name: 'Rede Pública Total — Raio 500 m',
+    fileName: 'data/saude/rede_saude_500m.geojson?v=20261119_v1',
+    source: 'SEPLAN / Censo IBGE 2022',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    subgroup: 'abrangencia_rede_publica',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.65,
+    zIndex: 42,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      fillColor: 'rgba(46, 125, 50, 0.45)',
+      strokeColor: '#1b5e20',
+      strokeWidth: 1.8,
+      previewColor: '#2e7d32'
+    },
+    popupConfig: {
+      defaultTitle: 'Rede Pública — 500 m (Alta Acessibilidade)',
+      fields: [
+        { key: 'alcance', label: 'Caminhabilidade' },
+        { key: 'pop_atendida', label: 'População Atendida (Censo 2022)' },
+        { key: 'dom_atendidos', label: 'Domicílios Atendidos' },
+        { key: 'area_km2', label: 'Área Territorial Coberta' },
+        { key: 'equipamentos', label: 'Equipamentos Integrados' },
+        { key: 'fonte', label: 'Fonte Oficial' }
+      ]
+    }
+  },
+  {
+    id: 'rede_saude_750m',
+    name: 'Rede Pública Total — Raio 750 m',
+    fileName: 'data/saude/rede_saude_750m.geojson?v=20261119_v1',
+    source: 'SEPLAN / Censo IBGE 2022',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    subgroup: 'abrangencia_rede_publica',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.55,
+    zIndex: 41,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      fillColor: 'rgba(129, 199, 132, 0.38)',
+      strokeColor: '#388e3c',
+      strokeWidth: 1.5,
+      previewColor: '#81c784'
+    },
+    popupConfig: {
+      defaultTitle: 'Rede Pública — 750 m (Média Acessibilidade)',
+      fields: [
+        { key: 'alcance', label: 'Caminhabilidade' },
+        { key: 'pop_atendida', label: 'População Atendida (Censo 2022)' },
+        { key: 'dom_atendidos', label: 'Domicílios Atendidos' },
+        { key: 'area_km2', label: 'Área Territorial Coberta' },
+        { key: 'equipamentos', label: 'Equipamentos Integrados' },
+        { key: 'fonte', label: 'Fonte Oficial' }
+      ]
+    }
+  },
+  {
+    id: 'rede_saude_1000m',
+    name: 'Rede Pública Total — Raio 1.000 m',
+    fileName: 'data/saude/rede_saude_1000m.geojson?v=20261119_v1',
+    source: 'SEPLAN / Censo IBGE 2022',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    subgroup: 'abrangencia_rede_publica',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.45,
+    zIndex: 40,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      fillColor: 'rgba(100, 181, 246, 0.30)',
+      strokeColor: '#1976d2',
+      strokeWidth: 1.5,
+      previewColor: '#64b5f6'
+    },
+    popupConfig: {
+      defaultTitle: 'Rede Pública — 1.000 m (Limiar Caminhável)',
+      fields: [
+        { key: 'alcance', label: 'Caminhabilidade' },
+        { key: 'pop_atendida', label: 'População Atendida (Censo 2022)' },
+        { key: 'dom_atendidos', label: 'Domicílios Atendidos' },
+        { key: 'area_km2', label: 'Área Territorial Coberta' },
+        { key: 'equipamentos', label: 'Equipamentos Integrados' },
+        { key: 'fonte', label: 'Fonte Oficial' }
+      ]
+    }
+  },
+  {
+    id: 'ubs_rede_1000m',
+    name: 'UBS / ESF — Raio 1.000 m (Atenção Básica)',
+    fileName: 'data/saude/ubs_rede_1000m.geojson?v=20261119_v1',
+    source: 'SEPLAN / Censo IBGE 2022',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    subgroup: 'abrangencia_rede_publica',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.40,
+    zIndex: 39,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      fillColor: 'rgba(5, 150, 105, 0.25)',
+      strokeColor: '#059669',
+      strokeWidth: 1.4,
+      strokeDash: [5, 4],
+      previewColor: '#059669'
+    },
+    popupConfig: {
+      defaultTitle: 'UBS / ESF — Raio 1.000 m',
+      fields: [
+        { key: 'alcance', label: 'Caminhabilidade' },
+        { key: 'pop_atendida', label: 'População Atendida (Censo 2022)' },
+        { key: 'dom_atendidos', label: 'Domicílios Atendidos' },
+        { key: 'area_km2', label: 'Área Territorial Coberta' },
+        { key: 'equipamentos', label: 'Equipamentos Integrados' },
+        { key: 'fonte', label: 'Fonte Oficial' }
+      ]
+    }
+  },
+  {
+    id: 'cais_hosp_rede_1000m',
+    name: 'CAIS & Hosp. Municipal — Raio 1.000 m',
+    fileName: 'data/saude/cais_hosp_rede_1000m.geojson?v=20261119_v1',
+    source: 'SEPLAN / Censo IBGE 2022',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    subgroup: 'abrangencia_rede_publica',
+    geometryType: 'Polygon',
+    defaultVisible: false,
+    defaultOpacity: 0.40,
+    zIndex: 38,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      fillColor: 'rgba(239, 108, 0, 0.25)',
+      strokeColor: '#ef6c00',
+      strokeWidth: 1.4,
+      strokeDash: [5, 4],
+      previewColor: '#ef6c00'
+    },
+    popupConfig: {
+      defaultTitle: 'CAIS & Hospital Municipal — Raio 1.000 m',
+      fields: [
+        { key: 'alcance', label: 'Caminhabilidade' },
+        { key: 'pop_atendida', label: 'População Atendida (Censo 2022)' },
+        { key: 'dom_atendidos', label: 'Domicílios Atendidos' },
+        { key: 'area_km2', label: 'Área Territorial Coberta' },
+        { key: 'equipamentos', label: 'Equipamentos Integrados' },
+        { key: 'fonte', label: 'Fonte Oficial' }
+      ]
+    }
+  },
+  // ================= 5.3 MALHA VIÁRIA ATENDIDA A PÉ =================
+  {
+    id: 'vias_saude_500m',
+    name: 'Ruas a até 500 m da Rede Pública',
+    fileName: 'data/saude/vias_saude_500m.geojson?v=20261119_v1',
+    source: 'SEPLAN / Censo IBGE 2022',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    subgroup: 'vias_atendidas',
+    geometryType: 'LineString',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 46,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      strokeColor: '#1b5e20',
+      strokeWidth: 2.4,
+      previewColor: '#1b5e20'
+    },
+    popupConfig: {
+      defaultTitle: 'Trecho Viário Atendido — 500 m',
+      fields: [
+        { key: 'alcance', label: 'Alcance a Pé' },
+        { key: 'extensao_km', label: 'Extensão Total no Município' },
+        { key: 'pct_malha', label: 'Percentual da Malha Urbana' }
+      ]
+    }
+  },
+  {
+    id: 'vias_saude_750m',
+    name: 'Ruas a até 750 m da Rede Pública',
+    fileName: 'data/saude/vias_saude_750m.geojson?v=20261119_v1',
+    source: 'SEPLAN / Censo IBGE 2022',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    subgroup: 'vias_atendidas',
+    geometryType: 'LineString',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 45,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      strokeColor: '#2e7d32',
+      strokeWidth: 1.9,
+      previewColor: '#2e7d32'
+    },
+    popupConfig: {
+      defaultTitle: 'Trecho Viário Atendido — 750 m',
+      fields: [
+        { key: 'alcance', label: 'Alcance a Pé' },
+        { key: 'extensao_km', label: 'Extensão Total no Município' },
+        { key: 'pct_malha', label: 'Percentual da Malha Urbana' }
+      ]
+    }
+  },
+  {
+    id: 'vias_saude_1000m',
+    name: 'Ruas a até 1.000 m da Rede Pública',
+    fileName: 'data/saude/vias_saude_1000m.geojson?v=20261119_v1',
+    source: 'SEPLAN / Censo IBGE 2022',
+    refDate: '2026',
+    group: 'equipamentos_saude',
+    subgroup: 'vias_atendidas',
+    geometryType: 'LineString',
+    defaultVisible: false,
+    defaultOpacity: 1.0,
+    zIndex: 44,
+    isCore: false,
+    isLazy: true,
+    declutter: false,
+    style: {
+      strokeColor: '#0288d1',
+      strokeWidth: 1.6,
+      previewColor: '#0288d1'
+    },
+    popupConfig: {
+      defaultTitle: 'Trecho Viário Atendido — 1.000 m',
+      fields: [
+        { key: 'alcance', label: 'Alcance a Pé' },
+        { key: 'extensao_km', label: 'Extensão Total no Município' },
+        { key: 'pct_malha', label: 'Percentual da Malha Urbana' }
+      ]
+    }
   },
   // ================= 13. PATRIMÔNIO HISTÓRICO E CULTURAL =================
   {

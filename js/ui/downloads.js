@@ -187,13 +187,58 @@ export const DOWNLOAD_THEMATIC_GROUPS = [
   },
   {
     id: 'equipamentos_saude',
-    title: '5. Equipamentos de Saúde',
+    title: '5. Equipamentos de Saúde & Abrangência',
     shortTitle: 'Saúde Pública',
     iconName: 'activity',
-    layerIds: [
-      'hospitais',
-      'cais',
-      'ubs_esf'
+    subsections: [
+      {
+        title: '5.1 Equipamentos de Atendimento (Pontos)',
+        layerIds: [
+          'hospitais',
+          'cais',
+          'ubs_esf'
+        ]
+      },
+      {
+        title: '5.2 Acessibilidade & Abrangência Territorial (Análise de Rede)',
+        layerIds: [
+          'rede_saude_500m',
+          'rede_saude_750m',
+          'rede_saude_1000m',
+          'ubs_rede_1000m',
+          'cais_hosp_rede_1000m'
+        ]
+      },
+      {
+        title: '5.3 Malha Viária Atendida a Pé',
+        layerIds: [
+          'vias_saude_500m',
+          'vias_saude_750m',
+          'vias_saude_1000m'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'educacao_equipamentos',
+    title: '12. Educação & Equipamentos Escolares',
+    shortTitle: 'Educação',
+    iconName: 'graduation-cap',
+    subsections: [
+      {
+        title: 'Unidades Educacionais',
+        layerIds: [
+          'escolas_infantil_emei',
+          'escolas_fundamental_emef'
+        ]
+      },
+      {
+        title: 'Áreas de Abrangência Escolar',
+        layerIds: [
+          'abrangencia_emeis_800m',
+          'abrangencia_emefs_1500m'
+        ]
+      }
     ]
   },
   {
@@ -307,7 +352,21 @@ export class DownloadsUI {
       'entorno_rampas': 'Proporção de domicílios em faces de quadra dotadas de rampas de acessibilidade para cadeirantes apurada pelo Censo 2022 (IBGE).',
       'entorno_bueiros': 'Proporção de domicílios em faces de quadra com bueiro ou boca de lobo para escoamento de águas pluviais (Censo 2022).',
       'entorno_iluminacao': 'Proporção de domicílios em faces de quadra com iluminação pública apurada pelo Censo Demográfico 2022 (IBGE).',
-      'entorno_arborizacao': 'Proporção de domicílios em faces de quadra com arborização viária (árvores no entorno) apurada pelo Censo 2022 (IBGE).'
+      'entorno_arborizacao': 'Proporção de domicílios em faces de quadra com arborização viária (árvores no entorno) apurada pelo Censo 2022 (IBGE).',
+      // Saúde Pública e Análise de Rede
+      'rede_saude_500m': 'Mancha contínua de alta acessibilidade peatonal a até 500m a pé da rede pública municipal de saúde (56.083 hab / 27,2% da população - Censo 2022).',
+      'rede_saude_750m': 'Mancha contínua de média acessibilidade a até 750m a pé da rede pública de saúde (99.110 hab / 48,1% da população - Censo 2022).',
+      'rede_saude_1000m': 'Mancha contínua de alcance caminhável a até 1.000m a pé da rede pública de saúde (136.368 hab / 66,1% da população - Censo 2022).',
+      'ubs_rede_1000m': 'Área de abrangência territorial das 33 Unidades Básicas de Saúde (UBS/ESF) em raio de 1.000m de caminhada (105.734 hab - Censo 2022).',
+      'cais_hosp_rede_1000m': 'Área de abrangência territorial dos 4 CAIS municipais e do Hospital Municipal Dr. César Santos em raio de 1.000m de caminhada (51.376 hab).',
+      'vias_saude_500m': 'Eixos de logradouros e ruas urbanas situadas a até 500m de caminhada da rede pública de saúde (288,80 km / 29,9% da malha urbana).',
+      'vias_saude_750m': 'Eixos de logradouros e ruas urbanas situadas a até 750m de caminhada da rede pública de saúde (502,44 km / 52,1% da malha urbana).',
+      'vias_saude_1000m': 'Eixos de logradouros e ruas urbanas situadas a até 1.000m de caminhada da rede pública de saúde (686,27 km / 71,1% da malha urbana).',
+      // Educação e Equipamentos Escolares
+      'escolas_infantil_emei': 'Mapeamento geográfico oficial das Escolas Municipais de Educação Infantil (EMEIs) de Passo Fundo.',
+      'escolas_fundamental_emef': 'Mapeamento geográfico oficial das Escolas Municipais de Ensino Fundamental (EMEFs) de Passo Fundo.',
+      'abrangencia_emeis_800m': 'Áreas de abrangência e influência territorial das EMEIs em raio de 800m de caminhabilidade.',
+      'abrangencia_emefs_1500m': 'Áreas de abrangência e influência territorial das EMEFs em raio de 1.500m de caminhabilidade.'
     };
 
     const layerMetaMap = {};
